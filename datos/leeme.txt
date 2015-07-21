@@ -1,0 +1,24 @@
+Los archivos son los siguientes:
+
+datosBasicos.json: Datos basicos del algoritmo:
+	- cantidadCamiones : Cantidad de camiones
+	- capacidadCamiones : Cantidad de contenedores que puede recoger un camion antes de llenarse
+	- tiempoRecoleccionContenedor : Tiempo en segundos en que se demora en recoger un contenedor
+	- tiempoTrabajo : Tiempo en horas que dura la planificacion del algoritmo, esto es, tiempo máximo que puede trabajar un camión.
+
+contenedores_reciclables.csv: Archivo con datos de contenedores de la IMM, se procesa con: CodigoExterno/procesarDatosImm
+
+puntos.json: Lista de puntos (o contenedores) donde el primero se asume es el origen, resultado de procesar los datos de contenedores_reciclables.csv. Contiene identificador, latitud y longitud.
+
+distancias.json / tiempos.json : Matriz de puntos (donde cada fila/columna se corresponde con el indice del archivo puntos.json) donde cada archivo contiene la distancia y el tiempo que se necesita para llegar entre cada par de contenedores. Estos archivos se obtienen como resultado de CodigoExterno/distancias/distancias.py
+
+#Si el id del punto esta entre 300 y 1200, aumento un poco mas su velocidad de llenado
+#Ya que sabemos que el centro, cordon, y cercanias, es una parte muy poblada de montevideo
+#Y ademas sabemos que los puntos en esa region son los con id 300-1200, mas o menos.
+velocidades.json : Lista de puntos (que debe tener los mismos indices que puntos.json) donde cada elemento almacena id y velocidad de llenado del contenedor en % / hora
+
+---------------------------------------------------------------------
+
+generarInstancias.py : Genera archivos de instancias del problema, donde los datos son los valores actuales de llenado de un contenedor.
+
+llenado_x.json : Lista de puntos (con mismos indices que puntos.json) donde cada elemento tiene su id, y su valor de llenado actual. Este archivo es el utilizado como entrada de cada instancia de problema.

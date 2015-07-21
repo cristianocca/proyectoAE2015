@@ -1,0 +1,26 @@
+El script toma como entrada (rutas configuradas en el script):
+	un archivo con puntos, en formato json, EJ: [{"id":"origen", "lat":-34.85175920373889,"lon":-56.09838008880615},{...}] 
+		Este contiene todos los puntos utilizados por el proximo archivo.
+		
+	un archivo con una matriz de puntos en formato json:
+		De la forma: [ [punto1, punto2, punto3...], [punto1, punto2, ...] ]
+			Donde cada fila (i) y coulmna (j) se deben corresponder con el indice de la lista de puntos del archivo anterior
+			El valor de la matriz inicialmente se esperaba fuese el valor de la distancia geografica entre los puntos, pero como se pudieron calcular todos
+			el valor no tiene significancia alguna, y solo se utiliza para indicar el tamanio de la matriz y que puntos interesan.
+			
+El script tiene una salida:
+	Un archivo con el progreso o estado:
+		Archivo json el cual almacena el estado de puntos pendientes a procesar, se puede modificar a mano si se quieren re procesar ciertos puntos.
+		
+	Un archivo con una matriz de distancias en formato json
+		El formato es el mismo al de la entrada
+		Contiene las distancias reales entre cada punto, considerando calles y demas
+		Distancia en metros
+		
+	Un archivo con una matriz de tiempos en formato json
+		El formato es el mismo al de la entrada
+		Contiene los tiempos que se requiere para llegar de punto a punto.
+		Distancia en segundos.
+		
+		
+

@@ -1,0 +1,8 @@
+*.pyc
+*.pyo
+*.suo
+**/*.pyc
+**/*.pyo
+**/*.suo
+/.idea/workspace.xml
+/out
