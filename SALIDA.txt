@@ -1,0 +1,400 @@
+0 0 0 0 0 0 
+Trayectoria total en metros: 0.0
+QoS total: -321.0
+--------------------
+0 0 0 0 0 0 
+Trayectoria total en metros: 0.0
+QoS total: -321.0
+--------------------
+0 0 0 0 0 0 
+Trayectoria total en metros: 0.0
+QoS total: -321.0
+--------------------
+0 0 0 0 0 0 
+Trayectoria total en metros: 0.0
+QoS total: -321.0
+--------------------
+0 0 0 0 0 0 
+Trayectoria total en metros: 0.0
+QoS total: -321.0
+--------------------
+0 0 0 0 0 0 
+Trayectoria total en metros: 0.0
+QoS total: -321.0
+--------------------
+0 0 0 0 0 0 
+Trayectoria total en metros: 0.0
+QoS total: -321.0
+--------------------
+0 0 0 0 0 0 
+Trayectoria total en metros: 0.0
+QoS total: -321.0
+--------------------
+0 0 0 0 0 0 
+Trayectoria total en metros: 0.0
+QoS total: -321.0
+--------------------
+0 0 0 0 0 0 
+Trayectoria total en metros: 0.0
+QoS total: -321.0
+--------------------
+0 0 0 0 0 0 
+Trayectoria total en metros: 0.0
+QoS total: -321.0
+--------------------
+0 0 0 0 0 0 
+Trayectoria total en metros: 0.0
+QoS total: -321.0
+--------------------
+0 0 0 0 0 0 
+Trayectoria total en metros: 0.0
+QoS total: -321.0
+--------------------
+0 0 0 0 0 0 
+Trayectoria total en metros: 0.0
+QoS total: -321.0
+--------------------
+0 0 0 0 0 0 
+Trayectoria total en metros: 0.0
+QoS total: -321.0
+--------------------
+0 0 0 0 0 1 
+Trayectoria total en metros: 4280.0
+QoS total: -97.0
+--------------------
+0 0 0 0 0 1 
+Trayectoria total en metros: 4280.0
+QoS total: -97.0
+--------------------
+0 0 0 1 0 0 
+Trayectoria total en metros: 4280.0
+QoS total: -97.0
+--------------------
+0 0 0 1 0 0 
+Trayectoria total en metros: 4280.0
+QoS total: -97.0
+--------------------
+0 0 0 1 0 0 
+Trayectoria total en metros: 4280.0
+QoS total: -97.0
+--------------------
+0 0 0 1 0 0 
+Trayectoria total en metros: 4280.0
+QoS total: -97.0
+--------------------
+0 0 0 0 0 1 
+Trayectoria total en metros: 4280.0
+QoS total: -97.0
+--------------------
+0 0 0 1 0 0 
+Trayectoria total en metros: 4280.0
+QoS total: -97.0
+--------------------
+0 0 0 1 0 0 
+Trayectoria total en metros: 4280.0
+QoS total: -97.0
+--------------------
+0 0 0 1 0 0 
+Trayectoria total en metros: 4280.0
+QoS total: -97.0
+--------------------
+1 0 0 0 0 0 
+Trayectoria total en metros: 4280.0
+QoS total: -97.0
+--------------------
+0 0 0 1 0 0 
+Trayectoria total en metros: 4280.0
+QoS total: -97.0
+--------------------
+0 0 0 0 0 1 
+Trayectoria total en metros: 4280.0
+QoS total: -97.0
+--------------------
+0 0 0 1 0 0 
+Trayectoria total en metros: 4280.0
+QoS total: -97.0
+--------------------
+0 0 0 2 2 1 
+Trayectoria total en metros: 10218.0
+QoS total: -95.84999084472656
+--------------------
+0 0 0 2 2 1 
+Trayectoria total en metros: 10218.0
+QoS total: -95.84999084472656
+--------------------
+0 0 0 2 2 1 
+Trayectoria total en metros: 10218.0
+QoS total: -95.84999084472656
+--------------------
+0 0 0 2 2 1 
+Trayectoria total en metros: 10218.0
+QoS total: -95.84999084472656
+--------------------
+0 0 0 2 2 1 
+Trayectoria total en metros: 10218.0
+QoS total: -95.84999084472656
+--------------------
+0 0 0 2 2 1 
+Trayectoria total en metros: 10218.0
+QoS total: -95.84999084472656
+--------------------
+0 0 0 2 2 1 
+Trayectoria total en metros: 10218.0
+QoS total: -95.84999084472656
+--------------------
+0 0 0 2 2 1 
+Trayectoria total en metros: 10218.0
+QoS total: -95.84999084472656
+--------------------
+0 0 0 2 2 1 
+Trayectoria total en metros: 10218.0
+QoS total: -95.84999084472656
+--------------------
+0 0 0 2 2 1 
+Trayectoria total en metros: 10218.0
+QoS total: -95.84999084472656
+--------------------
+0 0 0 2 2 1 
+Trayectoria total en metros: 10218.0
+QoS total: -95.84999084472656
+--------------------
+0 0 0 2 2 1 
+Trayectoria total en metros: 10218.0
+QoS total: -95.84999084472656
+--------------------
+0 0 0 2 2 1 
+Trayectoria total en metros: 10218.0
+QoS total: -95.84999084472656
+--------------------
+0 0 0 2 2 1 
+Trayectoria total en metros: 10218.0
+QoS total: -95.84999084472656
+--------------------
+0 0 0 1 0 2 
+Trayectoria total en metros: 14401.0
+QoS total: 57.91777801513672
+--------------------
+0 0 0 1 0 2 
+Trayectoria total en metros: 14401.0
+QoS total: 57.91777801513672
+--------------------
+0 0 0 1 0 2 
+Trayectoria total en metros: 14401.0
+QoS total: 57.91777801513672
+--------------------
+0 0 0 1 0 2 
+Trayectoria total en metros: 14401.0
+QoS total: 57.91777801513672
+--------------------
+0 0 0 1 0 2 
+Trayectoria total en metros: 14401.0
+QoS total: 57.91777801513672
+--------------------
+0 0 0 1 0 2 
+Trayectoria total en metros: 14401.0
+QoS total: 57.91777801513672
+--------------------
+0 0 0 1 0 2 
+Trayectoria total en metros: 14401.0
+QoS total: 57.91777801513672
+--------------------
+0 0 0 1 0 2 
+Trayectoria total en metros: 14401.0
+QoS total: 57.91777801513672
+--------------------
+0 0 0 1 0 2 
+Trayectoria total en metros: 14401.0
+QoS total: 57.91777801513672
+--------------------
+0 0 0 1 0 2 
+Trayectoria total en metros: 14401.0
+QoS total: 57.91777801513672
+--------------------
+0 0 0 1 0 2 
+Trayectoria total en metros: 14401.0
+QoS total: 57.91777801513672
+--------------------
+0 0 0 1 0 2 
+Trayectoria total en metros: 14401.0
+QoS total: 57.91777801513672
+--------------------
+0 0 0 1 0 2 
+Trayectoria total en metros: 14401.0
+QoS total: 57.91777801513672
+--------------------
+0 0 0 1 0 2 
+Trayectoria total en metros: 14401.0
+QoS total: 57.91777801513672
+--------------------
+2 1 2 0 0 0 
+Trayectoria total en metros: 16245.0
+QoS total: 73.48111724853516
+--------------------
+2 1 2 0 0 0 
+Trayectoria total en metros: 16245.0
+QoS total: 73.48111724853516
+--------------------
+2 1 2 0 0 0 
+Trayectoria total en metros: 16245.0
+QoS total: 73.48111724853516
+--------------------
+2 1 2 0 0 0 
+Trayectoria total en metros: 16245.0
+QoS total: 73.48111724853516
+--------------------
+2 1 2 0 0 0 
+Trayectoria total en metros: 16245.0
+QoS total: 73.48111724853516
+--------------------
+2 1 2 0 0 0 
+Trayectoria total en metros: 16245.0
+QoS total: 73.48111724853516
+--------------------
+2 1 2 0 0 0 
+Trayectoria total en metros: 16245.0
+QoS total: 73.48111724853516
+--------------------
+2 1 2 0 0 0 
+Trayectoria total en metros: 16245.0
+QoS total: 73.48111724853516
+--------------------
+2 1 2 0 0 0 
+Trayectoria total en metros: 16245.0
+QoS total: 73.48111724853516
+--------------------
+2 1 2 0 0 0 
+Trayectoria total en metros: 16245.0
+QoS total: 73.48111724853516
+--------------------
+2 1 2 0 0 0 
+Trayectoria total en metros: 16245.0
+QoS total: 73.48111724853516
+--------------------
+2 1 2 0 0 0 
+Trayectoria total en metros: 16245.0
+QoS total: 73.48111724853516
+--------------------
+2 1 2 0 0 0 
+Trayectoria total en metros: 16245.0
+QoS total: 73.48111724853516
+--------------------
+2 1 2 0 0 0 
+Trayectoria total en metros: 16245.0
+QoS total: 73.48111724853516
+--------------------
+2 2 0 1 0 2 
+Trayectoria total en metros: 24522.0
+QoS total: 113.75666809082031
+--------------------
+2 2 0 1 0 2 
+Trayectoria total en metros: 24522.0
+QoS total: 113.75666809082031
+--------------------
+2 2 0 1 0 2 
+Trayectoria total en metros: 24522.0
+QoS total: 113.75666809082031
+--------------------
+2 2 0 1 0 2 
+Trayectoria total en metros: 24522.0
+QoS total: 113.75666809082031
+--------------------
+2 2 0 1 0 2 
+Trayectoria total en metros: 24522.0
+QoS total: 113.75666809082031
+--------------------
+2 2 0 1 0 2 
+Trayectoria total en metros: 24522.0
+QoS total: 113.75666809082031
+--------------------
+2 2 0 1 0 2 
+Trayectoria total en metros: 24522.0
+QoS total: 113.75666809082031
+--------------------
+2 2 0 1 0 2 
+Trayectoria total en metros: 24522.0
+QoS total: 113.75666809082031
+--------------------
+2 2 0 1 0 2 
+Trayectoria total en metros: 24522.0
+QoS total: 113.75666809082031
+--------------------
+2 2 0 1 0 2 
+Trayectoria total en metros: 24522.0
+QoS total: 113.75666809082031
+--------------------
+2 2 0 1 0 2 
+Trayectoria total en metros: 24522.0
+QoS total: 113.75666809082031
+--------------------
+2 2 0 1 0 2 
+Trayectoria total en metros: 24522.0
+QoS total: 113.75666809082031
+--------------------
+2 2 0 1 0 2 
+Trayectoria total en metros: 24522.0
+QoS total: 113.75666809082031
+--------------------
+2 2 0 1 0 2 
+Trayectoria total en metros: 24522.0
+QoS total: 113.75666809082031
+--------------------
+2 1 2 0 2 0 
+Trayectoria total en metros: 26366.0
+QoS total: 114.90667724609375
+--------------------
+2 1 2 0 0 2 
+Trayectoria total en metros: 26366.0
+QoS total: 114.90667724609375
+--------------------
+2 1 2 0 2 0 
+Trayectoria total en metros: 26366.0
+QoS total: 114.90667724609375
+--------------------
+2 1 2 0 0 2 
+Trayectoria total en metros: 26366.0
+QoS total: 114.90667724609375
+--------------------
+2 1 2 0 2 0 
+Trayectoria total en metros: 26366.0
+QoS total: 114.90667724609375
+--------------------
+2 1 2 0 2 0 
+Trayectoria total en metros: 26366.0
+QoS total: 114.90667724609375
+--------------------
+2 1 2 0 0 2 
+Trayectoria total en metros: 26366.0
+QoS total: 114.90667724609375
+--------------------
+2 1 2 0 2 0 
+Trayectoria total en metros: 26366.0
+QoS total: 114.90667724609375
+--------------------
+2 1 2 0 0 2 
+Trayectoria total en metros: 26366.0
+QoS total: 114.90667724609375
+--------------------
+2 1 2 0 0 2 
+Trayectoria total en metros: 26366.0
+QoS total: 114.90667724609375
+--------------------
+2 1 2 0 0 2 
+Trayectoria total en metros: 26366.0
+QoS total: 114.90667724609375
+--------------------
+2 1 2 0 0 2 
+Trayectoria total en metros: 26366.0
+QoS total: 114.90667724609375
+--------------------
+2 1 2 0 0 2 
+Trayectoria total en metros: 26366.0
+QoS total: 114.90667724609375
+--------------------
+2 1 2 0 0 2 
+Trayectoria total en metros: 26366.0
+QoS total: 114.90667724609375
+--------------------
+2 1 2 0 0 2 
+Trayectoria total en metros: 26366.0
+QoS total: 114.90667724609375
+--------------------

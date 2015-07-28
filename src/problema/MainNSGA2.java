@@ -14,6 +14,7 @@ import problema.datos.*;
 import test.*;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -21,78 +22,16 @@ import java.util.HashMap;
  */
 public class MainNSGA2 {
 
-    public static void main(String[] args) throws JMException, ClassNotFoundException, FileNotFoundException {
+    public static void main(String[] args) throws JMException, ClassNotFoundException, IOException {
 
-        if(args.length != 7){
-            System.out.println("Se necesitan 6 argumentos.");
-
-            System.out.println("Path datosBasicos.json");
-            System.out.println("Path puntos.json");
-            System.out.println("Path velocidades.json");
-            System.out.println("Path llenado_x.json, donde x se reemplazara por arg de instancias.");
-            System.out.println("Instancias (para x) separadas por coma: ej: 1,2,3,4,5");
-            System.out.println("Path distancias.json");
-            System.out.println("Path tiempos.json");
+        Datos datos;
+        try{
+            datos = Datos.cargarDatosDeArgs(args);
+        }
+        catch (Throwable t){
+            System.out.println(t.getMessage());
             return;
         }
-
-        System.out.println(args[0]);
-        System.out.println(args[1]);
-        System.out.println(args[2]);
-        System.out.println(args[3]);
-        System.out.print("Instancias: ");
-        String[] instanciasArg = args[4].split(",");
-        if(instanciasArg.length <= 0){
-            System.out.println("Argumento de instancias debe ser al menos 1");
-            return;
-        }
-        for(String s : instanciasArg){
-            System.out.print(s + " ");
-        }
-        System.out.println();
-        System.out.println(args[5]);
-        System.out.println(args[6]);
-
-        Datos datos = Datos.cargarDatos(args[0],args[1],args[2],args[5],args[6]);
-        //Para probar cargo solo el primer argumento
-        datos.cargarLlenados(args[3].replace("x",instanciasArg[0]));
-        System.out.println("Total puntos: " + datos.puntos.length);
-
-
-        //*************************
-        //PARA PROBAR-----------
-        //ROMPO LOS DATOS, REDUZCO LA CANTIDAD DE DATOS A ALGO CHICO
-        Datos datos2 = new Datos();
-        datos2.datosBasicos = new DatoBasico();
-        int puntosPrueba = 3;
-        datos2.datosBasicos.cantidadCamiones = 2;
-        datos2.datosBasicos.capacidadCamiones = 2;
-        datos2.datosBasicos.tiempoRecoleccionContenedor = datos.datosBasicos.tiempoRecoleccionContenedor;
-        datos2.datosBasicos.tiempoTrabajo = datos.datosBasicos.tiempoTrabajo;
-
-
-        datos2.puntos = new Punto[puntosPrueba];
-        datos2.velocidades = new Velocidad[puntosPrueba];
-        datos2.llenados = new LlenadoInicial[puntosPrueba];
-
-        datos2.distancias = new float[puntosPrueba][puntosPrueba];
-        datos2.tiempos = new float[puntosPrueba][puntosPrueba];
-        for(int i=0; i < puntosPrueba; i++){
-            datos2.puntos[i] = datos.puntos[i];
-            datos2.velocidades[i] = datos.velocidades[i];
-            datos2.llenados[i] = datos.llenados[i];
-
-            for(int j = 0; j < puntosPrueba; j++){
-                datos2.distancias[i][j] = datos.distancias[i][j];
-                datos2.tiempos[i][j] = datos.distancias[i][j];
-            }
-        }
-
-        datos = datos2;
-
-        System.out.println("Total puntos prueba: " + datos.puntos.length);
-
-        //*************************
 
 
         Problem problem   ; // The problem to solve
@@ -140,6 +79,7 @@ public class MainNSGA2 {
 
         population.printFeasibleVAR("VAR_NSGA2");
         population.printFeasibleFUN("FUN_NSGA2");
+        ((Problema)problem).imprimirSolucion("./SALIDA.txt", population);
 
 
     }

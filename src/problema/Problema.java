@@ -2,17 +2,21 @@ package problema;
 
 import jmetal.core.Problem;
 import jmetal.core.Solution;
+import jmetal.core.SolutionSet;
 import jmetal.core.Variable;
 import jmetal.encodings.solutionType.ArrayIntSolutionType;
 import jmetal.encodings.solutionType.IntSolutionType;
 import jmetal.encodings.variable.ArrayInt;
 import jmetal.encodings.variable.Int;
+import jmetal.util.Configuration;
 import jmetal.util.JMException;
 import jmetal.util.PseudoRandom;
+import jmetal.util.comparators.ObjectiveComparator;
 import problema.datos.Datos;
 import problema.datos.LlenadoInicial;
 import problema.datos.Velocidad;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -208,6 +212,36 @@ public class Problema extends Problem {
         solution.setObjective(1, -1*f2);
 
     } // evaluate
+
+
+
+    public void imprimirSolucion(String path, SolutionSet soluciones) throws IOException {
+
+        FileOutputStream fos   = new FileOutputStream(path)     ;
+        OutputStreamWriter osw = new OutputStreamWriter(fos)    ;
+        BufferedWriter bw      = new BufferedWriter(osw)        ;
+
+        //Tengo hardcodeado el acceso a la estructura ya que ya conozco la estructura de la solucion
+        //Pero idealmente deberia ser generico usando los datos como cantidad de objetivos, cantidad de variables etc..
+        soluciones.sort(new ObjectiveComparator(0));
+        for (int i = 0; i < soluciones.size(); i++){
+            Solution s = soluciones.get(i);
+
+            for (int j = 0; j < s.numberOfVariables(); j++) {
+                bw.write(s.getDecisionVariables()[j].toString() + " ");
+            }
+            bw.newLine();
+            bw.write("Trayectoria total en metros: " + String.valueOf(s.getObjective(0)));
+            bw.newLine();
+            bw.write("QoS total: "+ String.valueOf(-1*s.getObjective(1)));
+            bw.newLine();
+            bw.write("--------------------");
+            bw.newLine();
+        }
+
+        /* Close the file */
+        bw.close();
+    }
 
 }
 
