@@ -10,6 +10,7 @@ import jmetal.encodings.variable.ArrayInt;
 import jmetal.encodings.variable.Int;
 import jmetal.util.Configuration;
 import jmetal.util.JMException;
+import jmetal.util.NonDominatedSolutionList;
 import jmetal.util.PseudoRandom;
 import jmetal.util.comparators.ObjectiveComparator;
 import problema.datos.Datos;
@@ -215,26 +216,63 @@ public class Problema extends Problem {
 
 
 
-    public void imprimirSolucion(String path, SolutionSet soluciones) throws IOException {
+    public void imprimirSolucion(String path, SolutionSet soluciones) throws IOException, JMException {
+
+
 
         FileOutputStream fos   = new FileOutputStream(path)     ;
         OutputStreamWriter osw = new OutputStreamWriter(fos)    ;
         BufferedWriter bw      = new BufferedWriter(osw)        ;
 
+        //Elimino duplicados...
+        SolutionSet hof = new NonDominatedSolutionList();
+        for(int i = 0; i < soluciones.size();i++) {
+            hof.add(soluciones.get(i));
+        }
+
+
         //Tengo hardcodeado el acceso a la estructura ya que ya conozco la estructura de la solucion
         //Pero idealmente deberia ser generico usando los datos como cantidad de objetivos, cantidad de variables etc..
-        soluciones.sort(new ObjectiveComparator(0));
-        for (int i = 0; i < soluciones.size(); i++){
-            Solution s = soluciones.get(i);
+        hof.sort(new ObjectiveComparator(0));
+        for (int i = 0; i < hof.size(); i++){
+            Solution s = hof.get(i);
 
             for (int j = 0; j < s.numberOfVariables(); j++) {
-                bw.write(s.getDecisionVariables()[j].toString() + " ");
+                if(j % this.capCamionesAprox == 0 && j != 0){
+                    bw.write("  |  ");
+                }
+                else if(j != 0) {
+                    bw.write(" ");
+                }
+                bw.write(s.getDecisionVariables()[j].toString());
+
             }
             bw.newLine();
             bw.write("Trayectoria total en metros: " + String.valueOf(s.getObjective(0)));
             bw.newLine();
             bw.write("QoS total: "+ String.valueOf(-1*s.getObjective(1)));
             bw.newLine();
+
+            //Imprimo cuan lleno termina el contenedor
+            ArrayList<ArrayList<int[]>> tc = construirListaTiempos(s);
+            ArrayList<int[]> contenedor_j;
+            int largoContenedor_j;
+            for(int j = 1; j < this.cantContenedores; j++) {
+                contenedor_j = tc.get(j);
+                largoContenedor_j = contenedor_j.size();
+
+                //Si se recogio al menos una vez, calculo desde la ultima vez recogida
+                if (largoContenedor_j != 1) {
+                    bw.write(String.format("Llenado al terminar (recogido) contenedor %s: %s %%",j,this.datos.velocidades[j].v * (contenedor_j.get(largoContenedor_j - 1)[0] - contenedor_j.get(largoContenedor_j - 2)[0])));
+                    bw.newLine();
+                }
+                //Caso contrario, usa llenado inicial
+                else {
+                    bw.write(String.format("Llenado al terminar (no recogido) contenedor %s: %s %%",j,this.datos.llenados[j].v + this.datos.velocidades[j].v * contenedor_j.get(0)[0]));
+                    bw.newLine();
+                }
+            }
+
             bw.write("--------------------");
             bw.newLine();
         }
