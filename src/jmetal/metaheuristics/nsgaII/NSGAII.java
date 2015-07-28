@@ -90,7 +90,7 @@ public class NSGAII extends Algorithm {
     selectionOperator = operators_.get("selection");
     
     //Crear hall of fame, para almacenar las mejores soluciones que vivieron. Mejora resultados.
-    SolutionSet hof = new NonDominatedSolutionList();
+    //SolutionSet hof = new NonDominatedSolutionList();
 
     // Create the initial solutionSet
     Solution newSolution;
@@ -100,7 +100,7 @@ public class NSGAII extends Algorithm {
       problem_.evaluateConstraints(newSolution);
       evaluations++;
       population.add(newSolution);
-      hof.add(newSolution);
+      //hof.add(newSolution);
     } //for       
 
     // Generations 
@@ -127,8 +127,8 @@ public class NSGAII extends Algorithm {
           offspringPopulation.add(offSpring[1]);
           evaluations += 2;
           
-          hof.add(offSpring[0]);
-          hof.add(offSpring[1]);
+          //hof.add(offSpring[0]);
+          //hof.add(offSpring[1]);
         } // if                            
       } // for
 
@@ -192,10 +192,10 @@ public class NSGAII extends Algorithm {
     setOutputParameter("evaluations", requiredEvaluations);
 
     // Return the first non-dominated front
-    //Ranking ranking = new Ranking(population);
+    Ranking ranking = new Ranking(population);
     //ranking.getSubfront(0).printFeasibleFUN("FUN_NSGAII") ;
-    //return ranking.getSubfront(0);
+    return ranking.getSubfront(0);
     
-    return hof;
+    //return hof;
   } // execute
 } // NSGA-II

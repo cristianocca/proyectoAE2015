@@ -12,7 +12,7 @@ import java.io.FileReader;
 public class Velocidad {
 
     public String id;
-    public int v;
+    public float v;
 
     /**
      * Carga y devuelve una lista de velocidades.
@@ -24,6 +24,12 @@ public class Velocidad {
 
         BufferedReader br = new BufferedReader(new FileReader(path));
 
-        return gson.fromJson(br, Velocidad[].class);
+        Velocidad[] res = gson.fromJson(br, Velocidad[].class);
+        //convierto todas las velocidades a segundos. Ya que viene en % / hora
+        for(Velocidad vel : res){
+            vel.v = (vel.v / 60 ) / 60;
+        }
+
+        return res;
     }
 }
