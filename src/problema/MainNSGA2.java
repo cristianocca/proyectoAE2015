@@ -79,7 +79,7 @@ public class MainNSGA2 {
 
         population.printFeasibleVAR("VAR_NSGA2");
         population.printFeasibleFUN("FUN_NSGA2");
-        ((Problema)problem).imprimirSolucion("./SALIDA.txt", population);
+        ((Problema)problem).imprimirSolucion("./SALIDA_NSGA2.txt", population);
 
 
     }

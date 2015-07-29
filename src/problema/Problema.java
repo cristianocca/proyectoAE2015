@@ -148,12 +148,13 @@ public class Problema extends Problem {
     @Override
     public void evaluate(Solution solution) {
         Variable[] variables = solution.getDecisionVariables();
-
+        int tiempoRecol = this.datos.datosBasicos.tiempoRecoleccionContenedor;
 
         // --- Calculo de primer funcion objetivo ----
 
         float[][] distancias = this.datos.distancias;
-        float f1 = 0;
+        float[][] tiempos = this.datos.tiempos;
+        double f1 = 0;
         int indice = 0;
 
         for(int i = 0; i < this.cantCamiones; i++){
@@ -180,7 +181,7 @@ public class Problema extends Problem {
         ArrayList<ArrayList<int[]>> tc = construirListaTiempos(solution);
 
 
-        float f2 = 0;
+        double f2 = 0;
         ArrayList<int[]> contenedor_i;
         int largoContenedor_i;
 
@@ -202,15 +203,76 @@ public class Problema extends Problem {
             }
 
             for (int j = 2; j < largoContenedor_i - 1; j++){
-                f2+=getPuntajeRecogido(velocidades[i].v * (contenedor_i.get(j)[0] - contenedor_i.get(j-1)[0]));
+                f2+=getPuntajeRecogido(velocidades[i].v * (contenedor_i.get(j)[0] - (contenedor_i.get(j-1)[0] + tiempoRecol)));
             }
 
             //El ultimo siempre va a ser el tiempo de fin, en que no fue recogido.
             f2+=getPuntajeRecogido(velocidades[i].v * (contenedor_i.get(largoContenedor_i-1)[0] - contenedor_i.get(largoContenedor_i-2)[0]));
         }
 
+
+
+
+        //******************************************************************************************************************
+
+
+        int violaciones = 0;
+        double overall = 0;
+
+
+        //Un contenedor no puede ser recogido al mismo tiempo por mas de un camión, ni en el intervalo en que está siendo recogido (tiempoRecoleccionContenedor)
+        //Ignora el ultimo tiempo
+
+        boolean violoCond = false;
+        for(int i = 1; i < this.cantContenedores; i++) {
+            contenedor_i = tc.get(i);
+            largoContenedor_i = contenedor_i.size();
+            violoCond=false;
+            for (int j = 1; j < largoContenedor_i - 1; j++) {
+                if(contenedor_i.get(j)[0] - contenedor_i.get(j-1)[0] <= tiempoRecol){
+                    overall++;
+                    violoCond=true;
+                }
+
+            }
+            if(violoCond) {
+                violaciones++;
+            }
+
+            //El tiempo total de cada camión no puede exceder T_FIN.
+            //O lo que es lo mismo, el ultimo tiempo de recoleccion de cada contenedor + tiempo de recoleccion + tiempo en volver debe ser menor a T_FIN
+            if(largoContenedor_i > 1){
+                if(contenedor_i.get(largoContenedor_i-2)[0] + tiempoRecol + tiempos[i][0] > tiempoFin){
+                    overall++;
+                    violaciones++;
+                }
+            }
+
+        }
+
+
+
+        //La cantidad de basura recogida por cada camión no puede exceder su capacidad real, para esto se utiliza el % de basura recogido de cada contenedor y se valida que el total no supere su capacidad.
+
+        //Para cada camión, luego que se tiene un 0 en su solución, todos los restantes valores a la derecha también deberán ser 0, para hacer cumplir la restricción
+
+
+
+
+
+
+        if(violaciones > 0){
+            f1=Double.MAX_VALUE;
+            f2=Double.MIN_VALUE;
+        }
+
+
+
         solution.setObjective(0, f1);
         solution.setObjective(1, -1*f2);
+
+        solution.setOverallConstraintViolation(overall);
+        solution.setNumberOfViolatedConstraint(violaciones);
 
     } // evaluate
 
@@ -219,6 +281,12 @@ public class Problema extends Problem {
     public void imprimirSolucion(String path, SolutionSet soluciones) throws IOException, JMException {
 
 
+        int tiempoRecol = this.datos.datosBasicos.tiempoRecoleccionContenedor;
+
+        // --- Calculo de primer funcion objetivo ----
+
+        float[][] distancias = this.datos.distancias;
+        float[][] tiempos = this.datos.tiempos;
 
         FileOutputStream fos   = new FileOutputStream(path)     ;
         OutputStreamWriter osw = new OutputStreamWriter(fos)    ;
@@ -237,44 +305,64 @@ public class Problema extends Problem {
         for (int i = 0; i < hof.size(); i++){
             Solution s = hof.get(i);
 
-            for (int j = 0; j < s.numberOfVariables(); j++) {
-                if(j % this.capCamionesAprox == 0 && j != 0){
-                    bw.write("  |  ");
+            //if (s.getOverallConstraintViolation() == 0.0) {
+            if (true) {
+                for (int j = 0; j < s.numberOfVariables(); j++) {
+                    if (j % this.capCamionesAprox == 0 && j != 0) {
+                        bw.write("  |  ");
+                    } else if (j != 0) {
+                        bw.write(" ");
+                    }
+                    bw.write(s.getDecisionVariables()[j].toString());
+
                 }
-                else if(j != 0) {
-                    bw.write(" ");
+                bw.newLine();
+                bw.write("Trayectoria total en metros: " + String.valueOf(s.getObjective(0)));
+                bw.newLine();
+                bw.write("QoS total: " + String.valueOf(-1 * s.getObjective(1)));
+                bw.newLine();
+
+                //Imprimo cuan lleno termina el contenedor
+                ArrayList<ArrayList<int[]>> tc = construirListaTiempos(s);
+                ArrayList<int[]> contenedor_j;
+                int largoContenedor_j;
+                float maxTiempo = 0;
+                ArrayList<int[]> ultimoContenedor = null;
+                int ultimoContenedorIndex = -1;
+                for (int j = 1; j < this.cantContenedores; j++) {
+                    contenedor_j = tc.get(j);
+                    largoContenedor_j = contenedor_j.size();
+
+                    //Si se recogio al menos una vez, calculo desde la ultima vez recogida
+                    if (largoContenedor_j != 1) {
+                        bw.write(String.format("Llenado al terminar (recogido) contenedor %s: %s %%", j, this.datos.velocidades[j].v * (contenedor_j.get(largoContenedor_j - 1)[0] - contenedor_j.get(largoContenedor_j - 2)[0])));
+                        bw.newLine();
+
+                        if(contenedor_j.get(largoContenedor_j - 2)[0] > maxTiempo){
+                            maxTiempo = contenedor_j.get(largoContenedor_j - 2)[0];
+                            ultimoContenedor = contenedor_j;
+                            ultimoContenedorIndex=j;
+                        }
+
+                    }
+                    //Caso contrario, usa llenado inicial
+                    else {
+                        bw.write(String.format("Llenado al terminar (no recogido) contenedor %s: %s %%", j, this.datos.llenados[j].v + this.datos.velocidades[j].v * contenedor_j.get(0)[0]));
+                        bw.newLine();
+                    }
                 }
-                bw.write(s.getDecisionVariables()[j].toString());
+                bw.write("Tiempo en que es recolectado ultimo contenedor en h: " + String.valueOf(maxTiempo/60/60));
 
-            }
-            bw.newLine();
-            bw.write("Trayectoria total en metros: " + String.valueOf(s.getObjective(0)));
-            bw.newLine();
-            bw.write("QoS total: "+ String.valueOf(-1*s.getObjective(1)));
-            bw.newLine();
-
-            //Imprimo cuan lleno termina el contenedor
-            ArrayList<ArrayList<int[]>> tc = construirListaTiempos(s);
-            ArrayList<int[]> contenedor_j;
-            int largoContenedor_j;
-            for(int j = 1; j < this.cantContenedores; j++) {
-                contenedor_j = tc.get(j);
-                largoContenedor_j = contenedor_j.size();
-
-                //Si se recogio al menos una vez, calculo desde la ultima vez recogida
-                if (largoContenedor_j != 1) {
-                    bw.write(String.format("Llenado al terminar (recogido) contenedor %s: %s %%",j,this.datos.velocidades[j].v * (contenedor_j.get(largoContenedor_j - 1)[0] - contenedor_j.get(largoContenedor_j - 2)[0])));
+                if(ultimoContenedor != null) {
                     bw.newLine();
-                }
-                //Caso contrario, usa llenado inicial
-                else {
-                    bw.write(String.format("Llenado al terminar (no recogido) contenedor %s: %s %%",j,this.datos.llenados[j].v + this.datos.velocidades[j].v * contenedor_j.get(0)[0]));
+                    bw.write("Tiempo en que retorna el ultimo camion en h: " + String.valueOf((ultimoContenedor.get(ultimoContenedor.size() - 2)[0] + tiempoRecol + tiempos[ultimoContenedorIndex][0]) / 60 / 60));
                     bw.newLine();
+                    bw.write("Tiempo de fin maximo en h: " + tiempoFin/60/60);
                 }
+                bw.newLine();
+                bw.write("--------------------");
+                bw.newLine();
             }
-
-            bw.write("--------------------");
-            bw.newLine();
         }
 
         /* Close the file */

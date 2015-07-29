@@ -123,9 +123,9 @@ public class Datos {
         //ROMPO LOS DATOS, REDUZCO LA CANTIDAD DE DATOS A ALGO CHICO
         Datos datos2 = new Datos();
         datos2.datosBasicos = new DatoBasico();
-        int puntosPrueba =10;
-        datos2.datosBasicos.cantidadCamiones = 4;
-        datos2.datosBasicos.capacidadCamiones = 2;
+        int puntosPrueba =20;
+        datos2.datosBasicos.cantidadCamiones = 10;
+        datos2.datosBasicos.capacidadCamiones = 4;
         datos2.datosBasicos.tiempoRecoleccionContenedor = datos.datosBasicos.tiempoRecoleccionContenedor;
         datos2.datosBasicos.tiempoTrabajo = datos.datosBasicos.tiempoTrabajo;
 
@@ -143,7 +143,7 @@ public class Datos {
 
             for(int j = 0; j < puntosPrueba; j++){
                 datos2.distancias[i][j] = datos.distancias[i][j];
-                datos2.tiempos[i][j] = datos.distancias[i][j];
+                datos2.tiempos[i][j] = datos.tiempos[i][j];
             }
         }
 
