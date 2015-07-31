@@ -124,8 +124,8 @@ public class Datos {
         Datos datos2 = new Datos();
         datos2.datosBasicos = new DatoBasico();
         int puntosPrueba =10;
-        datos2.datosBasicos.cantidadCamiones = 3;
-        datos2.datosBasicos.capacidadCamiones = 4;
+        datos2.datosBasicos.cantidadCamiones = 2;
+        datos2.datosBasicos.capacidadCamiones = 2;
         datos2.datosBasicos.tiempoRecoleccionContenedor = datos.datosBasicos.tiempoRecoleccionContenedor;
 
 

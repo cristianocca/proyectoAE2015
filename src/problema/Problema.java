@@ -239,8 +239,6 @@ public class Problema extends Problem {
         //******************************************************************************************************************
 
         //Un contenedor no puede ser recogido al mismo tiempo por mas de un camión, ni en el intervalo en que está siendo recogido (tiempoRecoleccionContenedor)
-        //Ignora el ultimo tiempo
-
         boolean violoCond = false;
         int camionViolador;
         try {
@@ -252,9 +250,13 @@ public class Problema extends Problem {
                     if (contenedor_i.get(j)[0] - contenedor_i.get(j - 1)[0] <= tiempoRecol) {
                         violoCond = true;
 
-                        //saco del camion la recoleccion de ese contenedor
+
                         camionViolador = contenedor_i.get(j)[1];
-                        for (int k = camionViolador * this.capCamionesAprox; k < this.capCamionesAprox * camionViolador+this.capCamionesAprox; k++) {
+                        indice = camionViolador * this.capCamionesAprox;
+                        indiceFinal = indice + this.capCamionesAprox;
+
+                        //saco del camion la recoleccion de ese contenedor
+                        for (int k = camionViolador * this.capCamionesAprox; k < indiceFinal; k++) {
                             if(variables[k].getValue() == i) {
                                 variables[k].setValue(0);
                             }
