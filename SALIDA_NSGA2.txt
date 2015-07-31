@@ -1,26 +1,825 @@
-11 12 16 17 1 19  |  0 18 0 4 19 11  |  2 4 4 6 11 3  |  12 17 2 19 1 2  |  9 15 18 18 14 2  |  10 10 12 19 6 2  |  0 3 9 2 19 6  |  14 16 16 9 2 0  |  10 4 14 4 17 1  |  1 19 16 11 18 18
-Trayectoria total en metros: 1.7976931348623157E308
-QoS total: 4.9E-324
-Llenado al terminar (recogido) contenedor 1: 3.8266668 %
-Llenado al terminar (recogido) contenedor 2: 7.181111 %
-Llenado al terminar (recogido) contenedor 3: 5.1516666 %
-Llenado al terminar (recogido) contenedor 4: 6.7925 %
-Llenado al terminar (no recogido) contenedor 5: 31.000002 %
-Llenado al terminar (recogido) contenedor 6: 11.910001 %
-Llenado al terminar (no recogido) contenedor 7: 69.0 %
-Llenado al terminar (no recogido) contenedor 8: 82.0 %
-Llenado al terminar (recogido) contenedor 9: 5.6755557 %
-Llenado al terminar (recogido) contenedor 10: 17.245556 %
-Llenado al terminar (recogido) contenedor 11: 4.6994443 %
-Llenado al terminar (recogido) contenedor 12: 16.694166 %
-Llenado al terminar (no recogido) contenedor 13: 51.0 %
-Llenado al terminar (recogido) contenedor 14: 8.298333 %
-Llenado al terminar (recogido) contenedor 15: 23.172222 %
-Llenado al terminar (recogido) contenedor 16: 11.919722 %
-Llenado al terminar (recogido) contenedor 17: 2.1458333 %
-Llenado al terminar (recogido) contenedor 18: 18.608334 %
-Llenado al terminar (recogido) contenedor 19: 8.7975 %
-Tiempo en que es recolectado ultimo contenedor en h: 2.0
-Tiempo en que retorna el ultimo camion en h: 2.1211112
-Tiempo de fin maximo en h: 2
+0 0 0 0 0 0  |  0 0 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 0.0
+QoS total: -342.0
+Llenado al terminar (no recogido) contenedor 1: 16.0 %
+Llenado al terminar (no recogido) contenedor 2: 71.0 %
+Llenado al terminar (no recogido) contenedor 3: 35.0 %
+Llenado al terminar (no recogido) contenedor 4: 84.0 %
+Llenado al terminar (no recogido) contenedor 5: 1.0 %
+Llenado al terminar (no recogido) contenedor 6: 1.0 %
+Llenado al terminar (no recogido) contenedor 7: 39.0 %
+Llenado al terminar (no recogido) contenedor 8: 34.0 %
+Llenado al terminar (no recogido) contenedor 9: 79.0 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.0
+Tiempo en que retorna el ultimo camion en h: 0.0
+--------------------
+0 0 0 0 0 0  |  7 0 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 7452.0
+QoS total: -276.37889099121094
+Llenado al terminar (no recogido) contenedor 1: 16.503334 %
+Llenado al terminar (no recogido) contenedor 2: 74.27167 %
+Llenado al terminar (no recogido) contenedor 3: 36.761665 %
+Llenado al terminar (no recogido) contenedor 4: 85.761665 %
+Llenado al terminar (no recogido) contenedor 5: 2.7616668 %
+Llenado al terminar (no recogido) contenedor 6: 1.2516667 %
+Llenado al terminar (recogido) contenedor 7: 0.1988889 %
+Llenado al terminar (no recogido) contenedor 8: 37.775 %
+Llenado al terminar (no recogido) contenedor 9: 81.013336 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.10222222
+Tiempo en que retorna el ultimo camion en h: 0.25166667
+--------------------
+2 0 0 0 0 0  |  0 0 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 10121.0
+QoS total: -213.14443969726562
+Llenado al terminar (no recogido) contenedor 1: 16.788889 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (no recogido) contenedor 3: 37.761112 %
+Llenado al terminar (no recogido) contenedor 4: 86.76111 %
+Llenado al terminar (no recogido) contenedor 5: 3.7611113 %
+Llenado al terminar (no recogido) contenedor 6: 1.3944445 %
+Llenado al terminar (no recogido) contenedor 7: 39.788887 %
+Llenado al terminar (no recogido) contenedor 8: 39.916668 %
+Llenado al terminar (no recogido) contenedor 9: 82.155556 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.17222221
+Tiempo en que retorna el ultimo camion en h: 0.39444444
+--------------------
+2 3 0 0 0 0  |  0 0 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 13033.0
+QoS total: -141.54332733154297
+Llenado al terminar (no recogido) contenedor 1: 17.01111 %
+Llenado al terminar (recogido) contenedor 2: 3.6833334 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (no recogido) contenedor 4: 87.53889 %
+Llenado al terminar (no recogido) contenedor 5: 4.538889 %
+Llenado al terminar (no recogido) contenedor 6: 1.5055556 %
+Llenado al terminar (no recogido) contenedor 7: 40.011112 %
+Llenado al terminar (no recogido) contenedor 8: 41.583332 %
+Llenado al terminar (no recogido) contenedor 9: 83.04444 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.3422222
+Tiempo en que retorna el ultimo camion en h: 0.50555557
+--------------------
+7 2 0 0 0 0  |  0 0 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 14274.0
+QoS total: -138.78444290161133
+Llenado al terminar (no recogido) contenedor 1: 17.175 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (no recogido) contenedor 3: 39.1125 %
+Llenado al terminar (no recogido) contenedor 4: 88.1125 %
+Llenado al terminar (no recogido) contenedor 5: 5.1125 %
+Llenado al terminar (no recogido) contenedor 6: 1.5875001 %
+Llenado al terminar (recogido) contenedor 7: 0.8705556 %
+Llenado al terminar (no recogido) contenedor 8: 42.8125 %
+Llenado al terminar (no recogido) contenedor 9: 83.7 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.36527777
+Tiempo en que retorna el ultimo camion en h: 0.5875
+--------------------
+0 0 0 0 0 0  |  9 7 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 14894.0
+QoS total: -126.14778137207031
+Llenado al terminar (no recogido) contenedor 1: 17.075 %
+Llenado al terminar (no recogido) contenedor 2: 77.9875 %
+Llenado al terminar (no recogido) contenedor 3: 38.7625 %
+Llenado al terminar (no recogido) contenedor 4: 87.7625 %
+Llenado al terminar (no recogido) contenedor 5: 4.7625 %
+Llenado al terminar (no recogido) contenedor 6: 1.5375 %
+Llenado al terminar (recogido) contenedor 7: 0.1988889 %
+Llenado al terminar (no recogido) contenedor 8: 42.0625 %
+Llenado al terminar (recogido) contenedor 9: 2.248889 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.38805553
+Tiempo en que retorna el ultimo camion en h: 0.5375
+--------------------
+0 0 0 0 0 0  |  9 8 7 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 17390.0
+QoS total: -48.67694091796875
+Llenado al terminar (no recogido) contenedor 1: 17.336666 %
+Llenado al terminar (no recogido) contenedor 2: 79.68833 %
+Llenado al terminar (no recogido) contenedor 3: 39.678333 %
+Llenado al terminar (no recogido) contenedor 4: 88.67833 %
+Llenado al terminar (no recogido) contenedor 5: 5.6783333 %
+Llenado al terminar (no recogido) contenedor 6: 1.6683333 %
+Llenado al terminar (recogido) contenedor 7: 0.1988889 %
+Llenado al terminar (recogido) contenedor 8: 4.595834 %
+Llenado al terminar (recogido) contenedor 9: 3.2955556 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.5188889
+Tiempo en que retorna el ultimo camion en h: 0.6683333
+--------------------
+0 0 0 0 0 0  |  7 9 8 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 18004.0
+QoS total: -47.605831146240234
+Llenado al terminar (no recogido) contenedor 1: 17.317223 %
+Llenado al terminar (no recogido) contenedor 2: 79.56194 %
+Llenado al terminar (no recogido) contenedor 3: 39.61028 %
+Llenado al terminar (no recogido) contenedor 4: 88.610275 %
+Llenado al terminar (no recogido) contenedor 5: 5.6102777 %
+Llenado al terminar (no recogido) contenedor 6: 1.658611 %
+Llenado al terminar (recogido) contenedor 7: 1.0127778 %
+Llenado al terminar (recogido) contenedor 8: 3.3791668 %
+Llenado al terminar (recogido) contenedor 9: 2.6466668 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.38333333
+Tiempo en que retorna el ultimo camion en h: 0.6586111
+--------------------
+9 7 2 0 0 0  |  0 0 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 21716.0
+QoS total: 21.564998626708984
+Llenado al terminar (no recogido) contenedor 1: 17.746666 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (no recogido) contenedor 3: 41.113335 %
+Llenado al terminar (no recogido) contenedor 4: 90.113335 %
+Llenado al terminar (no recogido) contenedor 5: 7.1133337 %
+Llenado al terminar (no recogido) contenedor 6: 1.8733333 %
+Llenado al terminar (recogido) contenedor 7: 0.8705556 %
+Llenado al terminar (no recogido) contenedor 8: 47.1 %
+Llenado al terminar (recogido) contenedor 9: 4.9355555 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.65111107
+Tiempo en que retorna el ultimo camion en h: 0.87333333
+--------------------
+9 8 2 0 0 0  |  0 0 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 23700.0
+QoS total: 26.672222137451172
+Llenado al terminar (no recogido) contenedor 1: 17.846111 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (no recogido) contenedor 3: 41.461388 %
+Llenado al terminar (no recogido) contenedor 4: 90.46139 %
+Llenado al terminar (no recogido) contenedor 5: 7.461389 %
+Llenado al terminar (no recogido) contenedor 6: 1.9230556 %
+Llenado al terminar (no recogido) contenedor 7: 40.84611 %
+Llenado al terminar (recogido) contenedor 8: 8.416667 %
+Llenado al terminar (recogido) contenedor 9: 5.3333335 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.7008333
+Tiempo en que retorna el ultimo camion en h: 0.9230556
+--------------------
+0 0 0 0 0 0  |  9 8 7 2 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 24212.0
+QoS total: 107.47499465942383
+Llenado al terminar (no recogido) contenedor 1: 18.008333 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (no recogido) contenedor 3: 42.029167 %
+Llenado al terminar (no recogido) contenedor 4: 91.02917 %
+Llenado al terminar (no recogido) contenedor 5: 8.029167 %
+Llenado al terminar (no recogido) contenedor 6: 2.0041666 %
+Llenado al terminar (recogido) contenedor 7: 0.8705556 %
+Llenado al terminar (recogido) contenedor 8: 9.633334 %
+Llenado al terminar (recogido) contenedor 9: 5.9822226 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.78194445
+Tiempo en que retorna el ultimo camion en h: 1.0041667
+--------------------
+0 0 0 0 0 0  |  7 9 8 2 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 24826.0
+QoS total: 108.29332733154297
+Llenado al terminar (no recogido) contenedor 1: 17.98889 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (no recogido) contenedor 3: 41.961113 %
+Llenado al terminar (no recogido) contenedor 4: 90.96111 %
+Llenado al terminar (no recogido) contenedor 5: 7.961111 %
+Llenado al terminar (no recogido) contenedor 6: 1.9944445 %
+Llenado al terminar (recogido) contenedor 7: 1.6844444 %
+Llenado al terminar (recogido) contenedor 8: 8.416667 %
+Llenado al terminar (recogido) contenedor 9: 5.3333335 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.7722222
+Tiempo en que retorna el ultimo camion en h: 0.9944445
+--------------------
+0 0 0 0 0 0  |  7 9 8 2 3 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 27738.0
+QoS total: 191.07221603393555
+Llenado al terminar (no recogido) contenedor 1: 18.211111 %
+Llenado al terminar (recogido) contenedor 2: 3.6833334 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (no recogido) contenedor 4: 91.73889 %
+Llenado al terminar (no recogido) contenedor 5: 8.73889 %
+Llenado al terminar (no recogido) contenedor 6: 2.1055555 %
+Llenado al terminar (recogido) contenedor 7: 1.9066668 %
+Llenado al terminar (recogido) contenedor 8: 10.083334 %
+Llenado al terminar (recogido) contenedor 9: 6.2222223 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.94222224
+Tiempo en que retorna el ultimo camion en h: 1.1055557
+--------------------
+7 2 9 8 3 0  |  0 0 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 37298.0
+QoS total: 196.35556030273438
+Llenado al terminar (no recogido) contenedor 1: 18.759445 %
+Llenado al terminar (recogido) contenedor 2: 12.537778 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (no recogido) contenedor 4: 93.65806 %
+Llenado al terminar (no recogido) contenedor 5: 10.658056 %
+Llenado al terminar (no recogido) contenedor 6: 2.379722 %
+Llenado al terminar (recogido) contenedor 7: 2.4550002 %
+Llenado al terminar (recogido) contenedor 8: 7.3 %
+Llenado al terminar (recogido) contenedor 9: 4.7377777 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.2163888
+Tiempo en que retorna el ultimo camion en h: 1.3797222
+--------------------
+0 0 0 0 0 0  |  7 9 8 4 3 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 43342.0
+QoS total: 204.82861328125
+Llenado al terminar (no recogido) contenedor 1: 18.532223 %
+Llenado al terminar (no recogido) contenedor 2: 87.45944 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (no recogido) contenedor 5: 9.862778 %
+Llenado al terminar (no recogido) contenedor 6: 2.2661111 %
+Llenado al terminar (recogido) contenedor 7: 2.2277777 %
+Llenado al terminar (recogido) contenedor 8: 12.491668 %
+Llenado al terminar (recogido) contenedor 9: 7.5066667 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.1027777
+Tiempo en que retorna el ultimo camion en h: 1.2661111
+--------------------
+9 7 2 4 3 0  |  0 0 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 44720.0
+QoS total: 278.76889419555664
+Llenado al terminar (no recogido) contenedor 1: 19.017223 %
+Llenado al terminar (recogido) contenedor 2: 10.497499 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (no recogido) contenedor 5: 11.560278 %
+Llenado al terminar (no recogido) contenedor 6: 2.5086112 %
+Llenado al terminar (recogido) contenedor 7: 2.1411111 %
+Llenado al terminar (no recogido) contenedor 8: 56.629166 %
+Llenado al terminar (recogido) contenedor 9: 10.017778 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.3452778
+Tiempo en que retorna el ultimo camion en h: 1.5086112
+--------------------
+0 0 0 0 0 0  |  9 8 7 2 4 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 46429.0
+QoS total: 286.63416290283203
+Llenado al terminar (no recogido) contenedor 1: 19.115555 %
+Llenado al terminar (recogido) contenedor 2: 9.435833 %
+Llenado al terminar (no recogido) contenedor 3: 45.904446 %
+Llenado al terminar (recogido) contenedor 4: 2.5491667 %
+Llenado al terminar (no recogido) contenedor 5: 11.904445 %
+Llenado al terminar (no recogido) contenedor 6: 2.557778 %
+Llenado al terminar (recogido) contenedor 7: 1.9777778 %
+Llenado al terminar (recogido) contenedor 8: 17.9375 %
+Llenado al terminar (recogido) contenedor 9: 10.411112 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.1436112
+Tiempo en que retorna el ultimo camion en h: 1.5577778
+--------------------
+9 8 2 4 3 0  |  0 0 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 46704.0
+QoS total: 293.52693939208984
+Llenado al terminar (no recogido) contenedor 1: 19.116667 %
+Llenado al terminar (recogido) contenedor 2: 10.497499 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (no recogido) contenedor 5: 11.908334 %
+Llenado al terminar (no recogido) contenedor 6: 2.5583334 %
+Llenado al terminar (no recogido) contenedor 7: 42.11667 %
+Llenado al terminar (recogido) contenedor 8: 17.945835 %
+Llenado al terminar (recogido) contenedor 9: 10.415556 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.395
+Tiempo en que retorna el ultimo camion en h: 1.5583333
+--------------------
+9 8 2 1 4 3  |  0 0 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 49086.0
+QoS total: 295.366943359375
+Llenado al terminar (recogido) contenedor 1: 1.5788889 %
+Llenado al terminar (recogido) contenedor 2: 12.490833 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (no recogido) contenedor 5: 12.981667 %
+Llenado al terminar (no recogido) contenedor 6: 2.7116666 %
+Llenado al terminar (no recogido) contenedor 7: 42.423332 %
+Llenado al terminar (recogido) contenedor 8: 20.245834 %
+Llenado al terminar (recogido) contenedor 9: 11.642222 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.5483334
+Tiempo en que retorna el ultimo camion en h: 1.7116666
+--------------------
+0 0 0 0 0 0  |  9 8 7 0 0 0  |  4 2 3 0 0 0
+Trayectoria total en metros: 52551.0
+QoS total: 367.2488899230957
+Llenado al terminar (no recogido) contenedor 1: 18.125555 %
+Llenado al terminar (recogido) contenedor 2: 3.6833334 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 4.9875 %
+Llenado al terminar (no recogido) contenedor 5: 8.439445 %
+Llenado al terminar (no recogido) contenedor 6: 2.0627778 %
+Llenado al terminar (recogido) contenedor 7: 0.9877778 %
+Llenado al terminar (recogido) contenedor 8: 10.512501 %
+Llenado al terminar (recogido) contenedor 9: 6.4511113 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.89944446
+Tiempo en que retorna el ultimo camion en h: 1.0627778
+--------------------
+0 0 0 0 0 0  |  7 9 8 0 0 0  |  4 2 3 0 0 0
+Trayectoria total en metros: 53165.0
+QoS total: 368.05750274658203
+Llenado al terminar (no recogido) contenedor 1: 18.125555 %
+Llenado al terminar (recogido) contenedor 2: 3.6833334 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 4.9875 %
+Llenado al terminar (no recogido) contenedor 5: 8.439445 %
+Llenado al terminar (no recogido) contenedor 6: 2.0627778 %
+Llenado al terminar (recogido) contenedor 7: 1.8211112 %
+Llenado al terminar (recogido) contenedor 8: 9.441668 %
+Llenado al terminar (recogido) contenedor 9: 5.88 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.89944446
+Tiempo en que retorna el ultimo camion en h: 1.0627778
+--------------------
+9 8 2 3 0 0  |  0 0 0 0 0 0  |  7 0 0 0 0 0
+Trayectoria total en metros: 54156.0
+QoS total: 375.1980514526367
+Llenado al terminar (no recogido) contenedor 1: 18.068333 %
+Llenado al terminar (recogido) contenedor 2: 3.6833334 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (no recogido) contenedor 4: 91.23917 %
+Llenado al terminar (no recogido) contenedor 5: 8.239166 %
+Llenado al terminar (no recogido) contenedor 6: 2.0341668 %
+Llenado al terminar (recogido) contenedor 7: 1.763889 %
+Llenado al terminar (recogido) contenedor 8: 10.083334 %
+Llenado al terminar (recogido) contenedor 9: 6.2222223 %
+Tiempo en que es recolectado ultimo contenedor en h: 0.87083334
+Tiempo en que retorna el ultimo camion en h: 1.0341667
+--------------------
+9 8 2 1 4 3  |  0 0 0 0 0 0  |  7 0 0 0 0 0
+Trayectoria total en metros: 56538.0
+QoS total: 376.9947204589844
+Llenado al terminar (recogido) contenedor 1: 1.5788889 %
+Llenado al terminar (recogido) contenedor 2: 12.490833 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (no recogido) contenedor 5: 12.981667 %
+Llenado al terminar (no recogido) contenedor 6: 2.7116666 %
+Llenado al terminar (recogido) contenedor 7: 3.1188889 %
+Llenado al terminar (recogido) contenedor 8: 20.245834 %
+Llenado al terminar (recogido) contenedor 9: 11.642222 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.5483334
+Tiempo en que retorna el ultimo camion en h: 1.7116666
+--------------------
+7 5 2 1 4 3  |  9 8 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 67531.0
+QoS total: 378.3222236633301
+Llenado al terminar (recogido) contenedor 1: 1.5788889 %
+Llenado al terminar (recogido) contenedor 2: 12.490833 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (recogido) contenedor 5: 8.429167 %
+Llenado al terminar (no recogido) contenedor 6: 2.7608333 %
+Llenado al terminar (recogido) contenedor 7: 3.2172222 %
+Llenado al terminar (recogido) contenedor 8: 20.983334 %
+Llenado al terminar (recogido) contenedor 9: 12.035556 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.5975
+Tiempo en que retorna el ultimo camion en h: 1.7608334
+--------------------
+7 5 2 1 4 3  |  9 8 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 68657.0
+QoS total: 379.964168548584
+Llenado al terminar (recogido) contenedor 1: 1.5788889 %
+Llenado al terminar (recogido) contenedor 2: 12.490833 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (recogido) contenedor 5: 8.429167 %
+Llenado al terminar (no recogido) contenedor 6: 2.7608333 %
+Llenado al terminar (recogido) contenedor 7: 3.2172222 %
+Llenado al terminar (recogido) contenedor 8: 20.983334 %
+Llenado al terminar (recogido) contenedor 9: 12.035556 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.5975
+Tiempo en que retorna el ultimo camion en h: 1.7608334
+--------------------
+3 0 0 0 0 0  |  7 9 8 2 4 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 69307.0
+QoS total: 382.01861572265625
+Llenado al terminar (no recogido) contenedor 1: 19.096111 %
+Llenado al terminar (recogido) contenedor 2: 9.435833 %
+Llenado al terminar (recogido) contenedor 3: 9.726111 %
+Llenado al terminar (recogido) contenedor 4: 2.5491667 %
+Llenado al terminar (no recogido) contenedor 5: 11.83639 %
+Llenado al terminar (no recogido) contenedor 6: 2.5480556 %
+Llenado al terminar (recogido) contenedor 7: 2.7916667 %
+Llenado al terminar (recogido) contenedor 8: 16.720835 %
+Llenado al terminar (recogido) contenedor 9: 9.762222 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.1338888
+Tiempo en que retorna el ultimo camion en h: 1.5480555
+--------------------
+7 5 2 1 4 3  |  1 9 8 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 71612.0
+QoS total: 382.13639068603516
+Llenado al terminar (recogido) contenedor 1: 1.5788889 %
+Llenado al terminar (recogido) contenedor 2: 12.490833 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (recogido) contenedor 5: 8.429167 %
+Llenado al terminar (no recogido) contenedor 6: 2.7608333 %
+Llenado al terminar (recogido) contenedor 7: 3.2172222 %
+Llenado al terminar (recogido) contenedor 8: 18.495834 %
+Llenado al terminar (recogido) contenedor 9: 10.708889 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.5975
+Tiempo en que retorna el ultimo camion en h: 1.7608334
+--------------------
+5 1 2 7 4 3  |  9 8 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 73856.0
+QoS total: 383.2813911437988
+Llenado al terminar (recogido) contenedor 1: 2.6261113 %
+Llenado al terminar (recogido) contenedor 2: 14.931944 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (recogido) contenedor 5: 11.301111 %
+Llenado al terminar (no recogido) contenedor 6: 2.9661112 %
+Llenado al terminar (recogido) contenedor 7: 1.7700001 %
+Llenado al terminar (recogido) contenedor 8: 24.062502 %
+Llenado al terminar (recogido) contenedor 9: 13.677778 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.8027778
+Tiempo en que retorna el ultimo camion en h: 1.9661111
+--------------------
+6 1 2 7 4 3  |  9 8 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 74265.0
+QoS total: 384.06277084350586
+Llenado al terminar (recogido) contenedor 1: 2.6261113 %
+Llenado al terminar (recogido) contenedor 2: 14.931944 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (no recogido) contenedor 5: 14.951389 %
+Llenado al terminar (recogido) contenedor 6: 1.6277778 %
+Llenado al terminar (recogido) contenedor 7: 1.7700001 %
+Llenado al terminar (recogido) contenedor 8: 24.466667 %
+Llenado al terminar (recogido) contenedor 9: 13.893333 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.8297222
+Tiempo en que retorna el ultimo camion en h: 1.9930556
+--------------------
+6 5 2 7 4 3  |  9 0 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 77855.0
+QoS total: 385.6497230529785
+Llenado al terminar (no recogido) contenedor 1: 20.095556 %
+Llenado al terminar (recogido) contenedor 2: 14.931944 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (recogido) contenedor 5: 9.743611 %
+Llenado al terminar (recogido) contenedor 6: 1.6825 %
+Llenado al terminar (recogido) contenedor 7: 1.7700001 %
+Llenado al terminar (no recogido) contenedor 8: 64.71667 %
+Llenado al terminar (recogido) contenedor 9: 14.331112 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.8844445
+Tiempo en que retorna el ultimo camion en h: 2.047778
+--------------------
+5 1 2 7 4 3  |  1 9 8 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 77937.0
+QoS total: 387.0955581665039
+Llenado al terminar (recogido) contenedor 1: 2.6261113 %
+Llenado al terminar (recogido) contenedor 2: 14.931944 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (recogido) contenedor 5: 11.301111 %
+Llenado al terminar (no recogido) contenedor 6: 2.9661112 %
+Llenado al terminar (recogido) contenedor 7: 1.7700001 %
+Llenado al terminar (recogido) contenedor 8: 21.575 %
+Llenado al terminar (recogido) contenedor 9: 12.351111 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.8027778
+Tiempo en que retorna el ultimo camion en h: 1.9661111
+--------------------
+6 1 2 7 4 3  |  1 9 8 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 78346.0
+QoS total: 387.87693786621094
+Llenado al terminar (recogido) contenedor 1: 2.6261113 %
+Llenado al terminar (recogido) contenedor 2: 14.931944 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (no recogido) contenedor 5: 14.951389 %
+Llenado al terminar (recogido) contenedor 6: 1.6277778 %
+Llenado al terminar (recogido) contenedor 7: 1.7700001 %
+Llenado al terminar (recogido) contenedor 8: 21.979168 %
+Llenado al terminar (recogido) contenedor 9: 12.566667 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.8297222
+Tiempo en que retorna el ultimo camion en h: 1.9930556
+--------------------
+6 5 2 7 4 3  |  1 9 8 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 81936.0
+QoS total: 389.4638900756836
+Llenado al terminar (recogido) contenedor 1: 3.8533335 %
+Llenado al terminar (recogido) contenedor 2: 14.931944 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (recogido) contenedor 5: 9.743611 %
+Llenado al terminar (recogido) contenedor 6: 1.6825 %
+Llenado al terminar (recogido) contenedor 7: 1.7700001 %
+Llenado al terminar (recogido) contenedor 8: 22.800001 %
+Llenado al terminar (recogido) contenedor 9: 13.004445 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.8844445
+Tiempo en que retorna el ultimo camion en h: 2.047778
+--------------------
+7 5 2 1 4 3  |  6 9 8 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 83099.0
+QoS total: 391.29805755615234
+Llenado al terminar (recogido) contenedor 1: 1.5788889 %
+Llenado al terminar (recogido) contenedor 2: 12.490833 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (recogido) contenedor 5: 8.429167 %
+Llenado al terminar (recogido) contenedor 6: 1.3955556 %
+Llenado al terminar (recogido) contenedor 7: 3.2172222 %
+Llenado al terminar (recogido) contenedor 8: 12.520834 %
+Llenado al terminar (recogido) contenedor 9: 7.5222225 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.5975
+Tiempo en que retorna el ultimo camion en h: 1.7608334
+--------------------
+3 9 0 0 0 0  |  5 7 8 4 2 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 85661.0
+QoS total: 393.76388931274414
+Llenado al terminar (no recogido) contenedor 1: 19.928888 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (recogido) contenedor 3: 12.640834 %
+Llenado al terminar (recogido) contenedor 4: 4.2097225 %
+Llenado al terminar (recogido) contenedor 5: 11.289445 %
+Llenado al terminar (no recogido) contenedor 6: 2.9644446 %
+Llenado al terminar (recogido) contenedor 7: 2.383889 %
+Llenado al terminar (recogido) contenedor 8: 14.825001 %
+Llenado al terminar (recogido) contenedor 9: 11.555556 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.7422222
+Tiempo en que retorna el ultimo camion en h: 1.9644445
+--------------------
+1 3 9 0 0 0  |  5 7 8 4 2 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 87281.0
+QoS total: 395.4138870239258
+Llenado al terminar (recogido) contenedor 1: 3.6866667 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (recogido) contenedor 3: 11.839723 %
+Llenado al terminar (recogido) contenedor 4: 4.2097225 %
+Llenado al terminar (recogido) contenedor 5: 11.289445 %
+Llenado al terminar (no recogido) contenedor 6: 2.9644446 %
+Llenado al terminar (recogido) contenedor 7: 2.383889 %
+Llenado al terminar (recogido) contenedor 8: 14.825001 %
+Llenado al terminar (recogido) contenedor 9: 10.64 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.7422222
+Tiempo en que retorna el ultimo camion en h: 1.9644445
+--------------------
+1 3 1 9 0 0  |  5 7 8 4 2 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 89036.0
+QoS total: 396.48278045654297
+Llenado al terminar (recogido) contenedor 1: 2.9950001 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (recogido) contenedor 3: 11.839723 %
+Llenado al terminar (recogido) contenedor 4: 4.2097225 %
+Llenado al terminar (recogido) contenedor 5: 11.289445 %
+Llenado al terminar (no recogido) contenedor 6: 2.9644446 %
+Llenado al terminar (recogido) contenedor 7: 2.383889 %
+Llenado al terminar (recogido) contenedor 8: 14.825001 %
+Llenado al terminar (recogido) contenedor 9: 9.571112 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.7422222
+Tiempo en que retorna el ultimo camion en h: 1.9644445
+--------------------
+1 9 3 0 0 0  |  5 7 8 4 2 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 89525.0
+QoS total: 397.3211097717285
+Llenado al terminar (recogido) contenedor 1: 3.6866667 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (recogido) contenedor 3: 8.234722 %
+Llenado al terminar (recogido) contenedor 4: 4.2097225 %
+Llenado al terminar (recogido) contenedor 5: 11.289445 %
+Llenado al terminar (no recogido) contenedor 6: 2.9644446 %
+Llenado al terminar (recogido) contenedor 7: 2.383889 %
+Llenado al terminar (recogido) contenedor 8: 14.825001 %
+Llenado al terminar (recogido) contenedor 9: 12.337778 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.7422222
+Tiempo en que retorna el ultimo camion en h: 1.9644445
+--------------------
+6 5 2 7 4 3  |  9 8 0 0 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 93423.0
+QoS total: 398.6255569458008
+Llenado al terminar (no recogido) contenedor 1: 20.095556 %
+Llenado al terminar (recogido) contenedor 2: 14.931944 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 3.1208334 %
+Llenado al terminar (recogido) contenedor 5: 9.743611 %
+Llenado al terminar (recogido) contenedor 6: 1.6825 %
+Llenado al terminar (recogido) contenedor 7: 1.7700001 %
+Llenado al terminar (recogido) contenedor 8: 25.2875 %
+Llenado al terminar (recogido) contenedor 9: 14.331112 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.8844445
+Tiempo en que retorna el ultimo camion en h: 2.047778
+--------------------
+5 3 9 0 0 0  |  7 8 4 2 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 97110.0
+QoS total: 400.472225189209
+Llenado al terminar (no recogido) contenedor 1: 18.688334 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (recogido) contenedor 3: 5.1372223 %
+Llenado al terminar (recogido) contenedor 4: 4.2097225 %
+Llenado al terminar (recogido) contenedor 5: 6.9475 %
+Llenado al terminar (no recogido) contenedor 6: 2.3441668 %
+Llenado al terminar (recogido) contenedor 7: 2.383889 %
+Llenado al terminar (recogido) contenedor 8: 14.825001 %
+Llenado al terminar (recogido) contenedor 9: 2.98 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.1219444
+Tiempo en que retorna el ultimo camion en h: 1.3441666
+--------------------
+3 1 9 0 0 0  |  7 8 4 2 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 98865.0
+QoS total: 402.2911148071289
+Llenado al terminar (recogido) contenedor 1: 1.9833333 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (recogido) contenedor 3: 8.298889 %
+Llenado al terminar (recogido) contenedor 4: 4.2097225 %
+Llenado al terminar (no recogido) contenedor 5: 10.409167 %
+Llenado al terminar (no recogido) contenedor 6: 2.3441668 %
+Llenado al terminar (recogido) contenedor 7: 2.383889 %
+Llenado al terminar (recogido) contenedor 8: 14.825001 %
+Llenado al terminar (recogido) contenedor 9: 5.5244446 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.1219444
+Tiempo en que retorna el ultimo camion en h: 1.3441666
+--------------------
+6 1 9 0 0 0  |  5 7 8 4 2 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 101565.0
+QoS total: 404.1972236633301
+Llenado al terminar (recogido) contenedor 1: 2.568889 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (no recogido) contenedor 3: 48.75111 %
+Llenado al terminar (recogido) contenedor 4: 4.2097225 %
+Llenado al terminar (recogido) contenedor 5: 11.289445 %
+Llenado al terminar (recogido) contenedor 6: 1.5991668 %
+Llenado al terminar (recogido) contenedor 7: 2.383889 %
+Llenado al terminar (recogido) contenedor 8: 14.825001 %
+Llenado al terminar (recogido) contenedor 9: 7.866667 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.7422222
+Tiempo en que retorna el ultimo camion en h: 1.9644445
+--------------------
+6 7 9 3 0 0  |  5 8 4 2 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 101631.0
+QoS total: 404.7552833557129
+Llenado al terminar (no recogido) contenedor 1: 19.59 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (recogido) contenedor 3: 3.5544446 %
+Llenado al terminar (recogido) contenedor 4: 4.2097225 %
+Llenado al terminar (recogido) contenedor 5: 10.103333 %
+Llenado al terminar (recogido) contenedor 6: 1.4297223 %
+Llenado al terminar (recogido) contenedor 7: 2.0983334 %
+Llenado al terminar (recogido) contenedor 8: 14.825001 %
+Llenado al terminar (recogido) contenedor 9: 6.988889 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.5727779
+Tiempo en que retorna el ultimo camion en h: 1.795
+--------------------
+6 1 3 1 9 0  |  5 7 8 4 2 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 103320.0
+QoS total: 404.8661079406738
+Llenado al terminar (recogido) contenedor 1: 1.8772223 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (recogido) contenedor 3: 7.9275002 %
+Llenado al terminar (recogido) contenedor 4: 4.2097225 %
+Llenado al terminar (recogido) contenedor 5: 11.289445 %
+Llenado al terminar (recogido) contenedor 6: 1.5991668 %
+Llenado al terminar (recogido) contenedor 7: 2.383889 %
+Llenado al terminar (recogido) contenedor 8: 14.825001 %
+Llenado al terminar (recogido) contenedor 9: 5.1 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.7422222
+Tiempo en que retorna el ultimo camion en h: 1.9644445
+--------------------
+5 1 9 3 0 0  |  7 8 4 2 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 103400.0
+QoS total: 405.3002815246582
+Llenado al terminar (recogido) contenedor 1: 1.5605556 %
+Llenado al terminar (recogido) contenedor 2: 3.3980556 %
+Llenado al terminar (recogido) contenedor 3: 0.79333335 %
+Llenado al terminar (recogido) contenedor 4: 4.833889 %
+Llenado al terminar (recogido) contenedor 5: 7.5716667 %
+Llenado al terminar (no recogido) contenedor 6: 2.4333334 %
+Llenado al terminar (recogido) contenedor 7: 2.5622222 %
+Llenado al terminar (recogido) contenedor 8: 16.1625 %
+Llenado al terminar (recogido) contenedor 9: 3.8333335 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.27
+Tiempo en que retorna el ultimo camion en h: 1.4333333
+--------------------
+6 1 9 3 0 0  |  5 7 8 4 2 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 103809.0
+QoS total: 405.7044486999512
+Llenado al terminar (recogido) contenedor 1: 2.568889 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (recogido) contenedor 3: 4.3225 %
+Llenado al terminar (recogido) contenedor 4: 4.2097225 %
+Llenado al terminar (recogido) contenedor 5: 11.289445 %
+Llenado al terminar (recogido) contenedor 6: 1.5991668 %
+Llenado al terminar (recogido) contenedor 7: 2.383889 %
+Llenado al terminar (recogido) contenedor 8: 14.825001 %
+Llenado al terminar (recogido) contenedor 9: 7.866667 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.7422222
+Tiempo en que retorna el ultimo camion en h: 1.9644445
+--------------------
+6 5 3 1 9 0  |  5 7 8 4 2 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 107130.0
+QoS total: 406.10361099243164
+Llenado al terminar (recogido) contenedor 1: 1.7122222 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (recogido) contenedor 3: 7.3500004 %
+Llenado al terminar (recogido) contenedor 4: 4.2097225 %
+Llenado al terminar (recogido) contenedor 5: 9.160278 %
+Llenado al terminar (recogido) contenedor 6: 1.5991668 %
+Llenado al terminar (recogido) contenedor 7: 2.383889 %
+Llenado al terminar (recogido) contenedor 8: 14.825001 %
+Llenado al terminar (recogido) contenedor 9: 4.44 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.7422222
+Tiempo en que retorna el ultimo camion en h: 1.9644445
+--------------------
+5 1 3 6 9 0  |  7 8 4 2 0 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 111183.0
+QoS total: 406.6352767944336
+Llenado al terminar (recogido) contenedor 1: 2.2733333 %
+Llenado al terminar (recogido) contenedor 2: 8.031111 %
+Llenado al terminar (recogido) contenedor 3: 6.893056 %
+Llenado al terminar (recogido) contenedor 4: 7.3286114 %
+Llenado al terminar (recogido) contenedor 5: 10.066389 %
+Llenado al terminar (recogido) contenedor 6: 0.67333335 %
+Llenado al terminar (recogido) contenedor 7: 3.275 %
+Llenado al terminar (recogido) contenedor 8: 21.508335 %
+Llenado al terminar (recogido) contenedor 9: 1.7444445 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.5216668
+Tiempo en que retorna el ultimo camion en h: 1.7897222
+--------------------
+6 1 3 6 9 0  |  5 7 8 4 2 0  |  0 0 0 0 0 0
+Trayectoria total en metros: 111592.0
+QoS total: 407.0394401550293
+Llenado al terminar (recogido) contenedor 1: 2.568889 %
+Llenado al terminar (recogido) contenedor 2: 2.238889 %
+Llenado al terminar (recogido) contenedor 3: 7.9275002 %
+Llenado al terminar (recogido) contenedor 4: 4.2097225 %
+Llenado al terminar (recogido) contenedor 5: 11.289445 %
+Llenado al terminar (recogido) contenedor 6: 0.82111114 %
+Llenado al terminar (recogido) contenedor 7: 2.383889 %
+Llenado al terminar (recogido) contenedor 8: 14.825001 %
+Llenado al terminar (recogido) contenedor 9: 2.9266667 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.7422222
+Tiempo en que retorna el ultimo camion en h: 1.9644445
+--------------------
+6 1 3 1 9 0  |  5 7 1 8 2 4  |  0 0 0 0 0 0
+Trayectoria total en metros: 112412.0
+QoS total: 412.1922187805176
+Llenado al terminar (recogido) contenedor 1: 2.7205555 %
+Llenado al terminar (recogido) contenedor 2: 9.435833 %
+Llenado al terminar (recogido) contenedor 3: 10.879167 %
+Llenado al terminar (recogido) contenedor 4: 2.5491667 %
+Llenado al terminar (recogido) contenedor 5: 14.241112 %
+Llenado al terminar (recogido) contenedor 6: 2.0208335 %
+Llenado al terminar (recogido) contenedor 7: 3.2272222 %
+Llenado al terminar (recogido) contenedor 8: 16.720835 %
+Llenado al terminar (recogido) contenedor 9: 8.473333 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.9719445
+Tiempo en que retorna el ultimo camion en h: 2.3861113
+--------------------
+6 1 9 3 0 0  |  5 7 1 8 2 4  |  0 0 0 0 0 0
+Trayectoria total en metros: 112901.0
+QoS total: 413.0305595397949
+Llenado al terminar (recogido) contenedor 1: 2.8433335 %
+Llenado al terminar (recogido) contenedor 2: 9.435833 %
+Llenado al terminar (recogido) contenedor 3: 7.274167 %
+Llenado al terminar (recogido) contenedor 4: 2.5491667 %
+Llenado al terminar (recogido) contenedor 5: 14.241112 %
+Llenado al terminar (recogido) contenedor 6: 2.0208335 %
+Llenado al terminar (recogido) contenedor 7: 3.2272222 %
+Llenado al terminar (recogido) contenedor 8: 16.720835 %
+Llenado al terminar (recogido) contenedor 9: 11.240001 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.9719445
+Tiempo en que retorna el ultimo camion en h: 2.3861113
+--------------------
+6 5 3 1 9 0  |  5 7 1 8 2 4  |  0 0 0 0 0 0
+Trayectoria total en metros: 116222.0
+QoS total: 413.4297218322754
+Llenado al terminar (recogido) contenedor 1: 2.5555556 %
+Llenado al terminar (recogido) contenedor 2: 9.435833 %
+Llenado al terminar (recogido) contenedor 3: 10.301667 %
+Llenado al terminar (recogido) contenedor 4: 2.5491667 %
+Llenado al terminar (recogido) contenedor 5: 12.111945 %
+Llenado al terminar (recogido) contenedor 6: 2.0208335 %
+Llenado al terminar (recogido) contenedor 7: 3.2272222 %
+Llenado al terminar (recogido) contenedor 8: 16.720835 %
+Llenado al terminar (recogido) contenedor 9: 7.8133335 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.9719445
+Tiempo en que retorna el ultimo camion en h: 2.3861113
+--------------------
+6 1 3 6 9 0  |  5 7 1 8 2 4  |  0 0 0 0 0 0
+Trayectoria total en metros: 120684.0
+QoS total: 414.36555099487305
+Llenado al terminar (recogido) contenedor 1: 2.8433335 %
+Llenado al terminar (recogido) contenedor 2: 9.435833 %
+Llenado al terminar (recogido) contenedor 3: 10.879167 %
+Llenado al terminar (recogido) contenedor 4: 2.5491667 %
+Llenado al terminar (recogido) contenedor 5: 14.241112 %
+Llenado al terminar (recogido) contenedor 6: 1.2427778 %
+Llenado al terminar (recogido) contenedor 7: 3.2272222 %
+Llenado al terminar (recogido) contenedor 8: 16.720835 %
+Llenado al terminar (recogido) contenedor 9: 6.3 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.9719445
+Tiempo en que retorna el ultimo camion en h: 2.3861113
+--------------------
+6 3 6 9 0 0  |  5 7 1 8 2 4  |  0 0 0 0 0 0
+Trayectoria total en metros: 124049.0
+QoS total: 414.51139068603516
+Llenado al terminar (recogido) contenedor 1: 2.8433335 %
+Llenado al terminar (recogido) contenedor 2: 9.435833 %
+Llenado al terminar (recogido) contenedor 3: 12.0633335 %
+Llenado al terminar (recogido) contenedor 4: 2.5491667 %
+Llenado al terminar (recogido) contenedor 5: 14.241112 %
+Llenado al terminar (recogido) contenedor 6: 1.4119445 %
+Llenado al terminar (recogido) contenedor 7: 3.2272222 %
+Llenado al terminar (recogido) contenedor 8: 16.720835 %
+Llenado al terminar (recogido) contenedor 9: 7.6533337 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.9719445
+Tiempo en que retorna el ultimo camion en h: 2.3861113
+--------------------
+6 5 3 6 9 0  |  5 7 1 8 2 4  |  0 0 0 0 0 0
+Trayectoria total en metros: 124494.0
+QoS total: 415.60305404663086
+Llenado al terminar (recogido) contenedor 1: 2.8433335 %
+Llenado al terminar (recogido) contenedor 2: 9.435833 %
+Llenado al terminar (recogido) contenedor 3: 10.301667 %
+Llenado al terminar (recogido) contenedor 4: 2.5491667 %
+Llenado al terminar (recogido) contenedor 5: 12.111945 %
+Llenado al terminar (recogido) contenedor 6: 1.1602778 %
+Llenado al terminar (recogido) contenedor 7: 3.2272222 %
+Llenado al terminar (recogido) contenedor 8: 16.720835 %
+Llenado al terminar (recogido) contenedor 9: 5.6400003 %
+Tiempo en que es recolectado ultimo contenedor en h: 1.9719445
+Tiempo en que retorna el ultimo camion en h: 2.3861113
 --------------------

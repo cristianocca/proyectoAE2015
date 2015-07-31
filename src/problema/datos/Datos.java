@@ -123,11 +123,10 @@ public class Datos {
         //ROMPO LOS DATOS, REDUZCO LA CANTIDAD DE DATOS A ALGO CHICO
         Datos datos2 = new Datos();
         datos2.datosBasicos = new DatoBasico();
-        int puntosPrueba =20;
-        datos2.datosBasicos.cantidadCamiones = 10;
+        int puntosPrueba =10;
+        datos2.datosBasicos.cantidadCamiones = 3;
         datos2.datosBasicos.capacidadCamiones = 4;
         datos2.datosBasicos.tiempoRecoleccionContenedor = datos.datosBasicos.tiempoRecoleccionContenedor;
-        datos2.datosBasicos.tiempoTrabajo = datos.datosBasicos.tiempoTrabajo;
 
 
         datos2.puntos = new Punto[puntosPrueba];

@@ -14,7 +14,6 @@ public class DatoBasico {
     public int cantidadCamiones;
     public int capacidadCamiones;               //contenedores
     public int tiempoRecoleccionContenedor;     //segundos
-    public int tiempoTrabajo;                   //horas
 
 
     public static DatoBasico cargar(String path) throws FileNotFoundException {
