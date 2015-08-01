@@ -1,5 +1,5 @@
 {
- "cantidadCamiones": 50, 
- "capacidadCamiones": 50, 
+ "cantidadCamiones": 60, 
+ "capacidadCamiones": 20, 
  "tiempoRecoleccionContenedor": 180
 }
