@@ -239,13 +239,14 @@ public class Problema extends Problem {
         //******************************************************************************************************************
 
         //Un contenedor no puede ser recogido al mismo tiempo por mas de un camión, ni en el intervalo en que está siendo recogido (tiempoRecoleccionContenedor)
+        //esta restriccion es violada demasiadas veces, comparada con las demas, habria que ver como mejorarla.
         boolean violoCond = false;
         int camionViolador;
         try {
             for (int i = 1; i < this.cantContenedores; i++) {
                 contenedor_i = tc.get(i);
                 largoContenedor_i = contenedor_i.size();
-                violoCond = false;
+                //violoCond = false;
                 for (int j = 1; j < largoContenedor_i; j++) {
                     if (contenedor_i.get(j)[0] - contenedor_i.get(j - 1)[0] <= tiempoRecol) {
                         violoCond = true;
@@ -285,52 +286,62 @@ public class Problema extends Problem {
                 //La cantidad de basura recogida por cada camión no puede exceder su capacidad real, para esto se utiliza el % de basura recogido de cada contenedor y se valida que el total no supere su capacidad.
 
                 double contenedoresRecolectados = 0;        //double para manejar fracciones.
+                double sumaBasura;
+
                 for (int k = 1; k < this.cantContenedores; k++) {
                     contenedor_i = tc.get(k);
                     largoContenedor_i = contenedor_i.size();
 
                     if (largoContenedor_i > 0) {
+
+                        //primero agrego la primera recoleccion, que incluye el valor inicial.
+
                         if(contenedor_i.get(0)[1] == i) { //solo sumo si el camion que junto el contenedor es el camion actual
-                            contenedoresRecolectados += (b[k].v + velocidades[k].v * contenedor_i.get(0)[0]) / 100.0;   //puede ser mayor a 1 !! O sea, que junta la basura desbordada en caso de > 100%
 
-                            if(contenedoresRecolectados > (double)this.capCamiones){
+                            sumaBasura = (b[k].v + velocidades[k].v * contenedor_i.get(0)[0]) / 100.0;   //puede ser mayor a 1 !! O sea, que junta la basura desbordada en caso de > 100%;
+
+                            if(contenedoresRecolectados + sumaBasura > (double)this.capCamiones){
                                 violoCond = true;
 
-                                //elimino el/los contenedor que hizo que se pase.
+                                //elimino el primer contenedor que encuentre que sea igual al que hizo que me pase, ya que viene ordenado por tiempo deberia ser correcto.
                                 for (int j = indice; j < indiceFinal; j++) {
                                     if (variables[j].getValue() == k){
                                         variables[j].setValue(0);
+                                        break;
+                                    }
+
+                                }
+                            }
+                            else {
+                                contenedoresRecolectados += sumaBasura;
+                            }
+                        }
+
+                        //Luego agrego las restantes recolecciones
+                        for (int z = 1; z < largoContenedor_i; z++){
+                            if(contenedor_i.get(z)[1] == i) { //solo sumo si el camion que junto el contenedor es el camion actual
+
+                                sumaBasura = (velocidades[k].v * (contenedor_i.get(z)[0] - (contenedor_i.get(z - 1)[0] + tiempoRecol))) / 100.0;
+
+                                if(contenedoresRecolectados + sumaBasura > (double)this.capCamiones){
+                                    violoCond = true;
+
+
+                                    //elimino el primer contenedor que encuentre que sea igual al que hizo que me pase, ya que viene ordenado por tiempo deberia ser correcto.
+                                    for (int j = indice; j < indiceFinal; j++) {
+                                        if (variables[j].getValue() == k){
+                                            variables[j].setValue(0);
+                                            break;
+                                        }
+
                                     }
                                 }
-
-                                break;
+                                else {
+                                    contenedoresRecolectados += sumaBasura;
+                                }
                             }
                         }
                     }
-                    else {  //contenedor no fue recogido
-                        continue;
-                    }
-
-                    for (int z = 1; z < largoContenedor_i; z++){
-                        if(contenedor_i.get(z)[1] == i) { //solo sumo si el camion que junto el contenedor es el camion actual
-                            contenedoresRecolectados += (velocidades[k].v * (contenedor_i.get(z)[0] - (contenedor_i.get(z - 1)[0] + tiempoRecol))) / 100.0;
-
-                            if(contenedoresRecolectados > (double)this.capCamiones){
-                                violoCond = true;
-                                //Corrijo, pongo 0's todo hacia la derecha y termino
-
-                                //elimino el/los contenedor que hizo que se pase.
-                                for (int j = indice; j < indiceFinal; j++) {
-                                    if (variables[j].getValue() == k){
-                                        variables[j].setValue(0);
-                                    }
-                                }
-
-                                break;
-                            }
-                        }
-                    }
-
                 }
 
 
