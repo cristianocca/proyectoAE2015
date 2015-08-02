@@ -15,6 +15,6 @@ with open(RUTA_PUNTOS,'r') as f:
 for i in xrange(CANT_INSTANCIAS):
 	instancia = []
 	for v in puntos:
-		instancia.append({'id':v['id'],'v':random.randint(0,100)})
+		instancia.append({'id':v['id'],'v':random.randint(5,100)})
 	with open(RUTA_SALIDA.format(str(i+1)),'w') as f:
 		f.write(json.dumps(instancia))

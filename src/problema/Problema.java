@@ -440,6 +440,9 @@ public class Problema extends Problem {
                     } else if (j != 0) {
                         bw.write(" ");
                     }
+
+                    //String id = this.datos.puntos[(int)s.getDecisionVariables()[j].getValue()].id;
+                    //bw.write(id);
                     bw.write(s.getDecisionVariables()[j].toString());
 
                 }

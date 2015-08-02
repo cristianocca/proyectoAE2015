@@ -18,9 +18,9 @@ with open(RUTA_PUNTOS,'r') as f:
 velocidades = []
 for v in puntos:
 	if v['id'] >= 300 and v['id'] <= 1200:
-		vel = random.randint(5, 10)
+		vel = random.randint(8, 15)
 	else:
-		vel = random.randint(1, 5)
+		vel = random.randint(5, 10)
 	
 	velocidades.append({'id':v['id'],'v':vel})
 	
