@@ -53,7 +53,8 @@ public class MainNSGA2 {
         // Mutation and Crossover for Real codification
         parameters = new HashMap() ;
         parameters.put("probability", 0.75) ;
-        crossover = CrossoverFactory.getCrossoverOperator("SinglePointCrossover", parameters);
+        crossover = CrossoverFactory.getCrossoverOperator("TwoPointsCrossover2", parameters);
+        //crossover = CrossoverFactory.getCrossoverOperator("SinglePointCrossover", parameters);
 
         parameters = new HashMap() ;
         parameters.put("probability", 0.01) ;

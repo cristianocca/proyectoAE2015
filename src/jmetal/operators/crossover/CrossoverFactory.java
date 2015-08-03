@@ -45,6 +45,8 @@ public class CrossoverFactory {
       return new PMXCrossover(parameters);
     else if (name.equalsIgnoreCase("TwoPointsCrossover"))
       return new TwoPointsCrossover(parameters);
+    else if (name.equalsIgnoreCase("TwoPointsCrossover2"))
+      return new TwoPointsCrossover2(parameters);
     else if (name.equalsIgnoreCase("HUXCrossover"))
       return new HUXCrossover(parameters);
     else if (name.equalsIgnoreCase("DifferentialEvolutionCrossover"))
