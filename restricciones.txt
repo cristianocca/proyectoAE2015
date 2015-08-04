@@ -1,6 +1,0 @@
-La cantidad de basura recogida por cada camión no puede exceder su capacidad real, para esto se utiliza el % de basura recogido de cada contenedor y se valida que el total no supere su capacidad.
-
-Para cada camión, luego que se tiene un 0 en su solución, todos los restantes valores a la derecha también deberán ser 0, para hacer cumplir la restricción
-
-
-Un contenedor no puede ser recogido al mismo tiempo por mas de un camión, ni en el intervalo en que está siendo recogido (tiempoRecoleccionContenedor)

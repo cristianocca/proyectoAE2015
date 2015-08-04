@@ -201,7 +201,7 @@ public class Problema extends Problem {
             tc = construirListaTiempos(variables);
             violoCond = false;
 
-            //Un contenedor no puede ser recogido al mismo tiempo por mas de un camión, ni en el intervalo en que está siendo recogido (tiempoRecoleccionContenedor)
+            //Un contenedor no puede ser recogido al mismo tiempo por mas de un camiï¿½n, ni en el intervalo en que estï¿½ siendo recogido (tiempoRecoleccionContenedor)
             //esta restriccion es violada demasiadas veces, comparada con las demas, habria que ver como mejorarla.
 
             int camionViolador;
@@ -244,7 +244,7 @@ public class Problema extends Problem {
 
 
 
-            //Para cada camión, luego que se tiene un 0 en su solución, todos los restantes valores a la derecha también deberán ser 0
+            //Para cada camiï¿½n, luego que se tiene un 0 en su soluciï¿½n, todos los restantes valores a la derecha tambiï¿½n deberï¿½n ser 0
             for (int i = 0; i < this.cantCamiones; i++) {
 
                 indice = i * this.capCamionesAprox;
@@ -252,7 +252,7 @@ public class Problema extends Problem {
 
                 try {
 
-                    //La cantidad de basura recogida por cada camión no puede exceder su capacidad real, para esto se utiliza el % de basura recogido de cada contenedor y se valida que el total no supere su capacidad.
+                    //La cantidad de basura recogida por cada camiï¿½n no puede exceder su capacidad real, para esto se utiliza el % de basura recogido de cada contenedor y se valida que el total no supere su capacidad.
 
                     double contenedoresRecolectados = 0;        //double para manejar fracciones.
                     double sumaBasura;
@@ -404,8 +404,15 @@ public class Problema extends Problem {
     } // evaluate
 
 
-
-    public void imprimirSolucion(String path, SolutionSet soluciones) throws IOException, JMException {
+    /**
+     * Genera archivos con datos de la solucion/es. Si imprConsola es true, larga los valores de funcion objetivo en la consola.
+     * @param path
+     * @param soluciones
+     * @param imprConsola
+     * @throws IOException
+     * @throws JMException
+     */
+    public void imprimirSolucion(String path, SolutionSet soluciones, boolean imprConsola) throws IOException, JMException {
 
 
         int tiempoRecol = this.datos.datosBasicos.tiempoRecoleccionContenedor;
@@ -447,10 +454,17 @@ public class Problema extends Problem {
 
                 }
                 bw.newLine();
-                bw.write("Trayectoria total en metros: " + String.valueOf(s.getObjective(0)));
+                //bw.write("Trayectoria total en metros: " + String.valueOf(s.getObjective(0)));
+                bw.write(String.valueOf(s.getObjective(0)));
                 bw.newLine();
-                bw.write("QoS total: " + String.valueOf(-1 * s.getObjective(1)));
+                //bw.write("QoS total: " + String.valueOf(-1 * s.getObjective(1)));
+                bw.write(String.valueOf(-1 * s.getObjective(1)));
                 bw.newLine();
+
+                if (imprConsola){
+                    System.out.println("Funcion Objetivo 1: " + s.getObjective(0));
+                    System.out.println("Funcion Objetivo 2: " + (-1 * s.getObjective(1)));
+                }
 
                 //Imprimo cuan lleno termina el contenedor
                 ArrayList<ArrayList<int[]>> tc = construirListaTiempos(s.getDecisionVariables());
@@ -490,6 +504,58 @@ public class Problema extends Problem {
 
         /* Close the file */
         bw.close();
+    }
+
+    /**
+     * Devuelve la solucion de compromiso. Esto es, la que esta mas cerca de los mejores valores extremos.
+     * @param soluciones
+     * @return
+     */
+    public Solution getSolucionDeCompromiso(SolutionSet soluciones){
+        double bestF1 = Double.MAX_VALUE;   //Asigno peor valor que puede tomar f1
+        double bestF2 = Double.MAX_VALUE;   //idem f2. Siempre se minimiza...
+
+        for(int i = 0; i < soluciones.size();i++) {
+            Solution sol = soluciones.get(i);
+            if(sol.getObjective(0) < bestF1){
+                bestF1 = sol.getObjective(0);
+            }
+
+            if (sol.getObjective(1) < bestF2){
+                bestF2 = sol.getObjective(1);
+            }
+        }
+
+        //tengo los mejores valores objetivos, busco la solucion que este mas cerca
+        //En mi caso estoy buscando el x tal que min ||f(x)-z|| siendo z el optimo.
+        //uso la normal euclidiana... : ||b - a||_2 = sqrt((b1-a1)^2 + (b2-a2)^2 + ....)
+        //Ademas tengo que normalizar los valores antes para que de bien la distancia.
+        double largo = Math.sqrt(Math.pow(bestF1, 2) + Math.pow(bestF2, 2));
+        bestF1 = bestF1 / largo;
+        bestF2 = bestF2 / largo;
+
+        Solution best = null;
+        double bestNorm = Double.MAX_VALUE;
+        for(int i = 0; i < soluciones.size();i++) {
+            Solution sol = soluciones.get(i);
+
+            double f1 = sol.getObjective(0);
+            double f2 = sol.getObjective(1);
+            double largof = Math.sqrt(Math.pow(f1, 2) + Math.pow(f2, 2));
+            f1 = f1 / largof;
+            f2 = f2 / largof;
+
+            double euclid = Math.sqrt( Math.pow(f1-bestF1, 2) + Math.pow(f2-bestF2, 2) );
+            if (euclid < bestNorm){
+                bestNorm = euclid;
+                best = sol;
+            }
+        }
+
+        return best;
+
+
+
     }
 
 }

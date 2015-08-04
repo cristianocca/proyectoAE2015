@@ -1,10 +1,8 @@
 package problema;
 
-import jmetal.core.Algorithm;
-import jmetal.core.Operator;
-import jmetal.core.Problem;
-import jmetal.core.SolutionSet;
+import jmetal.core.*;
 import jmetal.metaheuristics.nsgaII.NSGAII;
+import jmetal.metaheuristics.spea2.SPEA2;
 import jmetal.operators.crossover.CrossoverFactory;
 import jmetal.operators.mutation.MutationFactory;
 import jmetal.operators.selection.SelectionFactory;
@@ -33,6 +31,44 @@ public class MainNSGA2 {
             return;
         }
 
+        System.out.println();
+        System.out.println("Argumentos de algoritmo (seguido de datos)");
+        System.out.println("algoritmo tamPob maxEval crossProb mutProb");
+
+        int popSize = 100;
+        int maxEval = 25000;
+        double crossProb = 0.75;
+        double mutProb = 0.01;
+        String algoritmo = "NSGA2";
+
+
+        if(args.length > 7){
+            algoritmo = args[6];
+        }
+
+        if(args.length > 8){
+            popSize = Integer.parseInt(args[7]);
+        }
+
+        if(args.length > 9){
+            maxEval = Integer.parseInt(args[8]);
+        }
+
+        if(args.length > 10){
+            crossProb = Double.parseDouble(args[9]);
+        }
+
+        if(args.length > 11){
+            mutProb = Double.parseDouble(args[10]);
+        }
+
+        System.out.println("---- Parametros a utilizar ----");
+        System.out.println("Algoritmo: " + algoritmo);
+        System.out.println("Tam Pob: " + popSize);
+        System.out.println("Max Eval: " + maxEval);
+        System.out.println("Cross Prob: " + crossProb);
+        System.out.println("Mut Prob: " + mutProb);
+
 
         Problem problem   ; // The problem to solve
         Algorithm algorithm ; // The algorithm to use
@@ -42,22 +78,34 @@ public class MainNSGA2 {
         HashMap parameters ; // Operator parameters
         QualityIndicator indicators = null; // Object to get quality indicators
 
-
         problem = new Problema(datos);
-        algorithm = new NSGAII(problem);
+
+        if(algoritmo.equalsIgnoreCase("NSGA2")){
+            algorithm = new NSGAII(problem);
+        }
+        else if(algoritmo.equalsIgnoreCase("SPEA2")){
+            algorithm = new SPEA2(problem);
+            algorithm.setInputParameter("archiveSize",popSize);
+        }
+        else {
+            System.out.println("Agoritmo invalido, opciones: NSGA2 y SPEA2");
+            return;
+        }
+
+
 
         // Algorithm parameters
-        algorithm.setInputParameter("populationSize",100);
-        algorithm.setInputParameter("maxEvaluations",25000);
+        algorithm.setInputParameter("populationSize",popSize);
+        algorithm.setInputParameter("maxEvaluations",maxEval);
 
         // Mutation and Crossover for Real codification
         parameters = new HashMap() ;
-        parameters.put("probability", 0.75) ;
+        parameters.put("probability", crossProb) ;
         crossover = CrossoverFactory.getCrossoverOperator("TwoPointsCrossover2", parameters);
         //crossover = CrossoverFactory.getCrossoverOperator("SinglePointCrossover", parameters);
 
         parameters = new HashMap() ;
-        parameters.put("probability", 0.01) ;
+        parameters.put("probability", mutProb) ;
         mutation = MutationFactory.getMutationOperator("BitFlipMutation", parameters);
 
         // Selection Operator
@@ -76,11 +124,17 @@ public class MainNSGA2 {
         SolutionSet population = algorithm.execute();
         long elapsedTime = System.currentTimeMillis() - initTime;
 
-        System.out.println("Tiempo total: " + elapsedTime/1000 + "s");
+        System.out.println("Tiempo Algoritmo: " + elapsedTime/1000 + "s");
 
-        population.printFeasibleVAR("VAR_NSGA2");
-        population.printFeasibleFUN("FUN_NSGA2");
-        ((Problema)problem).imprimirSolucion("./SALIDA_NSGA2.txt", population);
+        //population.printFeasibleVAR("VAR_NSGA2");
+        //population.printFeasibleFUN("FUN_NSGA2");
+
+        ((Problema)problem).imprimirSolucion("./SALIDA.txt", population,false);
+
+        Solution compromiso = ((Problema)problem).getSolucionDeCompromiso(population);
+        SolutionSet compromisoSet = new SolutionSet(1);
+        compromisoSet.add(compromiso);
+        ((Problema)problem).imprimirSolucion("./SALIDA_COMPROMISO.txt", compromisoSet,true);
 
 
     }

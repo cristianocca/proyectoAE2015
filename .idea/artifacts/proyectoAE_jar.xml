@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="proyectoAE:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/proyectoAE_jar</output-path>
+    <root id="archive" name="proyectoAE.jar">
+      <element id="module-output" name="proyectoAE" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/gson-2.3.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
