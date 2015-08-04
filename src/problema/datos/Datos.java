@@ -18,6 +18,7 @@ public class Datos {
 
     public float[][] distancias;
     public float[][] tiempos;
+    public int[][] puntosOrdenados; //tiene para cada punto, el indice de los puntos, ordenados por distancia
 
     /**
      * Carga datos estaticos, los datos de llenado se cargan a parte ya que deben ser cargados por cada instancia.
@@ -62,7 +63,7 @@ public class Datos {
         catch (FileNotFoundException e) {
             throw new FileNotFoundException("Archivo de tiempos no encontrado.");
         }
-
+        res.puntosOrdenados = cargarPuntosOrdenados(res.distancias);
 
         return res;
     }
@@ -114,9 +115,8 @@ public class Datos {
 
         Datos datos = Datos.cargarDatos(args[0],args[1],args[2],args[5],args[6]);
         //Para probar cargo solo el primer argumento
-        datos.cargarLlenados(args[3].replace("x",instanciasArg[0]));
+        datos.cargarLlenados(args[3].replace("x", instanciasArg[0]));
         System.out.println("Total puntos: " + datos.puntos.length);
-
 
         //*************************
         //PARA PROBAR-----------
@@ -150,9 +150,39 @@ public class Datos {
 
         System.out.println("Total puntos prueba: " + datos.puntos.length);
 
+
         //*************************
 
         return datos;
     }
 
+    public static int[][] cargarPuntosOrdenados(float[][] distancias){
+        int[][] res = new int[distancias.length][distancias.length];
+        for (int i = 0; i < distancias.length ; i++){
+            res[i] = countingSort(distancias[i]);
+        }
+        return res;
+    }
+
+    static int[] countingSort(float[] distancias) {
+        int[] res = new int[distancias.length];
+        float max = distancias[0];
+
+        for (int i = 0; i < distancias.length; i++) {
+            res[i] = i; //inicializo el arrray
+        }
+
+        for (int i = 1; i < distancias.length; i++) {
+            float val = distancias[i];
+            float temp = res[i];
+            int index = i-1;
+            for (int j = i- 1; j >= 0 && val < distancias[res[j]]; j--) {
+                res[j+1]= res[j];
+                index = j;
+            }
+            res[index]= i;
+        }
+
+        return res;
+    }
 }
