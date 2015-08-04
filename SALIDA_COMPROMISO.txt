@@ -1,810 +1,810 @@
-147 476 600 623 624 259 359 16 669 527 704 171 185 331 325 292 208 435 419 383 224 382 107 596 0 0 0 0 0 0  |  92 755 651 318 134 245 26 103 665 649 453 740 407 557 779 613 322 175 0 0 0 0 0 0 0 0 0 0 0 0  |  787 586 51 281 368 534 540 609 498 749 547 324 698 578 701 584 360 21 471 388 253 277 317 392 0 0 0 0 0 0  |  351 357 198 265 52 362 92 510 400 744 551 710 505 497 90 631 436 571 658 338 362 2 467 771 258 293 0 0 0 0  |  513 275 220 428 654 538 44 438 361 312 219 356 445 784 679 268 754 397 464 713 55 249 99 0 0 0 0 0 0 0  |  365 54 234 683 241 51 700 136 655 200 691 160 332 23 728 751 788 104 697 0 0 0 0 0 0 0 0 0 0 0  |  255 157 513 219 682 665 606 521 711 665 366 9 525 791 381 466 18 218 789 202 499 0 0 0 0 0 0 0 0 0  |  696 554 430 411 377 267 712 402 194 665 231 423 146 188 540 729 680 780 150 1 39 0 0 0 0 0 0 0 0 0  |  49 535 370 631 63 308 288 229 475 641 585 183 214 452 439 433 195 657 641 0 0 0 0 0 0 0 0 0 0 0  |  655 626 94 64 481 791 740 691 130 224 640 589 507 107 379 444 505 509 504 727 508 175 0 0 0 0 0 0 0 0  |  243 253 48 564 53 756 451 191 333 778 167 545 515 487 678 434 217 269 429 635 12 278 213 0 0 0 0 0 0 0  |  205 574 510 450 589 505 576 591 306 622 673 370 524 80 408 201 242 446 540 301 0 0 0 0 0 0 0 0 0 0  |  230 437 203 509 206 331 524 519 374 698 645 342 725 87 287 645 434 287 16 636 663 431 768 800 568 0 0 0 0 0  |  504 633 200 561 553 603 741 79 660 193 627 707 748 339 462 424 191 347 230 643 666 0 0 0 0 0 0 0 0 0  |  112 38 722 678 178 299 227 672 648 593 751 423 607 454 98 554 606 529 732 600 799 601 0 0 0 0 0 0 0 0  |  74 248 397 610 616 720 365 465 442 404 227 317 697 377 570 616 346 478 604 0 0 0 0 0 0 0 0 0 0 0  |  584 29 338 526 783 718 417 501 684 119 304 453 468 291 657 180 610 40 578 735 609 450 0 0 0 0 0 0 0 0  |  201 634 764 717 328 662 578 498 31 166 1 55 470 447 146 656 310 474 425 463 553 0 0 0 0 0 0 0 0 0  |  768 174 605 491 534 434 43 324 305 407 772 621 180 523 506 335 318 387 332 773 592 589 546 13 282 161 0 0 0 0  |  171 289 2 503 357 653 513 748 666 200 541 604 796 785 461 799 534 149 760 468 771 82 644 718 130 303 655 0 0 0  |  440 367 33 169 688 353 480 683 52 680 762 611 216 694 547 128 473 675 329 119 0 0 0 0 0 0 0 0 0 0  |  320 122 722 286 420 483 370 172 681 614 526 363 508 615 289 371 666 609 389 247 736 0 0 0 0 0 0 0 0 0  |  10 772 512 312 202 358 780 437 121 376 408 322 461 127 664 680 686 612 786 774 235 110 142 0 0 0 0 0 0 0  |  392 668 675 594 180 322 25 489 148 783 690 666 540 558 72 31 325 0 0 0 0 0 0 0 0 0 0 0 0 0  |  50 536 436 687 417 419 546 781 386 734 367 444 530 37 561 311 250 277 448 661 627 574 0 0 0 0 0 0 0 0  |  466 669 270 192 255 174 462 683 775 801 323 748 801 299 458 620 692 440 674 29 0 0 0 0 0 0 0 0 0 0  |  67 372 290 607 790 589 707 575 582 63 387 739 1 279 416 19 177 0 0 0 0 0 0 0 0 0 0 0 0 0  |  293 697 311 776 673 608 398 399 571 619 374 118 53 241 760 182 564 743 14 482 791 0 0 0 0 0 0 0 0 0  |  190 654 228 478 26 515 793 206 427 718 380 553 334 686 511 100 393 7 560 536 687 178 348 413 0 0 0 0 0 0  |  668 710 738 380 667 362 18 258 53 581 755 788 269 633 456 532 485 733 24 616 240 0 0 0 0 0 0 0 0 0  |  586 780 669 758 176 172 208 452 406 769 396 710 80 647 783 486 306 768 369 618 353 295 258 207 0 0 0 0 0 0  |  610 632 795 581 721 699 638 683 641 371 804 601 409 97 223 412 386 310 245 274 0 0 0 0 0 0 0 0 0 0  |  736 598 781 425 622 477 522 440 128 671 86 352 664 565 471 224 537 130 693 539 290 688 4 677 0 0 0 0 0 0  |  446 168 194 252 449 666 759 334 238 292 715 564 528 488 111 280 278 757 411 772 527 37 312 785 0 0 0 0 0 0  |  331 505 731 238 65 48 323 639 577 340 552 482 580 248 374 118 766 636 354 700 642 634 341 180 498 201 99 0 0 0  |  725 99 672 346 728 672 412 789 438 162 727 40 364 286 189 469 568 117 593 126 441 0 0 0 0 0 0 0 0 0  |  402 221 357 317 515 215 144 726 561 583 742 222 139 711 219 329 527 238 231 464 337 502 0 0 0 0 0 0 0 0  |  236 181 410 542 373 494 723 627 74 428 141 264 607 772 91 673 271 373 0 0 0 0 0 0 0 0 0 0 0 0  |  153 727 343 532 101 395 235 566 775 127 602 351 765 753 339 682 600 612 613 516 45 0 0 0 0 0 0 0 0 0  |  277 58 278 302 787 133 674 671 412 733 110 699 266 253 234 610 537 192 475 299 306 88 549 110 0 0 0 0 0 0  |  753 637 390 440 99 194 551 405 385 657 720 314 777 456 535 209 23 42 538 212 403 667 331 0 0 0 0 0 0 0  |  370 313 787 619 296 247 471 418 543 426 702 498 544 337 580 532 237 257 437 0 0 0 0 0 0 0 0 0 0 0  |  288 703 285 749 651 554 686 389 529 421 136 677 172 397 120 49 478 598 785 747 526 617 464 148 0 0 0 0 0 0  |  790 167 350 93 772 726 659 177 746 17 479 516 437 518 513 595 708 691 622 459 549 251 797 659 687 169 0 0 0 0  |  527 156 6 25 665 558 723 636 116 785 499 429 307 207 415 516 185 510 745 430 0 0 0 0 0 0 0 0 0 0  |  627 645 201 294 81 139 157 470 333 199 619 491 391 597 410 275 659 0 0 0 0 0 0 0 0 0 0 0 0 0  |  291 728 613 588 41 570 787 480 573 311 576 191 170 123 458 375 727 625 313 291 775 684 0 0 0 0 0 0 0 0  |  494 785 186 529 551 79 670 186 392 379 605 416 40 496 741 552 678 572 704 156 521 307 0 0 0 0 0 0 0 0  |  607 656 282 770 507 323 562 327 732 580 708 99 767 582 709 781 569 660 262 663 797 451 215 645 529 0 0 0 0 0  |  427 56 785 667 182 201 677 159 349 321 155 550 587 737 297 101 116 266 165 111 554 54 0 0 0 0 0 0 0 0  |  777 330 185 510 449 611 749 676 395 714 72 190 375 725 375 114 697 798 0 0 0 0 0 0 0 0 0 0 0 0  |  302 791 567 686 803 390 628 650 280 705 348 563 502 73 36 515 658 623 755 52 189 317 362 0 0 0 0 0 0 0  |  138 197 619 560 146 475 222 126 151 754 789 718 497 514 590 56 519 736 544 686 667 132 311 155 625 0 0 0 0 0  |  441 652 471 606 228 340 739 557 226 728 800 307 428 54 321 79 308 0 0 0 0 0 0 0 0 0 0 0 0 0  |  492 495 305 358 786 802 142 119 584 326 668 483 473 618 609 604 416 693 551 672 467 0 0 0 0 0 0 0 0 0  |  648 341 537 125 484 408 792 587 796 334 622 750 15 136 775 765 319 791 9 410 523 549 472 0 0 0 0 0 0 0  |  771 414 550 384 477 44 263 626 413 644 481 167 240 272 360 60 759 483 398 744 770 20 0 0 0 0 0 0 0 0  |  72 580 492 464 524 109 755 641 198 403 60 642 239 138 190 159 752 639 71 0 0 0 0 0 0 0 0 0 0 0  |  800 190 128 131 173 646 427 695 672 620 455 316 435 124 28 315 769 617 684 0 0 0 0 0 0 0 0 0 0 0  |  391 122 785 84 556 705 730 608 401 560 449 509 196 469 690 755 3 0 0 0 0 0 0 0 0 0 0 0 0 0
-6382928.0
-4798.050094604492
-Llenado al terminar (recogido) contenedor 1: 8.34 %
-Llenado al terminar (recogido) contenedor 2: 14.263889 %
-Llenado al terminar (recogido) contenedor 3: 8.625 %
-Llenado al terminar (recogido) contenedor 4: 12.2075 %
-Llenado al terminar (no recogido) contenedor 5: 85.83611 %
-Llenado al terminar (recogido) contenedor 6: 35.933334 %
-Llenado al terminar (recogido) contenedor 7: 11.841667 %
-Llenado al terminar (no recogido) contenedor 8: 56.90167 %
-Llenado al terminar (recogido) contenedor 9: 16.216667 %
-Llenado al terminar (recogido) contenedor 10: 49.962505 %
-Llenado al terminar (no recogido) contenedor 11: 127.91806 %
-Llenado al terminar (recogido) contenedor 12: 16.130556 %
-Llenado al terminar (recogido) contenedor 13: 14.342222 %
-Llenado al terminar (recogido) contenedor 14: 13.123055 %
-Llenado al terminar (recogido) contenedor 15: 28.277502 %
-Llenado al terminar (recogido) contenedor 16: 15.957501 %
-Llenado al terminar (recogido) contenedor 17: 28.384445 %
-Llenado al terminar (recogido) contenedor 18: 12.181667 %
-Llenado al terminar (recogido) contenedor 19: 8.0638895 %
-Llenado al terminar (recogido) contenedor 20: 0.52833337 %
-Llenado al terminar (recogido) contenedor 21: 11.270834 %
-Llenado al terminar (no recogido) contenedor 22: 64.885284 %
-Llenado al terminar (recogido) contenedor 23: 11.445001 %
-Llenado al terminar (recogido) contenedor 24: 14.222222 %
-Llenado al terminar (recogido) contenedor 25: 34.073334 %
-Llenado al terminar (recogido) contenedor 26: 20.166668 %
-Llenado al terminar (no recogido) contenedor 27: 132.85251 %
-Llenado al terminar (recogido) contenedor 28: 26.83889 %
-Llenado al terminar (recogido) contenedor 29: 7.1236115 %
-Llenado al terminar (no recogido) contenedor 30: 64.885284 %
-Llenado al terminar (recogido) contenedor 31: 21.722502 %
-Llenado al terminar (no recogido) contenedor 32: 68.85251 %
-Llenado al terminar (recogido) contenedor 33: 34.519722 %
-Llenado al terminar (no recogido) contenedor 34: 73.86889 %
-Llenado al terminar (no recogido) contenedor 35: 95.91806 %
-Llenado al terminar (recogido) contenedor 36: 15.393056 %
-Llenado al terminar (recogido) contenedor 37: 12.825001 %
-Llenado al terminar (recogido) contenedor 38: 49.532505 %
-Llenado al terminar (recogido) contenedor 39: 6.451667 %
-Llenado al terminar (recogido) contenedor 40: 9.593333 %
-Llenado al terminar (recogido) contenedor 41: 47.847225 %
-Llenado al terminar (recogido) contenedor 42: 19.19 %
-Llenado al terminar (recogido) contenedor 43: 32.174725 %
-Llenado al terminar (recogido) contenedor 44: 20.906944 %
-Llenado al terminar (recogido) contenedor 45: 6.080556 %
-Llenado al terminar (no recogido) contenedor 46: 110.91806 %
-Llenado al terminar (no recogido) contenedor 47: 65.885284 %
-Llenado al terminar (recogido) contenedor 48: 21.815279 %
-Llenado al terminar (recogido) contenedor 49: 22.995 %
-Llenado al terminar (recogido) contenedor 50: 40.62139 %
-Llenado al terminar (recogido) contenedor 51: 23.473333 %
-Llenado al terminar (recogido) contenedor 52: 20.872223 %
-Llenado al terminar (recogido) contenedor 53: 17.550001 %
-Llenado al terminar (recogido) contenedor 54: 2.7125 %
-Llenado al terminar (recogido) contenedor 55: 11.533334 %
-Llenado al terminar (recogido) contenedor 56: 31.266668 %
-Llenado al terminar (no recogido) contenedor 57: 101.85251 %
-Llenado al terminar (recogido) contenedor 58: 50.365 %
-Llenado al terminar (no recogido) contenedor 59: 87.819725 %
-Llenado al terminar (recogido) contenedor 60: 21.641388 %
-Llenado al terminar (no recogido) contenedor 61: 79.91806 %
-Llenado al terminar (no recogido) contenedor 62: 137.88528 %
-Llenado al terminar (recogido) contenedor 63: 20.726667 %
-Llenado al terminar (recogido) contenedor 64: 41.995003 %
-Llenado al terminar (recogido) contenedor 65: 23.616667 %
-Llenado al terminar (no recogido) contenedor 66: 75.85251 %
-Llenado al terminar (recogido) contenedor 67: 48.935005 %
-Llenado al terminar (no recogido) contenedor 68: 57.88528 %
-Llenado al terminar (no recogido) contenedor 69: 77.90167 %
-Llenado al terminar (no recogido) contenedor 70: 92.885284 %
-Llenado al terminar (recogido) contenedor 71: 4.713889 %
-Llenado al terminar (recogido) contenedor 72: 15.196667 %
-Llenado al terminar (recogido) contenedor 73: 19.186666 %
-Llenado al terminar (recogido) contenedor 74: 23.45 %
-Llenado al terminar (no recogido) contenedor 75: 96.85251 %
-Llenado al terminar (no recogido) contenedor 76: 74.91806 %
-Llenado al terminar (no recogido) contenedor 77: 64.91806 %
-Llenado al terminar (no recogido) contenedor 78: 114.86889 %
-Llenado al terminar (recogido) contenedor 79: 18.135555 %
-Llenado al terminar (recogido) contenedor 80: 25.807503 %
-Llenado al terminar (recogido) contenedor 81: 47.36667 %
-Llenado al terminar (recogido) contenedor 82: 8.304167 %
-Llenado al terminar (no recogido) contenedor 83: 52.86889 %
-Llenado al terminar (recogido) contenedor 84: 35.146667 %
-Llenado al terminar (no recogido) contenedor 85: 115.86889 %
-Llenado al terminar (recogido) contenedor 86: 22.95 %
-Llenado al terminar (recogido) contenedor 87: 31.090002 %
-Llenado al terminar (recogido) contenedor 88: 6.997778 %
-Llenado al terminar (no recogido) contenedor 89: 132.85251 %
-Llenado al terminar (recogido) contenedor 90: 19.209167 %
-Llenado al terminar (recogido) contenedor 91: 13.146667 %
-Llenado al terminar (recogido) contenedor 92: 36.922504 %
-Llenado al terminar (recogido) contenedor 93: 39.34889 %
-Llenado al terminar (recogido) contenedor 94: 55.119167 %
-Llenado al terminar (no recogido) contenedor 95: 138.83612 %
-Llenado al terminar (no recogido) contenedor 96: 169.75418 %
-Llenado al terminar (recogido) contenedor 97: 45.658337 %
-Llenado al terminar (recogido) contenedor 98: 33.87389 %
-Llenado al terminar (recogido) contenedor 99: 1.5133333 %
-Llenado al terminar (recogido) contenedor 100: 26.482502 %
-Llenado al terminar (recogido) contenedor 101: 21.891666 %
-Llenado al terminar (no recogido) contenedor 102: 77.85251 %
-Llenado al terminar (recogido) contenedor 103: 23.196667 %
-Llenado al terminar (recogido) contenedor 104: 4.6066666 %
-Llenado al terminar (no recogido) contenedor 105: 99.86889 %
-Llenado al terminar (no recogido) contenedor 106: 101.85251 %
-Llenado al terminar (recogido) contenedor 107: 4.528889 %
-Llenado al terminar (no recogido) contenedor 108: 60.90167 %
-Llenado al terminar (recogido) contenedor 109: 46.350002 %
-Llenado al terminar (recogido) contenedor 110: 3.329167 %
-Llenado al terminar (recogido) contenedor 111: 8.8550005 %
-Llenado al terminar (recogido) contenedor 112: 74.91611 %
-Llenado al terminar (no recogido) contenedor 113: 60.852505 %
-Llenado al terminar (recogido) contenedor 114: 24.340555 %
-Llenado al terminar (no recogido) contenedor 115: 52.86889 %
-Llenado al terminar (recogido) contenedor 116: 14.653334 %
-Llenado al terminar (recogido) contenedor 117: 18.40889 %
-Llenado al terminar (recogido) contenedor 118: 19.28 %
-Llenado al terminar (recogido) contenedor 119: 11.982223 %
-Llenado al terminar (recogido) contenedor 120: 20.686945 %
-Llenado al terminar (recogido) contenedor 121: 26.878056 %
-Llenado al terminar (recogido) contenedor 122: 41.093334 %
-Llenado al terminar (recogido) contenedor 123: 25.615557 %
-Llenado al terminar (recogido) contenedor 124: 24.84 %
-Llenado al terminar (recogido) contenedor 125: 30.315 %
-Llenado al terminar (recogido) contenedor 126: 9.780556 %
-Llenado al terminar (recogido) contenedor 127: 19.969444 %
-Llenado al terminar (recogido) contenedor 128: 19.155 %
-Llenado al terminar (no recogido) contenedor 129: 109.86889 %
-Llenado al terminar (recogido) contenedor 130: 8.077223 %
-Llenado al terminar (recogido) contenedor 131: 23.745834 %
-Llenado al terminar (recogido) contenedor 132: 5.481389 %
-Llenado al terminar (recogido) contenedor 133: 38.073334 %
-Llenado al terminar (recogido) contenedor 134: 48.091667 %
-Llenado al terminar (no recogido) contenedor 135: 103.85251 %
-Llenado al terminar (recogido) contenedor 136: 26.672222 %
-Llenado al terminar (no recogido) contenedor 137: 73.91806 %
-Llenado al terminar (recogido) contenedor 138: 16.113335 %
-Llenado al terminar (recogido) contenedor 139: 28.465002 %
-Llenado al terminar (no recogido) contenedor 140: 104.83611 %
-Llenado al terminar (recogido) contenedor 141: 26.672222 %
-Llenado al terminar (recogido) contenedor 142: 6.3972225 %
-Llenado al terminar (no recogido) contenedor 143: 134.90167 %
-Llenado al terminar (recogido) contenedor 144: 41.944447 %
-Llenado al terminar (no recogido) contenedor 145: 92.86889 %
-Llenado al terminar (recogido) contenedor 146: 27.577778 %
-Llenado al terminar (recogido) contenedor 147: 27.890278 %
-Llenado al terminar (recogido) contenedor 148: 6.9833336 %
-Llenado al terminar (recogido) contenedor 149: 21.702501 %
-Llenado al terminar (recogido) contenedor 150: 12.7925005 %
-Llenado al terminar (recogido) contenedor 151: 37.805557 %
-Llenado al terminar (no recogido) contenedor 152: 76.885284 %
-Llenado al terminar (recogido) contenedor 153: 48.457504 %
-Llenado al terminar (no recogido) contenedor 154: 58.90167 %
-Llenado al terminar (recogido) contenedor 155: 3.8750002 %
-Llenado al terminar (recogido) contenedor 156: 9.0008335 %
-Llenado al terminar (recogido) contenedor 157: 33.564445 %
-Llenado al terminar (no recogido) contenedor 158: 153.83612 %
-Llenado al terminar (recogido) contenedor 159: 13.173334 %
-Llenado al terminar (recogido) contenedor 160: 25.211111 %
-Llenado al terminar (recogido) contenedor 161: 8.5725 %
-Llenado al terminar (recogido) contenedor 162: 25.596666 %
-Llenado al terminar (no recogido) contenedor 163: 122.91806 %
-Llenado al terminar (no recogido) contenedor 164: 44.90167 %
-Llenado al terminar (recogido) contenedor 165: 8.765 %
-Llenado al terminar (recogido) contenedor 166: 35.935 %
-Llenado al terminar (recogido) contenedor 167: 19.875 %
-Llenado al terminar (recogido) contenedor 168: 36.49917 %
-Llenado al terminar (recogido) contenedor 169: 3.1622224 %
-Llenado al terminar (recogido) contenedor 170: 24.820833 %
-Llenado al terminar (recogido) contenedor 171: 19.751667 %
-Llenado al terminar (recogido) contenedor 172: 17.530556 %
-Llenado al terminar (recogido) contenedor 173: 23.086111 %
-Llenado al terminar (recogido) contenedor 174: 44.684444 %
-Llenado al terminar (recogido) contenedor 175: 23.008335 %
-Llenado al terminar (recogido) contenedor 176: 58.913334 %
-Llenado al terminar (recogido) contenedor 177: 14.960834 %
-Llenado al terminar (recogido) contenedor 178: 15.450001 %
-Llenado al terminar (no recogido) contenedor 179: 65.86889 %
-Llenado al terminar (recogido) contenedor 180: 11.288333 %
-Llenado al terminar (recogido) contenedor 181: 54.36139 %
-Llenado al terminar (recogido) contenedor 182: 42.95417 %
-Llenado al terminar (recogido) contenedor 183: 22.557777 %
-Llenado al terminar (no recogido) contenedor 184: 130.77057 %
-Llenado al terminar (recogido) contenedor 185: 36.1875 %
-Llenado al terminar (recogido) contenedor 186: 54.170837 %
-Llenado al terminar (no recogido) contenedor 187: 181.77057 %
-Llenado al terminar (recogido) contenedor 188: 22.035557 %
-Llenado al terminar (recogido) contenedor 189: 20.023056 %
-Llenado al terminar (recogido) contenedor 190: 21.66 %
-Llenado al terminar (recogido) contenedor 191: 18.710001 %
-Llenado al terminar (recogido) contenedor 192: 24.847778 %
-Llenado al terminar (recogido) contenedor 193: 42.491943 %
-Llenado al terminar (recogido) contenedor 194: 50.75 %
-Llenado al terminar (recogido) contenedor 195: 18.107502 %
-Llenado al terminar (recogido) contenedor 196: 21.367502 %
-Llenado al terminar (recogido) contenedor 197: 81.075005 %
-Llenado al terminar (recogido) contenedor 198: 48.333336 %
-Llenado al terminar (recogido) contenedor 199: 51.24 %
-Llenado al terminar (recogido) contenedor 200: 40.03639 %
-Llenado al terminar (recogido) contenedor 201: 3.1475003 %
-Llenado al terminar (recogido) contenedor 202: 10.677778 %
-Llenado al terminar (recogido) contenedor 203: 25.429167 %
-Llenado al terminar (no recogido) contenedor 204: 73.90167 %
-Llenado al terminar (recogido) contenedor 205: 44.453335 %
-Llenado al terminar (recogido) contenedor 206: 32.233334 %
-Llenado al terminar (recogido) contenedor 207: 4.3955555 %
-Llenado al terminar (recogido) contenedor 208: 10.755 %
-Llenado al terminar (recogido) contenedor 209: 26.970001 %
-Llenado al terminar (no recogido) contenedor 210: 71.86889 %
-Llenado al terminar (no recogido) contenedor 211: 87.86889 %
-Llenado al terminar (recogido) contenedor 212: 13.740001 %
-Llenado al terminar (recogido) contenedor 213: 7.875 %
-Llenado al terminar (recogido) contenedor 214: 34.850834 %
-Llenado al terminar (recogido) contenedor 215: 20.783335 %
-Llenado al terminar (recogido) contenedor 216: 31.210001 %
-Llenado al terminar (recogido) contenedor 217: 26.930555 %
-Llenado al terminar (recogido) contenedor 218: 7.6625004 %
-Llenado al terminar (recogido) contenedor 219: 16.825 %
-Llenado al terminar (recogido) contenedor 220: 30.03 %
-Llenado al terminar (recogido) contenedor 221: 46.135002 %
-Llenado al terminar (recogido) contenedor 222: 20.390001 %
-Llenado al terminar (recogido) contenedor 223: 28.400002 %
-Llenado al terminar (recogido) contenedor 224: 5.2222223 %
-Llenado al terminar (no recogido) contenedor 225: 86.85251 %
-Llenado al terminar (recogido) contenedor 226: 25.5 %
-Llenado al terminar (recogido) contenedor 227: 24.44 %
-Llenado al terminar (recogido) contenedor 228: 48.76389 %
-Llenado al terminar (recogido) contenedor 229: 25.8125 %
-Llenado al terminar (recogido) contenedor 230: 9.68 %
-Llenado al terminar (recogido) contenedor 231: 12.77 %
-Llenado al terminar (no recogido) contenedor 232: 111.83611 %
-Llenado al terminar (no recogido) contenedor 233: 100.86889 %
-Llenado al terminar (recogido) contenedor 234: 17.428333 %
-Llenado al terminar (recogido) contenedor 235: 12.542223 %
-Llenado al terminar (recogido) contenedor 236: 43.493336 %
-Llenado al terminar (recogido) contenedor 237: 22.570002 %
-Llenado al terminar (recogido) contenedor 238: 14.121667 %
-Llenado al terminar (recogido) contenedor 239: 14.273334 %
-Llenado al terminar (recogido) contenedor 240: 4.8358335 %
-Llenado al terminar (recogido) contenedor 241: 16.994446 %
-Llenado al terminar (recogido) contenedor 242: 23.535557 %
-Llenado al terminar (recogido) contenedor 243: 52.457504 %
-Llenado al terminar (no recogido) contenedor 244: 62.852505 %
-Llenado al terminar (recogido) contenedor 245: 26.872223 %
-Llenado al terminar (no recogido) contenedor 246: 130.75418 %
-Llenado al terminar (recogido) contenedor 247: 16.90889 %
-Llenado al terminar (recogido) contenedor 248: 37.819168 %
-Llenado al terminar (recogido) contenedor 249: 11.487501 %
-Llenado al terminar (recogido) contenedor 250: 25.63611 %
-Llenado al terminar (recogido) contenedor 251: 9.893333 %
-Llenado al terminar (recogido) contenedor 252: 39.01778 %
-Llenado al terminar (recogido) contenedor 253: 12.125001 %
-Llenado al terminar (no recogido) contenedor 254: 52.918056 %
-Llenado al terminar (recogido) contenedor 255: 34.744446 %
-Llenado al terminar (no recogido) contenedor 256: 101.83611 %
-Llenado al terminar (recogido) contenedor 257: 20.142502 %
-Llenado al terminar (recogido) contenedor 258: 3.66 %
-Llenado al terminar (recogido) contenedor 259: 27.236668 %
-Llenado al terminar (no recogido) contenedor 260: 84.885284 %
-Llenado al terminar (no recogido) contenedor 261: 130.8689 %
-Llenado al terminar (recogido) contenedor 262: 18.227222 %
-Llenado al terminar (recogido) contenedor 263: 37.842503 %
-Llenado al terminar (recogido) contenedor 264: 16.339167 %
-Llenado al terminar (recogido) contenedor 265: 43.375004 %
-Llenado al terminar (recogido) contenedor 266: 9.161111 %
-Llenado al terminar (recogido) contenedor 267: 34.782223 %
-Llenado al terminar (recogido) contenedor 268: 13.05 %
-Llenado al terminar (recogido) contenedor 269: 15.045 %
-Llenado al terminar (recogido) contenedor 270: 43.967503 %
-Llenado al terminar (recogido) contenedor 271: 7.6163893 %
-Llenado al terminar (recogido) contenedor 272: 20.755556 %
-Llenado al terminar (no recogido) contenedor 273: 147.85251 %
-Llenado al terminar (recogido) contenedor 274: 14.095556 %
-Llenado al terminar (recogido) contenedor 275: 15.495001 %
-Llenado al terminar (no recogido) contenedor 276: 120.91806 %
-Llenado al terminar (recogido) contenedor 277: 8.191945 %
-Llenado al terminar (recogido) contenedor 278: 9.005001 %
-Llenado al terminar (recogido) contenedor 279: 20.337502 %
-Llenado al terminar (recogido) contenedor 280: 25.194445 %
-Llenado al terminar (recogido) contenedor 281: 43.4625 %
-Llenado al terminar (recogido) contenedor 282: 10.715001 %
-Llenado al terminar (no recogido) contenedor 283: 48.918056 %
-Llenado al terminar (no recogido) contenedor 284: 66.85251 %
-Llenado al terminar (recogido) contenedor 285: 25.908335 %
-Llenado al terminar (recogido) contenedor 286: 15.615278 %
-Llenado al terminar (recogido) contenedor 287: 13.163334 %
-Llenado al terminar (recogido) contenedor 288: 31.946667 %
-Llenado al terminar (recogido) contenedor 289: 22.265001 %
-Llenado al terminar (recogido) contenedor 290: 20.115002 %
-Llenado al terminar (recogido) contenedor 291: 13.902778 %
-Llenado al terminar (recogido) contenedor 292: 10.311111 %
-Llenado al terminar (recogido) contenedor 293: 3.29 %
-Llenado al terminar (recogido) contenedor 294: 33.911114 %
-Llenado al terminar (recogido) contenedor 295: 7.8333335 %
-Llenado al terminar (recogido) contenedor 296: 42.317505 %
-Llenado al terminar (recogido) contenedor 297: 22.792501 %
-Llenado al terminar (no recogido) contenedor 298: 67.885284 %
-Llenado al terminar (recogido) contenedor 299: 14.532501 %
-Llenado al terminar (no recogido) contenedor 300: 60.918056 %
-Llenado al terminar (recogido) contenedor 301: 5.6300006 %
-Llenado al terminar (recogido) contenedor 302: 26.46389 %
-Llenado al terminar (recogido) contenedor 303: 7.0244446 %
-Llenado al terminar (recogido) contenedor 304: 24.291945 %
-Llenado al terminar (recogido) contenedor 305: 55.4125 %
-Llenado al terminar (recogido) contenedor 306: 15.925 %
-Llenado al terminar (recogido) contenedor 307: 10.346111 %
-Llenado al terminar (recogido) contenedor 308: 17.922222 %
-Llenado al terminar (no recogido) contenedor 309: 142.75418 %
-Llenado al terminar (recogido) contenedor 310: 18.984446 %
-Llenado al terminar (recogido) contenedor 311: 5.541667 %
-Llenado al terminar (recogido) contenedor 312: 7.6822224 %
-Llenado al terminar (recogido) contenedor 313: 30.87139 %
-Llenado al terminar (recogido) contenedor 314: 37.325 %
-Llenado al terminar (recogido) contenedor 315: 28.706667 %
-Llenado al terminar (recogido) contenedor 316: 30.945002 %
-Llenado al terminar (recogido) contenedor 317: 10.776112 %
-Llenado al terminar (recogido) contenedor 318: 45.100002 %
-Llenado al terminar (recogido) contenedor 319: 20.107502 %
-Llenado al terminar (recogido) contenedor 320: 78.151115 %
-Llenado al terminar (recogido) contenedor 321: 40.56667 %
-Llenado al terminar (recogido) contenedor 322: 30.345001 %
-Llenado al terminar (recogido) contenedor 323: 39.68667 %
-Llenado al terminar (recogido) contenedor 324: 40.716667 %
-Llenado al terminar (recogido) contenedor 325: 27.133888 %
-Llenado al terminar (recogido) contenedor 326: 39.40278 %
-Llenado al terminar (recogido) contenedor 327: 64.0 %
-Llenado al terminar (recogido) contenedor 328: 44.232502 %
-Llenado al terminar (recogido) contenedor 329: 20.196667 %
-Llenado al terminar (recogido) contenedor 330: 69.954445 %
-Llenado al terminar (recogido) contenedor 331: 10.9925 %
-Llenado al terminar (recogido) contenedor 332: 29.820002 %
-Llenado al terminar (recogido) contenedor 333: 45.823334 %
-Llenado al terminar (recogido) contenedor 334: 45.760555 %
-Llenado al terminar (recogido) contenedor 335: 44.403336 %
-Llenado al terminar (no recogido) contenedor 336: 70.85251 %
-Llenado al terminar (recogido) contenedor 337: 23.771944 %
-Llenado al terminar (recogido) contenedor 338: 19.475 %
-Llenado al terminar (recogido) contenedor 339: 21.665 %
-Llenado al terminar (recogido) contenedor 340: 55.970837 %
-Llenado al terminar (recogido) contenedor 341: 14.972222 %
-Llenado al terminar (recogido) contenedor 342: 34.88 %
-Llenado al terminar (recogido) contenedor 343: 42.845 %
-Llenado al terminar (no recogido) contenedor 344: 101.78694 %
-Llenado al terminar (no recogido) contenedor 345: 81.80334 %
-Llenado al terminar (recogido) contenedor 346: 33.513332 %
-Llenado al terminar (recogido) contenedor 347: 21.560001 %
-Llenado al terminar (recogido) contenedor 348: 13.125 %
-Llenado al terminar (recogido) contenedor 349: 40.428055 %
-Llenado al terminar (recogido) contenedor 350: 57.96694 %
-Llenado al terminar (recogido) contenedor 351: 22.322224 %
-Llenado al terminar (recogido) contenedor 352: 29.320002 %
-Llenado al terminar (recogido) contenedor 353: 11.26 %
-Llenado al terminar (recogido) contenedor 354: 15.1900015 %
-Llenado al terminar (no recogido) contenedor 355: 94.80334 %
-Llenado al terminar (recogido) contenedor 356: 47.051666 %
-Llenado al terminar (recogido) contenedor 357: 41.7825 %
-Llenado al terminar (recogido) contenedor 358: 58.18222 %
-Llenado al terminar (recogido) contenedor 359: 57.738335 %
-Llenado al terminar (recogido) contenedor 360: 21.991667 %
-Llenado al terminar (recogido) contenedor 361: 47.163334 %
-Llenado al terminar (recogido) contenedor 362: 21.425001 %
-Llenado al terminar (recogido) contenedor 363: 39.769165 %
-Llenado al terminar (recogido) contenedor 364: 31.075003 %
-Llenado al terminar (recogido) contenedor 365: 63.945 %
-Llenado al terminar (recogido) contenedor 366: 39.225002 %
-Llenado al terminar (recogido) contenedor 367: 43.657776 %
-Llenado al terminar (recogido) contenedor 368: 66.4625 %
-Llenado al terminar (recogido) contenedor 369: 13.728889 %
-Llenado al terminar (recogido) contenedor 370: 42.52 %
-Llenado al terminar (recogido) contenedor 371: 28.976112 %
-Llenado al terminar (recogido) contenedor 372: 73.08389 %
-Llenado al terminar (recogido) contenedor 373: 5.186667 %
-Llenado al terminar (recogido) contenedor 374: 21.885002 %
-Llenado al terminar (recogido) contenedor 375: 24.147501 %
-Llenado al terminar (recogido) contenedor 376: 43.513336 %
-Llenado al terminar (recogido) contenedor 377: 51.925003 %
-Llenado al terminar (no recogido) contenedor 378: 115.75417 %
-Llenado al terminar (recogido) contenedor 379: 20.22889 %
-Llenado al terminar (recogido) contenedor 380: 53.158337 %
-Llenado al terminar (recogido) contenedor 381: 38.495834 %
-Llenado al terminar (recogido) contenedor 382: 13.491668 %
-Llenado al terminar (recogido) contenedor 383: 9.755556 %
-Llenado al terminar (recogido) contenedor 384: 69.10944 %
-Llenado al terminar (recogido) contenedor 385: 33.924446 %
-Llenado al terminar (recogido) contenedor 386: 24.677778 %
-Llenado al terminar (recogido) contenedor 387: 34.953335 %
-Llenado al terminar (recogido) contenedor 388: 13.553333 %
-Llenado al terminar (recogido) contenedor 389: 18.26 %
-Llenado al terminar (recogido) contenedor 390: 57.516666 %
-Llenado al terminar (recogido) contenedor 391: 47.45 %
-Llenado al terminar (recogido) contenedor 392: 9.508334 %
-Llenado al terminar (recogido) contenedor 393: 33.7 %
-Llenado al terminar (no recogido) contenedor 394: 74.86889 %
-Llenado al terminar (recogido) contenedor 395: 33.573334 %
-Llenado al terminar (recogido) contenedor 396: 30.533335 %
-Llenado al terminar (recogido) contenedor 397: 28.061945 %
-Llenado al terminar (recogido) contenedor 398: 11.808333 %
-Llenado al terminar (recogido) contenedor 399: 63.14389 %
-Llenado al terminar (recogido) contenedor 400: 55.475002 %
-Llenado al terminar (recogido) contenedor 401: 32.63889 %
-Llenado al terminar (recogido) contenedor 402: 34.985 %
-Llenado al terminar (recogido) contenedor 403: 17.713333 %
-Llenado al terminar (recogido) contenedor 404: 43.130558 %
-Llenado al terminar (recogido) contenedor 405: 35.11111 %
-Llenado al terminar (recogido) contenedor 406: 37.1225 %
-Llenado al terminar (recogido) contenedor 407: 41.288334 %
-Llenado al terminar (recogido) contenedor 408: 35.633335 %
-Llenado al terminar (recogido) contenedor 409: 47.075 %
-Llenado al terminar (recogido) contenedor 410: 14.184444 %
-Llenado al terminar (recogido) contenedor 411: 15.704445 %
-Llenado al terminar (recogido) contenedor 412: 33.90472 %
-Llenado al terminar (recogido) contenedor 413: 15.481667 %
-Llenado al terminar (recogido) contenedor 414: 42.32889 %
-Llenado al terminar (recogido) contenedor 415: 28.81389 %
-Llenado al terminar (recogido) contenedor 416: 15.944445 %
-Llenado al terminar (recogido) contenedor 417: 53.91028 %
-Llenado al terminar (recogido) contenedor 418: 44.415554 %
-Llenado al terminar (recogido) contenedor 419: 13.110001 %
-Llenado al terminar (recogido) contenedor 420: 41.675003 %
-Llenado al terminar (recogido) contenedor 421: 56.217777 %
-Llenado al terminar (no recogido) contenedor 422: 157.81973 %
-Llenado al terminar (recogido) contenedor 423: 39.505554 %
-Llenado al terminar (recogido) contenedor 424: 31.60889 %
-Llenado al terminar (recogido) contenedor 425: 33.966667 %
-Llenado al terminar (recogido) contenedor 426: 56.05417 %
-Llenado al terminar (recogido) contenedor 427: 57.82917 %
-Llenado al terminar (recogido) contenedor 428: 28.805555 %
-Llenado al terminar (recogido) contenedor 429: 27.43 %
-Llenado al terminar (recogido) contenedor 430: 22.336668 %
-Llenado al terminar (recogido) contenedor 431: 10.544445 %
-Llenado al terminar (no recogido) contenedor 432: 133.85251 %
-Llenado al terminar (recogido) contenedor 433: 22.169445 %
-Llenado al terminar (recogido) contenedor 434: 38.166668 %
-Llenado al terminar (recogido) contenedor 435: 12.88 %
-Llenado al terminar (recogido) contenedor 436: 21.822502 %
-Llenado al terminar (recogido) contenedor 437: 19.702223 %
-Llenado al terminar (recogido) contenedor 438: 56.785557 %
-Llenado al terminar (recogido) contenedor 439: 30.633055 %
-Llenado al terminar (recogido) contenedor 440: 27.858335 %
-Llenado al terminar (recogido) contenedor 441: 21.543333 %
-Llenado al terminar (recogido) contenedor 442: 52.74667 %
-Llenado al terminar (no recogido) contenedor 443: 178.75418 %
-Llenado al terminar (recogido) contenedor 444: 19.34889 %
-Llenado al terminar (recogido) contenedor 445: 29.517502 %
-Llenado al terminar (recogido) contenedor 446: 10.972222 %
-Llenado al terminar (recogido) contenedor 447: 37.793888 %
-Llenado al terminar (recogido) contenedor 448: 24.970556 %
-Llenado al terminar (recogido) contenedor 449: 41.550003 %
-Llenado al terminar (recogido) contenedor 450: 13.6 %
-Llenado al terminar (recogido) contenedor 451: 21.255 %
-Llenado al terminar (recogido) contenedor 452: 32.43861 %
-Llenado al terminar (recogido) contenedor 453: 30.561111 %
-Llenado al terminar (recogido) contenedor 454: 37.454998 %
-Llenado al terminar (recogido) contenedor 455: 49.74278 %
-Llenado al terminar (recogido) contenedor 456: 25.217499 %
-Llenado al terminar (no recogido) contenedor 457: 93.80334 %
-Llenado al terminar (recogido) contenedor 458: 29.914444 %
-Llenado al terminar (recogido) contenedor 459: 23.089445 %
-Llenado al terminar (no recogido) contenedor 460: 155.75418 %
-Llenado al terminar (recogido) contenedor 461: 35.943333 %
-Llenado al terminar (recogido) contenedor 462: 34.307777 %
-Llenado al terminar (recogido) contenedor 463: 29.586668 %
-Llenado al terminar (recogido) contenedor 464: 12.406667 %
-Llenado al terminar (recogido) contenedor 465: 53.81 %
-Llenado al terminar (recogido) contenedor 466: 31.918612 %
-Llenado al terminar (recogido) contenedor 467: 11.980833 %
-Llenado al terminar (recogido) contenedor 468: 27.325277 %
-Llenado al terminar (recogido) contenedor 469: 31.879168 %
-Llenado al terminar (recogido) contenedor 470: 27.742502 %
-Llenado al terminar (recogido) contenedor 471: 16.4575 %
-Llenado al terminar (recogido) contenedor 472: 7.970834 %
-Llenado al terminar (recogido) contenedor 473: 20.211111 %
-Llenado al terminar (recogido) contenedor 474: 31.42389 %
-Llenado al terminar (recogido) contenedor 475: 15.866667 %
-Llenado al terminar (recogido) contenedor 476: 80.06251 %
-Llenado al terminar (recogido) contenedor 477: 49.460278 %
-Llenado al terminar (recogido) contenedor 478: 19.36111 %
-Llenado al terminar (recogido) contenedor 479: 38.406666 %
-Llenado al terminar (recogido) contenedor 480: 54.99667 %
-Llenado al terminar (recogido) contenedor 481: 37.5925 %
-Llenado al terminar (recogido) contenedor 482: 10.953334 %
-Llenado al terminar (recogido) contenedor 483: 11.452222 %
-Llenado al terminar (recogido) contenedor 484: 66.87334 %
-Llenado al terminar (recogido) contenedor 485: 23.043333 %
-Llenado al terminar (recogido) contenedor 486: 20.845001 %
-Llenado al terminar (recogido) contenedor 487: 25.62 %
-Llenado al terminar (recogido) contenedor 488: 42.00389 %
-Llenado al terminar (recogido) contenedor 489: 57.700005 %
-Llenado al terminar (no recogido) contenedor 490: 160.81973 %
-Llenado al terminar (recogido) contenedor 491: 26.722223 %
-Llenado al terminar (recogido) contenedor 492: 63.300003 %
-Llenado al terminar (no recogido) contenedor 493: 94.75417 %
-Llenado al terminar (recogido) contenedor 494: 53.328888 %
-Llenado al terminar (recogido) contenedor 495: 76.206665 %
-Llenado al terminar (recogido) contenedor 496: 28.983334 %
-Llenado al terminar (recogido) contenedor 497: 37.6025 %
-Llenado al terminar (recogido) contenedor 498: 9.245833 %
-Llenado al terminar (recogido) contenedor 499: 9.860001 %
-Llenado al terminar (no recogido) contenedor 500: 139.85251 %
-Llenado al terminar (recogido) contenedor 501: 44.55 %
-Llenado al terminar (recogido) contenedor 502: 21.551111 %
-Llenado al terminar (recogido) contenedor 503: 53.157497 %
-Llenado al terminar (recogido) contenedor 504: 28.77389 %
-Llenado al terminar (recogido) contenedor 505: 24.863054 %
-Llenado al terminar (recogido) contenedor 506: 42.463055 %
-Llenado al terminar (recogido) contenedor 507: 25.842222 %
-Llenado al terminar (recogido) contenedor 508: 15.840001 %
-Llenado al terminar (recogido) contenedor 509: 30.407223 %
-Llenado al terminar (recogido) contenedor 510: 28.347221 %
-Llenado al terminar (recogido) contenedor 511: 39.498333 %
-Llenado al terminar (recogido) contenedor 512: 41.02889 %
-Llenado al terminar (recogido) contenedor 513: 34.016666 %
-Llenado al terminar (recogido) contenedor 514: 22.364445 %
-Llenado al terminar (recogido) contenedor 515: 22.813334 %
-Llenado al terminar (recogido) contenedor 516: 21.179167 %
-Llenado al terminar (no recogido) contenedor 517: 108.78694 %
-Llenado al terminar (recogido) contenedor 518: 40.25778 %
-Llenado al terminar (recogido) contenedor 519: 17.456388 %
-Llenado al terminar (no recogido) contenedor 520: 82.80334 %
-Llenado al terminar (recogido) contenedor 521: 13.18 %
-Llenado al terminar (recogido) contenedor 522: 47.355 %
-Llenado al terminar (recogido) contenedor 523: 7.117778 %
-Llenado al terminar (recogido) contenedor 524: 50.75417 %
-Llenado al terminar (recogido) contenedor 525: 32.190277 %
-Llenado al terminar (recogido) contenedor 526: 18.954445 %
-Llenado al terminar (recogido) contenedor 527: 21.565556 %
-Llenado al terminar (recogido) contenedor 528: 31.06389 %
-Llenado al terminar (recogido) contenedor 529: 12.906667 %
-Llenado al terminar (recogido) contenedor 530: 51.667778 %
-Llenado al terminar (no recogido) contenedor 531: 142.80334 %
-Llenado al terminar (recogido) contenedor 532: 29.244446 %
-Llenado al terminar (no recogido) contenedor 533: 177.78694 %
-Llenado al terminar (recogido) contenedor 534: 26.255556 %
-Llenado al terminar (recogido) contenedor 535: 43.83167 %
-Llenado al terminar (recogido) contenedor 536: 15.735556 %
-Llenado al terminar (recogido) contenedor 537: 27.335 %
-Llenado al terminar (recogido) contenedor 538: 21.508055 %
-Llenado al terminar (recogido) contenedor 539: 32.27611 %
-Llenado al terminar (recogido) contenedor 540: 7.9675007 %
-Llenado al terminar (recogido) contenedor 541: 39.334167 %
-Llenado al terminar (recogido) contenedor 542: 40.615 %
-Llenado al terminar (recogido) contenedor 543: 39.06667 %
-Llenado al terminar (recogido) contenedor 544: 12.921945 %
-Llenado al terminar (recogido) contenedor 545: 37.836945 %
-Llenado al terminar (recogido) contenedor 546: 29.192223 %
-Llenado al terminar (recogido) contenedor 547: 18.526667 %
-Llenado al terminar (no recogido) contenedor 548: 92.83611 %
-Llenado al terminar (recogido) contenedor 549: 6.6480556 %
-Llenado al terminar (recogido) contenedor 550: 25.004444 %
-Llenado al terminar (recogido) contenedor 551: 34.016666 %
-Llenado al terminar (recogido) contenedor 552: 16.244444 %
-Llenado al terminar (recogido) contenedor 553: 17.12 %
-Llenado al terminar (recogido) contenedor 554: 7.5013885 %
-Llenado al terminar (no recogido) contenedor 555: 68.85251 %
-Llenado al terminar (recogido) contenedor 556: 54.444447 %
-Llenado al terminar (recogido) contenedor 557: 21.835556 %
-Llenado al terminar (recogido) contenedor 558: 39.262222 %
-Llenado al terminar (no recogido) contenedor 559: 158.83612 %
-Llenado al terminar (recogido) contenedor 560: 24.42 %
-Llenado al terminar (recogido) contenedor 561: 44.25417 %
-Llenado al terminar (recogido) contenedor 562: 61.627224 %
-Llenado al terminar (recogido) contenedor 563: 47.699165 %
-Llenado al terminar (recogido) contenedor 564: 39.15 %
-Llenado al terminar (recogido) contenedor 565: 33.11667 %
-Llenado al terminar (recogido) contenedor 566: 28.066668 %
-Llenado al terminar (recogido) contenedor 567: 62.133335 %
-Llenado al terminar (recogido) contenedor 568: 5.3805556 %
-Llenado al terminar (recogido) contenedor 569: 45.612503 %
-Llenado al terminar (recogido) contenedor 570: 30.265001 %
-Llenado al terminar (recogido) contenedor 571: 25.070833 %
-Llenado al terminar (recogido) contenedor 572: 20.826668 %
-Llenado al terminar (recogido) contenedor 573: 52.895554 %
-Llenado al terminar (recogido) contenedor 574: 14.422222 %
-Llenado al terminar (recogido) contenedor 575: 38.591667 %
-Llenado al terminar (recogido) contenedor 576: 34.522503 %
-Llenado al terminar (recogido) contenedor 577: 53.931114 %
-Llenado al terminar (recogido) contenedor 578: 14.840833 %
-Llenado al terminar (no recogido) contenedor 579: 164.80334 %
-Llenado al terminar (recogido) contenedor 580: 23.513334 %
-Llenado al terminar (recogido) contenedor 581: 44.427498 %
-Llenado al terminar (recogido) contenedor 582: 51.70417 %
-Llenado al terminar (recogido) contenedor 583: 30.244446 %
-Llenado al terminar (recogido) contenedor 584: 42.808334 %
-Llenado al terminar (recogido) contenedor 585: 43.874447 %
-Llenado al terminar (recogido) contenedor 586: 53.375 %
-Llenado al terminar (recogido) contenedor 587: 27.007502 %
-Llenado al terminar (recogido) contenedor 588: 45.915005 %
-Llenado al terminar (recogido) contenedor 589: 26.88889 %
-Llenado al terminar (recogido) contenedor 590: 28.306665 %
-Llenado al terminar (recogido) contenedor 591: 43.952778 %
-Llenado al terminar (recogido) contenedor 592: 35.836113 %
-Llenado al terminar (recogido) contenedor 593: 19.055002 %
-Llenado al terminar (recogido) contenedor 594: 41.00889 %
-Llenado al terminar (recogido) contenedor 595: 31.546667 %
-Llenado al terminar (recogido) contenedor 596: 1.7416667 %
-Llenado al terminar (recogido) contenedor 597: 24.631111 %
-Llenado al terminar (recogido) contenedor 598: 21.573334 %
-Llenado al terminar (no recogido) contenedor 599: 80.819725 %
-Llenado al terminar (recogido) contenedor 600: 24.031944 %
-Llenado al terminar (recogido) contenedor 601: 26.231112 %
-Llenado al terminar (recogido) contenedor 602: 26.330002 %
-Llenado al terminar (recogido) contenedor 603: 65.25167 %
-Llenado al terminar (recogido) contenedor 604: 24.247501 %
-Llenado al terminar (recogido) contenedor 605: 45.870834 %
-Llenado al terminar (recogido) contenedor 606: 35.52972 %
-Llenado al terminar (recogido) contenedor 607: 22.119165 %
-Llenado al terminar (recogido) contenedor 608: 45.767223 %
-Llenado al terminar (recogido) contenedor 609: 15.612501 %
-Llenado al terminar (recogido) contenedor 610: 15.017778 %
-Llenado al terminar (recogido) contenedor 611: 28.069445 %
-Llenado al terminar (recogido) contenedor 612: 21.541666 %
-Llenado al terminar (recogido) contenedor 613: 25.720835 %
-Llenado al terminar (recogido) contenedor 614: 49.552223 %
-Llenado al terminar (recogido) contenedor 615: 26.847223 %
-Llenado al terminar (recogido) contenedor 616: 10.755556 %
-Llenado al terminar (recogido) contenedor 617: 11.791667 %
-Llenado al terminar (recogido) contenedor 618: 21.571667 %
-Llenado al terminar (recogido) contenedor 619: 41.716667 %
-Llenado al terminar (recogido) contenedor 620: 21.527779 %
-Llenado al terminar (recogido) contenedor 621: 50.317223 %
-Llenado al terminar (recogido) contenedor 622: 28.268333 %
-Llenado al terminar (recogido) contenedor 623: 22.8875 %
-Llenado al terminar (recogido) contenedor 624: 63.718056 %
-Llenado al terminar (recogido) contenedor 625: 3.3152778 %
-Llenado al terminar (recogido) contenedor 626: 31.035557 %
-Llenado al terminar (recogido) contenedor 627: 16.145555 %
-Llenado al terminar (recogido) contenedor 628: 51.412777 %
-Llenado al terminar (no recogido) contenedor 629: 163.80334 %
-Llenado al terminar (no recogido) contenedor 630: 113.85251 %
-Llenado al terminar (recogido) contenedor 631: 25.627779 %
-Llenado al terminar (recogido) contenedor 632: 52.722225 %
-Llenado al terminar (recogido) contenedor 633: 33.977222 %
-Llenado al terminar (recogido) contenedor 634: 12.450001 %
-Llenado al terminar (recogido) contenedor 635: 28.054445 %
-Llenado al terminar (recogido) contenedor 636: 20.920834 %
-Llenado al terminar (recogido) contenedor 637: 75.70889 %
-Llenado al terminar (recogido) contenedor 638: 58.380833 %
-Llenado al terminar (recogido) contenedor 639: 21.0375 %
-Llenado al terminar (recogido) contenedor 640: 43.633335 %
-Llenado al terminar (recogido) contenedor 641: 24.01 %
-Llenado al terminar (recogido) contenedor 642: 18.6225 %
-Llenado al terminar (recogido) contenedor 643: 19.1425 %
-Llenado al terminar (recogido) contenedor 644: 20.113335 %
-Llenado al terminar (recogido) contenedor 645: 14.196667 %
-Llenado al terminar (recogido) contenedor 646: 61.92278 %
-Llenado al terminar (recogido) contenedor 647: 21.613335 %
-Llenado al terminar (recogido) contenedor 648: 41.25 %
-Llenado al terminar (recogido) contenedor 649: 50.8875 %
-Llenado al terminar (recogido) contenedor 650: 49.885 %
-Llenado al terminar (recogido) contenedor 651: 53.004723 %
-Llenado al terminar (recogido) contenedor 652: 53.080555 %
-Llenado al terminar (recogido) contenedor 653: 40.175003 %
-Llenado al terminar (recogido) contenedor 654: 59.370277 %
-Llenado al terminar (recogido) contenedor 655: 6.958611 %
-Llenado al terminar (recogido) contenedor 656: 31.84 %
-Llenado al terminar (recogido) contenedor 657: 21.906668 %
-Llenado al terminar (recogido) contenedor 658: 24.856667 %
-Llenado al terminar (recogido) contenedor 659: 6.26 %
-Llenado al terminar (recogido) contenedor 660: 37.72889 %
-Llenado al terminar (recogido) contenedor 661: 17.868889 %
-Llenado al terminar (recogido) contenedor 662: 43.152504 %
-Llenado al terminar (recogido) contenedor 663: 15.888888 %
-Llenado al terminar (recogido) contenedor 664: 20.79778 %
-Llenado al terminar (recogido) contenedor 665: 30.460003 %
-Llenado al terminar (recogido) contenedor 666: 17.510277 %
-Llenado al terminar (recogido) contenedor 667: 8.525001 %
-Llenado al terminar (recogido) contenedor 668: 34.752502 %
-Llenado al terminar (recogido) contenedor 669: 47.413334 %
-Llenado al terminar (recogido) contenedor 670: 42.524166 %
-Llenado al terminar (recogido) contenedor 671: 39.43611 %
-Llenado al terminar (recogido) contenedor 672: 27.086111 %
-Llenado al terminar (recogido) contenedor 673: 8.353333 %
-Llenado al terminar (recogido) contenedor 674: 19.466944 %
-Llenado al terminar (recogido) contenedor 675: 27.337502 %
-Llenado al terminar (recogido) contenedor 676: 47.50778 %
-Llenado al terminar (recogido) contenedor 677: 4.8 %
-Llenado al terminar (recogido) contenedor 678: 24.060833 %
-Llenado al terminar (recogido) contenedor 679: 23.435556 %
-Llenado al terminar (recogido) contenedor 680: 25.104445 %
-Llenado al terminar (recogido) contenedor 681: 56.075005 %
-Llenado al terminar (recogido) contenedor 682: 25.4375 %
-Llenado al terminar (recogido) contenedor 683: 50.932777 %
-Llenado al terminar (recogido) contenedor 684: 21.987778 %
-Llenado al terminar (no recogido) contenedor 685: 82.78694 %
-Llenado al terminar (recogido) contenedor 686: 8.371111 %
-Llenado al terminar (recogido) contenedor 687: 4.7555556 %
-Llenado al terminar (recogido) contenedor 688: 11.761667 %
-Llenado al terminar (no recogido) contenedor 689: 73.85251 %
-Llenado al terminar (recogido) contenedor 690: 19.477777 %
-Llenado al terminar (recogido) contenedor 691: 21.827778 %
-Llenado al terminar (recogido) contenedor 692: 14.058333 %
-Llenado al terminar (recogido) contenedor 693: 18.306946 %
-Llenado al terminar (recogido) contenedor 694: 17.089724 %
-Llenado al terminar (recogido) contenedor 695: 23.576668 %
-Llenado al terminar (recogido) contenedor 696: 39.03472 %
-Llenado al terminar (recogido) contenedor 697: 1.028889 %
-Llenado al terminar (recogido) contenedor 698: 29.632502 %
-Llenado al terminar (recogido) contenedor 699: 25.046389 %
-Llenado al terminar (recogido) contenedor 700: 7.7013893 %
-Llenado al terminar (recogido) contenedor 701: 15.011111 %
-Llenado al terminar (recogido) contenedor 702: 31.830002 %
-Llenado al terminar (recogido) contenedor 703: 54.347225 %
-Llenado al terminar (recogido) contenedor 704: 15.847222 %
-Llenado al terminar (recogido) contenedor 705: 25.981667 %
-Llenado al terminar (no recogido) contenedor 706: 43.90167 %
-Llenado al terminar (recogido) contenedor 707: 28.308334 %
-Llenado al terminar (recogido) contenedor 708: 18.146667 %
-Llenado al terminar (recogido) contenedor 709: 32.752777 %
-Llenado al terminar (recogido) contenedor 710: 25.671112 %
-Llenado al terminar (recogido) contenedor 711: 23.140001 %
-Llenado al terminar (recogido) contenedor 712: 32.466667 %
-Llenado al terminar (recogido) contenedor 713: 15.071112 %
-Llenado al terminar (recogido) contenedor 714: 39.97778 %
-Llenado al terminar (recogido) contenedor 715: 27.822224 %
-Llenado al terminar (no recogido) contenedor 716: 141.77057 %
-Llenado al terminar (recogido) contenedor 717: 55.168056 %
-Llenado al terminar (recogido) contenedor 718: 15.93 %
-Llenado al terminar (no recogido) contenedor 719: 181.77057 %
-Llenado al terminar (recogido) contenedor 720: 35.645004 %
-Llenado al terminar (recogido) contenedor 721: 61.226387 %
-Llenado al terminar (recogido) contenedor 722: 56.332222 %
-Llenado al terminar (recogido) contenedor 723: 35.597504 %
-Llenado al terminar (no recogido) contenedor 724: 38.918056 %
-Llenado al terminar (recogido) contenedor 725: 17.246668 %
-Llenado al terminar (recogido) contenedor 726: 28.60278 %
-Llenado al terminar (recogido) contenedor 727: 19.01389 %
-Llenado al terminar (recogido) contenedor 728: 12.241667 %
-Llenado al terminar (recogido) contenedor 729: 12.230556 %
-Llenado al terminar (recogido) contenedor 730: 25.085278 %
-Llenado al terminar (recogido) contenedor 731: 41.32889 %
-Llenado al terminar (recogido) contenedor 732: 12.470834 %
-Llenado al terminar (recogido) contenedor 733: 12.152778 %
-Llenado al terminar (recogido) contenedor 734: 37.382504 %
-Llenado al terminar (recogido) contenedor 735: 12.075001 %
-Llenado al terminar (recogido) contenedor 736: 8.327778 %
-Llenado al terminar (recogido) contenedor 737: 19.654446 %
-Llenado al terminar (recogido) contenedor 738: 47.225002 %
-Llenado al terminar (recogido) contenedor 739: 26.745003 %
-Llenado al terminar (recogido) contenedor 740: 15.480556 %
-Llenado al terminar (recogido) contenedor 741: 19.957502 %
-Llenado al terminar (recogido) contenedor 742: 28.960001 %
-Llenado al terminar (recogido) contenedor 743: 17.081945 %
-Llenado al terminar (recogido) contenedor 744: 3.3861113 %
-Llenado al terminar (recogido) contenedor 745: 10.175 %
-Llenado al terminar (recogido) contenedor 746: 19.920834 %
-Llenado al terminar (recogido) contenedor 747: 7.5708337 %
-Llenado al terminar (recogido) contenedor 748: 27.441668 %
-Llenado al terminar (recogido) contenedor 749: 18.108334 %
-Llenado al terminar (recogido) contenedor 750: 28.72889 %
-Llenado al terminar (recogido) contenedor 751: 10.994445 %
-Llenado al terminar (recogido) contenedor 752: 12.422222 %
-Llenado al terminar (recogido) contenedor 753: 22.630001 %
-Llenado al terminar (recogido) contenedor 754: 16.311945 %
-Llenado al terminar (recogido) contenedor 755: 13.130834 %
-Llenado al terminar (recogido) contenedor 756: 64.79584 %
-Llenado al terminar (recogido) contenedor 757: 31.933334 %
-Llenado al terminar (recogido) contenedor 758: 55.88 %
-Llenado al terminar (recogido) contenedor 759: 10.837501 %
-Llenado al terminar (recogido) contenedor 760: 20.470001 %
-Llenado al terminar (no recogido) contenedor 761: 77.90167 %
-Llenado al terminar (recogido) contenedor 762: 21.044724 %
-Llenado al terminar (no recogido) contenedor 763: 145.85251 %
-Llenado al terminar (recogido) contenedor 764: 46.432503 %
-Llenado al terminar (recogido) contenedor 765: 21.517502 %
-Llenado al terminar (recogido) contenedor 766: 13.846389 %
-Llenado al terminar (recogido) contenedor 767: 32.52 %
-Llenado al terminar (recogido) contenedor 768: 13.425001 %
-Llenado al terminar (recogido) contenedor 769: 17.977777 %
-Llenado al terminar (recogido) contenedor 770: 7.3227777 %
-Llenado al terminar (recogido) contenedor 771: 10.599722 %
-Llenado al terminar (recogido) contenedor 772: 27.079168 %
-Llenado al terminar (recogido) contenedor 773: 24.192501 %
-Llenado al terminar (recogido) contenedor 774: 30.008335 %
-Llenado al terminar (recogido) contenedor 775: 23.430555 %
-Llenado al terminar (recogido) contenedor 776: 45.762505 %
-Llenado al terminar (recogido) contenedor 777: 42.633335 %
-Llenado al terminar (recogido) contenedor 778: 29.62889 %
-Llenado al terminar (recogido) contenedor 779: 38.737503 %
-Llenado al terminar (recogido) contenedor 780: 30.827223 %
-Llenado al terminar (recogido) contenedor 781: 31.844444 %
-Llenado al terminar (no recogido) contenedor 782: 80.90167 %
-Llenado al terminar (recogido) contenedor 783: 22.8525 %
-Llenado al terminar (recogido) contenedor 784: 24.866667 %
-Llenado al terminar (recogido) contenedor 785: 12.312501 %
-Llenado al terminar (recogido) contenedor 786: 29.571112 %
-Llenado al terminar (recogido) contenedor 787: 34.77111 %
-Llenado al terminar (recogido) contenedor 788: 12.758056 %
-Llenado al terminar (recogido) contenedor 789: 11.7075 %
-Llenado al terminar (recogido) contenedor 790: 60.946667 %
-Llenado al terminar (recogido) contenedor 791: 14.606667 %
-Llenado al terminar (recogido) contenedor 792: 44.041668 %
-Llenado al terminar (recogido) contenedor 793: 25.748335 %
-Llenado al terminar (no recogido) contenedor 794: 97.83611 %
-Llenado al terminar (recogido) contenedor 795: 46.045002 %
-Llenado al terminar (recogido) contenedor 796: 23.500557 %
-Llenado al terminar (recogido) contenedor 797: 7.975556 %
-Llenado al terminar (recogido) contenedor 798: 17.186666 %
-Llenado al terminar (recogido) contenedor 799: 16.76 %
-Llenado al terminar (recogido) contenedor 800: 3.7666667 %
-Llenado al terminar (recogido) contenedor 801: 18.293333 %
-Llenado al terminar (recogido) contenedor 802: 38.162224 %
-Llenado al terminar (recogido) contenedor 803: 34.274723 %
-Llenado al terminar (recogido) contenedor 804: 36.433334 %
-Tiempo en que es recolectado ultimo contenedor en h: 5.845556
-Tiempo en que retorna el ultimo camion en h: 5.983611
+798 95 651 670 351 134 726 276 53 345 594 91 37 97 647 121 213 73 788 507 135 446 561 434 20 0 0 0 0 0  |  789 99 100 491 534 638 279 259 473 333 448 585 38 102 729 305 739 520 741 252 347 688 749 0 0 0 0 0 0 0  |  197 269 535 659 512 756 310 785 380 658 793 558 222 791 435 582 713 455 136 765 0 0 0 0 0 0 0 0 0 0  |  125 230 544 381 319 332 451 575 730 753 698 693 526 335 486 212 438 480 374 685 786 635 798 50 43 357 696 676 0 0  |  379 39 604 638 616 413 538 427 310 421 26 346 448 200 332 283 519 150 628 535 180 0 0 0 0 0 0 0 0 0  |  511 187 433 619 194 570 372 45 154 423 421 96 687 32 604 337 121 552 644 712 579 740 524 0 0 0 0 0 0 0  |  325 785 402 628 387 607 430 149 417 639 45 368 554 115 193 658 149 19 327 143 0 0 0 0 0 0 0 0 0 0  |  611 420 389 425 709 750 341 137 447 771 192 797 5 593 438 448 464 601 478 288 583 487 160 443 0 0 0 0 0 0  |  188 695 130 760 263 18 210 483 63 152 204 696 600 138 526 482 424 784 795 701 545 544 608 304 414 0 0 0 0 0  |  123 636 411 286 193 42 437 317 721 529 748 641 764 625 501 771 345 757 502 495 386 740 738 320 0 0 0 0 0 0  |  498 131 697 539 450 451 708 86 669 35 246 639 447 211 783 181 53 563 785 295 369 761 573 260 410 398 0 0 0 0  |  454 255 250 198 97 602 82 536 23 726 475 720 780 654 176 38 449 517 442 324 493 368 0 0 0 0 0 0 0 0  |  459 609 474 403 780 598 314 285 51 657 499 522 427 550 650 603 413 151 783 51 355 664 0 0 0 0 0 0 0 0  |  666 756 572 141 123 367 497 679 477 534 193 569 737 720 803 144 458 552 6 733 182 483 381 0 0 0 0 0 0 0  |  161 714 721 255 636 540 361 511 30 147 596 789 26 573 684 201 198 271 499 616 176 99 455 567 377 0 0 0 0 0  |  417 232 633 716 535 116 404 219 566 42 481 278 132 698 476 346 180 181 421 749 184 129 0 0 0 0 0 0 0 0  |  802 654 603 336 778 694 555 189 101 356 727 401 697 298 100 478 100 280 682 467 708 61 743 0 0 0 0 0 0 0  |  617 334 89 635 616 779 287 495 489 803 504 486 117 356 752 40 770 636 641 576 482 610 773 768 468 0 0 0 0 0  |  583 410 247 652 580 438 43 166 454 206 216 338 143 367 27 165 686 615 57 484 163 141 542 109 0 0 0 0 0 0  |  355 654 758 323 514 130 239 430 229 213 242 723 509 463 773 93 793 331 746 160 486 229 675 502 612 428 0 0 0 0  |  158 205 765 10 307 442 341 174 171 98 722 692 642 301 343 29 514 779 174 449 151 83 725 0 0 0 0 0 0 0  |  662 496 167 8 299 515 429 451 313 581 590 304 7 772 688 479 713 488 777 596 83 0 0 0 0 0 0 0 0 0  |  569 123 397 485 803 426 17 603 577 767 606 219 690 667 589 443 149 293 485 777 0 0 0 0 0 0 0 0 0 0  |  37 698 97 278 448 506 93 664 238 221 408 128 673 259 507 587 794 146 581 541 557 62 0 0 0 0 0 0 0 0  |  182 554 627 329 390 682 796 388 110 489 346 230 315 456 705 385 797 32 372 42 504 0 0 0 0 0 0 0 0 0  |  751 556 28 744 93 380 737 762 573 348 708 360 655 179 333 436 762 525 93 498 470 0 0 0 0 0 0 0 0 0  |  264 663 657 519 343 412 132 543 126 510 768 2 672 408 645 256 539 689 244 377 332 568 318 298 668 0 0 0 0 0  |  437 62 773 573 576 755 395 179 703 387 423 227 379 308 162 527 340 594 36 323 734 71 222 0 0 0 0 0 0 0  |  163 64 529 602 720 549 374 801 501 704 418 656 294 51 327 362 188 571 614 248 194 681 660 739 321 585 727 0 0 0  |  735 204 715 173 733 738 377 646 684 414 618 691 687 535 764 340 717 122 335 516 668 291 0 0 0 0 0 0 0 0  |  632 468 533 408 701 289 604 769 75 143 632 462 629 531 492 619 626 790 743 457 716 726 285 211 786 519 360 0 0 0  |  219 364 682 502 592 372 580 633 472 621 607 747 778 43 257 254 672 677 493 547 709 645 145 454 338 0 0 0 0 0  |  308 154 457 790 170 40 785 431 509 405 432 740 733 257 92 477 727 576 634 0 0 0 0 0 0 0 0 0 0 0  |  786 498 460 369 759 111 744 145 776 426 263 439 286 768 598 161 564 389 295 403 317 0 0 0 0 0 0 0 0 0  |  288 98 612 298 554 359 525 718 390 218 561 688 556 761 678 183 388 183 415 77 800 311 125 523 0 0 0 0 0 0  |  501 624 209 199 31 9 650 573 127 133 465 563 776 160 574 578 721 555 797 696 426 414 534 577 750 156 0 0 0 0  |  261 662 495 215 404 550 747 353 516 739 660 102 466 184 290 70 745 369 266 393 264 640 0 0 0 0 0 0 0 0  |  109 399 470 384 643 236 5 712 696 651 586 750 233 31 312 7 222 605 433 721 334 130 198 168 781 794 0 0 0 0  |  273 230 790 584 673 207 226 704 72 531 611 249 426 39 466 617 749 195 148 605 223 422 476 0 0 0 0 0 0 0  |  688 493 44 25 599 29 730 449 328 683 776 424 120 502 425 391 644 465 163 228 767 12 277 216 754 439 633 0 0 0  |  691 449 356 601 322 671 494 533 366 348 136 676 270 710 323 448 707 630 498 331 508 600 294 588 231 0 0 0 0 0  |  661 622 503 220 375 784 178 171 338 589 330 279 267 731 528 94 126 655 638 11 739 397 384 0 0 0 0 0 0 0  |  46 1 687 737 101 479 717 651 209 155 503 56 124 344 358 682 690 530 762 655 548 296 39 529 672 380 246 0 0 0  |  510 480 359 492 348 532 562 723 169 617 203 240 674 108 117 700 595 79 48 101 267 74 120 0 0 0 0 0 0 0  |  657 149 419 36 703 612 596 392 432 308 301 795 371 178 468 788 605 243 472 146 756 460 25 302 154 341 152 0 0 0  |  512 704 421 801 346 138 541 594 804 523 774 671 224 354 360 787 326 746 316 595 601 297 351 490 506 0 0 0 0 0  |  122 683 481 537 230 128 765 628 559 485 293 406 363 681 87 65 140 683 546 799 632 591 626 0 0 0 0 0 0 0  |  500 535 548 214 548 378 227 253 547 686 349 638 739 1 3 778 575 703 237 580 148 481 503 22 0 0 0 0 0 0  |  668 755 33 440 748 474 305 287 179 571 655 553 382 519 443 562 155 461 683 293 7 748 307 0 0 0 0 0 0 0  |  434 695 216 699 311 564 701 349 9 189 148 574 195 81 622 390 804 356 316 239 654 677 108 0 0 0 0 0 0 0  |  274 676 155 650 514 47 120 565 430 782 373 3 185 622 503 477 521 624 457 319 728 578 686 0 0 0 0 0 0 0  |  121 383 698 245 502 309 158 222 773 473 55 33 717 352 617 385 658 584 665 171 572 121 360 481 95 0 0 0 0 0  |  446 482 320 478 344 390 124 557 321 754 225 299 539 353 186 359 607 398 98 194 0 0 0 0 0 0 0 0 0 0  |  698 362 135 513 683 95 177 532 638 636 24 670 159 524 144 744 119 215 518 303 700 390 134 265 0 0 0 0 0 0  |  282 258 445 424 608 522 213 705 189 542 681 132 570 795 211 372 549 113 116 115 0 0 0 0 0 0 0 0 0 0  |  103 196 219 406 537 441 412 176 560 592 524 760 770 445 592 54 620 370 300 0 0 0 0 0 0 0 0 0 0 0  |  337 675 742 797 653 415 588 311 386 39 518 199 300 631 175 167 488 642 506 609 265 667 652 234 477 0 0 0 0 0  |  648 477 41 165 519 690 336 484 485 654 463 410 202 695 24 782 390 453 415 465 493 224 284 675 402 637 0 0 0 0  |  763 737 802 540 669 499 802 340 339 139 620 700 450 415 578 580 109 122 189 313 643 458 0 0 0 0 0 0 0 0  |  370 426 440 76 1 435 478 318 352 736 665 134 730 453 729 546 766 420 803 337 269 593 792 606 0 0 0 0 0 0
+6964196.0
+7578.735816955566
+Llenado al terminar (recogido) contenedor 1: 24.858334 %
+Llenado al terminar (recogido) contenedor 2: 47.047222 %
+Llenado al terminar (recogido) contenedor 3: 21.673334 %
+Llenado al terminar (no recogido) contenedor 4: 86.7525 %
+Llenado al terminar (recogido) contenedor 5: 41.283333 %
+Llenado al terminar (recogido) contenedor 6: 24.136389 %
+Llenado al terminar (recogido) contenedor 7: 11.293056 %
+Llenado al terminar (recogido) contenedor 8: 35.306667 %
+Llenado al terminar (recogido) contenedor 9: 49.886112 %
+Llenado al terminar (recogido) contenedor 10: 50.680004 %
+Llenado al terminar (recogido) contenedor 11: 13.544445 %
+Llenado al terminar (recogido) contenedor 12: 20.002779 %
+Llenado al terminar (no recogido) contenedor 13: 152.66888 %
+Llenado al terminar (no recogido) contenedor 14: 61.585278 %
+Llenado al terminar (no recogido) contenedor 15: 142.7525 %
+Llenado al terminar (no recogido) contenedor 16: 155.7525 %
+Llenado al terminar (recogido) contenedor 17: 41.191113 %
+Llenado al terminar (recogido) contenedor 18: 33.723335 %
+Llenado al terminar (recogido) contenedor 19: 14.765278 %
+Llenado al terminar (recogido) contenedor 20: 2.1416667 %
+Llenado al terminar (no recogido) contenedor 21: 42.418056 %
+Llenado al terminar (recogido) contenedor 22: 9.558889 %
+Llenado al terminar (recogido) contenedor 23: 31.095556 %
+Llenado al terminar (recogido) contenedor 24: 36.716667 %
+Llenado al terminar (recogido) contenedor 25: 14.762222 %
+Llenado al terminar (recogido) contenedor 26: 20.40139 %
+Llenado al terminar (recogido) contenedor 27: 27.365002 %
+Llenado al terminar (recogido) contenedor 28: 61.086113 %
+Llenado al terminar (recogido) contenedor 29: 15.643056 %
+Llenado al terminar (recogido) contenedor 30: 35.330555 %
+Llenado al terminar (recogido) contenedor 31: 25.902502 %
+Llenado al terminar (recogido) contenedor 32: 28.422503 %
+Llenado al terminar (recogido) contenedor 33: 22.856945 %
+Llenado al terminar (no recogido) contenedor 34: 82.66889 %
+Llenado al terminar (recogido) contenedor 35: 25.534723 %
+Llenado al terminar (recogido) contenedor 36: 13.141667 %
+Llenado al terminar (recogido) contenedor 37: 36.36111 %
+Llenado al terminar (recogido) contenedor 38: 28.315002 %
+Llenado al terminar (recogido) contenedor 39: 9.721667 %
+Llenado al terminar (recogido) contenedor 40: 18.633333 %
+Llenado al terminar (recogido) contenedor 41: 62.050003 %
+Llenado al terminar (recogido) contenedor 42: 24.380001 %
+Llenado al terminar (recogido) contenedor 43: 14.752501 %
+Llenado al terminar (recogido) contenedor 44: 31.683334 %
+Llenado al terminar (recogido) contenedor 45: 24.290277 %
+Llenado al terminar (recogido) contenedor 46: 32.822224 %
+Llenado al terminar (recogido) contenedor 47: 38.509724 %
+Llenado al terminar (recogido) contenedor 48: 10.226389 %
+Llenado al terminar (no recogido) contenedor 49: 153.7525 %
+Llenado al terminar (recogido) contenedor 50: 18.289444 %
+Llenado al terminar (recogido) contenedor 51: 16.380001 %
+Llenado al terminar (no recogido) contenedor 52: 78.83611 %
+Llenado al terminar (recogido) contenedor 53: 17.075 %
+Llenado al terminar (recogido) contenedor 54: 29.867502 %
+Llenado al terminar (recogido) contenedor 55: 29.08889 %
+Llenado al terminar (recogido) contenedor 56: 60.525 %
+Llenado al terminar (recogido) contenedor 57: 13.847501 %
+Llenado al terminar (no recogido) contenedor 58: 73.7525 %
+Llenado al terminar (no recogido) contenedor 59: 99.91972 %
+Llenado al terminar (no recogido) contenedor 60: 100.086945 %
+Llenado al terminar (recogido) contenedor 61: 11.681945 %
+Llenado al terminar (recogido) contenedor 62: 15.722778 %
+Llenado al terminar (recogido) contenedor 63: 28.16 %
+Llenado al terminar (recogido) contenedor 64: 56.305004 %
+Llenado al terminar (recogido) contenedor 65: 18.106945 %
+Llenado al terminar (no recogido) contenedor 66: 85.7525 %
+Llenado al terminar (no recogido) contenedor 67: 93.7525 %
+Llenado al terminar (no recogido) contenedor 68: 65.58528 %
+Llenado al terminar (no recogido) contenedor 69: 84.50166 %
+Llenado al terminar (recogido) contenedor 70: 21.9275 %
+Llenado al terminar (recogido) contenedor 71: 8.9375 %
+Llenado al terminar (recogido) contenedor 72: 31.578335 %
+Llenado al terminar (recogido) contenedor 73: 12.935 %
+Llenado al terminar (recogido) contenedor 74: 9.586111 %
+Llenado al terminar (recogido) contenedor 75: 43.107502 %
+Llenado al terminar (recogido) contenedor 76: 29.358334 %
+Llenado al terminar (recogido) contenedor 77: 13.976389 %
+Llenado al terminar (no recogido) contenedor 78: 123.66889 %
+Llenado al terminar (recogido) contenedor 79: 18.608889 %
+Llenado al terminar (no recogido) contenedor 80: 100.7525 %
+Llenado al terminar (recogido) contenedor 81: 34.53889 %
+Llenado al terminar (recogido) contenedor 82: 25.156944 %
+Llenado al terminar (recogido) contenedor 83: 14.38 %
+Llenado al terminar (no recogido) contenedor 84: 65.66889 %
+Llenado al terminar (no recogido) contenedor 85: 124.66889 %
+Llenado al terminar (recogido) contenedor 86: 33.350002 %
+Llenado al terminar (recogido) contenedor 87: 33.382504 %
+Llenado al terminar (no recogido) contenedor 88: 86.66889 %
+Llenado al terminar (recogido) contenedor 89: 52.545002 %
+Llenado al terminar (no recogido) contenedor 90: 83.58528 %
+Llenado al terminar (recogido) contenedor 91: 31.446667 %
+Llenado al terminar (recogido) contenedor 92: 36.320004 %
+Llenado al terminar (recogido) contenedor 93: 22.222223 %
+Llenado al terminar (recogido) contenedor 94: 40.709167 %
+Llenado al terminar (recogido) contenedor 95: 5.4500003 %
+Llenado al terminar (recogido) contenedor 96: 61.208336 %
+Llenado al terminar (recogido) contenedor 97: 49.850002 %
+Llenado al terminar (recogido) contenedor 98: 33.018333 %
+Llenado al terminar (recogido) contenedor 99: 18.11111 %
+Llenado al terminar (recogido) contenedor 100: 32.6425 %
+Llenado al terminar (recogido) contenedor 101: 17.791668 %
+Llenado al terminar (recogido) contenedor 102: 36.292503 %
+Llenado al terminar (recogido) contenedor 103: 39.306667 %
+Llenado al terminar (no recogido) contenedor 104: 141.66888 %
+Llenado al terminar (no recogido) contenedor 105: 108.66889 %
+Llenado al terminar (no recogido) contenedor 106: 111.7525 %
+Llenado al terminar (no recogido) contenedor 107: 74.66889 %
+Llenado al terminar (recogido) contenedor 108: 5.6033335 %
+Llenado al terminar (recogido) contenedor 109: 1.7444445 %
+Llenado al terminar (recogido) contenedor 110: 78.675 %
+Llenado al terminar (recogido) contenedor 111: 51.307503 %
+Llenado al terminar (no recogido) contenedor 112: 192.08694 %
+Llenado al terminar (recogido) contenedor 113: 27.185001 %
+Llenado al terminar (no recogido) contenedor 114: 85.91972 %
+Llenado al terminar (recogido) contenedor 115: 19.311111 %
+Llenado al terminar (recogido) contenedor 116: 18.493612 %
+Llenado al terminar (recogido) contenedor 117: 25.282223 %
+Llenado al terminar (no recogido) contenedor 118: 75.7525 %
+Llenado al terminar (recogido) contenedor 119: 25.513334 %
+Llenado al terminar (recogido) contenedor 120: 7.8283334 %
+Llenado al terminar (recogido) contenedor 121: 9.195278 %
+Llenado al terminar (recogido) contenedor 122: 28.36 %
+Llenado al terminar (recogido) contenedor 123: 48.482224 %
+Llenado al terminar (recogido) contenedor 124: 30.315556 %
+Llenado al terminar (recogido) contenedor 125: 12.200001 %
+Llenado al terminar (recogido) contenedor 126: 16.984722 %
+Llenado al terminar (recogido) contenedor 127: 31.982224 %
+Llenado al terminar (recogido) contenedor 128: 38.820004 %
+Llenado al terminar (recogido) contenedor 129: 18.92 %
+Llenado al terminar (recogido) contenedor 130: 8.5925 %
+Llenado al terminar (recogido) contenedor 131: 31.868057 %
+Llenado al terminar (recogido) contenedor 132: 27.895 %
+Llenado al terminar (recogido) contenedor 133: 35.284447 %
+Llenado al terminar (recogido) contenedor 134: 16.019445 %
+Llenado al terminar (recogido) contenedor 135: 13.862501 %
+Llenado al terminar (recogido) contenedor 136: 34.025 %
+Llenado al terminar (recogido) contenedor 137: 27.291668 %
+Llenado al terminar (recogido) contenedor 138: 26.271112 %
+Llenado al terminar (recogido) contenedor 139: 47.390003 %
+Llenado al terminar (recogido) contenedor 140: 33.133335 %
+Llenado al terminar (recogido) contenedor 141: 5.702778 %
+Llenado al terminar (no recogido) contenedor 142: 93.58528 %
+Llenado al terminar (recogido) contenedor 143: 13.205 %
+Llenado al terminar (recogido) contenedor 144: 34.744446 %
+Llenado al terminar (recogido) contenedor 145: 25.602222 %
+Llenado al terminar (recogido) contenedor 146: 24.683334 %
+Llenado al terminar (recogido) contenedor 147: 23.686111 %
+Llenado al terminar (recogido) contenedor 148: 22.586111 %
+Llenado al terminar (recogido) contenedor 149: 31.087502 %
+Llenado al terminar (recogido) contenedor 150: 19.775 %
+Llenado al terminar (recogido) contenedor 151: 19.244446 %
+Llenado al terminar (recogido) contenedor 152: 2.3625 %
+Llenado al terminar (no recogido) contenedor 153: 149.7525 %
+Llenado al terminar (recogido) contenedor 154: 6.4333334 %
+Llenado al terminar (recogido) contenedor 155: 27.847502 %
+Llenado al terminar (recogido) contenedor 156: 7.768056 %
+Llenado al terminar (no recogido) contenedor 157: 79.66889 %
+Llenado al terminar (recogido) contenedor 158: 49.672222 %
+Llenado al terminar (recogido) contenedor 159: 30.66 %
+Llenado al terminar (recogido) contenedor 160: 17.627779 %
+Llenado al terminar (recogido) contenedor 161: 28.082502 %
+Llenado al terminar (recogido) contenedor 162: 20.323334 %
+Llenado al terminar (recogido) contenedor 163: 3.6680555 %
+Llenado al terminar (no recogido) contenedor 164: 51.501667 %
+Llenado al terminar (recogido) contenedor 165: 15.083334 %
+Llenado al terminar (recogido) contenedor 166: 43.772503 %
+Llenado al terminar (recogido) contenedor 167: 20.99 %
+Llenado al terminar (recogido) contenedor 168: 6.500278 %
+Llenado al terminar (recogido) contenedor 169: 42.920002 %
+Llenado al terminar (recogido) contenedor 170: 39.83 %
+Llenado al terminar (recogido) contenedor 171: 12.263612 %
+Llenado al terminar (no recogido) contenedor 172: 45.418056 %
+Llenado al terminar (recogido) contenedor 173: 29.709723 %
+Llenado al terminar (recogido) contenedor 174: 27.652777 %
+Llenado al terminar (recogido) contenedor 175: 56.175003 %
+Llenado al terminar (recogido) contenedor 176: 29.196667 %
+Llenado al terminar (recogido) contenedor 177: 66.39389 %
+Llenado al terminar (recogido) contenedor 178: 39.322224 %
+Llenado al terminar (recogido) contenedor 179: 30.666668 %
+Llenado al terminar (recogido) contenedor 180: 26.985832 %
+Llenado al terminar (recogido) contenedor 181: 33.84028 %
+Llenado al terminar (recogido) contenedor 182: 44.275 %
+Llenado al terminar (recogido) contenedor 183: 26.946667 %
+Llenado al terminar (recogido) contenedor 184: 37.02611 %
+Llenado al terminar (recogido) contenedor 185: 46.166668 %
+Llenado al terminar (recogido) contenedor 186: 59.89167 %
+Llenado al terminar (recogido) contenedor 187: 89.32389 %
+Llenado al terminar (recogido) contenedor 188: 28.602222 %
+Llenado al terminar (recogido) contenedor 189: 39.282223 %
+Llenado al terminar (no recogido) contenedor 190: 175.00333 %
+Llenado al terminar (no recogido) contenedor 191: 157.7525 %
+Llenado al terminar (recogido) contenedor 192: 53.16361 %
+Llenado al terminar (recogido) contenedor 193: 49.223057 %
+Llenado al terminar (recogido) contenedor 194: 32.24278 %
+Llenado al terminar (recogido) contenedor 195: 27.507502 %
+Llenado al terminar (recogido) contenedor 196: 54.962505 %
+Llenado al terminar (recogido) contenedor 197: 99.79584 %
+Llenado al terminar (recogido) contenedor 198: 12.046667 %
+Llenado al terminar (recogido) contenedor 199: 63.556114 %
+Llenado al terminar (recogido) contenedor 200: 52.88111 %
+Llenado al terminar (recogido) contenedor 201: 31.177502 %
+Llenado al terminar (recogido) contenedor 202: 42.15278 %
+Llenado al terminar (recogido) contenedor 203: 23.990278 %
+Llenado al terminar (recogido) contenedor 204: 23.758333 %
+Llenado al terminar (recogido) contenedor 205: 49.577778 %
+Llenado al terminar (recogido) contenedor 206: 34.47778 %
+Llenado al terminar (recogido) contenedor 207: 47.166668 %
+Llenado al terminar (no recogido) contenedor 208: 50.501667 %
+Llenado al terminar (recogido) contenedor 209: 42.9625 %
+Llenado al terminar (recogido) contenedor 210: 41.36 %
+Llenado al terminar (recogido) contenedor 211: 16.557777 %
+Llenado al terminar (recogido) contenedor 212: 34.75778 %
+Llenado al terminar (recogido) contenedor 213: 24.675001 %
+Llenado al terminar (recogido) contenedor 214: 80.80583 %
+Llenado al terminar (recogido) contenedor 215: 46.008335 %
+Llenado al terminar (recogido) contenedor 216: 12.946667 %
+Llenado al terminar (no recogido) contenedor 217: 165.83612 %
+Llenado al terminar (recogido) contenedor 218: 25.305555 %
+Llenado al terminar (recogido) contenedor 219: 25.008333 %
+Llenado al terminar (recogido) contenedor 220: 36.213333 %
+Llenado al terminar (recogido) contenedor 221: 42.055004 %
+Llenado al terminar (recogido) contenedor 222: 6.8733335 %
+Llenado al terminar (recogido) contenedor 223: 22.855556 %
+Llenado al terminar (recogido) contenedor 224: 11.830556 %
+Llenado al terminar (recogido) contenedor 225: 44.925003 %
+Llenado al terminar (recogido) contenedor 226: 34.82 %
+Llenado al terminar (recogido) contenedor 227: 23.825 %
+Llenado al terminar (recogido) contenedor 228: 27.0 %
+Llenado al terminar (recogido) contenedor 229: 10.764444 %
+Llenado al terminar (recogido) contenedor 230: 28.068335 %
+Llenado al terminar (recogido) contenedor 231: 11.888333 %
+Llenado al terminar (recogido) contenedor 232: 63.0 %
+Llenado al terminar (recogido) contenedor 233: 26.835556 %
+Llenado al terminar (recogido) contenedor 234: 12.996667 %
+Llenado al terminar (no recogido) contenedor 235: 156.66888 %
+Llenado al terminar (recogido) contenedor 236: 42.944447 %
+Llenado al terminar (recogido) contenedor 237: 25.907501 %
+Llenado al terminar (recogido) contenedor 238: 29.033335 %
+Llenado al terminar (recogido) contenedor 239: 11.08 %
+Llenado al terminar (recogido) contenedor 240: 30.776667 %
+Llenado al terminar (no recogido) contenedor 241: 72.41806 %
+Llenado al terminar (recogido) contenedor 242: 59.920002 %
+Llenado al terminar (recogido) contenedor 243: 27.992502 %
+Llenado al terminar (recogido) contenedor 244: 27.257502 %
+Llenado al terminar (recogido) contenedor 245: 81.060005 %
+Llenado al terminar (recogido) contenedor 246: 9.758334 %
+Llenado al terminar (recogido) contenedor 247: 84.08945 %
+Llenado al terminar (recogido) contenedor 248: 34.68111 %
+Llenado al terminar (recogido) contenedor 249: 41.370003 %
+Llenado al terminar (recogido) contenedor 250: 67.292496 %
+Llenado al terminar (no recogido) contenedor 251: 95.66889 %
+Llenado al terminar (recogido) contenedor 252: 20.12 %
+Llenado al terminar (recogido) contenedor 253: 48.792503 %
+Llenado al terminar (recogido) contenedor 254: 21.623611 %
+Llenado al terminar (recogido) contenedor 255: 48.646667 %
+Llenado al terminar (recogido) contenedor 256: 37.55278 %
+Llenado al terminar (recogido) contenedor 257: 37.72 %
+Llenado al terminar (recogido) contenedor 258: 40.108334 %
+Llenado al terminar (recogido) contenedor 259: 23.353334 %
+Llenado al terminar (recogido) contenedor 260: 8.5205555 %
+Llenado al terminar (recogido) contenedor 261: 54.40889 %
+Llenado al terminar (no recogido) contenedor 262: 139.58528 %
+Llenado al terminar (recogido) contenedor 263: 39.422504 %
+Llenado al terminar (recogido) contenedor 264: 9.560834 %
+Llenado al terminar (recogido) contenedor 265: 13.490001 %
+Llenado al terminar (recogido) contenedor 266: 10.444445 %
+Llenado al terminar (recogido) contenedor 267: 11.973333 %
+Llenado al terminar (no recogido) contenedor 268: 131.41806 %
+Llenado al terminar (recogido) contenedor 269: 17.093334 %
+Llenado al terminar (recogido) contenedor 270: 41.722504 %
+Llenado al terminar (recogido) contenedor 271: 21.342222 %
+Llenado al terminar (no recogido) contenedor 272: 97.66889 %
+Llenado al terminar (recogido) contenedor 273: 62.015003 %
+Llenado al terminar (recogido) contenedor 274: 54.58 %
+Llenado al terminar (no recogido) contenedor 275: 64.50166 %
+Llenado al terminar (recogido) contenedor 276: 25.081945 %
+Llenado al terminar (recogido) contenedor 277: 9.38 %
+Llenado al terminar (recogido) contenedor 278: 38.027504 %
+Llenado al terminar (recogido) contenedor 279: 40.5175 %
+Llenado al terminar (recogido) contenedor 280: 33.375 %
+Llenado al terminar (no recogido) contenedor 281: 158.7525 %
+Llenado al terminar (recogido) contenedor 282: 61.257504 %
+Llenado al terminar (recogido) contenedor 283: 17.643057 %
+Llenado al terminar (recogido) contenedor 284: 17.812502 %
+Llenado al terminar (recogido) contenedor 285: 11.668056 %
+Llenado al terminar (recogido) contenedor 286: 18.768057 %
+Llenado al terminar (recogido) contenedor 287: 28.166668 %
+Llenado al terminar (recogido) contenedor 288: 20.173334 %
+Llenado al terminar (recogido) contenedor 289: 50.282505 %
+Llenado al terminar (recogido) contenedor 290: 34.197502 %
+Llenado al terminar (recogido) contenedor 291: 18.149445 %
+Llenado al terminar (no recogido) contenedor 292: 77.41806 %
+Llenado al terminar (recogido) contenedor 293: 14.316667 %
+Llenado al terminar (recogido) contenedor 294: 17.925835 %
+Llenado al terminar (recogido) contenedor 295: 18.215555 %
+Llenado al terminar (recogido) contenedor 296: 18.077501 %
+Llenado al terminar (recogido) contenedor 297: 32.000004 %
+Llenado al terminar (recogido) contenedor 298: 13.358334 %
+Llenado al terminar (recogido) contenedor 299: 42.932503 %
+Llenado al terminar (recogido) contenedor 300: 11.844444 %
+Llenado al terminar (recogido) contenedor 301: 34.325 %
+Llenado al terminar (recogido) contenedor 302: 6.979167 %
+Llenado al terminar (recogido) contenedor 303: 19.037779 %
+Llenado al terminar (recogido) contenedor 304: 11.3575 %
+Llenado al terminar (recogido) contenedor 305: 44.33361 %
+Llenado al terminar (no recogido) contenedor 306: 138.08694 %
+Llenado al terminar (recogido) contenedor 307: 18.596111 %
+Llenado al terminar (recogido) contenedor 308: 36.202778 %
+Llenado al terminar (recogido) contenedor 309: 79.04167 %
+Llenado al terminar (recogido) contenedor 310: 41.98 %
+Llenado al terminar (recogido) contenedor 311: 22.686111 %
+Llenado al terminar (recogido) contenedor 312: 20.973333 %
+Llenado al terminar (recogido) contenedor 313: 42.704998 %
+Llenado al terminar (recogido) contenedor 314: 56.36111 %
+Llenado al terminar (recogido) contenedor 315: 53.75 %
+Llenado al terminar (recogido) contenedor 316: 20.6275 %
+Llenado al terminar (recogido) contenedor 317: 24.550556 %
+Llenado al terminar (recogido) contenedor 318: 33.86667 %
+Llenado al terminar (recogido) contenedor 319: 18.322502 %
+Llenado al terminar (recogido) contenedor 320: 42.766113 %
+Llenado al terminar (recogido) contenedor 321: 25.962502 %
+Llenado al terminar (recogido) contenedor 322: 84.61056 %
+Llenado al terminar (recogido) contenedor 323: 28.44 %
+Llenado al terminar (recogido) contenedor 324: 29.723333 %
+Llenado al terminar (recogido) contenedor 325: 86.24416 %
+Llenado al terminar (recogido) contenedor 326: 44.630558 %
+Llenado al terminar (recogido) contenedor 327: 37.45 %
+Llenado al terminar (recogido) contenedor 328: 41.3725 %
+Llenado al terminar (recogido) contenedor 329: 74.27334 %
+Llenado al terminar (recogido) contenedor 330: 62.266388 %
+Llenado al terminar (recogido) contenedor 331: 23.222502 %
+Llenado al terminar (recogido) contenedor 332: 34.18722 %
+Llenado al terminar (recogido) contenedor 333: 43.90667 %
+Llenado al terminar (recogido) contenedor 334: 18.324446 %
+Llenado al terminar (recogido) contenedor 335: 46.30889 %
+Llenado al terminar (recogido) contenedor 336: 45.9 %
+Llenado al terminar (recogido) contenedor 337: 34.428333 %
+Llenado al terminar (recogido) contenedor 338: 27.752779 %
+Llenado al terminar (recogido) contenedor 339: 49.940002 %
+Llenado al terminar (recogido) contenedor 340: 45.575 %
+Llenado al terminar (recogido) contenedor 341: 10.951112 %
+Llenado al terminar (no recogido) contenedor 342: 71.7525 %
+Llenado al terminar (recogido) contenedor 343: 31.025002 %
+Llenado al terminar (recogido) contenedor 344: 45.420555 %
+Llenado al terminar (recogido) contenedor 345: 47.586666 %
+Llenado al terminar (recogido) contenedor 346: 38.05389 %
+Llenado al terminar (recogido) contenedor 347: 26.07 %
+Llenado al terminar (recogido) contenedor 348: 44.347225 %
+Llenado al terminar (recogido) contenedor 349: 53.89083 %
+Llenado al terminar (no recogido) contenedor 350: 163.91972 %
+Llenado al terminar (recogido) contenedor 351: 25.097778 %
+Llenado al terminar (recogido) contenedor 352: 21.11111 %
+Llenado al terminar (recogido) contenedor 353: 34.04667 %
+Llenado al terminar (recogido) contenedor 354: 43.005005 %
+Llenado al terminar (recogido) contenedor 355: 28.83 %
+Llenado al terminar (recogido) contenedor 356: 34.13667 %
+Llenado al terminar (recogido) contenedor 357: 17.750002 %
+Llenado al terminar (recogido) contenedor 358: 43.51389 %
+Llenado al terminar (recogido) contenedor 359: 52.325 %
+Llenado al terminar (recogido) contenedor 360: 10.655556 %
+Llenado al terminar (recogido) contenedor 361: 66.88333 %
+Llenado al terminar (recogido) contenedor 362: 58.062504 %
+Llenado al terminar (recogido) contenedor 363: 54.953888 %
+Llenado al terminar (recogido) contenedor 364: 57.540005 %
+Llenado al terminar (no recogido) contenedor 365: 191.17056 %
+Llenado al terminar (recogido) contenedor 366: 54.655556 %
+Llenado al terminar (recogido) contenedor 367: 37.0975 %
+Llenado al terminar (recogido) contenedor 368: 31.895836 %
+Llenado al terminar (recogido) contenedor 369: 16.426666 %
+Llenado al terminar (recogido) contenedor 370: 33.033333 %
+Llenado al terminar (recogido) contenedor 371: 58.570557 %
+Llenado al terminar (recogido) contenedor 372: 41.712223 %
+Llenado al terminar (recogido) contenedor 373: 33.282223 %
+Llenado al terminar (recogido) contenedor 374: 34.61 %
+Llenado al terminar (recogido) contenedor 375: 51.770004 %
+Llenado al terminar (no recogido) contenedor 376: 185.00333 %
+Llenado al terminar (recogido) contenedor 377: 26.741669 %
+Llenado al terminar (recogido) contenedor 378: 87.90834 %
+Llenado al terminar (recogido) contenedor 379: 29.92 %
+Llenado al terminar (recogido) contenedor 380: 16.166668 %
+Llenado al terminar (recogido) contenedor 381: 38.50417 %
+Llenado al terminar (recogido) contenedor 382: 54.287502 %
+Llenado al terminar (recogido) contenedor 383: 51.404446 %
+Llenado al terminar (recogido) contenedor 384: 26.981112 %
+Llenado al terminar (recogido) contenedor 385: 18.975555 %
+Llenado al terminar (recogido) contenedor 386: 34.952778 %
+Llenado al terminar (recogido) contenedor 387: 51.100002 %
+Llenado al terminar (recogido) contenedor 388: 29.282223 %
+Llenado al terminar (recogido) contenedor 389: 29.48611 %
+Llenado al terminar (recogido) contenedor 390: 22.976667 %
+Llenado al terminar (recogido) contenedor 391: 54.120834 %
+Llenado al terminar (recogido) contenedor 392: 78.9875 %
+Llenado al terminar (recogido) contenedor 393: 20.503334 %
+Llenado al terminar (no recogido) contenedor 394: 83.66889 %
+Llenado al terminar (recogido) contenedor 395: 39.04 %
+Llenado al terminar (no recogido) contenedor 396: 154.66888 %
+Llenado al terminar (recogido) contenedor 397: 25.992777 %
+Llenado al terminar (recogido) contenedor 398: 8.695556 %
+Llenado al terminar (recogido) contenedor 399: 90.03167 %
+Llenado al terminar (no recogido) contenedor 400: 121.25417 %
+Llenado al terminar (recogido) contenedor 401: 48.002777 %
+Llenado al terminar (recogido) contenedor 402: 12.990001 %
+Llenado al terminar (recogido) contenedor 403: 22.216667 %
+Llenado al terminar (recogido) contenedor 404: 53.36111 %
+Llenado al terminar (recogido) contenedor 405: 39.615555 %
+Llenado al terminar (recogido) contenedor 406: 40.565002 %
+Llenado al terminar (no recogido) contenedor 407: 192.17056 %
+Llenado al terminar (recogido) contenedor 408: 62.658337 %
+Llenado al terminar (no recogido) contenedor 409: 119.170555 %
+Llenado al terminar (recogido) contenedor 410: 10.862222 %
+Llenado al terminar (recogido) contenedor 411: 51.27778 %
+Llenado al terminar (recogido) contenedor 412: 67.75889 %
+Llenado al terminar (recogido) contenedor 413: 54.627224 %
+Llenado al terminar (recogido) contenedor 414: 10.137778 %
+Llenado al terminar (recogido) contenedor 415: 28.997223 %
+Llenado al terminar (no recogido) contenedor 416: 95.66889 %
+Llenado al terminar (recogido) contenedor 417: 70.90417 %
+Llenado al terminar (recogido) contenedor 418: 55.339165 %
+Llenado al terminar (recogido) contenedor 419: 56.767506 %
+Llenado al terminar (recogido) contenedor 420: 30.802502 %
+Llenado al terminar (recogido) contenedor 421: 40.794445 %
+Llenado al terminar (recogido) contenedor 422: 22.852499 %
+Llenado al terminar (recogido) contenedor 423: 53.726112 %
+Llenado al terminar (recogido) contenedor 424: 39.90778 %
+Llenado al terminar (recogido) contenedor 425: 56.479168 %
+Llenado al terminar (recogido) contenedor 426: 30.350002 %
+Llenado al terminar (recogido) contenedor 427: 66.425 %
+Llenado al terminar (recogido) contenedor 428: 9.805555 %
+Llenado al terminar (recogido) contenedor 429: 66.02556 %
+Llenado al terminar (recogido) contenedor 430: 55.003334 %
+Llenado al terminar (recogido) contenedor 431: 52.13889 %
+Llenado al terminar (recogido) contenedor 432: 42.932503 %
+Llenado al terminar (recogido) contenedor 433: 15.900001 %
+Llenado al terminar (recogido) contenedor 434: 12.408334 %
+Llenado al terminar (recogido) contenedor 435: 32.306667 %
+Llenado al terminar (recogido) contenedor 436: 31.842503 %
+Llenado al terminar (recogido) contenedor 437: 60.463333 %
+Llenado al terminar (recogido) contenedor 438: 47.969444 %
+Llenado al terminar (recogido) contenedor 439: 9.692223 %
+Llenado al terminar (recogido) contenedor 440: 83.88334 %
+Llenado al terminar (recogido) contenedor 441: 65.24 %
+Llenado al terminar (recogido) contenedor 442: 31.816668 %
+Llenado al terminar (recogido) contenedor 443: 21.470835 %
+Llenado al terminar (no recogido) contenedor 444: 152.66888 %
+Llenado al terminar (recogido) contenedor 445: 34.627502 %
+Llenado al terminar (recogido) contenedor 446: 12.752778 %
+Llenado al terminar (recogido) contenedor 447: 55.25 %
+Llenado al terminar (recogido) contenedor 448: 45.912224 %
+Llenado al terminar (recogido) contenedor 449: 35.0875 %
+Llenado al terminar (recogido) contenedor 450: 71.15 %
+Llenado al terminar (recogido) contenedor 451: 65.01083 %
+Llenado al terminar (no recogido) contenedor 452: 171.08694 %
+Llenado al terminar (recogido) contenedor 453: 31.127779 %
+Llenado al terminar (recogido) contenedor 454: 31.970278 %
+Llenado al terminar (recogido) contenedor 455: 29.19 %
+Llenado al terminar (recogido) contenedor 456: 47.4375 %
+Llenado al terminar (recogido) contenedor 457: 25.373335 %
+Llenado al terminar (recogido) contenedor 458: 36.90917 %
+Llenado al terminar (recogido) contenedor 459: 84.74917 %
+Llenado al terminar (recogido) contenedor 460: 33.658337 %
+Llenado al terminar (recogido) contenedor 461: 35.396667 %
+Llenado al terminar (recogido) contenedor 462: 57.423336 %
+Llenado al terminar (recogido) contenedor 463: 49.15167 %
+Llenado al terminar (recogido) contenedor 464: 38.41 %
+Llenado al terminar (recogido) contenedor 465: 32.02 %
+Llenado al terminar (recogido) contenedor 466: 46.43889 %
+Llenado al terminar (recogido) contenedor 467: 31.744165 %
+Llenado al terminar (recogido) contenedor 468: 23.093056 %
+Llenado al terminar (no recogido) contenedor 469: 125.25417 %
+Llenado al terminar (recogido) contenedor 470: 21.820002 %
+Llenado al terminar (no recogido) contenedor 471: 120.7525 %
+Llenado al terminar (recogido) contenedor 472: 39.583336 %
+Llenado al terminar (recogido) contenedor 473: 41.825 %
+Llenado al terminar (recogido) contenedor 474: 68.92889 %
+Llenado al terminar (recogido) contenedor 475: 30.735556 %
+Llenado al terminar (recogido) contenedor 476: 27.779167 %
+Llenado al terminar (recogido) contenedor 477: 22.305555 %
+Llenado al terminar (recogido) contenedor 478: 28.758333 %
+Llenado al terminar (recogido) contenedor 479: 40.783333 %
+Llenado al terminar (recogido) contenedor 480: 55.257225 %
+Llenado al terminar (recogido) contenedor 481: 10.324722 %
+Llenado al terminar (recogido) contenedor 482: 18.788889 %
+Llenado al terminar (recogido) contenedor 483: 29.861944 %
+Llenado al terminar (recogido) contenedor 484: 14.591111 %
+Llenado al terminar (recogido) contenedor 485: 33.333336 %
+Llenado al terminar (recogido) contenedor 486: 15.580001 %
+Llenado al terminar (recogido) contenedor 487: 17.015556 %
+Llenado al terminar (recogido) contenedor 488: 42.439445 %
+Llenado al terminar (recogido) contenedor 489: 65.19584 %
+Llenado al terminar (recogido) contenedor 490: 32.84111 %
+Llenado al terminar (recogido) contenedor 491: 49.960003 %
+Llenado al terminar (recogido) contenedor 492: 43.483334 %
+Llenado al terminar (recogido) contenedor 493: 35.166668 %
+Llenado al terminar (recogido) contenedor 494: 75.17972 %
+Llenado al terminar (recogido) contenedor 495: 50.170555 %
+Llenado al terminar (recogido) contenedor 496: 77.81333 %
+Llenado al terminar (recogido) contenedor 497: 74.25528 %
+Llenado al terminar (recogido) contenedor 498: 37.600002 %
+Llenado al terminar (recogido) contenedor 499: 32.61667 %
+Llenado al terminar (recogido) contenedor 500: 59.802505 %
+Llenado al terminar (recogido) contenedor 501: 46.346664 %
+Llenado al terminar (recogido) contenedor 502: 17.149166 %
+Llenado al terminar (recogido) contenedor 503: 19.86111 %
+Llenado al terminar (recogido) contenedor 504: 35.342224 %
+Llenado al terminar (no recogido) contenedor 505: 85.91972 %
+Llenado al terminar (recogido) contenedor 506: 37.497776 %
+Llenado al terminar (recogido) contenedor 507: 14.235556 %
+Llenado al terminar (recogido) contenedor 508: 28.355001 %
+Llenado al terminar (recogido) contenedor 509: 51.302223 %
+Llenado al terminar (recogido) contenedor 510: 66.62139 %
+Llenado al terminar (recogido) contenedor 511: 70.73444 %
+Llenado al terminar (recogido) contenedor 512: 46.513336 %
+Llenado al terminar (recogido) contenedor 513: 78.13722 %
+Llenado al terminar (recogido) contenedor 514: 22.884445 %
+Llenado al terminar (recogido) contenedor 515: 42.460003 %
+Llenado al terminar (recogido) contenedor 516: 40.177223 %
+Llenado al terminar (recogido) contenedor 517: 35.963055 %
+Llenado al terminar (recogido) contenedor 518: 38.78389 %
+Llenado al terminar (recogido) contenedor 519: 18.620556 %
+Llenado al terminar (recogido) contenedor 520: 36.193333 %
+Llenado al terminar (recogido) contenedor 521: 29.033335 %
+Llenado al terminar (recogido) contenedor 522: 50.043888 %
+Llenado al terminar (recogido) contenedor 523: 14.224444 %
+Llenado al terminar (recogido) contenedor 524: 21.620834 %
+Llenado al terminar (recogido) contenedor 525: 34.56139 %
+Llenado al terminar (recogido) contenedor 526: 43.932777 %
+Llenado al terminar (recogido) contenedor 527: 41.386944 %
+Llenado al terminar (recogido) contenedor 528: 40.11389 %
+Llenado al terminar (recogido) contenedor 529: 16.76 %
+Llenado al terminar (recogido) contenedor 530: 40.059444 %
+Llenado al terminar (recogido) contenedor 531: 44.803333 %
+Llenado al terminar (recogido) contenedor 532: 68.19556 %
+Llenado al terminar (recogido) contenedor 533: 73.69556 %
+Llenado al terminar (recogido) contenedor 534: 17.080557 %
+Llenado al terminar (recogido) contenedor 535: 32.635555 %
+Llenado al terminar (recogido) contenedor 536: 38.72 %
+Llenado al terminar (recogido) contenedor 537: 61.890278 %
+Llenado al terminar (recogido) contenedor 538: 62.177498 %
+Llenado al terminar (recogido) contenedor 539: 45.911667 %
+Llenado al terminar (recogido) contenedor 540: 51.760002 %
+Llenado al terminar (recogido) contenedor 541: 30.363054 %
+Llenado al terminar (recogido) contenedor 542: 3.9325004 %
+Llenado al terminar (recogido) contenedor 543: 53.708336 %
+Llenado al terminar (recogido) contenedor 544: 22.204721 %
+Llenado al terminar (recogido) contenedor 545: 23.399445 %
+Llenado al terminar (recogido) contenedor 546: 38.274166 %
+Llenado al terminar (recogido) contenedor 547: 29.486668 %
+Llenado al terminar (recogido) contenedor 548: 23.794445 %
+Llenado al terminar (recogido) contenedor 549: 43.961666 %
+Llenado al terminar (recogido) contenedor 550: 33.582222 %
+Llenado al terminar (no recogido) contenedor 551: 100.003334 %
+Llenado al terminar (recogido) contenedor 552: 17.455557 %
+Llenado al terminar (recogido) contenedor 553: 34.190002 %
+Llenado al terminar (recogido) contenedor 554: 45.27111 %
+Llenado al terminar (recogido) contenedor 555: 24.207502 %
+Llenado al terminar (recogido) contenedor 556: 63.396667 %
+Llenado al terminar (recogido) contenedor 557: 21.062223 %
+Llenado al terminar (recogido) contenedor 558: 64.831665 %
+Llenado al terminar (recogido) contenedor 559: 53.55278 %
+Llenado al terminar (recogido) contenedor 560: 56.81667 %
+Llenado al terminar (recogido) contenedor 561: 15.650001 %
+Llenado al terminar (recogido) contenedor 562: 46.20778 %
+Llenado al terminar (recogido) contenedor 563: 39.603054 %
+Llenado al terminar (recogido) contenedor 564: 41.89167 %
+Llenado al terminar (recogido) contenedor 565: 46.858334 %
+Llenado al terminar (recogido) contenedor 566: 40.395557 %
+Llenado al terminar (recogido) contenedor 567: 23.146667 %
+Llenado al terminar (recogido) contenedor 568: 23.516666 %
+Llenado al terminar (recogido) contenedor 569: 72.32084 %
+Llenado al terminar (recogido) contenedor 570: 38.49 %
+Llenado al terminar (recogido) contenedor 571: 36.055553 %
+Llenado al terminar (recogido) contenedor 572: 18.303333 %
+Llenado al terminar (recogido) contenedor 573: 20.460556 %
+Llenado al terminar (recogido) contenedor 574: 34.873055 %
+Llenado al terminar (recogido) contenedor 575: 33.72222 %
+Llenado al terminar (recogido) contenedor 576: 22.390001 %
+Llenado al terminar (recogido) contenedor 577: 21.711668 %
+Llenado al terminar (recogido) contenedor 578: 17.82611 %
+Llenado al terminar (recogido) contenedor 579: 20.960001 %
+Llenado al terminar (recogido) contenedor 580: 20.362223 %
+Llenado al terminar (recogido) contenedor 581: 38.371666 %
+Llenado al terminar (recogido) contenedor 582: 59.14167 %
+Llenado al terminar (recogido) contenedor 583: 17.68 %
+Llenado al terminar (recogido) contenedor 584: 31.7 %
+Llenado al terminar (recogido) contenedor 585: 21.252779 %
+Llenado al terminar (recogido) contenedor 586: 40.011112 %
+Llenado al terminar (recogido) contenedor 587: 30.812502 %
+Llenado al terminar (recogido) contenedor 588: 19.150002 %
+Llenado al terminar (recogido) contenedor 589: 41.43028 %
+Llenado al terminar (recogido) contenedor 590: 51.586945 %
+Llenado al terminar (recogido) contenedor 591: 26.022223 %
+Llenado al terminar (recogido) contenedor 592: 52.50778 %
+Llenado al terminar (recogido) contenedor 593: 22.312502 %
+Llenado al terminar (recogido) contenedor 594: 23.382223 %
+Llenado al terminar (recogido) contenedor 595: 36.89111 %
+Llenado al terminar (recogido) contenedor 596: 27.955557 %
+Llenado al terminar (no recogido) contenedor 597: 71.66889 %
+Llenado al terminar (recogido) contenedor 598: 39.966667 %
+Llenado al terminar (recogido) contenedor 599: 60.943054 %
+Llenado al terminar (recogido) contenedor 600: 32.871666 %
+Llenado al terminar (recogido) contenedor 601: 39.220276 %
+Llenado al terminar (recogido) contenedor 602: 47.2125 %
+Llenado al terminar (recogido) contenedor 603: 55.79778 %
+Llenado al terminar (recogido) contenedor 604: 25.422503 %
+Llenado al terminar (recogido) contenedor 605: 27.145834 %
+Llenado al terminar (recogido) contenedor 606: 26.505556 %
+Llenado al terminar (recogido) contenedor 607: 39.77722 %
+Llenado al terminar (recogido) contenedor 608: 25.010555 %
+Llenado al terminar (recogido) contenedor 609: 45.550003 %
+Llenado al terminar (recogido) contenedor 610: 17.411112 %
+Llenado al terminar (recogido) contenedor 611: 49.208336 %
+Llenado al terminar (recogido) contenedor 612: 13.423056 %
+Llenado al terminar (no recogido) contenedor 613: 165.25418 %
+Llenado al terminar (recogido) contenedor 614: 44.426666 %
+Llenado al terminar (recogido) contenedor 615: 19.019445 %
+Llenado al terminar (recogido) contenedor 616: 25.869446 %
+Llenado al terminar (recogido) contenedor 617: 25.169445 %
+Llenado al terminar (recogido) contenedor 618: 67.363335 %
+Llenado al terminar (recogido) contenedor 619: 41.59667 %
+Llenado al terminar (recogido) contenedor 620: 28.96389 %
+Llenado al terminar (recogido) contenedor 621: 67.74083 %
+Llenado al terminar (recogido) contenedor 622: 39.72111 %
+Llenado al terminar (no recogido) contenedor 623: 77.7525 %
+Llenado al terminar (recogido) contenedor 624: 29.311388 %
+Llenado al terminar (recogido) contenedor 625: 47.923332 %
+Llenado al terminar (recogido) contenedor 626: 19.922222 %
+Llenado al terminar (recogido) contenedor 627: 69.3275 %
+Llenado al terminar (recogido) contenedor 628: 27.744444 %
+Llenado al terminar (recogido) contenedor 629: 47.023335 %
+Llenado al terminar (recogido) contenedor 630: 32.867504 %
+Llenado al terminar (recogido) contenedor 631: 39.86667 %
+Llenado al terminar (recogido) contenedor 632: 27.06389 %
+Llenado al terminar (recogido) contenedor 633: 8.47 %
+Llenado al terminar (recogido) contenedor 634: 33.877777 %
+Llenado al terminar (recogido) contenedor 635: 48.175556 %
+Llenado al terminar (recogido) contenedor 636: 40.800003 %
+Llenado al terminar (recogido) contenedor 637: 16.835001 %
+Llenado al terminar (recogido) contenedor 638: 41.30389 %
+Llenado al terminar (recogido) contenedor 639: 67.225006 %
+Llenado al terminar (recogido) contenedor 640: 13.526667 %
+Llenado al terminar (recogido) contenedor 641: 37.072777 %
+Llenado al terminar (recogido) contenedor 642: 42.445 %
+Llenado al terminar (recogido) contenedor 643: 39.84139 %
+Llenado al terminar (recogido) contenedor 644: 28.35389 %
+Llenado al terminar (recogido) contenedor 645: 40.963333 %
+Llenado al terminar (recogido) contenedor 646: 74.69778 %
+Llenado al terminar (recogido) contenedor 647: 24.615557 %
+Llenado al terminar (recogido) contenedor 648: 66.53889 %
+Llenado al terminar (no recogido) contenedor 649: 168.25418 %
+Llenado al terminar (recogido) contenedor 650: 44.99611 %
+Llenado al terminar (recogido) contenedor 651: 45.891388 %
+Llenado al terminar (recogido) contenedor 652: 23.155556 %
+Llenado al terminar (recogido) contenedor 653: 52.050003 %
+Llenado al terminar (recogido) contenedor 654: 18.149445 %
+Llenado al terminar (recogido) contenedor 655: 32.518055 %
+Llenado al terminar (recogido) contenedor 656: 58.856667 %
+Llenado al terminar (recogido) contenedor 657: 58.416668 %
+Llenado al terminar (recogido) contenedor 658: 26.94 %
+Llenado al terminar (recogido) contenedor 659: 53.402504 %
+Llenado al terminar (recogido) contenedor 660: 25.606388 %
+Llenado al terminar (recogido) contenedor 661: 72.75583 %
+Llenado al terminar (recogido) contenedor 662: 58.367504 %
+Llenado al terminar (recogido) contenedor 663: 84.73111 %
+Llenado al terminar (recogido) contenedor 664: 17.95111 %
+Llenado al terminar (recogido) contenedor 665: 17.577501 %
+Llenado al terminar (recogido) contenedor 666: 85.691666 %
+Llenado al terminar (recogido) contenedor 667: 21.820002 %
+Llenado al terminar (recogido) contenedor 668: 13.942501 %
+Llenado al terminar (recogido) contenedor 669: 76.16389 %
+Llenado al terminar (recogido) contenedor 670: 43.712776 %
+Llenado al terminar (recogido) contenedor 671: 50.53889 %
+Llenado al terminar (recogido) contenedor 672: 12.236112 %
+Llenado al terminar (recogido) contenedor 673: 24.936666 %
+Llenado al terminar (recogido) contenedor 674: 43.309444 %
+Llenado al terminar (recogido) contenedor 675: 21.191668 %
+Llenado al terminar (recogido) contenedor 676: 17.300556 %
+Llenado al terminar (recogido) contenedor 677: 10.528889 %
+Llenado al terminar (recogido) contenedor 678: 54.43028 %
+Llenado al terminar (recogido) contenedor 679: 44.531113 %
+Llenado al terminar (no recogido) contenedor 680: 155.91972 %
+Llenado al terminar (recogido) contenedor 681: 30.870834 %
+Llenado al terminar (recogido) contenedor 682: 33.195557 %
+Llenado al terminar (recogido) contenedor 683: 38.461113 %
+Llenado al terminar (recogido) contenedor 684: 51.321667 %
+Llenado al terminar (recogido) contenedor 685: 48.074722 %
+Llenado al terminar (recogido) contenedor 686: 11.831111 %
+Llenado al terminar (recogido) contenedor 687: 29.457779 %
+Llenado al terminar (recogido) contenedor 688: 12.0633335 %
+Llenado al terminar (recogido) contenedor 689: 30.647503 %
+Llenado al terminar (recogido) contenedor 690: 30.386112 %
+Llenado al terminar (recogido) contenedor 691: 46.83889 %
+Llenado al terminar (recogido) contenedor 692: 29.118055 %
+Llenado al terminar (recogido) contenedor 693: 35.390835 %
+Llenado al terminar (recogido) contenedor 694: 42.155556 %
+Llenado al terminar (recogido) contenedor 695: 23.993334 %
+Llenado al terminar (recogido) contenedor 696: 12.201389 %
+Llenado al terminar (recogido) contenedor 697: 36.475555 %
+Llenado al terminar (recogido) contenedor 698: 34.875004 %
+Llenado al terminar (recogido) contenedor 699: 42.47639 %
+Llenado al terminar (recogido) contenedor 700: 10.193056 %
+Llenado al terminar (recogido) contenedor 701: 11.502778 %
+Llenado al terminar (no recogido) contenedor 702: 88.7525 %
+Llenado al terminar (recogido) contenedor 703: 32.09722 %
+Llenado al terminar (recogido) contenedor 704: 51.791668 %
+Llenado al terminar (recogido) contenedor 705: 28.976112 %
+Llenado al terminar (no recogido) contenedor 706: 50.501667 %
+Llenado al terminar (recogido) contenedor 707: 38.547222 %
+Llenado al terminar (recogido) contenedor 708: 22.151112 %
+Llenado al terminar (recogido) contenedor 709: 35.380558 %
+Llenado al terminar (recogido) contenedor 710: 34.46889 %
+Llenado al terminar (no recogido) contenedor 711: 107.66889 %
+Llenado al terminar (recogido) contenedor 712: 15.577778 %
+Llenado al terminar (recogido) contenedor 713: 25.575556 %
+Llenado al terminar (recogido) contenedor 714: 64.54167 %
+Llenado al terminar (recogido) contenedor 715: 48.77556 %
+Llenado al terminar (recogido) contenedor 716: 37.897224 %
+Llenado al terminar (recogido) contenedor 717: 30.5525 %
+Llenado al terminar (recogido) contenedor 718: 64.98 %
+Llenado al terminar (no recogido) contenedor 719: 197.17056 %
+Llenado al terminar (recogido) contenedor 720: 33.1425 %
+Llenado al terminar (recogido) contenedor 721: 18.07361 %
+Llenado al terminar (recogido) contenedor 722: 46.74389 %
+Llenado al terminar (recogido) contenedor 723: 34.357502 %
+Llenado al terminar (no recogido) contenedor 724: 44.418056 %
+Llenado al terminar (recogido) contenedor 725: 8.348333 %
+Llenado al terminar (recogido) contenedor 726: 17.931667 %
+Llenado al terminar (recogido) contenedor 727: 13.005556 %
+Llenado al terminar (recogido) contenedor 728: 18.15 %
+Llenado al terminar (recogido) contenedor 729: 18.240278 %
+Llenado al terminar (recogido) contenedor 730: 29.022778 %
+Llenado al terminar (recogido) contenedor 731: 33.011112 %
+Llenado al terminar (no recogido) contenedor 732: 97.41806 %
+Llenado al terminar (recogido) contenedor 733: 21.748611 %
+Llenado al terminar (recogido) contenedor 734: 20.515001 %
+Llenado al terminar (recogido) contenedor 735: 66.375 %
+Llenado al terminar (recogido) contenedor 736: 47.930557 %
+Llenado al terminar (recogido) contenedor 737: 32.787224 %
+Llenado al terminar (recogido) contenedor 738: 29.000002 %
+Llenado al terminar (recogido) contenedor 739: 16.7 %
+Llenado al terminar (recogido) contenedor 740: 7.8875003 %
+Llenado al terminar (recogido) contenedor 741: 25.392502 %
+Llenado al terminar (recogido) contenedor 742: 50.704445 %
+Llenado al terminar (recogido) contenedor 743: 13.220278 %
+Llenado al terminar (recogido) contenedor 744: 16.716667 %
+Llenado al terminar (recogido) contenedor 745: 12.976389 %
+Llenado al terminar (recogido) contenedor 746: 12.401389 %
+Llenado al terminar (recogido) contenedor 747: 24.797222 %
+Llenado al terminar (recogido) contenedor 748: 18.547222 %
+Llenado al terminar (recogido) contenedor 749: 9.643056 %
+Llenado al terminar (recogido) contenedor 750: 11.242223 %
+Llenado al terminar (recogido) contenedor 751: 66.16945 %
+Llenado al terminar (recogido) contenedor 752: 26.368889 %
+Llenado al terminar (recogido) contenedor 753: 47.200005 %
+Llenado al terminar (recogido) contenedor 754: 6.405 %
+Llenado al terminar (recogido) contenedor 755: 35.281944 %
+Llenado al terminar (recogido) contenedor 756: 35.525 %
+Llenado al terminar (recogido) contenedor 757: 57.42917 %
+Llenado al terminar (recogido) contenedor 758: 69.095276 %
+Llenado al terminar (recogido) contenedor 759: 53.715004 %
+Llenado al terminar (recogido) contenedor 760: 37.752502 %
+Llenado al terminar (recogido) contenedor 761: 10.801667 %
+Llenado al terminar (recogido) contenedor 762: 18.618055 %
+Llenado al terminar (recogido) contenedor 763: 59.635006 %
+Llenado al terminar (recogido) contenedor 764: 37.042503 %
+Llenado al terminar (recogido) contenedor 765: 28.790003 %
+Llenado al terminar (recogido) contenedor 766: 24.616667 %
+Llenado al terminar (recogido) contenedor 767: 22.357502 %
+Llenado al terminar (recogido) contenedor 768: 28.366669 %
+Llenado al terminar (recogido) contenedor 769: 41.626667 %
+Llenado al terminar (recogido) contenedor 770: 39.80278 %
+Llenado al terminar (recogido) contenedor 771: 44.669167 %
+Llenado al terminar (recogido) contenedor 772: 56.0875 %
+Llenado al terminar (recogido) contenedor 773: 17.995 %
+Llenado al terminar (recogido) contenedor 774: 77.520836 %
+Llenado al terminar (no recogido) contenedor 775: 138.17056 %
+Llenado al terminar (recogido) contenedor 776: 35.385002 %
+Llenado al terminar (recogido) contenedor 777: 31.54 %
+Llenado al terminar (recogido) contenedor 778: 28.00889 %
+Llenado al terminar (recogido) contenedor 779: 40.25417 %
+Llenado al terminar (recogido) contenedor 780: 49.536667 %
+Llenado al terminar (recogido) contenedor 781: 8.097222 %
+Llenado al terminar (recogido) contenedor 782: 20.191668 %
+Llenado al terminar (recogido) contenedor 783: 27.242502 %
+Llenado al terminar (recogido) contenedor 784: 21.897778 %
+Llenado al terminar (recogido) contenedor 785: 42.99167 %
+Llenado al terminar (recogido) contenedor 786: 26.736113 %
+Llenado al terminar (recogido) contenedor 787: 36.535557 %
+Llenado al terminar (recogido) contenedor 788: 24.577223 %
+Llenado al terminar (recogido) contenedor 789: 39.387505 %
+Llenado al terminar (recogido) contenedor 790: 44.56667 %
+Llenado al terminar (recogido) contenedor 791: 49.99667 %
+Llenado al terminar (recogido) contenedor 792: 22.697224 %
+Llenado al terminar (recogido) contenedor 793: 17.248333 %
+Llenado al terminar (recogido) contenedor 794: 5.8944445 %
+Llenado al terminar (recogido) contenedor 795: 22.5925 %
+Llenado al terminar (recogido) contenedor 796: 40.72056 %
+Llenado al terminar (recogido) contenedor 797: 19.957779 %
+Llenado al terminar (recogido) contenedor 798: 35.46 %
+Llenado al terminar (recogido) contenedor 799: 22.88889 %
+Llenado al terminar (recogido) contenedor 800: 12.244445 %
+Llenado al terminar (recogido) contenedor 801: 32.423332 %
+Llenado al terminar (recogido) contenedor 802: 46.331112 %
+Llenado al terminar (recogido) contenedor 803: 22.975555 %
+Llenado al terminar (recogido) contenedor 804: 26.505556 %
+Tiempo en que es recolectado ultimo contenedor en h: 6.8591666
+Tiempo en que retorna el ultimo camion en h: 7.083611
 --------------------

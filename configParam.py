@@ -15,7 +15,7 @@ def ejecutarProceso(command):
 	
 PATH_JAR = r"./out/artifacts/proyectoAE_jar/proyectoAE.jar"
 PATH_RESULTADOS = r"./salidaParam/resultados.xls"
-ITERACIONES = 10
+ITERACIONES = 2
 
 PARSE_F1_REGEX = re.compile(ur"Funcion Objetivo 1: (?P<valor>.+)")
 PARSE_F2_REGEX = re.compile(ur"Funcion Objetivo 2: (?P<valor>.+)")
@@ -89,6 +89,7 @@ for instancia in instancias:
 			print "Iteracion:",i
 			comando = " ".join(argumentosBasicos + [instancia] + p)
 			for salida in ejecutarProceso(comando):
+				#print "Salida java: ", salida
 				match = PARSE_F1_REGEX.search(salida)
 				if match and match.group("valor"):
 					sumaF1+=float(match.group("valor"))

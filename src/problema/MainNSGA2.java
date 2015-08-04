@@ -24,7 +24,7 @@ public class MainNSGA2 {
 
         Datos datos;
         try{
-            datos = Datos.cargarDatosDeArgs(args);
+            datos = Datos.cargarDatosDeArgs(args, false);
         }
         catch (Throwable t){
             System.out.println(t.getMessage());
