@@ -3,8 +3,14 @@ import time
 import codecs
 import json
 from os.path import splitext, split
+import os
+import sys
 import re
 import xlwt
+import threading
+from multiprocessing.pool import ThreadPool
+import multiprocessing
+from threading import Lock
 
 def ejecutarProceso(command):
 	p = subprocess.Popen(command,
@@ -15,7 +21,8 @@ def ejecutarProceso(command):
 	
 PATH_JAR = r"./out/artifacts/proyectoAE_jar/proyectoAE.jar"
 PATH_RESULTADOS = r"./salidaParam/resultados.xls"
-ITERACIONES = 2
+ITERACIONES = 30
+POOL_SIZE = 4
 
 PARSE_F1_REGEX = re.compile(ur"Funcion Objetivo 1: (?P<valor>.+)")
 PARSE_F2_REGEX = re.compile(ur"Funcion Objetivo 2: (?P<valor>.+)")
@@ -65,28 +72,38 @@ print len(combinacionesParametros), "combinaciones parametricas"
 #	print salida
 	
 headers = ["algoritmo","poblacion","eval","cross","mut","promedioF1","promedioF2","tiempoPromedio"]
-
 book = xlwt.Workbook()
+mutex = Lock()
+def procesarInstancia(instancia):
 
-for instancia in instancias:
-	print "Ejecutando instancia: ", instancia
+	mutex.acquire()
 	
-	sheet = book.add_sheet(splitext(split(instancia)[1])[0])
-	
-	for i, h in enumerate(headers):
-		sheet.write(0,i,h)
+	try:
+		print "Ejecutando instancia: ", instancia	
+		sheet = book.add_sheet(splitext(split(instancia)[1])[0])
+		
+		for i, h in enumerate(headers):
+			sheet.write(0,i,h)
+	finally:
+		mutex.release()
+
 	
 		
 	for ip, p in enumerate(combinacionesParametros):
 
+		mutex.acquire()
 		print "Probando parametros: {0} {1} {2} {3} {4}".format(*p)
+		mutex.release()
 		
 		sumaF1 = 0.0
 		sumaF2 = 0.0
 		tiempo = 0.0
 		
 		for i in xrange(ITERACIONES):
+			mutex.acquire()
 			print "Iteracion:",i
+			mutex.release()
+			
 			comando = " ".join(argumentosBasicos + [instancia] + p)
 			for salida in ejecutarProceso(comando):
 				#print "Salida java: ", salida
@@ -106,16 +123,48 @@ for instancia in instancias:
 					continue
 		
 		line = ip+1
-		sheet.write(line,0,p[0])
-		sheet.write(line,1,p[1])
-		sheet.write(line,2,p[2])
-		sheet.write(line,3,p[3])
-		sheet.write(line,4,p[4])
-		sheet.write(line,5,sumaF1 / ITERACIONES)
-		sheet.write(line,6,sumaF2 / ITERACIONES)
-		sheet.write(line,7,tiempo / ITERACIONES)
 		
-		#Guardo por las dudas
-		book.save(PATH_RESULTADOS)
+		mutex.acquire()
+		try:
+			sheet.write(line,0,p[0])
+			sheet.write(line,1,p[1])
+			sheet.write(line,2,p[2])
+			sheet.write(line,3,p[3])
+			sheet.write(line,4,p[4])
+			sheet.write(line,5,sumaF1 / ITERACIONES)
+			sheet.write(line,6,sumaF2 / ITERACIONES)
+			sheet.write(line,7,tiempo / ITERACIONES)
+			
+			#Guardo por las dudas
+			book.save(PATH_RESULTADOS)
+		finally:
+			mutex.release()
+
+pool = ThreadPool(processes=POOL_SIZE)
+
+
+results = []
+for instancia in instancias:
+	results.append(pool.apply_async(procesarInstancia, [instancia]))
+	
+for r in results:
+	while True:
+		try:
+			#Para permitir interrupt de keyboard.
+			r.get(timeout=1)
+			break
+		except multiprocessing.TimeoutError:
+			pass
+		except KeyboardInterrupt:
+			try:
+				mutex.acquire()
+				res = raw_input("Seguro que quiere terminar? si / no: ")
+				if res == "si":
+					pool.terminate()
+					sys.exit()
+			finally:
+				mutex.release()
+	
+print "Fin"
 	
 	
