@@ -6,8 +6,6 @@ import os
 import time
 from natsort import natsorted, natsort_keygen, ns		#Librerias extra!
 
-CARPETA = "./evolucion/"
-
 
 files = glob.glob( "./evolucion/*fun.txt") 
 files.sort(key = natsort_keygen(key= lambda e : e, alg=ns.U|ns.N|ns.IC))	#Ordeno orden natural segun archivos,
@@ -63,7 +61,7 @@ def animate(num):
 
 
 line_ani = animation.FuncAnimation(figure, animate, len(files), interval=500, init_func=init, blit=True)
-#init()
+#line_ani.save('./evolucion/animacion.mp4')
 
 plt.show()
 
