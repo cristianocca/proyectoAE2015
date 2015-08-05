@@ -145,9 +145,9 @@ public class MainAE {
 
 
         //((Problema) problem).imprimirSolucion(salida + ".txt", population, false);
-        //SolutionSet compromisoSet = new SolutionSet(1);
-        //compromisoSet.add(compromiso);
-        //((Problema)problem).imprimirSolucion(salida+"_COMPROMISO.txt", compromisoSet);
+        SolutionSet compromisoSet = new SolutionSet(1);
+        compromisoSet.add(compromiso);
+        ((Problema)problem).imprimirSolucion("SALIDA_COMPROMISO.txt", compromisoSet);
 
 
 

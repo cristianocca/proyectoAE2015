@@ -155,27 +155,18 @@ public class Problema extends Problem {
     public static float getPuntajeRecogido(float porcentaje){
 
         if (porcentaje < 100 ){
-            return porcentaje-20;
+            return porcentaje;
         }
         //Si es >= 100, negativo
         return porcentaje * -1;
 
-        /*if (porcentaje < 100){
-            return 0;
-        }
-        return porcentaje * -1;*/
     }
 
     //Devuelve el puntaje asociado segun el porcentaje de llenado, si no es recogido.
     public static float getPuntajeNoRecogido(float porcentaje){
-        if(porcentaje <= 50){
-            return 0;
-        }
-        if (porcentaje < 100){
-            return (porcentaje - 50)*-1;
-        }
-        return porcentaje * -1;
-        //return porcentaje-100;
+
+        return 100-porcentaje;  //Cuanto mas vacio queda mejor, y si se pasa de 100 empieza a ser negativo
+
     }
 
     @Override
