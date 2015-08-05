@@ -28,6 +28,9 @@ import jmetal.util.JMException;
 import jmetal.util.NonDominatedSolutionList;
 import jmetal.util.Ranking;
 import jmetal.util.comparators.CrowdingComparator;
+import problema.Problema;
+
+import java.io.IOException;
 
 /** 
  *  Implementation of NSGA-II.
@@ -174,6 +177,17 @@ public class NSGAII extends Algorithm {
 
         remain = 0;
       } // if                               
+
+
+      /**
+      if(evaluations % 500 == 0){
+
+        Solution compromiso = ((Problema)this.problem_).getSolucionDeCompromiso(population);
+        System.out.println("Eval " + evaluations + " Funcion Objetivo 1: " + compromiso.getObjective(0));
+        System.out.println("Eval " + evaluations + " Funcion Objetivo 2: " + (-1 * compromiso.getObjective(1)));
+      }
+       **/
+
 
       // This piece of code shows how to use the indicator object into the code
       // of NSGA-II. In particular, it finds the number of evaluations required

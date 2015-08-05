@@ -18,7 +18,7 @@ import java.util.HashMap;
 /**
  * Created by Cristiano on 27/07/2015.
  */
-public class MainNSGA2 {
+public class MainAE {
 
     public static void main(String[] args) throws JMException, ClassNotFoundException, IOException {
 
@@ -31,35 +31,42 @@ public class MainNSGA2 {
             return;
         }
 
-        System.out.println();
-        System.out.println("Argumentos de algoritmo (seguido de datos)");
-        System.out.println("algoritmo tamPob maxEval crossProb mutProb");
 
         int popSize = 100;
         int maxEval = 25000;
         double crossProb = 0.75;
         double mutProb = 0.01;
         String algoritmo = "NSGA2";
+        String salidaFun = "SALIDA_FUN.txt";
+        String salidaVar = "SALIDA_VAR.txt";
 
 
-        if(args.length > 7){
+        if(args.length >= 7){
             algoritmo = args[6];
         }
 
-        if(args.length > 8){
+        if(args.length >= 8){
             popSize = Integer.parseInt(args[7]);
         }
 
-        if(args.length > 9){
+        if(args.length >= 9){
             maxEval = Integer.parseInt(args[8]);
         }
 
-        if(args.length > 10){
+        if(args.length >= 10){
             crossProb = Double.parseDouble(args[9]);
         }
 
-        if(args.length > 11){
+        if(args.length >= 11){
             mutProb = Double.parseDouble(args[10]);
+        }
+
+        if(args.length >= 12){
+            salidaFun = args[11];
+        }
+
+        if(args.length >= 13){
+            salidaVar = args[12];
         }
 
         System.out.println("---- Parametros a utilizar ----");
@@ -68,6 +75,7 @@ public class MainNSGA2 {
         System.out.println("Max Eval: " + maxEval);
         System.out.println("Cross Prob: " + crossProb);
         System.out.println("Mut Prob: " + mutProb);
+        System.out.println("Salidas: " + salidaFun + ", " + salidaVar);
 
 
         Problem problem   ; // The problem to solve
@@ -124,17 +132,23 @@ public class MainNSGA2 {
         SolutionSet population = algorithm.execute();
         long elapsedTime = System.currentTimeMillis() - initTime;
 
-        System.out.println("Tiempo Algoritmo: " + elapsedTime/1000 + "s");
 
-        //population.printFeasibleVAR("VAR_NSGA2");
-        //population.printFeasibleFUN("FUN_NSGA2");
-
-        ((Problema)problem).imprimirSolucion("./SALIDA.txt", population,false);
 
         Solution compromiso = ((Problema)problem).getSolucionDeCompromiso(population);
-        SolutionSet compromisoSet = new SolutionSet(1);
-        compromisoSet.add(compromiso);
-        ((Problema)problem).imprimirSolucion("./SALIDA_COMPROMISO.txt", compromisoSet,true);
+
+        System.out.println("Tiempo Algoritmo: " + elapsedTime/1000 + "s");
+        System.out.println("Compromiso F1: " + compromiso.getObjective(0));
+        System.out.println("Compromiso F2: " + (-1 * compromiso.getObjective(1)));
+
+        population.printFeasibleFUN(salidaFun);
+        population.printFeasibleVAR(salidaVar);
+
+
+        //((Problema) problem).imprimirSolucion(salida + ".txt", population, false);
+        //SolutionSet compromisoSet = new SolutionSet(1);
+        //compromisoSet.add(compromiso);
+        //((Problema)problem).imprimirSolucion(salida+"_COMPROMISO.txt", compromisoSet);
+
 
 
     }

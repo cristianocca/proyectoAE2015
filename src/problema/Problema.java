@@ -145,17 +145,22 @@ public class Problema extends Problem {
 
 
     //Devuelve le puntaje asociado segun el porcentaje de llenado, al momento de ser recogido
-    public float getPuntajeRecogido(float porcentaje){
+    public static float getPuntajeRecogido(float porcentaje){
 
         if (porcentaje < 100 ){
             return porcentaje-20;
         }
         //Si es >= 100, negativo
         return porcentaje * -1;
+
+        /*if (porcentaje < 100){
+            return 0;
+        }
+        return porcentaje * -1;*/
     }
 
     //Devuelve el puntaje asociado segun el porcentaje de llenado, si no es recogido.
-    public float getPuntajeNoRecogido(float porcentaje){
+    public static float getPuntajeNoRecogido(float porcentaje){
         if(porcentaje <= 50){
             return 0;
         }
@@ -163,6 +168,7 @@ public class Problema extends Problem {
             return (porcentaje - 50)*-1;
         }
         return porcentaje * -1;
+        //return porcentaje-100;
     }
 
     @Override
@@ -244,7 +250,7 @@ public class Problema extends Problem {
 
 
 
-            //Para cada cami�n, luego que se tiene un 0 en su soluci�n, todos los restantes valores a la derecha tambi�n deber�n ser 0
+            //Para cada camión, luego que se tiene un 0 en su solución, todos los restantes valores a la derecha también deberán ser 0
             for (int i = 0; i < this.cantCamiones; i++) {
 
                 indice = i * this.capCamionesAprox;
@@ -252,7 +258,7 @@ public class Problema extends Problem {
 
                 try {
 
-                    //La cantidad de basura recogida por cada cami�n no puede exceder su capacidad real, para esto se utiliza el % de basura recogido de cada contenedor y se valida que el total no supere su capacidad.
+                    //La cantidad de basura recogida por cada camión no puede exceder su capacidad real, para esto se utiliza el % de basura recogido de cada contenedor y se valida que el total no supere su capacidad.
 
                     double contenedoresRecolectados = 0;        //double para manejar fracciones.
                     double sumaBasura;
@@ -405,14 +411,13 @@ public class Problema extends Problem {
 
 
     /**
-     * Genera archivos con datos de la solucion/es. Si imprConsola es true, larga los valores de funcion objetivo en la consola.
+     * Genera archivos con datos de la solucion/es.
      * @param path
      * @param soluciones
-     * @param imprConsola
      * @throws IOException
      * @throws JMException
      */
-    public void imprimirSolucion(String path, SolutionSet soluciones, boolean imprConsola) throws IOException, JMException {
+    public void imprimirSolucion(String path, SolutionSet soluciones) throws IOException, JMException {
 
 
         int tiempoRecol = this.datos.datosBasicos.tiempoRecoleccionContenedor;
@@ -461,10 +466,6 @@ public class Problema extends Problem {
                 bw.write(String.valueOf(-1 * s.getObjective(1)));
                 bw.newLine();
 
-                if (imprConsola){
-                    System.out.println("Funcion Objetivo 1: " + s.getObjective(0));
-                    System.out.println("Funcion Objetivo 2: " + (-1 * s.getObjective(1)));
-                }
 
                 //Imprimo cuan lleno termina el contenedor
                 ArrayList<ArrayList<int[]>> tc = construirListaTiempos(s.getDecisionVariables());
