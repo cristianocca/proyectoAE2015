@@ -179,14 +179,11 @@ public class NSGAII extends Algorithm {
       } // if                               
 
 
-      /**
-      if(evaluations % 500 == 0){
 
-        Solution compromiso = ((Problema)this.problem_).getSolucionDeCompromiso(population);
-        System.out.println("Eval " + evaluations + " Funcion Objetivo 1: " + compromiso.getObjective(0));
-        System.out.println("Eval " + evaluations + " Funcion Objetivo 2: " + (-1 * compromiso.getObjective(1)));
+      if(evaluations % 500 == 0){
+        population.printFeasibleFUN("./evolucion/"+evaluations+"fun.txt");
       }
-       **/
+
 
 
       // This piece of code shows how to use the indicator object into the code
