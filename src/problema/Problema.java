@@ -34,6 +34,13 @@ public class Problema extends Problem {
     public float tiempoFin;       //tiempo de final de la planificacion en segundos.
     public static TiempoComparator tiempoComparator = new TiempoComparator();
 
+    //Para instanciarlo sin datos.
+    public Problema(){
+
+        numberOfObjectives_ = 2;        //0: Min trayectoria, 1: Maximizar QoS
+        solutionType_ = new IntSolutionType(this) ;
+        problemName_        = "Recoleccion de basura";
+    }
 
     public Problema(Datos datos){
         this.datos = datos;
