@@ -32,8 +32,8 @@ if ANIMACION:
 			for l in arch.readlines():
 				if len(l) > 0:				
 					f1, f2, nl = l.split(" ")
-					x.append(f1)
-					y.append(f2)
+					x.append(float(f1))
+					y.append(float(f2))
 	
 	inicial = axes.plot(x,y, 'bo',ms=6)[0]	
 	
@@ -52,8 +52,8 @@ if ANIMACION:
 					for l in arch.readlines():
 						if len(l) > 0:				
 							f1, f2, nl = l.split(" ")
-							x.append(f1)
-							y.append(f2)
+							x.append(float(f1))
+							y.append(float(f2))
 				indice+=1
 				
 			yield x, y, indice
@@ -91,8 +91,8 @@ else:
 			for l in arch.readlines():
 				if len(l) > 0:				
 					f1, f2, nl = l.split(" ")
-					x.append(f1)
-					y.append(f2)
+					x.append(float(f1))
+					y.append(float(f2))
 	
 	grafica = axes.plot(x,y, 'ro')[0]
 		

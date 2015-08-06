@@ -136,36 +136,7 @@ public class MainAE {
 
         Solution compromiso = ((Problema)problem).getSolucionDeCompromiso(population);
 
-        double peorF1 = Double.MAX_VALUE * -1;
-        double mejorF1 = Double.MAX_VALUE;
-        double peorF2 = Double.MAX_VALUE * -1;
-        double mejorF2 = Double.MAX_VALUE;
 
-        for(int i = 0; i < population.size();i++) {
-            Solution sol = population.get(i);
-
-            if(sol.getObjective(0) > peorF1){
-                peorF1 = sol.getObjective(0);
-            }
-
-            if(sol.getObjective(0) < mejorF1){
-                mejorF1 = sol.getObjective(0);
-            }
-
-            if (sol.getObjective(1) > peorF2){
-                peorF2 = sol.getObjective(1);
-            }
-
-            if (sol.getObjective(1) < mejorF2){
-                mejorF2 = sol.getObjective(1);
-            }
-        }
-
-
-        System.out.println("Peor F1: " + peorF1);
-        System.out.println("Mejor F1: " + mejorF1);
-        System.out.println("Peor F2: " + peorF2);
-        System.out.println("Mejor F2: " + mejorF2);
         System.out.println("Compromiso F1: " + compromiso.getObjective(0));
         System.out.println("Compromiso F2: " + compromiso.getObjective(1));
         System.out.println("Tiempo Algoritmo: " + elapsedTime/1000 + "s");

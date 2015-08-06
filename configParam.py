@@ -57,11 +57,7 @@ POOL_SIZE = 4
 if PASOS.EJECUTAR:
 
 	#Para parsear resultados de ejecuciones
-	
-	PARSE_F1_PEOR = re.compile(ur"Peor F1: (?P<valor>.+)")
-	PARSE_F1_MEJOR = re.compile(ur"Mejor F1: (?P<valor>.+)")
-	PARSE_F2_PEOR = re.compile(ur"Peor F2: (?P<valor>.+)")
-	PARSE_F2_MEJOR = re.compile(ur"Mejor F2: (?P<valor>.+)")	
+		
 	PARSE_F1_COMPR = re.compile(ur"Compromiso F1: (?P<valor>.+)")
 	PARSE_F2_COMPR = re.compile(ur"Compromiso F2: (?P<valor>.+)")
 	
@@ -172,27 +168,7 @@ if PASOS.EJECUTAR:
 								
 					for salida in ejecutarProceso(comando):
 						#print "Salida java: ", salida
-						
-						match = PARSE_F1_PEOR.search(salida)
-						if match and match.group("valor"):
-							f1peor=float(match.group("valor"))
-							continue
-							
-						match = PARSE_F1_MEJOR.search(salida)
-						if match and match.group("valor"):
-							f1mejor=float(match.group("valor"))
-							continue
-							
-						match = PARSE_F2_PEOR.search(salida)
-						if match and match.group("valor"):
-							f2peor=float(match.group("valor"))
-							continue
-							
-						match = PARSE_F2_MEJOR.search(salida)
-						if match and match.group("valor"):
-							f2mejor=float(match.group("valor"))
-							continue
-						
+																		
 						match = PARSE_F1_COMPR.search(salida)
 						if match and match.group("valor"):
 							f1compromiso=float(match.group("valor"))
@@ -212,10 +188,6 @@ if PASOS.EJECUTAR:
 						'iteracion':i,
 						'archivoSalidaFun':archivoSalidaFun,
 						'archivoSalidaVar':archivoSalidaVar,
-						'f1peor':f1peor,
-						'f1mejor':f1mejor,
-						'f2peor':f2peor,
-						'f2mejor':f2mejor,
 						'f1compromiso':f1compromiso,
 						'f2compromiso':f2compromiso,
 						'tiempo':tiempo,
@@ -307,11 +279,9 @@ if PASOS.OBTENER_RHV:
 	for k,v in resultadosEjecucion.iteritems():
 	
 		for ejecucion in v['ejecuciones']:
-			
-			peoresF1 = []
-			mejoresF1 = []
-			peoresF2 = []
-			mejoresF2 = []
+									
+			f1s = []
+			f2s = []
 			
 			compromisosF1 = []
 			compromisosF2 = []
@@ -319,12 +289,7 @@ if PASOS.OBTENER_RHV:
 			RHVs = []
 			spreads = []
 						
-			for iteracion in ejecucion['iteraciones']:
-				peoresF1.append(iteracion['f1peor'])
-				mejoresF1.append(iteracion['f1mejor'])
-				
-				peoresF2.append(iteracion['f2peor'])
-				mejoresF2.append(iteracion['f2mejor'])
+			for iteracion in ejecucion['iteraciones']:				
 				
 				compromisosF1.append(iteracion['f1compromiso'])
 				compromisosF2.append(iteracion['f2compromiso'])
@@ -343,13 +308,23 @@ if PASOS.OBTENER_RHV:
 					if match and match.group("valor"):
 						spreads.append(float(match.group("valor")))
 						continue
+												
+				
+				#Leo el archivo de salida y le agrego valores funcionales
+				with open(iteracion['archivoSalidaFun'],'r') as arch:
+					for l in arch.readlines():
+						if len(l) > 0:				
+							f1, f2, nl = l.split(" ")
+							f1s.append(float(f1))
+							f2s.append(float(f2))
 						
-					
-						
-			ejecucion['peorF1'] = max(peoresF1)
-			ejecucion['mejorF1'] = min(mejoresF1)			
-			ejecucion['peorF2'] = max(peoresF2)
-			ejecucion['mejorF2'] = min(mejoresF2)
+									
+			ejecucion['peorF1'] = max(f1s)
+			ejecucion['mejorF1'] = min(f1s)			
+			ejecucion['medF1'] = numpy.mean(f1s)
+			ejecucion['peorF2'] = max(f2s)
+			ejecucion['mejorF2'] = min(f2s)
+			ejecucion['medF2'] = numpy.mean(f2s)
 						
 			ejecucion['medCompromisoF1'] = numpy.mean(compromisosF1)			
 			ejecucion['medCompromisoF2'] = numpy.mean(compromisosF2)
@@ -371,7 +346,8 @@ if PASOS.OBTENER_RHV:
 if PASOS.GENERAR_XL:
 
 	headers = ["algoritmo","poblacion","evals","cross","mut",
-				'peorF1','mejorF1','peorF2','mejorF2',
+				'peorF1','mejorF1','medF1',
+				'peorF2','mejorF2','medF2',
 				"medCompromisoF1",
 				"medCompromisoF2",				
 				"medTiempo",
