@@ -12,59 +12,71 @@ files = glob.glob( "./evolucion/*fun.txt")
 files.sort(key = natsort_keygen(key= lambda e : e, alg=ns.U|ns.N|ns.IC))	#Ordeno orden natural segun archivos,
 
 figure = plt.figure()
+axes = figure.add_subplot(111)
 grafica = None
+texto = None
 
 if ANIMACION:
-	it = iter(files)
+		
+	pause = False
+	def onClick(event):
+		global pause
+		pause ^= True
 	
-	def init():
-		global grafica
-		try:
-			f = it.next()		
-			x = []
-			y = []
-			with open(f,'r') as arch:
-				for l in arch.readlines():
-					if len(l) > 0:				
-						f1, f2, nl = l.split(" ")
-						x.append(f1)
-						y.append(f2)
-					
-			
-			grafica = plt.plot(x,y, 'ro')[0]
-			
-			#Espero 2 segundos.
-			time.sleep(1)
-			return grafica,
-		except StopIteration:
-			return grafica,
+	figure.canvas.mpl_connect('button_press_event', onClick)
+	
+	x = []
+	y = []
+	if len(files) > 0:
+		with open(files[0],'r') as arch:
+			for l in arch.readlines():
+				if len(l) > 0:				
+					f1, f2, nl = l.split(" ")
+					x.append(f1)
+					y.append(f2)
+	
+	inicial = axes.plot(x,y, 'bo',ms=6)[0]	
+	
+	#La utilizada por la animacion
+	grafica = axes.plot([],[], 'ro',ms=6)[0]
+	
+	texto = axes.text(0.1, 0.9, "{0} / {1}".format(1, len(files)), transform=axes.transAxes)
+	
+	def getNext():		
+		indice = 0
+		while indice < len(files):
+			if not pause:				
+				x = []
+				y = []
+				with open(files[indice],'r') as arch:
+					for l in arch.readlines():
+						if len(l) > 0:				
+							f1, f2, nl = l.split(" ")
+							x.append(f1)
+							y.append(f2)
+				indice+=1
+				
+			yield x, y, indice
+		
 
-	def animate(num):
-		global grafica
-		try:
-			f = it.next()		
-			x = []
-			y = []
-			with open(f,'r') as arch:
-				for l in arch.readlines():
-					if len(l) > 0:				
-						f1, f2, nl = l.split(" ")
-						x.append(f1)
-						y.append(f2)
-						
-									
-			grafica.set_data(x,y)		
-			
-			#Recalcular limites
-			ax = plt.gca()		
-			ax.relim()		
-			ax.autoscale_view()
-			plt.draw()
-			return grafica,
-		except StopIteration:
-			return grafica,
+	def animate(data):
+		
+		x,y,ind = data
+							
+		grafica.set_data(x,y)		
+		texto.set_text("{0} / {1}".format(ind, len(files)))
+		
+		#Recalcular limites
+		axes.relim()		
+		axes.autoscale_view()
+		plt.draw()
+		return grafica, texto
 	
-	line_ani = animation.FuncAnimation(figure, animate, len(files), interval=200, init_func=init, blit=True)
+	#frames can be a generator, an iterable, or a number of frames.
+	#init_func is a function used to draw a clear frame.
+	#If not given, the results of drawing from the first item in the frames sequence will be used.
+	#This function will be called once before the first frame.
+	line_ani = animation.FuncAnimation(figure, animate, getNext, interval=200, blit=True, repeat=False)
 	#line_ani.save('./evolucion/animacion.mp4')
 		
 	plt.show()
@@ -82,7 +94,7 @@ else:
 					x.append(f1)
 					y.append(f2)
 	
-	grafica = plt.plot(x,y, 'ro')[0]
+	grafica = axes.plot(x,y, 'ro')[0]
 		
 
 	plt.show()
