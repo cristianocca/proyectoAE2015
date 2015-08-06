@@ -460,8 +460,8 @@ public class Problema extends Problem {
                 //bw.write("Trayectoria total en metros: " + String.valueOf(s.getObjective(0)));
                 bw.write(String.valueOf(s.getObjective(0)));
                 bw.newLine();
-                //bw.write("QoS total: " + String.valueOf(-1 * s.getObjective(1)));
-                bw.write(String.valueOf(-1 * s.getObjective(1)));
+                //bw.write("QoS total: " + String.valueOf(s.getObjective(1)));
+                bw.write(String.valueOf(s.getObjective(1)));
                 bw.newLine();
 
 

@@ -16,7 +16,7 @@ public class ObtenerFrente {
 
     /**
      * Recibe una carpeta y nombre de archivo de salida
-     * Y deja en cada carpeta el mejor frente de pareto.
+     * Y deja en la carpeta el mejor frente de pareto construido con todos los archivos.
      * Solo agarra aquellos archivos que contengan "fun" en su nombre.
      *
      * @param args

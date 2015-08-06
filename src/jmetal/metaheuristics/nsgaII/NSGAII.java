@@ -180,10 +180,11 @@ public class NSGAII extends Algorithm {
 
 
 
+      /**
       if(evaluations % 500 == 0){
         population.printFeasibleFUN("./evolucion/"+evaluations+"fun.txt");
       }
-
+      **/
 
 
       // This piece of code shows how to use the indicator object into the code

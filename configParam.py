@@ -30,8 +30,8 @@ def ejecutarProceso(command):
 #Pasos a ejecutar, si se saltean pasos, se asumen datos ya generados.		
 class PASOS:
 	EJECUTAR = False			#Ejecuta instancias y guarda resultados para post procesamiento
-	OBTENER_FRENTE = False		#Por cada instancia, obtiene el mejor frente de todas las ejecuciones de esa instancia
-	OBTENER_RHV = True			#Por cada instancia, el mejor frente, y todas las ejecuciones, obtiene RHV, promedios y varianzas para cada combinacion parametrica
+	OBTENER_FRENTE = True		#Por cada instancia, obtiene el mejor frente de todas las ejecuciones de esa instancia
+	OBTENER_RHV = True			#Por cada instancia, el mejor frente, y todas las ejecuciones, obtiene RHV y otros valores, promedios y varianzas para cada combinacion parametrica
 	GENERAR_XL = True			#Guarda todos los datos obtenidos en un archivo excel
 
 
@@ -50,18 +50,25 @@ CARPETA_SALIDAS = r"./salidaParam/{0}"
 #Path salida excel
 PATH_SALIDA_XL = r"./salidaParam/resultados.xls"
 
-ITERACIONES = 3
+ITERACIONES = 2
 POOL_SIZE = 4
 
 
 if PASOS.EJECUTAR:
 
 	#Para parsear resultados de ejecuciones
-	PARSE_F1_REGEX = re.compile(ur"Compromiso F1: (?P<valor>.+)")
-	PARSE_F2_REGEX = re.compile(ur"Compromiso F2: (?P<valor>.+)")
-
+	
+	PARSE_F1_PEOR = re.compile(ur"Peor F1: (?P<valor>.+)")
+	PARSE_F1_MEJOR = re.compile(ur"Mejor F1: (?P<valor>.+)")
+	PARSE_F2_PEOR = re.compile(ur"Peor F2: (?P<valor>.+)")
+	PARSE_F2_MEJOR = re.compile(ur"Mejor F2: (?P<valor>.+)")	
+	PARSE_F1_COMPR = re.compile(ur"Compromiso F1: (?P<valor>.+)")
+	PARSE_F2_COMPR = re.compile(ur"Compromiso F2: (?P<valor>.+)")
+	
 	#Uso el tiempo reportado por java en vez de calcularo aca, para evitar sumar costo de parseo de archivos
 	PARSE_TIEMPO_REGEX = re.compile(ur"Tiempo Algoritmo: (?P<valor>.+)s")
+
+	
 		
 	argumentosBasicos = [
 		"java",
@@ -80,8 +87,8 @@ if PASOS.EJECUTAR:
 			"./datos/instancias/llenado_3.json",
 		]
 		
-	#algoritmos = ["NSGA2","SPEA2"]
-	algoritmos = ["NSGA2"]
+	algoritmos = ["NSGA2","SPEA2"]
+	#algoritmos = ["NSGA2"]
 
 
 	posiblesPob = ["100","200"]
@@ -155,18 +162,43 @@ if PASOS.EJECUTAR:
 					comando = " ".join(argumentosBasicos + [instancia] + p + [archivoSalidaFun, archivoSalidaVar])
 					#print comando
 					
+					f1peor = 0
+					f1mejor = 0
+					f2peor = 0
+					f2mejor = 0
 					f1compromiso = 0
 					f2compromiso = 0
 					tiempo = 0
-				
+								
 					for salida in ejecutarProceso(comando):
 						#print "Salida java: ", salida
-						match = PARSE_F1_REGEX.search(salida)
+						
+						match = PARSE_F1_PEOR.search(salida)
+						if match and match.group("valor"):
+							f1peor=float(match.group("valor"))
+							continue
+							
+						match = PARSE_F1_MEJOR.search(salida)
+						if match and match.group("valor"):
+							f1mejor=float(match.group("valor"))
+							continue
+							
+						match = PARSE_F2_PEOR.search(salida)
+						if match and match.group("valor"):
+							f2peor=float(match.group("valor"))
+							continue
+							
+						match = PARSE_F2_MEJOR.search(salida)
+						if match and match.group("valor"):
+							f2mejor=float(match.group("valor"))
+							continue
+						
+						match = PARSE_F1_COMPR.search(salida)
 						if match and match.group("valor"):
 							f1compromiso=float(match.group("valor"))
 							continue
 							
-						match = PARSE_F2_REGEX.search(salida)
+						match = PARSE_F2_COMPR.search(salida)
 						if match and match.group("valor"):
 							f2compromiso=float(match.group("valor"))
 							continue
@@ -180,6 +212,10 @@ if PASOS.EJECUTAR:
 						'iteracion':i,
 						'archivoSalidaFun':archivoSalidaFun,
 						'archivoSalidaVar':archivoSalidaVar,
+						'f1peor':f1peor,
+						'f1mejor':f1mejor,
+						'f2peor':f2peor,
+						'f2mejor':f2mejor,
 						'f1compromiso':f1compromiso,
 						'f2compromiso':f2compromiso,
 						'tiempo':tiempo,
@@ -265,8 +301,6 @@ if PASOS.OBTENER_RHV:
 	
 	PARSE_RHV = re.compile(ur"RHV: (?P<valor>.+)")
 	PARSE_SPREAD = re.compile(ur"Spread: (?P<valor>.+)")
-	PARSE_GD = re.compile(ur"^GD: (?P<valor>.+)")
-	PARSE_IGD = re.compile(ur"^IGD: (?P<valor>.+)")
 	
 	print "Obteniendo RHV y otros"
 		
@@ -274,15 +308,24 @@ if PASOS.OBTENER_RHV:
 	
 		for ejecucion in v['ejecuciones']:
 			
+			peoresF1 = []
+			mejoresF1 = []
+			peoresF2 = []
+			mejoresF2 = []
+			
 			compromisosF1 = []
 			compromisosF2 = []
 			tiempos = []
 			RHVs = []
 			spreads = []
-			gds = []
-			igds = []
 						
 			for iteracion in ejecucion['iteraciones']:
+				peoresF1.append(iteracion['f1peor'])
+				mejoresF1.append(iteracion['f1mejor'])
+				
+				peoresF2.append(iteracion['f2peor'])
+				mejoresF2.append(iteracion['f2mejor'])
+				
 				compromisosF1.append(iteracion['f1compromiso'])
 				compromisosF2.append(iteracion['f2compromiso'])
 				tiempos.append(iteracion['tiempo'])
@@ -301,19 +344,16 @@ if PASOS.OBTENER_RHV:
 						spreads.append(float(match.group("valor")))
 						continue
 						
-					match = PARSE_GD.search(salida)
-					if match and match.group("valor"):
-						gds.append(float(match.group("valor")))
-						continue
+					
 						
-					match = PARSE_IGD.search(salida)
-					if match and match.group("valor"):
-						igds.append(float(match.group("valor")))
-						continue
+			ejecucion['peorF1'] = max(peoresF1)
+			ejecucion['mejorF1'] = min(mejoresF1)			
+			ejecucion['peorF2'] = max(peoresF2)
+			ejecucion['mejorF2'] = min(mejoresF2)
 						
-						
-			ejecucion['medCompromisoF1'] = numpy.mean(compromisosF1)
+			ejecucion['medCompromisoF1'] = numpy.mean(compromisosF1)			
 			ejecucion['medCompromisoF2'] = numpy.mean(compromisosF2)
+			
 			ejecucion['medTiempo'] = numpy.mean(tiempos)
 			
 			ejecucion['medRHV'] = numpy.mean(RHVs)
@@ -321,14 +361,7 @@ if PASOS.OBTENER_RHV:
 			
 			ejecucion['medSpread'] = numpy.mean(spreads)
 			ejecucion['varSpread'] = numpy.std(spreads)
-			
-			ejecucion['medGD'] = numpy.mean(gds)
-			ejecucion['varGD'] = numpy.std(gds)
-			
-			ejecucion['medIGD'] = numpy.mean(igds)
-			ejecucion['varIGD'] = numpy.std(igds)
-			
-				
+							
 		
 	with open(PATH_JSON_EJECUCION,'w') as f:
 		print "Guardando json..."
@@ -337,7 +370,13 @@ if PASOS.OBTENER_RHV:
 	
 if PASOS.GENERAR_XL:
 
-	headers = ["algoritmo","poblacion","evals","cross","mut","medCompromisoF1","medCompromisoF2","medTiempo","medRHV","varRHV", "medSpread","varSpread","medGD","varGD","medIGD","varIGD"]
+	headers = ["algoritmo","poblacion","evals","cross","mut",
+				'peorF1','mejorF1','peorF2','mejorF2',
+				"medCompromisoF1",
+				"medCompromisoF2",				
+				"medTiempo",
+				"medRHV","varRHV",
+				"medSpread","varSpread"]
 	
 	book = xlwt.Workbook()
 	
@@ -351,26 +390,8 @@ if PASOS.GENERAR_XL:
 			sheet.write(0,i,h)
 	
 		for i, ejecucion in enumerate(v['ejecuciones']):
-			sheet.write(i+1, 0, ejecucion['algoritmo'])
-			sheet.write(i+1, 1, ejecucion['poblacion'])
-			sheet.write(i+1, 2, ejecucion['evals'])
-			sheet.write(i+1, 3, ejecucion['cross'])
-			sheet.write(i+1, 4, ejecucion['mut'])
-			sheet.write(i+1, 5, ejecucion['medCompromisoF1'])
-			sheet.write(i+1, 6, ejecucion['medCompromisoF2'])
-			sheet.write(i+1, 7, ejecucion['medTiempo'])
-			
-			sheet.write(i+1, 8, ejecucion['medRHV'])
-			sheet.write(i+1, 9, ejecucion['varRHV'])
-			
-			sheet.write(i+1, 10, ejecucion['medSpread'])
-			sheet.write(i+1, 11, ejecucion['varSpread'])
-			
-			sheet.write(i+1, 12, ejecucion['medGD'])
-			sheet.write(i+1, 13, ejecucion['varGD'])
-			
-			sheet.write(i+1, 14, ejecucion['medIGD'])
-			sheet.write(i+1, 15, ejecucion['varIGD'])
+			for colnum, col in enumerate(headers):
+				sheet.write(i+1, colnum, ejecucion[col])
 	
 	
 	book.save(PATH_SALIDA_XL)
@@ -378,4 +399,15 @@ if PASOS.GENERAR_XL:
 		
 print "Fin"
 	
+	
+"""
+
+import numpy
+from scipy import stats
+
+n1 = numpy.random.normal(0,1,100)
+n2 = stats.norm.rvs(loc=0, scale=1, size=100)
+
+stats.kstest(n1,'norm', args=(0,1))
+"""
 	
