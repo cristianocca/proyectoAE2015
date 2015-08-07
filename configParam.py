@@ -13,6 +13,7 @@ import multiprocessing
 from threading import Lock
 import math
 import numpy
+from scipy import stats
 
 ''' 
 	Script encargado de ejecutar instancias y generar datos para configuracion parametrica.
@@ -34,7 +35,7 @@ class PASOS:
 	OBTENER_RHV = True			#Por cada instancia, el mejor frente, y todas las ejecuciones, obtiene RHV y otros valores, promedios y varianzas para cada combinacion parametrica
 	GENERAR_XL = True			#Guarda todos los datos obtenidos en un archivo excel
 
-
+MIN_PVAL = 0.05
 	
 #Paths a jars
 PATH_MAIN_AE = r"./out/artifacts/mainAE_jar/mainAE.jar"
@@ -50,7 +51,7 @@ CARPETA_SALIDAS = r"./salidaParam/{0}"
 #Path salida excel
 PATH_SALIDA_XL = r"./salidaParam/resultados.xls"
 
-ITERACIONES = 2
+ITERACIONES = 10
 POOL_SIZE = 4
 
 
@@ -272,7 +273,7 @@ if PASOS.OBTENER_FRENTE:
 if PASOS.OBTENER_RHV:
 	
 	PARSE_RHV = re.compile(ur"RHV: (?P<valor>.+)")
-	PARSE_SPREAD = re.compile(ur"Spread: (?P<valor>.+)")
+	PARSE_GD = re.compile(ur"GD: (?P<valor>.+)")
 	
 	print "Obteniendo RHV y otros"
 		
@@ -287,7 +288,7 @@ if PASOS.OBTENER_RHV:
 			compromisosF2 = []
 			tiempos = []
 			RHVs = []
-			spreads = []
+			gds = []
 						
 			for iteracion in ejecucion['iteraciones']:				
 				
@@ -304,9 +305,9 @@ if PASOS.OBTENER_RHV:
 						RHVs.append(float(match.group("valor")))
 						continue
 						
-					match = PARSE_SPREAD.search(salida)
+					match = PARSE_GD.search(salida)
 					if match and match.group("valor"):
-						spreads.append(float(match.group("valor")))
+						gds.append(float(match.group("valor")))
 						continue
 												
 				
@@ -332,10 +333,14 @@ if PASOS.OBTENER_RHV:
 			ejecucion['medTiempo'] = numpy.mean(tiempos)
 			
 			ejecucion['medRHV'] = numpy.mean(RHVs)
-			ejecucion['varRHV'] = numpy.std(RHVs)
+			ejecucion['varRHV'] = numpy.std(RHVs)			
+			ejecucion['ksRHVpval'] = stats.kstest(RHVs,'norm', args=(ejecucion['medRHV'],ejecucion['varRHV'])).pvalue if ejecucion['varRHV'] else 0
+			ejecucion['shapiroRHVpval'] = stats.shapiro(RHVs)[1] if ejecucion['varRHV'] else 0
 			
-			ejecucion['medSpread'] = numpy.mean(spreads)
-			ejecucion['varSpread'] = numpy.std(spreads)
+			ejecucion['medGD'] = numpy.mean(gds)
+			ejecucion['varGD'] = numpy.std(gds)
+			ejecucion['ksGDpval'] = stats.kstest(gds,'norm', args=(ejecucion['medGD'],ejecucion['varGD'])).pvalue if ejecucion['varGD'] else 0
+			ejecucion['shapiroGDpval'] = stats.shapiro(gds)[1] if ejecucion['varGD'] else 0
 							
 		
 	with open(PATH_JSON_EJECUCION,'w') as f:
@@ -351,10 +356,13 @@ if PASOS.GENERAR_XL:
 				"medCompromisoF1",
 				"medCompromisoF2",				
 				"medTiempo",
-				"medRHV","varRHV",
-				"medSpread","varSpread"]
+				"medRHV","varRHV",'ksRHVpval', 'shapiroRHVpval',
+				"medGD","varGD", 'ksGDpval', 'shapiroGDpval']
 	
 	book = xlwt.Workbook()
+	
+	colorVerde = xlwt.easyxf('pattern: pattern solid, fore_colour light_green')
+	colorRojo = xlwt.easyxf('pattern: pattern solid, fore_colour red')
 	
 	print "Generando excel"
 	
@@ -367,7 +375,10 @@ if PASOS.GENERAR_XL:
 	
 		for i, ejecucion in enumerate(v['ejecuciones']):
 			for colnum, col in enumerate(headers):
-				sheet.write(i+1, colnum, ejecucion[col])
+				if "pval" in col:
+					sheet.write(i+1, colnum, ejecucion[col], colorVerde if ejecucion[col] >= MIN_PVAL else colorRojo)
+				else:
+					sheet.write(i+1, colnum, ejecucion[col])
 	
 	
 	book.save(PATH_SALIDA_XL)
@@ -384,6 +395,8 @@ from scipy import stats
 n1 = numpy.random.normal(0,1,100)
 n2 = stats.norm.rvs(loc=0, scale=1, size=100)
 
-stats.kstest(n1,'norm', args=(0,1))
+stats.kstest(n1,'norm', args=(0,1))	--kolmogorov smirnov
+stats.shapiro(numpy.random.normal(0,5,30))	--Shapiro-Wilk
+stats.normaltest(numpy.random.normal(0,5,30))	--Test DAgostino-Pearson
 """
 	

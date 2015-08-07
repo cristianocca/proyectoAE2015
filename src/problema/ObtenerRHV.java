@@ -34,7 +34,7 @@ public class ObtenerRHV {
         QualityIndicator indicator = new QualityIndicator(new Problema(), frenteRealPath);
 
         System.out.println("RHV: " + (indicator.getHypervolume(frente) / indicator.getTrueParetoFrontHypervolume()));
-        System.out.println("Spread: " + indicator.getSpread(frente));
+        System.out.println("GD: " + indicator.getGD(frente));
 
 
 
