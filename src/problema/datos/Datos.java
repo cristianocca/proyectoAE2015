@@ -114,11 +114,12 @@ public class Datos {
         //*************************
         //PARA PROBAR-----------
         //ROMPO LOS DATOS, REDUZCO LA CANTIDAD DE DATOS A ALGO CHICO
+        /*
         Datos datos2 = new Datos();
         datos2.datosBasicos = new DatoBasico();
-        int puntosPrueba =5;
-        datos2.datosBasicos.cantidadCamiones = 1;
-        datos2.datosBasicos.capacidadCamiones = 2;
+        int puntosPrueba =20;
+        datos2.datosBasicos.cantidadCamiones = 5;
+        datos2.datosBasicos.capacidadCamiones = 4;
         datos2.datosBasicos.tiempoRecoleccionContenedor = datos.datosBasicos.tiempoRecoleccionContenedor;
 
 
@@ -138,12 +139,14 @@ public class Datos {
                 datos2.tiempos[i][j] = datos.tiempos[i][j];
             }
         }
-
+        if (ordenar) {
+            datos2.puntosOrdenados = cargarPuntosOrdenados(datos2.distancias);
+        }
         datos = datos2;
 
         System.out.println("Total puntos prueba: " + datos.puntos.length);
 
-
+*/
         //*************************
 
 
@@ -169,13 +172,23 @@ public class Datos {
         for (int i = 1; i < distancias.length; i++) {
             float val = distancias[i];
             float temp = res[i];
-            int index = i-1;
             for (int j = i- 1; j >= 0 && val < distancias[res[j]]; j--) {
-                res[j+1]= res[j];
-                index = j;
+                int aux = res[j];
+                res[j] = res[j + 1];
+                res[j+1]= aux;
             }
-            res[index]= i;
+
         }
+
+/*
+        for i ← 1 to length(A) - 1
+        j ← i
+        while j > 0 and A[j-1] > A[j]
+            swap A[j] and A[j-1]
+            j ← j - 1
+        end while
+        end for
+*/
 
         return res;
     }
