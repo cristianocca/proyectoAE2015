@@ -17,7 +17,7 @@ public class Datos {
     public LlenadoInicial[] llenados = null;
 
     public float[][] distancias;
-    public float[][] tiempos;
+    public int[][] tiempos;
     public int[][] puntosOrdenados; //tiene para cada punto, el indice de los puntos, ordenados por distancia
 
     /**
@@ -25,7 +25,7 @@ public class Datos {
      *
      * ** Agregue un booleano para decir si ordenar o no sino al ejecutar 30 veces se hace infinito mas lento!
      */
-    public static Datos cargarDatos(String pathDatosBasicos, String pathPuntos, String pathVelocidades, String pathDistancias, String pathTiempos, boolean ordenar ) throws FileNotFoundException {
+    public static Datos cargarDatos(String pathDatosBasicos, String pathPuntos, String pathVelocidades, String pathDistancias, String pathTiempos) throws FileNotFoundException {
 
         Datos res = new Datos();
         try {
@@ -60,15 +60,12 @@ public class Datos {
         try{
             Gson gson = new Gson();
             BufferedReader br = new BufferedReader(new FileReader(pathTiempos));
-            res.tiempos = gson.fromJson(br, float[][].class);
+            res.tiempos = gson.fromJson(br, int[][].class);
         }
         catch (FileNotFoundException e) {
             throw new FileNotFoundException("Archivo de tiempos no encontrado.");
         }
 
-        if (ordenar) {
-            res.puntosOrdenados = cargarPuntosOrdenados(res.distancias);
-        }
 
         return res;
     }
@@ -86,7 +83,7 @@ public class Datos {
      * Helper para cargar datos a partir de argumentos del main
      * @return
      */
-    public static Datos cargarDatosDeArgs(String[] args, boolean ordenar) throws FileNotFoundException {
+    public static Datos cargarDatosDeArgs(String[] args) throws FileNotFoundException {
         if(args.length < 6){
             System.out.println("Se necesitan al menos 6 argumentos para datos.");
 
@@ -107,7 +104,7 @@ public class Datos {
         System.out.println(args[4]);
         System.out.println(args[5]);
 
-        Datos datos = Datos.cargarDatos(args[0],args[1],args[2],args[3],args[4], ordenar);
+        Datos datos = Datos.cargarDatos(args[0],args[1],args[2],args[3],args[4]);
         datos.cargarLlenados(args[5]);
         System.out.println("Total puntos: " + datos.puntos.length);
 
@@ -181,11 +178,11 @@ public class Datos {
         }
 
 /*
-        for i ‚Üê 1 to length(A) - 1
-        j ‚Üê i
+        for i ‚Ü? 1 to length(A) - 1
+        j ‚Ü? i
         while j > 0 and A[j-1] > A[j]
             swap A[j] and A[j-1]
-            j ‚Üê j - 1
+            j ‚Ü? j - 1
         end while
         end for
 */

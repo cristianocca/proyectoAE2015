@@ -31,7 +31,7 @@ public class Problema extends Problem {
     public int cantCamiones;
     public int capCamiones;
     public int capCamionesAprox; //capCamiones + capCamiones / 2
-    public float tiempoFin;       //tiempo de final de la planificacion en segundos.
+    public int tiempoFin;       //tiempo de final de la planificacion en segundos.
     public static TiempoComparator tiempoComparator = new TiempoComparator();
 
     //Para instanciarlo sin datos.
@@ -77,7 +77,7 @@ public class Problema extends Problem {
 
         ArrayList<ArrayList<int[]>> res = new ArrayList<>(this.cantContenedores);
 
-        float[][] tiempos = this.datos.tiempos;
+        int[][] tiempos = this.datos.tiempos;
         int tiempoRecol = this.datos.datosBasicos.tiempoRecoleccionContenedor;
 
         //Inicializo
@@ -152,7 +152,7 @@ public class Problema extends Problem {
 
 
     //Devuelve le puntaje asociado segun el porcentaje de llenado, al momento de ser recogido
-    public static float getPuntajeRecogido(float porcentaje){
+    public static double getPuntajeRecogido(double porcentaje){
 
         if (porcentaje < 100 ){
             return porcentaje;
@@ -163,7 +163,7 @@ public class Problema extends Problem {
     }
 
     //Devuelve el puntaje asociado segun el porcentaje de llenado, si no es recogido.
-    public static float getPuntajeNoRecogido(float porcentaje){
+    public static double getPuntajeNoRecogido(double porcentaje){
 
         return 100-porcentaje;  //Cuanto mas vacio queda mejor, y si se pasa de 100 empieza a ser negativo
 
@@ -422,7 +422,7 @@ public class Problema extends Problem {
         // --- Calculo de primer funcion objetivo ----
 
         float[][] distancias = this.datos.distancias;
-        float[][] tiempos = this.datos.tiempos;
+        int[][] tiempos = this.datos.tiempos;
 
         FileOutputStream fos   = new FileOutputStream(path)     ;
         OutputStreamWriter osw = new OutputStreamWriter(fos)    ;

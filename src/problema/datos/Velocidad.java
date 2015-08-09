@@ -12,7 +12,7 @@ import java.io.FileReader;
 public class Velocidad {
 
     public String id;
-    public float v;
+    public double v;
 
     /**
      * Carga y devuelve una lista de velocidades.

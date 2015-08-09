@@ -115,7 +115,7 @@ public class NSGAII extends Algorithm {
     // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY ---- YA QUE GREEDY TIENE RESULTADOS RANDOM, lo genero las 5 veces.
     Problema problema = (Problema)problem_;
     for(int i = 0; i < GREEDY_COUNT; i++){
-      Solution solucionGreedy = new Solution(problem_, MainGreedy.ejecutarGreedy(problema.datos));
+      Solution solucionGreedy = new Solution(problem_, MainGreedy.ejecutarGreedyv2(problema.datos));
       problem_.evaluate(solucionGreedy);
       problem_.evaluateConstraints(solucionGreedy);
 
@@ -200,8 +200,11 @@ public class NSGAII extends Algorithm {
 
 
       /**
-      if(evaluations % 500 == 0){
-        population.printFeasibleFUN("./evolucion/"+evaluations+"fun.txt");
+      if(evaluations % 500 == 0 || evaluations == maxEvaluations){
+        ranking = new Ranking(population);
+        //ranking.getSubfront(0).printFeasibleFUN("FUN_NSGAII") ;
+
+        ranking.getSubfront(0).printFeasibleFUN("./evolucion/"+evaluations+"fun.txt");
       }
       **/
 

@@ -24,7 +24,7 @@ public class MainAE {
 
         Datos datos;
         try{
-            datos = Datos.cargarDatosDeArgs(args, true);
+            datos = Datos.cargarDatosDeArgs(args);
         }
         catch (Throwable t){
             System.out.println(t.getMessage());
