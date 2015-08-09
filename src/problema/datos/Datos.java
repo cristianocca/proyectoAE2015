@@ -111,12 +111,12 @@ public class Datos {
         //*************************
         //PARA PROBAR-----------
         //ROMPO LOS DATOS, REDUZCO LA CANTIDAD DE DATOS A ALGO CHICO
-        /*
+/**
         Datos datos2 = new Datos();
         datos2.datosBasicos = new DatoBasico();
-        int puntosPrueba =20;
-        datos2.datosBasicos.cantidadCamiones = 5;
-        datos2.datosBasicos.capacidadCamiones = 4;
+        int puntosPrueba =4;
+        datos2.datosBasicos.cantidadCamiones = 2;
+        datos2.datosBasicos.capacidadCamiones = 2;
         datos2.datosBasicos.tiempoRecoleccionContenedor = datos.datosBasicos.tiempoRecoleccionContenedor;
 
 
@@ -125,7 +125,7 @@ public class Datos {
         datos2.llenados = new LlenadoInicial[puntosPrueba];
 
         datos2.distancias = new float[puntosPrueba][puntosPrueba];
-        datos2.tiempos = new float[puntosPrueba][puntosPrueba];
+        datos2.tiempos = new int[puntosPrueba][puntosPrueba];
         for(int i=0; i < puntosPrueba; i++){
             datos2.puntos[i] = datos.puntos[i];
             datos2.velocidades[i] = datos.velocidades[i];
@@ -136,14 +136,11 @@ public class Datos {
                 datos2.tiempos[i][j] = datos.tiempos[i][j];
             }
         }
-        if (ordenar) {
-            datos2.puntosOrdenados = cargarPuntosOrdenados(datos2.distancias);
-        }
         datos = datos2;
 
         System.out.println("Total puntos prueba: " + datos.puntos.length);
 
-*/
+**/
         //*************************
 
 

@@ -468,7 +468,7 @@ public class Problema extends Problem {
                 ArrayList<ArrayList<int[]>> tc = construirListaTiempos(s.getDecisionVariables());
                 ArrayList<int[]> contenedor_j;
                 int largoContenedor_j;
-                float maxTiempo = 0;
+                int maxTiempo = 0;
                 for (int j = 1; j < this.cantContenedores; j++) {
                     contenedor_j = tc.get(j);
                     largoContenedor_j = contenedor_j.size();
@@ -489,9 +489,9 @@ public class Problema extends Problem {
                         bw.newLine();
                     }
                 }
-                bw.write("Tiempo en que es recolectado ultimo contenedor en h: " + String.valueOf(maxTiempo/60/60));
+                bw.write("Tiempo en que es recolectado ultimo contenedor en h: " + String.valueOf(maxTiempo/60.0/60.0));
                 bw.newLine();
-                bw.write("Tiempo en que retorna el ultimo camion en h: " + String.valueOf(this.tiempoFin / 60 / 60));
+                bw.write("Tiempo en que retorna el ultimo camion en h: " + String.valueOf(this.tiempoFin / 60.0 / 60.0));
                 bw.newLine();
                 //bw.write("violaciones: " + String.valueOf(s.getNumberOfViolatedConstraint()));
                 //bw.newLine();
