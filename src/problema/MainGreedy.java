@@ -1,6 +1,11 @@
 package problema;
 
+import jmetal.core.Problem;
+import jmetal.core.Solution;
+import jmetal.core.SolutionSet;
+import jmetal.encodings.solutionType.IntSolutionType;
 import jmetal.encodings.variable.Int;
+import org.omg.CORBA.PUBLIC_MEMBER;
 import problema.datos.Datos;
 import problema.datos.Punto;
 
@@ -11,18 +16,18 @@ import java.util.Random;
  */
 public class MainGreedy {
 
-    private static Datos datos;
 
-    public static void main(String[] args){
-        try{
-            datos = Datos.cargarDatosDeArgs(args, true);
-            boolean[] visitados = new boolean[datos.puntos.length];
-            for(int i = 0; i<visitados.length; i++)
-                visitados[i]=false;
+    public static Int[] ejecutarGreedy(Datos datos){
 
-            int cantPorCamion = datos.datosBasicos.capacidadCamiones + datos.datosBasicos.capacidadCamiones/2;
+        boolean[] visitados = new boolean[datos.puntos.length];
+        for(int i = 0; i<visitados.length; i++)
+            visitados[i]=false;
 
-            Int[]  resultado = new Int[datos.datosBasicos.cantidadCamiones*cantPorCamion];
+        int cantPorCamion = datos.datosBasicos.capacidadCamiones + datos.datosBasicos.capacidadCamiones/2;
+        int lowerBound = 0;
+        int upperBound = datos.datosBasicos.cantidadCamiones - 1;
+
+        Int[]  resultado = new Int[datos.datosBasicos.cantidadCamiones*cantPorCamion];
             /*
             para cada camion:
                 busco los 10 contenedores mas cercanos que aun no fueron visitados
@@ -33,42 +38,90 @@ public class MainGreedy {
              */
 
 
-            int libres = visitados.length - 1;
-            int index = 0;
-            for(int i=0; i< datos.datosBasicos.cantidadCamiones; i++){
-                int actual = 0; //indice del punto actual
-                int recogido = 0;
-                int cant = 0; //cantidad de contenedores que ha visitado un camion
-                while (recogido < (datos.datosBasicos.capacidadCamiones*100 )&& cant < cantPorCamion && libres > 0){
-                    int[] masCercanos = getDiezMasCercanos(actual, libres, visitados);
-                    if(masCercanos != null && masCercanos.length > 0) {
-                        int[] masllenos = getMasLlenos(masCercanos);
-                        if(masllenos != null && masllenos.length > 0) {
-                            int elegido = elegirRandom(masllenos);
-                            if (elegido >= 0) {
-                                visitados[elegido] = true;
-                                recogido += datos.llenados[elegido].v;
-                                libres--;
-                                Int aux = new Int();
-                                aux.setValue(elegido);
-                                resultado[index] = aux;
-                                actual = elegido;
-                            }
+        int libres = visitados.length - 1;
+        int index = 0;
+        for(int i=0; i< datos.datosBasicos.cantidadCamiones; i++){
+            int actual = 0; //indice del punto actual
+            int recogido = 0;
+            int cant = 0; //cantidad de contenedores que ha visitado un camion
+            while (recogido < (datos.datosBasicos.capacidadCamiones*100 )&& cant < cantPorCamion && libres > 0){
+                int[] masCercanos = getDiezMasCercanos(actual, libres, visitados, datos);
+                if(masCercanos != null && masCercanos.length > 0) {
+                    int[] masllenos = getMasLlenos(masCercanos, datos);
+                    if(masllenos != null && masllenos.length > 0) {
+                        int elegido = elegirRandom(masllenos);
+                        if (elegido >= 0) {
+                            visitados[elegido] = true;
+                            recogido += datos.llenados[elegido].v;
+                            libres--;
+                            Int aux = new Int(elegido, lowerBound, upperBound);
+                            resultado[index] = aux;
+                            actual = elegido;
                         }
                     }
-                    cant++;
-                    index++;
                 }
-                if(cant < cantPorCamion){
-                    while (cant < cantPorCamion){
-                        Int aux = new Int();
-                        aux.setValue(0);
-                        resultado[index] = aux;
-                        index++;
-                        cant++;
-                    }
+                cant++;
+                index++;
+            }
+            if(cant < cantPorCamion){
+                while (cant < cantPorCamion){
+                    Int aux = new Int(0,lowerBound, upperBound);
+                    resultado[index] = aux;
+                    index++;
+                    cant++;
                 }
             }
+        }
+
+        return resultado;
+    }
+
+    public static void main(String[] args){
+        try{
+            Datos datos = Datos.cargarDatosDeArgs(args, true);
+
+            String salidaFun = "SALIDA_FUN_GREEDY.txt";
+            String salidaVar = "SALIDA_VAR_GREEDY.txt";
+
+            if(args.length >= 7){
+                salidaFun = args[8];
+            }
+
+            if(args.length >= 8){
+                salidaVar = args[9];
+            }
+
+            System.out.println("---- Parametros a utilizar ----");
+            System.out.println("Salidas: " + salidaFun + ", " + salidaVar);
+
+            long initTime = System.currentTimeMillis();
+
+            Int[] resultado = ejecutarGreedy(datos);
+
+            //Con la solucion, instancio el problema para poder usar mismas funciones que el AE
+            //y simplificar el codigo
+
+            Problem problem = new Problema(datos);
+            Solution solucionGreedy = new Solution(problem, resultado);
+            problem.evaluate(solucionGreedy);
+            long elapsedTime = System.currentTimeMillis() - initTime;
+
+
+            SolutionSet solSetGreedy = new SolutionSet(1);
+            solSetGreedy.add(solucionGreedy);
+            ((Problema) problem).imprimirSolucion("SALIDA_GREEDY.txt", solSetGreedy);
+
+
+            //Imprimo y genero datos de la misma forma que el AE
+
+            System.out.println("Compromiso F1: " + solucionGreedy.getObjective(0));
+            System.out.println("Compromiso F2: " + solucionGreedy.getObjective(1));
+            System.out.println("Tiempo Algoritmo: " + elapsedTime/1000 + "s");
+
+            solSetGreedy.printFeasibleFUN(salidaFun);
+            solSetGreedy.printFeasibleVAR(salidaVar);
+
+
         }
         catch (Throwable t){
             System.out.println(t.getMessage());
@@ -76,7 +129,7 @@ public class MainGreedy {
         }
     }
 
-    private static int[] getDiezMasCercanos(int actual, int cantLibres, boolean[] visitados){
+    private static int[] getDiezMasCercanos(int actual, int cantLibres, boolean[] visitados, Datos datos){
         try {
             int total = 10;
             if (cantLibres < 10) {
@@ -99,7 +152,7 @@ public class MainGreedy {
         }
     }
 
-    private static int[] getMasLlenos(int[] masCercanos){
+    private static int[] getMasLlenos(int[] masCercanos, Datos datos){
         try {
 
 

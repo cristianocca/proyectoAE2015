@@ -298,7 +298,6 @@ public class Problema extends Problem {
                                     if (contenedoresRecolectados + sumaBasura > (double) this.capCamiones) {
                                         violoCond = true;
 
-
                                         //elimino el primer contenedor que encuentre que sea igual al que hizo que me pase, ya que viene ordenado por tiempo deberia ser correcto.
                                         for (int j = indice; j < indiceFinal; j++) {
                                             if (variables[j].getValue() == k) {

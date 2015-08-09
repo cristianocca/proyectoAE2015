@@ -6,6 +6,10 @@ import os
 import time
 from natsort import natsorted, natsort_keygen, ns		#Librerias extra!
 
+'''
+	Para graficar la evolucion de una ejecucion
+'''
+
 ANIMACION = True
 
 files = glob.glob( "./evolucion/*fun.txt") 

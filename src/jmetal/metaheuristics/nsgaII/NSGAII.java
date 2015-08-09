@@ -28,6 +28,7 @@ import jmetal.util.JMException;
 import jmetal.util.NonDominatedSolutionList;
 import jmetal.util.Ranking;
 import jmetal.util.comparators.CrowdingComparator;
+import problema.MainGreedy;
 import problema.Problema;
 
 import java.io.IOException;
@@ -95,9 +96,13 @@ public class NSGAII extends Algorithm {
     //Crear hall of fame, para almacenar las mejores soluciones que vivieron. Mejora resultados.
     //SolutionSet hof = new NonDominatedSolutionList();
 
+
+    int GREEDY_COUNT = 0;
+
     // Create the initial solutionSet
+    //CODIGO NUEVO: las ultimas 5 soluciones las agrego con greedy.
     Solution newSolution;
-    for (int i = 0; i < populationSize; i++) {
+    for (int i = 0; i < populationSize - GREEDY_COUNT; i++) {
       newSolution = new Solution(problem_);
       problem_.evaluate(newSolution);
       problem_.evaluateConstraints(newSolution);
@@ -105,6 +110,20 @@ public class NSGAII extends Algorithm {
       population.add(newSolution);
       //hof.add(newSolution);
     } //for       
+
+
+    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY ---- YA QUE GREEDY TIENE RESULTADOS RANDOM, lo genero las 5 veces.
+    Problema problema = (Problema)problem_;
+    for(int i = 0; i < GREEDY_COUNT; i++){
+      Solution solucionGreedy = new Solution(problem_, MainGreedy.ejecutarGreedy(problema.datos));
+      problem_.evaluate(solucionGreedy);
+      problem_.evaluateConstraints(solucionGreedy);
+
+      population.add(solucionGreedy);
+
+      evaluations++;
+    }
+
 
     // Generations 
     while (evaluations < maxEvaluations) {

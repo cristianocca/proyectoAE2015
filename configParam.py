@@ -51,7 +51,7 @@ CARPETA_SALIDAS = r"./salidaParam/{0}"
 #Path salida excel
 PATH_SALIDA_XL = r"./salidaParam/resultados.xls"
 
-ITERACIONES = 10
+ITERACIONES = 5
 POOL_SIZE = 4
 
 

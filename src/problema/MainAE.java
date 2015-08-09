@@ -24,7 +24,7 @@ public class MainAE {
 
         Datos datos;
         try{
-            datos = Datos.cargarDatosDeArgs(args, false);
+            datos = Datos.cargarDatosDeArgs(args, true);
         }
         catch (Throwable t){
             System.out.println(t.getMessage());
@@ -145,7 +145,7 @@ public class MainAE {
         population.printFeasibleVAR(salidaVar);
 
 
-        //((Problema) problem).imprimirSolucion("SALIDA.txt", population);
+        ((Problema) problem).imprimirSolucion("SALIDA.txt", population);
         //SolutionSet compromisoSet = new SolutionSet(1);
         //compromisoSet.add(compromiso);
         //((Problema)problem).imprimirSolucion("SALIDA_COMPROMISO.txt", compromisoSet);
