@@ -22,9 +22,12 @@
 package jmetal.metaheuristics.spea2;
 
 import jmetal.core.*;
+import jmetal.encodings.variable.Permutation;
 import jmetal.util.JMException;
 import jmetal.util.Ranking;
 import jmetal.util.Spea2Fitness;
+import problema.MainGreedy;
+import problema.Problema;
 
 /** 
  * This class representing the SPEA2 algorithm
@@ -70,17 +73,34 @@ public class SPEA2 extends Algorithm{
     solutionSet  = new SolutionSet(populationSize);
     archive     = new SolutionSet(archiveSize);
     evaluations = 0;
+
+    int GREEDY_COUNT = 10;
         
     //-> Create the initial solutionSet
     Solution newSolution;
-    for (int i = 0; i < populationSize; i++) {
+    for (int i = 0; i < populationSize - GREEDY_COUNT; i++) {
       newSolution = new Solution(problem_);
       problem_.evaluate(newSolution);            
       problem_.evaluateConstraints(newSolution);
       evaluations++;
       solutionSet.add(newSolution);
-    }                        
-        
+    }
+
+    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY
+    Problema problema = (Problema)problem_;
+    Permutation permGreedy = MainGreedy.ejecutarGreedyv2(problema.datos);
+    for(int i = 0; i < GREEDY_COUNT; i++){
+      Solution solucionGreedy = new Solution(problem_, new Variable[]{ new Permutation(permGreedy)});
+      problem_.evaluate(solucionGreedy);
+      problem_.evaluateConstraints(solucionGreedy);
+
+      solutionSet.add(solucionGreedy);
+
+      evaluations++;
+    }
+
+
+
     while (evaluations < maxEvaluations){               
       SolutionSet union = ((SolutionSet)solutionSet).union(archive);
       Spea2Fitness spea = new Spea2Fitness(union);

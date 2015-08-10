@@ -98,7 +98,7 @@ public class NSGAII extends Algorithm {
     //SolutionSet hof = new NonDominatedSolutionList();
 
 
-    int GREEDY_COUNT = 0;
+    int GREEDY_COUNT = 10;
 
     // Create the initial solutionSet
     //CODIGO NUEVO: las ultimas 5 soluciones las agrego con greedy.
