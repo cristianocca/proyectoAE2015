@@ -99,11 +99,12 @@ public class NSGAII extends Algorithm {
 
 
     int GREEDY_COUNT = 10;
+    int CERO_CONTENEDORES = 0;
 
     // Create the initial solutionSet
     //CODIGO NUEVO: las ultimas 5 soluciones las agrego con greedy.
     Solution newSolution;
-    for (int i = 0; i < populationSize - GREEDY_COUNT; i++) {
+    for (int i = 0; i < populationSize - GREEDY_COUNT - CERO_CONTENEDORES; i++) {
       newSolution = new Solution(problem_);
       problem_.evaluate(newSolution);
       problem_.evaluateConstraints(newSolution);
@@ -125,6 +126,21 @@ public class NSGAII extends Algorithm {
 
       evaluations++;
     }
+
+    Permutation permVacio = Problema.obtenerExtremoCeroContenedores(problema.datos);
+    for(int i = 0; i < CERO_CONTENEDORES; i++){
+      Solution solucionGreedy = new Solution(problem_, new Variable[]{ new Permutation(permVacio)});
+      problem_.evaluate(solucionGreedy);
+      problem_.evaluateConstraints(solucionGreedy);
+
+      population.add(solucionGreedy);
+
+      evaluations++;
+    }
+
+
+
+
 
 
     // Generations 

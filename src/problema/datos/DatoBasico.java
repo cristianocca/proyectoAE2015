@@ -16,6 +16,7 @@ public class DatoBasico {
     public int tiempoRecoleccionContenedor;     //segundos
 
 
+
     public static DatoBasico cargar(String path) throws FileNotFoundException {
         Gson gson = new Gson();
         BufferedReader br = new BufferedReader(new FileReader(path));

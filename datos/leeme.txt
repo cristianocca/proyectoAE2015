@@ -4,7 +4,7 @@ datosBasicos.json: Datos basicos del algoritmo:
 	- cantidadCamiones : Cantidad de camiones
 	- capacidadCamiones : Cantidad de contenedores que puede recoger un camion antes de llenarse
 	- tiempoRecoleccionContenedor : Tiempo en segundos en que se demora en recoger un contenedor
-
+	
 contenedores_reciclables.csv: Archivo con datos de contenedores de la IMM, se procesa con: CodigoExterno/procesarDatosImm
 
 puntos.json: Lista de puntos (o contenedores) donde el primero se asume es el origen, resultado de procesar los datos de contenedores_reciclables.csv. Contiene identificador, latitud y longitud.

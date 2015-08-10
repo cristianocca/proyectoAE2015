@@ -174,15 +174,6 @@ public class Datos {
 
         }
 
-/*
-        for i â†? 1 to length(A) - 1
-        j â†? i
-        while j > 0 and A[j-1] > A[j]
-            swap A[j] and A[j-1]
-            j â†? j - 1
-        end while
-        end for
-*/
 
         return res;
     }

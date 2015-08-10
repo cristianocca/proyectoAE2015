@@ -46,6 +46,7 @@ public class Problema extends Problem {
         this.capCamiones = datos.datosBasicos.capacidadCamiones;
         this.capCamionesAprox = (this.capCamiones + this.capCamiones / 2);
 
+
         this.cantContenedores = datos.puntos.length-1;    //no incluye el origen. Se usa para ver si estoy viendo un contenedor valido o un valor dummy.
 
         numberOfObjectives_ = 2;        //0: Min trayectoria, 1: Maximizar QoS
@@ -68,18 +69,23 @@ public class Problema extends Problem {
     //Devuelve le puntaje asociado segun el porcentaje de llenado, al momento de ser recogido
     public static double getPuntajeRecogido(double porcentaje){
 
+        if(porcentaje < 20){
+            return 0;
+        }
         if (porcentaje < 100 ){
-            return porcentaje;
+            return 1;
         }
         //Si es >= 100, negativo
-        return porcentaje * -1;
+        return -1;
 
     }
 
     //Devuelve el puntaje asociado segun el porcentaje de llenado, si no es recogido.
     public static double getPuntajeNoRecogido(double porcentaje){
-
-        return 100-porcentaje;  //Cuanto mas vacio queda mejor, y si se pasa de 100 empieza a ser negativo
+        if(porcentaje < 20){
+            return 0;
+        }
+        return -1;
 
     }
 
@@ -103,8 +109,6 @@ public class Problema extends Problem {
         LlenadoInicial[] b = this.datos.llenados;   //basura inicial
         Velocidad[] velocidades = this.datos.velocidades;   //velocidades de llenado
 
-        int tiempoFin;
-
 
         //******************************************************************************************************************
         //******** Restricciones y correccion de soluciones ************
@@ -117,9 +121,6 @@ public class Problema extends Problem {
 
             violoCond = false;
 
-
-            tiempoFin = 0;
-            int ultimoContenedor = -1;
 
             //La cantidad de basura recogida por cada camión no puede exceder su capacidad real
             //Para cada camión, luego que se tiene un 0 en su solución, todos los restantes valores a la derecha también deberán ser 0
@@ -170,12 +171,6 @@ public class Problema extends Problem {
                                 tiempo = sumaTiempo + tiempoRecol;
                                 recogido += sumaBasura;
                                 actual = contenedor;
-
-                                if(tiempo > tiempoFin){
-                                    tiempoFin = tiempo;
-                                    ultimoContenedor = actual;
-                                }
-
                             }
                             else {
                                 violoCond = true;
@@ -205,10 +200,6 @@ public class Problema extends Problem {
                 } catch (Throwable t) {
                     throw new RuntimeException("ERROR: " + t.getMessage(), t);
                 }
-            }
-
-            if(ultimoContenedor != -1) {
-                tiempoFin += tiempos[ultimoContenedor][0];  //ya tiene tiempoRecol sumado
             }
 
         }while(violoCond);
@@ -275,8 +266,6 @@ public class Problema extends Problem {
                         tiempo = sumaTiempo + tiempoRecol;
                         actual = contenedor;
 
-                        //Sumo ademas el tiempo de no recogido que va a tener de aca hasta el fin
-                        f2+=getPuntajeNoRecogido(velocidades[actual].v * (tiempoFin - sumaTiempo));
 
                     }
                     else {
@@ -292,11 +281,10 @@ public class Problema extends Problem {
         }
 
         //Por ultimo sumo todos los contenedores no recogidos
-        //Estos son, todos los valores luego del ultimo contenedor del ultimo camion.
         for (int i = this.indiceLimite; i < variables.length; i++) {
             int contenedor = variables[i];
             if(contenedor != 0 && contenedor <= this.cantContenedores) {
-                f2 += getPuntajeNoRecogido(b[contenedor].v + velocidades[contenedor].v * tiempoFin);
+                f2 += getPuntajeNoRecogido(b[contenedor].v);
             }
 
         }
@@ -381,7 +369,7 @@ public class Problema extends Problem {
                 bw.write(String.valueOf(s.getObjective(1)));
                 bw.newLine();
 
-                int tiempoFin = 0;
+                int tiempoFinReal = 0;
                 int ultimoContenedor = -1;
 
                 //primero calculo tiempo de fin.
@@ -403,8 +391,8 @@ public class Problema extends Problem {
                                 sumaTiempo = tiempo + tiempos[actual][contenedor];
 
 
-                                if(sumaTiempo > tiempoFin){
-                                    tiempoFin = sumaTiempo;
+                                if(sumaTiempo > tiempoFinReal){
+                                    tiempoFinReal = sumaTiempo;
                                     ultimoContenedor = contenedor;
                                 }
 
@@ -422,14 +410,14 @@ public class Problema extends Problem {
                         throw new RuntimeException("ERROR: " + t.getMessage(), t);
                     }
                 }
-                bw.write("Tiempo en que es recolectado ultimo contenedor en h: " + String.valueOf(tiempoFin/60.0/60.0));
+                bw.write("Tiempo real en que es recolectado ultimo contenedor en h: " + String.valueOf(tiempoFinReal/60.0/60.0));
                 bw.newLine();
 
                 //Agrego tiempo de recoleccion y de vuelta
                 if(ultimoContenedor != -1){
-                    tiempoFin+=tiempoRecol + tiempos[ultimoContenedor][0];
+                    tiempoFinReal+=tiempoRecol + tiempos[ultimoContenedor][0];
                 }
-                bw.write("Tiempo en que retorna el ultimo camion en h: " + String.valueOf(tiempoFin / 60.0 / 60.0));
+                bw.write("Tiempo real en que retorna el ultimo camion en h: " + String.valueOf(tiempoFinReal / 60.0 / 60.0));
                 bw.newLine();
                 bw.newLine();
 
@@ -447,10 +435,14 @@ public class Problema extends Problem {
                             int contenedor = variables[k];
                             if(contenedor != 0 && contenedor <= this.cantContenedores){
                                 sumaTiempo = tiempo + tiempos[actual][contenedor];
+
+                                bw.write(String.format("Contenedor [%s] Recogido: al %s %%", contenedor, b[contenedor].v + velocidades[contenedor].v * sumaTiempo));
+                                if(getPuntajeRecogido(b[contenedor].v + velocidades[contenedor].v * sumaTiempo) < 0){
+                                    bw.write("---- Ver ---");
+                                }
                                 tiempo = sumaTiempo + tiempoRecol;
                                 actual = contenedor;
 
-                                bw.write(String.format("Llenado al terminar (recogido) contenedor %s: %s %%", contenedor,velocidades[actual].v * (tiempoFin - sumaTiempo)));
                                 bw.newLine();
 
                             }
@@ -471,7 +463,10 @@ public class Problema extends Problem {
                 for (int j = this.indiceLimite; j < variables.length; j++) {
                     int contenedor = variables[j];
                     if(contenedor != 0 && contenedor <= this.cantContenedores) {
-                        bw.write(String.format("Llenado al terminar (no recogido) contenedor %s: %s %%", contenedor,b[contenedor].v + velocidades[contenedor].v * tiempoFin));
+                        bw.write(String.format("Contenedor [%s] no recogido, dejado en %s %%", contenedor,b[contenedor].v));
+                        if(getPuntajeNoRecogido(b[contenedor].v) < 0){
+                            bw.write("---- Ver ---");
+                        }
                         bw.newLine();
                     }
 
@@ -539,6 +534,202 @@ public class Problema extends Problem {
 
 
     }
+
+    //Devuelve una solucion que es el extremo donde no se recoge ningun contenedor.
+    public static Permutation obtenerExtremoCeroContenedores(Datos datos){
+
+        boolean[] visitados = new boolean[datos.puntos.length];
+        for(int i = 0; i<visitados.length; i++)
+            visitados[i]=false;
+
+        visitados[0] = true;    //origen visitado para no tomarlo en cuenta.
+
+        int cantPorCamion = datos.datosBasicos.capacidadCamiones + datos.datosBasicos.capacidadCamiones/2;
+        int[] resultado = new int[datos.datosBasicos.cantidadCamiones*cantPorCamion];
+        for(int i = 0; i < resultado.length;i++){
+            resultado[i] = 0;
+        }
+
+
+        //Construyo resultado de permutacion para poder utilizar con AE
+
+        int[] p = new int[resultado.length+datos.puntos.length-1];
+        for(int i = 0; i < resultado.length; i++){
+            p[i] = resultado[i];
+        }
+        for(int i = resultado.length; i < p.length; i++){
+            p[i] = 0;
+        }
+        for(int i = 1; i < visitados.length; i++){
+            if(!visitados[i]){
+                p[resultado.length + i-1] = i;
+            }
+        }
+
+        int similCero = 0;
+        //Corrijo ceros para que sea igual que la sol AE
+        for(int i = 0; i < p.length; i++){
+            if(p[i] == 0){
+                p[i] = similCero;
+                if(similCero == 0){
+                    similCero = datos.puntos.length;
+                }
+                else {
+                    similCero++;
+                }
+            }
+        }
+
+        Permutation res = new Permutation();
+        res.vector_ = p;
+        res.size_ = p.length;
+        return res;
+    }
+
+    /**
+
+    //Greedy que busca primero los que esten mas llenos
+    public static Permutation obtenerExtremoLlenos(Datos datos){
+
+        double[] ponderaciones = new double[datos.puntos.length-1]; //cada valor almacena la ponderacion, excluyo el origen
+
+        for(int i = 1; i < datos.puntos.length; i++){
+            int llenado = datos.llenados[i].v;
+            ponderaciones[i-1] = llenado;
+        }
+
+        int[] puntosOrdenados = new int[datos.puntos.length-1];   //guarda de menor a mayor los puntos segun su ponderacion. El valor es le indice del punto a utilizar
+
+        for(int i = 0; i < ponderaciones.length; i++){
+            double max = -1;
+            int indiceMax = -1;
+            for(int j = 0; j < ponderaciones.length; j++){
+                if(ponderaciones[j] > max){
+                    max = ponderaciones[j];
+                    indiceMax = j;
+                }
+            }
+            if(indiceMax != -1) {
+                ponderaciones[indiceMax] = -1; //elimino ese valor como candidato posible de ponderacion
+                puntosOrdenados[i] = indiceMax;
+            }
+            else{
+                System.out.println("Warning: no se encontro indice");
+            }
+        }
+
+
+        boolean[] visitados = new boolean[datos.puntos.length];
+        for(int i = 0; i<visitados.length; i++)
+            visitados[i]=false;
+
+        visitados[0] = true;    //origen visitado para no tomarlo en cuenta.
+
+        int cantPorCamion = datos.datosBasicos.capacidadCamiones + datos.datosBasicos.capacidadCamiones/2;
+
+        int[]  resultado = new int[datos.datosBasicos.cantidadCamiones*cantPorCamion];
+
+        int libres = visitados.length - 1;
+        int index = 0;
+        for(int i=0; i< datos.datosBasicos.cantidadCamiones; i++){
+            int actual = 0; //indice del punto actual
+            double recogido = 0;
+            int cant = 0; //cantidad de contenedores que ha visitado un camion
+            int tiempo = 0;
+
+            while (cant < cantPorCamion && libres > 0) {
+
+
+                int elegido = -1;
+                double sumaBasura = -1;
+                int sumaTiempo = -1;
+                boolean encontrado = false;
+
+
+                //de los mas cercanos, voy al mas cercano que no supere la capacidad del camion.
+                for (int j = 0; j < puntosOrdenados.length; j++) {
+                    elegido = puntosOrdenados[j];
+
+                    if(!visitados[elegido]) {
+                        sumaTiempo = tiempo + datos.tiempos[actual][elegido];
+                        sumaBasura = (datos.llenados[elegido].v + datos.velocidades[elegido].v * sumaTiempo) / 100;
+
+                        //Solo lo agrego si tiene mas de 20% de basura, y entra en el camion
+                        if (recogido + sumaBasura <= datos.datosBasicos.capacidadCamiones) {
+                            encontrado = true;
+                            break;
+                        }
+                    }
+
+                }
+
+
+                if (encontrado) {
+
+                    visitados[elegido] = true;
+
+                    tiempo = sumaTiempo + datos.datosBasicos.tiempoRecoleccionContenedor;
+                    recogido += sumaBasura;
+
+                    libres--;
+                    resultado[index] = elegido;
+                    actual = elegido;
+
+                    cant++;
+                    index++;
+                } else {
+                    break; //si llegue aca quiere decir que se lleno el camion.
+                }
+
+            }
+
+            if(cant < cantPorCamion){
+                while (cant < cantPorCamion){
+                    resultado[index] = 0;
+                    index++;
+                    cant++;
+                }
+            }
+        }
+
+
+
+        //Construyo resultado de permutacion para poder utilizar con AE
+
+        int[] p = new int[resultado.length+datos.puntos.length-1];
+        for(int i = 0; i < resultado.length; i++){
+            p[i] = resultado[i];
+        }
+        for(int i = resultado.length; i < p.length; i++){
+            p[i] = 0;
+        }
+        for(int i = 1; i < visitados.length; i++){
+            if(!visitados[i]){
+                p[resultado.length + i-1] = i;
+            }
+        }
+
+        int similCero = 0;
+        //Corrijo ceros para que sea igual que la sol AE
+        for(int i = 0; i < p.length; i++){
+            if(p[i] == 0){
+                p[i] = similCero;
+                if(similCero == 0){
+                    similCero = datos.puntos.length;
+                }
+                else {
+                    similCero++;
+                }
+            }
+        }
+
+        Permutation res = new Permutation();
+        res.vector_ = p;
+        res.size_ = p.length;
+        return res;
+    }
+**/
+
 
 }
 
