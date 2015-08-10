@@ -3,15 +3,11 @@ package problema;
 import jmetal.core.Problem;
 import jmetal.core.Solution;
 import jmetal.core.SolutionSet;
-import jmetal.core.Variable;
-import jmetal.encodings.solutionType.ArrayIntSolutionType;
 import jmetal.encodings.solutionType.IntSolutionType;
-import jmetal.encodings.variable.ArrayInt;
-import jmetal.encodings.variable.Int;
-import jmetal.util.Configuration;
+import jmetal.encodings.solutionType.PermutationSolutionType;
+import jmetal.encodings.variable.Permutation;
 import jmetal.util.JMException;
 import jmetal.util.NonDominatedSolutionList;
-import jmetal.util.PseudoRandom;
 import jmetal.util.comparators.ObjectiveComparator;
 import problema.datos.Datos;
 import problema.datos.LlenadoInicial;
@@ -31,8 +27,10 @@ public class Problema extends Problem {
     public int cantCamiones;
     public int capCamiones;
     public int capCamionesAprox; //capCamiones + capCamiones / 2
-    public int tiempoFin;       //tiempo de final de la planificacion en segundos.
     public static TiempoComparator tiempoComparator = new TiempoComparator();
+
+
+    public int indiceLimite;
 
     //Para instanciarlo sin datos.
     public Problema(){
@@ -48,107 +46,23 @@ public class Problema extends Problem {
         this.capCamiones = datos.datosBasicos.capacidadCamiones;
         this.capCamionesAprox = (this.capCamiones + this.capCamiones / 2);
 
-        this.cantContenedores = datos.puntos.length;    //incluye el origen
+        this.cantContenedores = datos.puntos.length-1;    //no incluye el origen. Se usa para ver si estoy viendo un contenedor valido o un valor dummy.
 
         numberOfObjectives_ = 2;        //0: Min trayectoria, 1: Maximizar QoS
 
-        solutionType_ = new IntSolutionType(this) ;
+        solutionType_ = new PermutationSolutionType(this) ;
 
-        numberOfVariables_  = this.capCamionesAprox  * this.cantCamiones;
+        numberOfVariables_  = 1; //this.capCamionesAprox  * this.cantCamiones;
 
-        lowerLimit_ = new double[numberOfVariables_];
-        upperLimit_ = new double[numberOfVariables_];
+        length_ = new int[1];
+        length_[0] = this.capCamionesAprox  * this.cantCamiones + this.cantContenedores; //saco 1 por el origen, se crean lugares adicionales para el limite dummy
 
-        for(int i = 0; i < this.numberOfVariables_; i++){
-            lowerLimit_[i] = 0;
-            upperLimit_[i] = this.cantContenedores-1;       //0 a cantContenedores - 1
-        }
+        this.indiceLimite = this.cantCamiones * this.capCamionesAprox; //Indice a partir el cual no estoy viendo ningun camion. Inclusive
 
         problemName_        = "Recoleccion de basura";
 
     }
 
-    //Construye lista de tiempos ordenada.
-    //donde int[] siempre sera un array de 2 elementos, donde el primero es el tiempo en que fue recogido, y el segundo el camion que lo recogio
-    //El array resultado, es entonces, una lista donde cada indice es cada contenedor (sin ser el 0 que es el origen y deberia ser ignorado)
-    //y cada valor es una lista de todos los tiempos ordenados en que fue recogido el contenedor
-    //Ademas setea en this.tiempoFin el tiempo maximo encontrado.
-    public ArrayList<ArrayList<int[]>> construirListaTiempos(Variable[] variables){
-
-        ArrayList<ArrayList<int[]>> res = new ArrayList<>(this.cantContenedores);
-
-        int[][] tiempos = this.datos.tiempos;
-        int tiempoRecol = this.datos.datosBasicos.tiempoRecoleccionContenedor;
-
-        //Inicializo
-        for(int i = 0; i < this.cantContenedores;i++){
-            ArrayList<int[]> r = new ArrayList<>();
-            //r.add(new int[]{this.tiempoFin, -1});       //Tiempo fin, -1 para indicar que no fue recogido
-            res.add(r);
-        }
-
-        int indice = 0;
-        int indiceFinal = 0;
-        int ix = 0;
-        int iy = 0;
-        int tiempo = 0;
-        for(int i = 0; i < this.cantCamiones; i++){
-            tiempo = 0;
-            indice = i * this.capCamionesAprox;
-            indiceFinal = indice + this.capCamionesAprox;
-
-            try {
-                iy = (int) variables[indice].getValue();
-                tiempo += tiempos[0][iy];   //tiempo del origen al primer contenedor
-
-                if(iy != 0) {
-                    res.get(iy).add(new int[]{tiempo, i});
-                    //ademas sumo el tiempo de la recoleccion
-                    tiempo+=tiempoRecol;
-                }
-
-                for (int j = indice + 1; j < indiceFinal; j++) {
-                    ix = (int) variables[j - 1].getValue();
-                    iy = (int) variables[j].getValue();
-                    tiempo += tiempos[ix][iy];
-
-                    if(iy != 0) {    //Solo inserto si el contenedor es distinto al origen
-                        res.get(iy).add(new int[]{tiempo, i});
-                        tiempo+=tiempoRecol;
-                    }
-                }
-            }
-            catch (Throwable t){
-                throw new RuntimeException("ERROR: "+t.getMessage(), t);
-            }
-
-        }
-
-        //Por ultimo ordeno las listas y obtengo el tiempo maximo del camion
-        int maxTiempo = 0;
-        int indiceMax = -1;
-        indice = 0;
-        for(ArrayList<int[]> v : res){
-            v.sort(tiempoComparator);
-            if(v.size() > 0 && v.get(v.size()-1)[0] > maxTiempo){
-                maxTiempo = v.get(v.size()-1)[0];
-                indiceMax = indice;
-            }
-
-            indice++;
-        }
-
-        //Tiempo de fin es = al ultimo tiempo en que fue recolectado, + tiempo de recoleccion + tiempo en volver a la base desde ese punto
-        if(indiceMax != -1) {
-            this.tiempoFin = maxTiempo + tiempoRecol + tiempos[indiceMax][0];
-        }
-        else {
-            this.tiempoFin = 0;
-        }
-
-        return res;
-
-    }
 
 
     //Devuelve le puntaje asociado segun el porcentaje de llenado, al momento de ser recogido
@@ -176,78 +90,38 @@ public class Problema extends Problem {
         //******** Variables que voy a necesitar ************
         //******************************************************************************************************************
 
-        Variable[] variables = solution.getDecisionVariables();
+        int[] variables = ((Permutation)solution.getDecisionVariables()[0]).vector_;
+
         int tiempoRecol = this.datos.datosBasicos.tiempoRecoleccionContenedor;
 
         float[][] distancias = this.datos.distancias;
+        int[][] tiempos = this.datos.tiempos;
         int indice = 0;
         int indiceFinal = 0;
 
-        ArrayList<int[]> contenedor_i;
-        int largoContenedor_i;
 
         LlenadoInicial[] b = this.datos.llenados;   //basura inicial
         Velocidad[] velocidades = this.datos.velocidades;   //velocidades de llenado
 
-
+        int tiempoFin;
 
 
         //******************************************************************************************************************
         //******** Restricciones y correccion de soluciones ************
         //******************************************************************************************************************
 
-        ArrayList<ArrayList<int[]>> tc;
         boolean violoCond;
 
         //Itero hasta que la solucion sea factible
         do {
 
-            tc = construirListaTiempos(variables);
             violoCond = false;
 
-            //Un contenedor no puede ser recogido al mismo tiempo por mas de un cami�n, ni en el intervalo en que est� siendo recogido (tiempoRecoleccionContenedor)
-            //esta restriccion es violada demasiadas veces, comparada con las demas, habria que ver como mejorarla.
 
-            int camionViolador;
-            try {
-                for (int i = 1; i < this.cantContenedores; i++) {
-                    contenedor_i = tc.get(i);
-                    largoContenedor_i = contenedor_i.size();
+            tiempoFin = 0;
+            int ultimoContenedor = -1;
 
-                    for (int j = 1; j < largoContenedor_i; j++) {
-                        if (contenedor_i.get(j)[0] - contenedor_i.get(j - 1)[0] <= tiempoRecol) {
-                            violoCond = true;
-                            //solution.setNumberOfViolatedConstraint(solution.getNumberOfViolatedConstraint()+1);
-
-                            camionViolador = contenedor_i.get(j)[1];
-                            indice = camionViolador * this.capCamionesAprox;
-                            indiceFinal = indice + this.capCamionesAprox;
-
-                            //saco del camion la recoleccion de ese contenedor
-                            for (int k = indice; k < indiceFinal; k++) {
-
-                                if (variables[k].getValue() == i) {
-                                    variables[k].setValue(0);
-
-                                    break;
-                                }
-
-                                //variables[k].setValue(0);
-
-                            }
-
-                        }
-
-                    }
-                }
-            } catch (JMException e) {
-                e.printStackTrace();
-                throw new RuntimeException("ERROR: " + e.getMessage(), e);
-            }
-
-
-
-
+            //La cantidad de basura recogida por cada camión no puede exceder su capacidad real
             //Para cada camión, luego que se tiene un 0 en su solución, todos los restantes valores a la derecha también deberán ser 0
             for (int i = 0; i < this.cantCamiones; i++) {
 
@@ -256,77 +130,19 @@ public class Problema extends Problem {
 
                 try {
 
-                    //La cantidad de basura recogida por cada camión no puede exceder su capacidad real, para esto se utiliza el % de basura recogido de cada contenedor y se valida que el total no supere su capacidad.
-
-                    double contenedoresRecolectados = 0;        //double para manejar fracciones.
-                    double sumaBasura;
-
-                    for (int k = 1; k < this.cantContenedores; k++) {
-                        contenedor_i = tc.get(k);
-                        largoContenedor_i = contenedor_i.size();
-
-                        if (largoContenedor_i > 0) {
-
-                            //primero agrego la primera recoleccion, que incluye el valor inicial.
-
-                            if (contenedor_i.get(0)[1] == i) { //solo sumo si el camion que junto el contenedor es el camion actual
-
-                                sumaBasura = (b[k].v + velocidades[k].v * contenedor_i.get(0)[0]) / 100.0;   //puede ser mayor a 1 !! O sea, que junta la basura desbordada en caso de > 100%;
-
-                                if (contenedoresRecolectados + sumaBasura > (double) this.capCamiones) {
-                                    violoCond = true;
-
-                                    //elimino el primer contenedor que encuentre que sea igual al que hizo que me pase, ya que viene ordenado por tiempo deberia ser correcto.
-                                    for (int j = indice; j < indiceFinal; j++) {
-                                        if (variables[j].getValue() == k) {
-                                            variables[j].setValue(0);
-                                            break;
-                                        }
-
-                                    }
-                                } else {
-                                    contenedoresRecolectados += sumaBasura;
-                                }
-                            }
-
-                            //Luego agrego las restantes recolecciones
-                            for (int z = 1; z < largoContenedor_i; z++) {
-                                if (contenedor_i.get(z)[1] == i) { //solo sumo si el camion que junto el contenedor es el camion actual
-
-                                    sumaBasura = (velocidades[k].v * (contenedor_i.get(z)[0] - (contenedor_i.get(z - 1)[0] + tiempoRecol))) / 100.0;
-
-                                    if (contenedoresRecolectados + sumaBasura > (double) this.capCamiones) {
-                                        violoCond = true;
-
-                                        //elimino el primer contenedor que encuentre que sea igual al que hizo que me pase, ya que viene ordenado por tiempo deberia ser correcto.
-                                        for (int j = indice; j < indiceFinal; j++) {
-                                            if (variables[j].getValue() == k) {
-                                                variables[j].setValue(0);
-                                                break;
-                                            }
-
-                                        }
-                                    } else {
-                                        contenedoresRecolectados += sumaBasura;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-
                     //pongo todos los ceros lo mas a la derecha posible, y no dejo ceros entre medio.
                     for (int j = indice; j < indiceFinal; j++) {
 
-                        if (variables[j].getValue() == 0) {
+                        if (variables[j] == 0 || variables[j] > this.cantContenedores) {
                             //si tengo un cero, muevo de derecha a izquierda todo lo que no sea cero
                             int indice3 = j + 1;
 
                             //Hago una especie de selection sort, dejando todos los 0's a la derecha.
                             while (indice3 < indiceFinal) {
-                                if (variables[indice3].getValue() != 0) {
-                                    variables[j].setValue(variables[indice3].getValue());
-                                    variables[indice3].setValue(0);
+                                if (variables[indice3] != 0 && variables[indice3] <= this.cantContenedores ) {
+                                    int temp = variables[j];
+                                    variables[j] = variables[indice3];
+                                    variables[indice3] = temp;
                                     break;
                                 }
                                 indice3++;
@@ -335,10 +151,64 @@ public class Problema extends Problem {
 
                     }
 
+                    //La cantidad de basura recogida por cada camión no puede exceder su capacidad real, para esto se utiliza el % de basura recogido de cada contenedor y se valida que el total no supere su capacidad.
+
+                    double recogido = 0;        //double para manejar fracciones.
+                    double sumaBasura;
+                    int tiempo = 0;
+                    int sumaTiempo = 0;
+                    int actual = 0;
+
+                    for(int j = indice; j < indiceFinal; j++){
+                        int contenedor = variables[j];
+
+                        if(contenedor != 0 && contenedor <= this.cantContenedores){
+                            sumaTiempo = tiempo + datos.tiempos[actual][contenedor];
+                            sumaBasura = (b[contenedor].v + velocidades[contenedor].v * sumaTiempo) / 100;      //divido entre 100 para utilizar fracciones de contenedores.
+
+                            if (recogido + sumaBasura <= this.capCamiones) {
+                                tiempo = sumaTiempo + tiempoRecol;
+                                recogido += sumaBasura;
+                                actual = contenedor;
+
+                                if(tiempo > tiempoFin){
+                                    tiempoFin = tiempo;
+                                    ultimoContenedor = actual;
+                                }
+
+                            }
+                            else {
+                                violoCond = true;
+
+                                //Corrijo. Elimino el contenedor. Debo ponerlo en algun lugar de las celdas dummy
+                                //Que sean cero, o en algun camion que tenga 0.
+                                for (int k = indiceLimite; k < variables.length; k++) {
+                                    contenedor = variables[k];
+                                    if(contenedor == 0 || contenedor > this.cantContenedores) {
+                                        int temp = variables[j];
+                                        variables[j] = contenedor;
+                                        variables[k] = temp;
+                                        break;
+                                    }
+
+                                }
+
+                            }
+                        }
+                        else {
+                            break;  //si es cero, como estan ordenados con todos los ceros a la derecha, termino este camion.
+                        }
+
+                    }
+
 
                 } catch (Throwable t) {
                     throw new RuntimeException("ERROR: " + t.getMessage(), t);
                 }
+            }
+
+            if(ultimoContenedor != -1) {
+                tiempoFin += tiempos[ultimoContenedor][0];  //ya tiene tiempoRecol sumado
             }
 
         }while(violoCond);
@@ -356,49 +226,80 @@ public class Problema extends Problem {
 
             indice = i * this.capCamionesAprox;
             indiceFinal = indice + this.capCamionesAprox;
-
+            int actual = 0;
             try {
-                f1 += distancias[0][(int) variables[indice].getValue()];   //Distancia del 0 al primer contenedor
-
-                for (int j = indice+1; j < indiceFinal; j++) {
-                    f1 += distancias[(int) variables[j - 1].getValue()][(int) variables[j].getValue()];       //Distancias de contenedores intermedios
+                for (int j = indice; j < indiceFinal; j++) {
+                    if (variables[j] != 0 && variables[j] <= this.cantContenedores) {
+                        f1 += distancias[actual][variables[j]];
+                        actual = variables[j];
+                    } else {
+                        break;
+                    }
                 }
 
-                f1 += distancias[(int) variables[indiceFinal - 1].getValue()][0];  //Distancias del ultimo contenedor al origen
+                if (actual != 0 && actual <= this.cantContenedores) {
+                    f1 += distancias[actual][0];  //Distancias del ultimo contenedor al origen
+                }
             }
             catch (Throwable t){
-                throw new RuntimeException("ERROR: "+t.getMessage(), t);
+                throw t;
             }
+
         }
 
 
         // -- Segunda funcion objetivo ---
         double f2 = 0;
 
-        //Ignoro i=0 que es el origen
-        for(int i = 1; i < this.cantContenedores; i++){
-            contenedor_i = tc.get(i);
-            largoContenedor_i = contenedor_i.size();
 
-            if (largoContenedor_i > 0) {
-                f2 += getPuntajeRecogido(b[i].v + velocidades[i].v * contenedor_i.get(0)[0]);  //Si la cantidad de contenedores de la lista es >0, quiere decir que fue recogido al menos una vez
+        for (int i = 0; i < this.cantCamiones; i++) {
 
-                for (int j = 1; j < largoContenedor_i; j++){
-                    f2+=getPuntajeRecogido(velocidades[i].v * (contenedor_i.get(j)[0] - (contenedor_i.get(j-1)[0] + tiempoRecol)));
+            indice = i * this.capCamionesAprox;
+            indiceFinal = indice + this.capCamionesAprox;
+
+            try {
+
+                double sumaBasura;
+                int tiempo = 0;
+                int sumaTiempo = 0;
+                int actual = 0;
+
+                for(int j = indice; j < indiceFinal; j++){
+                    int contenedor = variables[j];
+                    if(contenedor != 0 && contenedor <= this.cantContenedores){
+                        sumaTiempo = tiempo + tiempos[actual][contenedor];
+                        sumaBasura = (b[contenedor].v + velocidades[contenedor].v * sumaTiempo);
+
+                        f2 += getPuntajeRecogido(sumaBasura);
+
+                        tiempo = sumaTiempo + tiempoRecol;
+                        actual = contenedor;
+
+                        //Sumo ademas el tiempo de no recogido que va a tener de aca hasta el fin
+                        f2+=getPuntajeNoRecogido(velocidades[actual].v * (tiempoFin - sumaTiempo));
+
+                    }
+                    else {
+                        break;  //si es cero, como estan ordenados con todos los ceros a la derecha, termino este camion.
+                    }
+
                 }
 
-                //Agrego tiempo entre la ultima vez que fue recogido y el tiempo de fin
-                f2+=getPuntajeNoRecogido(velocidades[i].v * (this.tiempoFin - (contenedor_i.get(largoContenedor_i - 1)[0] + tiempoRecol)));
+
+            } catch (Throwable t) {
+                throw new RuntimeException("ERROR: " + t.getMessage(), t);
             }
-            else {
-                f2 += getPuntajeNoRecogido(b[i].v + velocidades[i].v * this.tiempoFin);                      //si no, no fue recogido nunca
-
-            }
-
-
         }
 
+        //Por ultimo sumo todos los contenedores no recogidos
+        //Estos son, todos los valores luego del ultimo contenedor del ultimo camion.
+        for (int i = this.indiceLimite; i < variables.length; i++) {
+            int contenedor = variables[i];
+            if(contenedor != 0 && contenedor <= this.cantContenedores) {
+                f2 += getPuntajeNoRecogido(b[contenedor].v + velocidades[contenedor].v * tiempoFin);
+            }
 
+        }
 
         solution.setObjective(0, f1);
         solution.setObjective(1, -1*f2);
@@ -423,6 +324,8 @@ public class Problema extends Problem {
 
         float[][] distancias = this.datos.distancias;
         int[][] tiempos = this.datos.tiempos;
+        LlenadoInicial[] b = this.datos.llenados;
+        Velocidad[] velocidades = this.datos.velocidades;
 
         FileOutputStream fos   = new FileOutputStream(path)     ;
         OutputStreamWriter osw = new OutputStreamWriter(fos)    ;
@@ -442,59 +345,140 @@ public class Problema extends Problem {
             Solution s = hof.get(i);
 
             if (s.getOverallConstraintViolation() == 0.0) {
-            //if (true) {
-                for (int j = 0; j < s.numberOfVariables(); j++) {
+
+                int[] variables = ((Permutation)s.getDecisionVariables()[0]).vector_;
+                for (int j = 0; j < this.cantCamiones * this.capCamionesAprox; j++) {
+
                     if (j % this.capCamionesAprox == 0 && j != 0) {
                         bw.write("  |  ");
-                    } else if (j != 0) {
+
+                    }
+                    else if (j != 0) {
                         bw.write(" ");
                     }
 
                     //String id = this.datos.puntos[(int)s.getDecisionVariables()[j].getValue()].id;
                     //bw.write(id);
-                    bw.write(s.getDecisionVariables()[j].toString());
+                    int val = 0;
+                    if(variables[j] <= this.cantContenedores){
+                        val = variables[j];
+                    }
+                    bw.write(String.valueOf(val));
+                }
+                bw.write("  |- limite -|  ");
+                for(int j = this.cantCamiones * this.capCamionesAprox; j < variables.length; j ++){
+                    int val = 0;
+                    if(variables[j] <= this.cantContenedores){
+                        val = variables[j];
+                    }
+                    bw.write(String.valueOf(val) + " ");
 
                 }
+
                 bw.newLine();
-                //bw.write("Trayectoria total en metros: " + String.valueOf(s.getObjective(0)));
                 bw.write(String.valueOf(s.getObjective(0)));
                 bw.newLine();
-                //bw.write("QoS total: " + String.valueOf(s.getObjective(1)));
                 bw.write(String.valueOf(s.getObjective(1)));
                 bw.newLine();
 
+                int tiempoFin = 0;
+                int ultimoContenedor = -1;
 
-                //Imprimo cuan lleno termina el contenedor
-                ArrayList<ArrayList<int[]>> tc = construirListaTiempos(s.getDecisionVariables());
-                ArrayList<int[]> contenedor_j;
-                int largoContenedor_j;
-                int maxTiempo = 0;
-                for (int j = 1; j < this.cantContenedores; j++) {
-                    contenedor_j = tc.get(j);
-                    largoContenedor_j = contenedor_j.size();
+                //primero calculo tiempo de fin.
 
-                    //Si se recogio al menos una vez, calculo desde la ultima vez recogida
-                    if (largoContenedor_j > 0 ) {
-                        bw.write(String.format("Llenado al terminar (recogido) contenedor %s: %s %%", j, this.datos.velocidades[j].v * (this.tiempoFin - (contenedor_j.get(largoContenedor_j - 1)[0] + tiempoRecol))));
-                        bw.newLine();
+                for (int j = 0; j < this.cantCamiones; j++) {
 
-                        if(contenedor_j.get(largoContenedor_j - 1)[0] > maxTiempo){
-                            maxTiempo = contenedor_j.get(largoContenedor_j - 1)[0];
+                    int indice = j * this.capCamionesAprox;
+                    int indiceFinal = indice + this.capCamionesAprox;
+
+                    try {
+
+                        int tiempo = 0;
+                        int sumaTiempo = 0;
+                        int actual = 0;
+
+                        for(int k = indice; k < indiceFinal; k++){
+                            int contenedor = variables[k];
+                            if(contenedor != 0 && contenedor <= this.cantContenedores){
+                                sumaTiempo = tiempo + tiempos[actual][contenedor];
+
+
+                                if(sumaTiempo > tiempoFin){
+                                    tiempoFin = sumaTiempo;
+                                    ultimoContenedor = contenedor;
+                                }
+
+                                tiempo = sumaTiempo + tiempoRecol;
+                                actual = contenedor;
+                            }
+                            else {
+                                break;  //si es cero, como estan ordenados con todos los ceros a la derecha, termino este camion.
+                            }
+
                         }
 
-                    }
-                    //Caso contrario, usa llenado inicial
-                    else {
-                        bw.write(String.format("Llenado al terminar (no recogido) contenedor %s: %s %%", j, this.datos.llenados[j].v + this.datos.velocidades[j].v * this.tiempoFin));
-                        bw.newLine();
+
+                    } catch (Throwable t) {
+                        throw new RuntimeException("ERROR: " + t.getMessage(), t);
                     }
                 }
-                bw.write("Tiempo en que es recolectado ultimo contenedor en h: " + String.valueOf(maxTiempo/60.0/60.0));
+                bw.write("Tiempo en que es recolectado ultimo contenedor en h: " + String.valueOf(tiempoFin/60.0/60.0));
                 bw.newLine();
-                bw.write("Tiempo en que retorna el ultimo camion en h: " + String.valueOf(this.tiempoFin / 60.0 / 60.0));
+
+                //Agrego tiempo de recoleccion y de vuelta
+                if(ultimoContenedor != -1){
+                    tiempoFin+=tiempoRecol + tiempos[ultimoContenedor][0];
+                }
+                bw.write("Tiempo en que retorna el ultimo camion en h: " + String.valueOf(tiempoFin / 60.0 / 60.0));
                 bw.newLine();
-                //bw.write("violaciones: " + String.valueOf(s.getNumberOfViolatedConstraint()));
-                //bw.newLine();
+                bw.newLine();
+
+                for (int j = 0; j < this.cantCamiones; j++) {
+
+                    int indice = j * this.capCamionesAprox;
+                    int indiceFinal = indice + this.capCamionesAprox;
+
+                    try {
+                        int tiempo = 0;
+                        int sumaTiempo = 0;
+                        int actual = 0;
+
+                        for(int k = indice; k < indiceFinal; k++){
+                            int contenedor = variables[k];
+                            if(contenedor != 0 && contenedor <= this.cantContenedores){
+                                sumaTiempo = tiempo + tiempos[actual][contenedor];
+                                tiempo = sumaTiempo + tiempoRecol;
+                                actual = contenedor;
+
+                                bw.write(String.format("Llenado al terminar (recogido) contenedor %s: %s %%", contenedor,velocidades[actual].v * (tiempoFin - sumaTiempo)));
+                                bw.newLine();
+
+                            }
+                            else {
+                                break;  //si es cero, como estan ordenados con todos los ceros a la derecha, termino este camion.
+                            }
+
+                        }
+
+
+                    } catch (Throwable t) {
+                        throw new RuntimeException("ERROR: " + t.getMessage(), t);
+                    }
+                }
+
+                //Por ultimo sumo todos los contenedores no recogidos
+                //Estos son, todos los valores luego del ultimo contenedor del ultimo camion. O sea los que estan luego del limite dummy
+                for (int j = this.indiceLimite; j < variables.length; j++) {
+                    int contenedor = variables[j];
+                    if(contenedor != 0 && contenedor <= this.cantContenedores) {
+                        bw.write(String.format("Llenado al terminar (no recogido) contenedor %s: %s %%", contenedor,b[contenedor].v + velocidades[contenedor].v * tiempoFin));
+                        bw.newLine();
+                    }
+
+                }
+
+
+
                 bw.write("--------------------");
                 bw.newLine();
             }

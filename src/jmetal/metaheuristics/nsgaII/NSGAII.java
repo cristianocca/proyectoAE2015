@@ -22,6 +22,7 @@
 package jmetal.metaheuristics.nsgaII;
 
 import jmetal.core.*;
+import jmetal.encodings.variable.Permutation;
 import jmetal.qualityIndicator.QualityIndicator;
 import jmetal.util.Distance;
 import jmetal.util.JMException;
@@ -112,10 +113,11 @@ public class NSGAII extends Algorithm {
     } //for       
 
 
-    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY ---- YA QUE GREEDY TIENE RESULTADOS RANDOM, lo genero las 5 veces.
+    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY
     Problema problema = (Problema)problem_;
+    Permutation permGreedy = MainGreedy.ejecutarGreedyv2(problema.datos);
     for(int i = 0; i < GREEDY_COUNT; i++){
-      Solution solucionGreedy = new Solution(problem_, MainGreedy.ejecutarGreedyv2(problema.datos));
+      Solution solucionGreedy = new Solution(problem_, new Variable[]{ new Permutation(permGreedy)});
       problem_.evaluate(solucionGreedy);
       problem_.evaluateConstraints(solucionGreedy);
 

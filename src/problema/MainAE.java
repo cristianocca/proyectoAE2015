@@ -109,12 +109,12 @@ public class MainAE {
         // Mutation and Crossover for Real codification
         parameters = new HashMap() ;
         parameters.put("probability", crossProb) ;
-        crossover = CrossoverFactory.getCrossoverOperator("TwoPointsCrossover2", parameters);
+        crossover = CrossoverFactory.getCrossoverOperator("PMXCrossover", parameters);
         //crossover = CrossoverFactory.getCrossoverOperator("SinglePointCrossover", parameters);
 
         parameters = new HashMap() ;
         parameters.put("probability", mutProb) ;
-        mutation = MutationFactory.getMutationOperator("BitFlipMutation", parameters);
+        mutation = MutationFactory.getMutationOperator("SwapMutation", parameters);
 
         // Selection Operator
         parameters = null ;

@@ -3,8 +3,10 @@ package problema;
 import jmetal.core.Problem;
 import jmetal.core.Solution;
 import jmetal.core.SolutionSet;
+import jmetal.core.Variable;
 import jmetal.encodings.solutionType.IntSolutionType;
 import jmetal.encodings.variable.Int;
+import jmetal.encodings.variable.Permutation;
 import org.omg.CORBA.PUBLIC_MEMBER;
 import problema.datos.Datos;
 import problema.datos.Punto;
@@ -94,7 +96,7 @@ public class MainGreedy {
         return resultado;
     }
 
-    public static Int[] ejecutarGreedyv2(Datos datos){
+    public static Permutation ejecutarGreedyv2(Datos datos){
 
         datos.puntosOrdenados = datos.cargarPuntosOrdenados(datos.distancias);
 
@@ -105,10 +107,9 @@ public class MainGreedy {
         visitados[0] = true;    //origen visitado para no tomarlo en cuenta.
 
         int cantPorCamion = datos.datosBasicos.capacidadCamiones + datos.datosBasicos.capacidadCamiones/2;
-        int lowerBound = 0;
-        int upperBound = datos.puntos.length - 1;
 
-        Int[]  resultado = new Int[datos.datosBasicos.cantidadCamiones*cantPorCamion];
+
+        int[]  resultado = new int[datos.datosBasicos.cantidadCamiones*cantPorCamion];
 
         int libres = visitados.length - 1;
         int index = 0;
@@ -153,8 +154,7 @@ public class MainGreedy {
                     recogido += sumaBasura;
 
                     libres--;
-                    Int aux = new Int(elegido, lowerBound, upperBound);
-                    resultado[index] = aux;
+                    resultado[index] = elegido;
                     actual = elegido;
 
                     cant++;
@@ -167,15 +167,46 @@ public class MainGreedy {
 
             if(cant < cantPorCamion){
                 while (cant < cantPorCamion){
-                    Int aux = new Int(0,lowerBound, upperBound);
-                    resultado[index] = aux;
+                    resultado[index] = 0;
                     index++;
                     cant++;
                 }
             }
         }
 
-        return resultado;
+        //Construyo resultado de permutacion para poder utilizar con AE
+
+        int[] p = new int[resultado.length+datos.puntos.length-1];
+        for(int i = 0; i < resultado.length; i++){
+            p[i] = resultado[i];
+        }
+        for(int i = resultado.length; i < p.length; i++){
+            p[i] = 0;
+        }
+        for(int i = 1; i < visitados.length; i++){
+            if(!visitados[i]){
+                p[resultado.length + i-1] = i;
+            }
+        }
+
+        int similCero = 0;
+        //Corrijo ceros para que sea igual que la sol AE
+        for(int i = 0; i < p.length; i++){
+            if(p[i] == 0){
+                p[i] = similCero;
+                if(similCero == 0){
+                    similCero = datos.puntos.length;
+                }
+                else {
+                    similCero++;
+                }
+            }
+        }
+
+        Permutation res = new Permutation();
+        res.vector_ = p;
+        res.size_ = p.length;
+        return res;
     }
 
     public static void main(String[] args){
@@ -198,13 +229,13 @@ public class MainGreedy {
 
             long initTime = System.currentTimeMillis();
 
-            Int[] resultado = ejecutarGreedyv2(datos);
+            Permutation resultado = ejecutarGreedyv2(datos);
 
             //Con la solucion, instancio el problema para poder usar mismas funciones que el AE
             //y simplificar el codigo
 
             Problem problem = new Problema(datos);
-            Solution solucionGreedy = new Solution(problem, resultado);
+            Solution solucionGreedy = new Solution(problem, new Variable[]{resultado});
             problem.evaluate(solucionGreedy);
             long elapsedTime = System.currentTimeMillis() - initTime;
 
