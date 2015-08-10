@@ -73,10 +73,11 @@ public class Problema extends Problem {
             return 0;
         }
         if (porcentaje < 100 ){
-            return 1;
+            //return 1;
+            return porcentaje;
         }
         //Si es >= 100, negativo
-        return -1;
+        return -1 * porcentaje;
 
     }
 
@@ -85,7 +86,7 @@ public class Problema extends Problem {
         if(porcentaje < 20){
             return 0;
         }
-        return -1;
+        return -1*porcentaje;
 
     }
 
