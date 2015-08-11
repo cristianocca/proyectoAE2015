@@ -30,7 +30,7 @@ def ejecutarProceso(command):
 
 #Pasos a ejecutar, si se saltean pasos, se asumen datos ya generados.		
 class PASOS:
-	EJECUTAR = False			#Ejecuta instancias y guarda resultados para post procesamiento
+	EJECUTAR = True			#Ejecuta instancias y guarda resultados para post procesamiento
 	OBTENER_FRENTE = True		#Por cada instancia, obtiene el mejor frente de todas las ejecuciones de esa instancia
 	OBTENER_RHV = True			#Por cada instancia, el mejor frente, y todas las ejecuciones, obtiene RHV y otros valores, promedios y varianzas para cada combinacion parametrica
 	GENERAR_XL = True			#Guarda todos los datos obtenidos en un archivo excel
@@ -51,7 +51,7 @@ CARPETA_SALIDAS = r"./salidaParam/{0}"
 #Path salida excel
 PATH_SALIDA_XL = r"./salidaParam/resultados.xls"
 
-ITERACIONES = 5
+ITERACIONES = 30
 POOL_SIZE = 4
 
 
@@ -88,10 +88,10 @@ if PASOS.EJECUTAR:
 	#algoritmos = ["NSGA2"]
 
 
-	posiblesPob = ["100","200"]
-	posiblesEval = ["25000"]
+	posiblesPob = ["200","500"]
+	posiblesEval = ["45000"]
 	posiblesCross = ["0.75","0.8"]
-	posiblesMut = ["0.01","0.05"]
+	posiblesMut = ["0.01","0.05","0.1"]
 
 	combinacionesParametros = []
 	for alg in algoritmos:

@@ -42,10 +42,12 @@ for f in files:
 		x = []
 		y = []
 		for l in arch.readlines():
-			if len(l) > 0:				
-				f1, f2, nl = l.split(" ")
-				x.append(float(f1))
-				y.append(float(f2))
+			if len(l) > 0:								
+				data = l.split(" ")
+				if len(data) >= 2:
+					f1, f2 = data[:2]
+					x.append(float(f1))
+					y.append(float(f2))
 		
 		axes.plot(x,y, colores.next(), ms=5, label=f)
 		
@@ -55,9 +57,11 @@ try:
 		y = []
 		for l in arch.readlines():
 			if len(l) > 0:				
-				f1, f2, nl = l.split(" ")
-				x.append(float(f1))
-				y.append(float(f2))
+				data = l.split(" ")
+				if len(data) >= 2:
+					f1, f2 = data[:2]
+					x.append(float(f1))
+					y.append(float(f2))
 
 		axes.plot(x,y, 'bx', ms=10, label=mejorFrente)
 except:

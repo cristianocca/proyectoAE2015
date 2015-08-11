@@ -23,16 +23,15 @@ package jmetal.metaheuristics.nsgaII;
 
 import jmetal.core.*;
 import jmetal.encodings.variable.Permutation;
+import jmetal.operators.mutation.MutationFactory;
 import jmetal.qualityIndicator.QualityIndicator;
-import jmetal.util.Distance;
-import jmetal.util.JMException;
-import jmetal.util.NonDominatedSolutionList;
-import jmetal.util.Ranking;
+import jmetal.util.*;
 import jmetal.util.comparators.CrowdingComparator;
 import problema.MainGreedy;
 import problema.Problema;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 /** 
  *  Implementation of NSGA-II.
@@ -98,13 +97,13 @@ public class NSGAII extends Algorithm {
     //SolutionSet hof = new NonDominatedSolutionList();
 
 
-    int GREEDY_COUNT = 10;
-    int CERO_CONTENEDORES = 0;
+    int GREEDY_COUNT = Math.floorDiv(populationSize, 10);
+
 
     // Create the initial solutionSet
     //CODIGO NUEVO: las ultimas 5 soluciones las agrego con greedy.
     Solution newSolution;
-    for (int i = 0; i < populationSize - GREEDY_COUNT - CERO_CONTENEDORES; i++) {
+    for (int i = 0; i < populationSize - GREEDY_COUNT; i++) {
       newSolution = new Solution(problem_);
       problem_.evaluate(newSolution);
       problem_.evaluateConstraints(newSolution);
@@ -118,7 +117,20 @@ public class NSGAII extends Algorithm {
     Problema problema = (Problema)problem_;
     Permutation permGreedy = MainGreedy.ejecutarGreedyv2(problema.datos);
     for(int i = 0; i < GREEDY_COUNT; i++){
-      Solution solucionGreedy = new Solution(problem_, new Variable[]{ new Permutation(permGreedy)});
+      Solution solucionGreedy = new Solution(problem_, new Variable[]{new Permutation(permGreedy)});;
+
+      if (i == 0) {
+        //lo dejo igual
+      }
+      else {
+        //la deformo
+        HashMap parameters = new HashMap() ;
+        parameters.put("probability", 1.0) ;
+        for(int j = 0; j <= i; j++){
+          MutationFactory.getMutationOperator("SwapMutation", parameters).execute(solucionGreedy);
+        }
+      }
+
       problem_.evaluate(solucionGreedy);
       problem_.evaluateConstraints(solucionGreedy);
 
@@ -127,16 +139,8 @@ public class NSGAII extends Algorithm {
       evaluations++;
     }
 
-    Permutation permVacio = Problema.obtenerExtremoCeroContenedores(problema.datos);
-    for(int i = 0; i < CERO_CONTENEDORES; i++){
-      Solution solucionGreedy = new Solution(problem_, new Variable[]{ new Permutation(permVacio)});
-      problem_.evaluate(solucionGreedy);
-      problem_.evaluateConstraints(solucionGreedy);
 
-      population.add(solucionGreedy);
 
-      evaluations++;
-    }
 
 
 

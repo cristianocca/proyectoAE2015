@@ -72,12 +72,16 @@ public class Problema extends Problem {
         if(porcentaje < 20){
             return 0;
         }
+        if(porcentaje < 80){
+            return 1;
+        }
         if (porcentaje < 100 ){
-            //return 1;
-            return porcentaje;
+            return 2;
+            //return porcentaje;
         }
         //Si es >= 100, negativo
-        return -1 * porcentaje;
+        return -6;
+        //return -2 * porcentaje;
 
     }
 
@@ -86,7 +90,12 @@ public class Problema extends Problem {
         if(porcentaje < 20){
             return 0;
         }
-        return -1*porcentaje;
+        if(porcentaje < 100){
+            //return -1 * porcentaje;
+            return -1;
+        }
+        return -10;
+        //return -2*porcentaje;
 
     }
 
@@ -422,6 +431,7 @@ public class Problema extends Problem {
                 bw.newLine();
                 bw.newLine();
 
+                int contadorInvalidos = 0;
                 for (int j = 0; j < this.cantCamiones; j++) {
 
                     int indice = j * this.capCamionesAprox;
@@ -440,6 +450,7 @@ public class Problema extends Problem {
                                 bw.write(String.format("Contenedor [%s] Recogido: al %s %%", contenedor, b[contenedor].v + velocidades[contenedor].v * sumaTiempo));
                                 if(getPuntajeRecogido(b[contenedor].v + velocidades[contenedor].v * sumaTiempo) < 0){
                                     bw.write("---- Ver ---");
+                                    contadorInvalidos++;
                                 }
                                 tiempo = sumaTiempo + tiempoRecol;
                                 actual = contenedor;
@@ -467,13 +478,15 @@ public class Problema extends Problem {
                         bw.write(String.format("Contenedor [%s] no recogido, dejado en %s %%", contenedor,b[contenedor].v));
                         if(getPuntajeNoRecogido(b[contenedor].v) < 0){
                             bw.write("---- Ver ---");
+                            contadorInvalidos++;
                         }
                         bw.newLine();
                     }
 
                 }
 
-
+                bw.write("Total contenedores invalidos: " + contadorInvalidos);
+                bw.newLine();
 
                 bw.write("--------------------");
                 bw.newLine();

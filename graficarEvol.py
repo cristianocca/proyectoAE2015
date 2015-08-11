@@ -35,9 +35,11 @@ if ANIMACION:
 		with open(files[0],'r') as arch:
 			for l in arch.readlines():
 				if len(l) > 0:				
-					f1, f2, nl = l.split(" ")
-					x.append(float(f1))
-					y.append(float(f2))
+					data = l.split(" ")
+					if len(data) >= 2:
+						f1, f2 = data[:2]
+						x.append(float(f1))
+						y.append(float(f2))
 	
 	inicial = axes.plot(x,y, 'bo',ms=6)[0]	
 	
@@ -55,9 +57,11 @@ if ANIMACION:
 				with open(files[indice],'r') as arch:
 					for l in arch.readlines():
 						if len(l) > 0:				
-							f1, f2, nl = l.split(" ")
-							x.append(float(f1))
-							y.append(float(f2))
+							data = l.split(" ")
+							if len(data) >= 2:
+								f1, f2 = data[:2]
+								x.append(float(f1))
+								y.append(float(f2))
 				indice+=1
 				
 			yield x, y, indice
