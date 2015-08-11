@@ -90,7 +90,7 @@ if PASOS.EJECUTAR:
 
 	posiblesPob = ["200","500"]
 	posiblesEval = ["45000"]
-	posiblesCross = ["0.75","0.8"]
+	posiblesCross = ["0.75","0.85"]
 	posiblesMut = ["0.01","0.05","0.1"]
 
 	combinacionesParametros = []
