@@ -93,7 +93,7 @@ public class MainAE {
         }
         else if(algoritmo.equalsIgnoreCase("SPEA2")){
             algorithm = new SPEA2(problem);
-            algorithm.setInputParameter("archiveSize",popSize);
+            algorithm.setInputParameter("archiveSize",popSize/2);
         }
         else {
             System.out.println("Agoritmo invalido, opciones: NSGA2 y SPEA2");

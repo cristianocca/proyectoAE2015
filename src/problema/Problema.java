@@ -8,6 +8,7 @@ import jmetal.encodings.solutionType.PermutationSolutionType;
 import jmetal.encodings.variable.Permutation;
 import jmetal.util.JMException;
 import jmetal.util.NonDominatedSolutionList;
+import jmetal.util.PseudoRandom;
 import jmetal.util.comparators.ObjectiveComparator;
 import problema.datos.Datos;
 import problema.datos.LlenadoInicial;
@@ -185,18 +186,38 @@ public class Problema extends Problem {
                             else {
                                 violoCond = true;
 
-                                //Corrijo. Elimino el contenedor. Debo ponerlo en algun lugar de las celdas dummy
-                                //Que sean cero, o en algun camion que tenga 0.
-                                for (int k = indiceLimite; k < variables.length; k++) {
-                                    contenedor = variables[k];
-                                    if(contenedor == 0 || contenedor > this.cantContenedores) {
-                                        int temp = variables[j];
-                                        variables[j] = contenedor;
-                                        variables[k] = temp;
-                                        break;
+                                //Si un contenedor llena la capacidad del camion, elimino de derecha a izquierda hasta que no se supere la capacidad.
+                                //Esto es, elimino el ultimo distinto de cero/dummy, y sigo la iteracion.
+                                //Como seteo violoCond = true, se re calcula y si se sigue violando, se vuelve a corregir.
+                                //En el 99% de los casos se corrige al eliminar un contenedor.
+                                //Caso borde: El contenedor que sobrepasa es el ultimo, esta controlado de todas formas, ya que el for siguiente itera una sola vez
+                                //Y la primer condicion da true, porque solo se entro aca con la misma condicion.
+                                for (int z = indiceFinal - 1; z >= j; z--) {
+                                    contenedor = variables[z];
+
+                                    if (contenedor != 0 && contenedor <= this.cantContenedores) {
+                                        boolean encontre = false;
+                                        //Lo elimino, o sea, lo pongo en la seccion dummy
+                                        for (int k = indiceLimite; k < variables.length; k++) {
+                                            int contenedor2 = variables[k];
+                                            if (contenedor2 == 0 || contenedor2 > this.cantContenedores) {
+                                                variables[z] = contenedor2;
+                                                variables[k] = contenedor;
+                                                encontre = true;
+                                                break;
+                                            }
+
+                                        }
+                                        if (encontre) {
+                                            break;
+                                        }
+
                                     }
 
                                 }
+
+
+                                break; // y termino el loop de este camion
 
                             }
                         }

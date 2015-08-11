@@ -22,9 +22,13 @@
 package jmetal.metaheuristics.pesa2;
 
 import jmetal.core.*;
+import jmetal.encodings.variable.Permutation;
+import jmetal.operators.mutation.MutationFactory;
 import jmetal.operators.selection.PESA2Selection;
 import jmetal.util.JMException;
 import jmetal.util.archive.AdaptiveGridArchive;
+import problema.MainGreedy;
+import problema.Problema;
 
 import java.util.HashMap;
 
@@ -71,15 +75,43 @@ public class PESA2 extends Algorithm{
     HashMap  parameters = null ;
     selection    = new PESA2Selection(parameters);
 
+    int GREEDY_COUNT = Math.floorDiv(populationSize, 10);
+
     //-> Create the initial individual and evaluate it and his constraints
-    for (int i = 0; i < populationSize; i++){
+    for (int i = 0; i < populationSize - GREEDY_COUNT; i++){
       Solution solution = new Solution(problem_);
       problem_.evaluate(solution);        
       problem_.evaluateConstraints(solution);
       evaluations++;    
       solutionSet.add(solution);      
     }
-    //<-                
+
+    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY
+    Problema problema = (Problema)problem_;
+    Permutation permGreedy = MainGreedy.ejecutarGreedyv2(problema.datos);
+    for(int i = 0; i < GREEDY_COUNT; i++){
+      Solution solucionGreedy = new Solution(problem_, new Variable[]{new Permutation(permGreedy)});;
+
+      if (i == 0) {
+        //lo dejo igual
+      }
+      else {
+        //la deformo
+        HashMap defParams = new HashMap() ;
+        defParams.put("probability", 1.0) ;
+        for(int j = 0; j <= i; j++){
+          MutationFactory.getMutationOperator("SwapMutation", defParams).execute(solucionGreedy);
+        }
+      }
+
+      problem_.evaluate(solucionGreedy);
+      problem_.evaluateConstraints(solucionGreedy);
+
+      solutionSet.add(solucionGreedy);
+
+      evaluations++;
+    }
+
         
     // Incorporate non-dominated solution to the archive
     for (int i = 0; i < solutionSet.size();i++){

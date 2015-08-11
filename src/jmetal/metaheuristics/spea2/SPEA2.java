@@ -23,11 +23,14 @@ package jmetal.metaheuristics.spea2;
 
 import jmetal.core.*;
 import jmetal.encodings.variable.Permutation;
+import jmetal.operators.mutation.MutationFactory;
 import jmetal.util.JMException;
 import jmetal.util.Ranking;
 import jmetal.util.Spea2Fitness;
 import problema.MainGreedy;
 import problema.Problema;
+
+import java.util.HashMap;
 
 /** 
  * This class representing the SPEA2 algorithm
@@ -90,7 +93,20 @@ public class SPEA2 extends Algorithm{
     Problema problema = (Problema)problem_;
     Permutation permGreedy = MainGreedy.ejecutarGreedyv2(problema.datos);
     for(int i = 0; i < GREEDY_COUNT; i++){
-      Solution solucionGreedy = new Solution(problem_, new Variable[]{ new Permutation(permGreedy)});
+      Solution solucionGreedy = new Solution(problem_, new Variable[]{new Permutation(permGreedy)});;
+
+      if (i == 0) {
+        //lo dejo igual
+      }
+      else {
+        //la deformo
+        HashMap defParams = new HashMap() ;
+        defParams.put("probability", 1.0) ;
+        for(int j = 0; j <= i; j++){
+          MutationFactory.getMutationOperator("SwapMutation", defParams).execute(solucionGreedy);
+        }
+      }
+
       problem_.evaluate(solucionGreedy);
       problem_.evaluateConstraints(solucionGreedy);
 
