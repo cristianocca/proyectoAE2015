@@ -621,32 +621,32 @@ public class Problema extends Problem {
         return res;
     }
 
-    /**
 
+/**
     //Greedy que busca primero los que esten mas llenos
     public static Permutation obtenerExtremoLlenos(Datos datos){
 
-        double[] ponderaciones = new double[datos.puntos.length-1]; //cada valor almacena la ponderacion, excluyo el origen
+        double[] llenados = new double[datos.puntos.length]; //cada valor almacena la ponderacion, excluyo el origen
 
-        for(int i = 1; i < datos.puntos.length; i++){
+        for(int i = 0; i < datos.puntos.length; i++){
             int llenado = datos.llenados[i].v;
-            ponderaciones[i-1] = llenado;
+            llenados[i] = llenado;
         }
 
         int[] puntosOrdenados = new int[datos.puntos.length-1];   //guarda de menor a mayor los puntos segun su ponderacion. El valor es le indice del punto a utilizar
 
-        for(int i = 0; i < ponderaciones.length; i++){
+        for(int i = 1; i < llenados.length; i++){
             double max = -1;
             int indiceMax = -1;
-            for(int j = 0; j < ponderaciones.length; j++){
-                if(ponderaciones[j] > max){
-                    max = ponderaciones[j];
+            for(int j = 1; j < llenados.length; j++){
+                if(llenados[j] > max){
+                    max = llenados[j];
                     indiceMax = j;
                 }
             }
             if(indiceMax != -1) {
-                ponderaciones[indiceMax] = -1; //elimino ese valor como candidato posible de ponderacion
-                puntosOrdenados[i] = indiceMax;
+                llenados[indiceMax] = -1; //elimino ese valor como candidato posible de ponderacion
+                puntosOrdenados[i-1] = indiceMax;
             }
             else{
                 System.out.println("Warning: no se encontro indice");
