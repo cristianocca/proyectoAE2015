@@ -21,12 +21,15 @@
 
 package jmetal.metaheuristics.randomSearch;
 
-import jmetal.core.Algorithm;
-import jmetal.core.Problem;
-import jmetal.core.Solution;
-import jmetal.core.SolutionSet;
+import jmetal.core.*;
+import jmetal.encodings.variable.Permutation;
+import jmetal.operators.mutation.MutationFactory;
 import jmetal.util.JMException;
 import jmetal.util.NonDominatedSolutionList;
+import problema.MainGreedy;
+import problema.Problema;
+
+import java.util.HashMap;
 
 /**
  * This class implements a simple random search algorithm.
@@ -58,6 +61,16 @@ public class RandomSearch extends Algorithm {
 
     NonDominatedSolutionList ndl = new NonDominatedSolutionList();
 
+    int GREEDY_COUNT = 10;
+    int MEDIO_GREEDY_COUNT = 10;
+
+    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY y deformadas
+    Problema problema = (Problema)problem_;
+    for(Solution s : problema.getSolucionesGreedy(GREEDY_COUNT, MEDIO_GREEDY_COUNT)){
+      ndl.add(s);
+    }
+
+
     // Create the initial solutionSet
     Solution newSolution;
     for (int i = 0; i < maxEvaluations; i++) {
@@ -67,6 +80,9 @@ public class RandomSearch extends Algorithm {
       evaluations++;
       ndl.add(newSolution);
     } //for
+
+
+
 
     return ndl;
   } // execute

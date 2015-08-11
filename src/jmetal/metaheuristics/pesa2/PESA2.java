@@ -76,40 +76,20 @@ public class PESA2 extends Algorithm{
     selection    = new PESA2Selection(parameters);
 
     int GREEDY_COUNT = Math.floorDiv(populationSize, 10);
+    int MEDIO_GREEDY_COUNT = Math.floorDiv(populationSize, 10);
 
     //-> Create the initial individual and evaluate it and his constraints
-    for (int i = 0; i < populationSize - GREEDY_COUNT; i++){
+    for (int i = 0; i < populationSize - GREEDY_COUNT - MEDIO_GREEDY_COUNT; i++){
       Solution solution = new Solution(problem_);
       problem_.evaluate(solution);        
       problem_.evaluateConstraints(solution);
-      evaluations++;    
       solutionSet.add(solution);      
     }
 
-    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY
+    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY y deformadas
     Problema problema = (Problema)problem_;
-    Permutation permGreedy = MainGreedy.ejecutarGreedyv2(problema.datos);
-    for(int i = 0; i < GREEDY_COUNT; i++){
-      Solution solucionGreedy = new Solution(problem_, new Variable[]{new Permutation(permGreedy)});;
-
-      if (i == 0) {
-        //lo dejo igual
-      }
-      else {
-        //la deformo
-        HashMap defParams = new HashMap() ;
-        defParams.put("probability", 1.0) ;
-        for(int j = 0; j <= i; j++){
-          MutationFactory.getMutationOperator("SwapMutation", defParams).execute(solucionGreedy);
-        }
-      }
-
-      problem_.evaluate(solucionGreedy);
-      problem_.evaluateConstraints(solucionGreedy);
-
-      solutionSet.add(solucionGreedy);
-
-      evaluations++;
+    for(Solution s : problema.getSolucionesGreedy(GREEDY_COUNT, MEDIO_GREEDY_COUNT)){
+      solutionSet.add(s);
     }
 
         

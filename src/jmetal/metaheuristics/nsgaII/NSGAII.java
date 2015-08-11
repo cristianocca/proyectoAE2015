@@ -98,52 +98,27 @@ public class NSGAII extends Algorithm {
 
 
     int GREEDY_COUNT = Math.floorDiv(populationSize, 10);
+    int MEDIO_GREEDY_COUNT = Math.floorDiv(populationSize, 10);
 
 
     // Create the initial solutionSet
-    //CODIGO NUEVO: las ultimas 5 soluciones las agrego con greedy.
+
     Solution newSolution;
-    for (int i = 0; i < populationSize - GREEDY_COUNT; i++) {
+    for (int i = 0; i < populationSize - GREEDY_COUNT - MEDIO_GREEDY_COUNT; i++) {
       newSolution = new Solution(problem_);
       problem_.evaluate(newSolution);
       problem_.evaluateConstraints(newSolution);
-      evaluations++;
+
       population.add(newSolution);
       //hof.add(newSolution);
     } //for       
 
 
-    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY
+    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY y deformadas
     Problema problema = (Problema)problem_;
-    Permutation permGreedy = MainGreedy.ejecutarGreedyv2(problema.datos);
-    for(int i = 0; i < GREEDY_COUNT; i++){
-      Solution solucionGreedy = new Solution(problem_, new Variable[]{new Permutation(permGreedy)});;
-
-      if (i == 0) {
-        //lo dejo igual
-      }
-      else {
-        //la deformo
-        HashMap parameters = new HashMap() ;
-        parameters.put("probability", 1.0) ;
-        for(int j = 0; j <= i; j++){
-          MutationFactory.getMutationOperator("SwapMutation", parameters).execute(solucionGreedy);
-        }
-      }
-
-      problem_.evaluate(solucionGreedy);
-      problem_.evaluateConstraints(solucionGreedy);
-
-      population.add(solucionGreedy);
-
-      evaluations++;
+    for(Solution s : problema.getSolucionesGreedy(GREEDY_COUNT, MEDIO_GREEDY_COUNT)){
+      population.add(s);
     }
-
-
-
-
-
-
 
 
 
@@ -160,7 +135,7 @@ public class NSGAII extends Algorithm {
           parents[0] = (Solution) selectionOperator.execute(population);
           parents[1] = (Solution) selectionOperator.execute(population);
           Solution[] offSpring = (Solution[]) crossoverOperator.execute(parents);
-          
+
           mutationOperator.execute(offSpring[0]);
           mutationOperator.execute(offSpring[1]);
           problem_.evaluate(offSpring[0]);
@@ -170,6 +145,8 @@ public class NSGAII extends Algorithm {
           offspringPopulation.add(offSpring[0]);
           offspringPopulation.add(offSpring[1]);
           evaluations += 2;
+
+
           
           //hof.add(offSpring[0]);
           //hof.add(offSpring[1]);
@@ -221,14 +198,14 @@ public class NSGAII extends Algorithm {
 
 
 
-      /**
+  /**
       if(evaluations % 500 == 0 || evaluations == maxEvaluations){
         ranking = new Ranking(population);
         //ranking.getSubfront(0).printFeasibleFUN("FUN_NSGAII") ;
 
         ranking.getSubfront(0).printFeasibleFUN("./evolucion/"+evaluations+"fun.txt");
       }
-      **/
+**/
 
 
       // This piece of code shows how to use the indicator object into the code

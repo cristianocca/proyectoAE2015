@@ -3,9 +3,11 @@ package problema;
 import jmetal.core.Problem;
 import jmetal.core.Solution;
 import jmetal.core.SolutionSet;
+import jmetal.core.Variable;
 import jmetal.encodings.solutionType.IntSolutionType;
 import jmetal.encodings.solutionType.PermutationSolutionType;
 import jmetal.encodings.variable.Permutation;
+import jmetal.operators.mutation.MutationFactory;
 import jmetal.util.JMException;
 import jmetal.util.NonDominatedSolutionList;
 import jmetal.util.PseudoRandom;
@@ -17,6 +19,7 @@ import problema.datos.Velocidad;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 
 /**
  * Created by Cristiano on 27/07/2015.
@@ -570,200 +573,134 @@ public class Problema extends Problem {
 
     }
 
-    //Devuelve una solucion que es el extremo donde no se recoge ningun contenedor.
-    public static Permutation obtenerExtremoCeroContenedores(Datos datos){
 
-        boolean[] visitados = new boolean[datos.puntos.length];
-        for(int i = 0; i<visitados.length; i++)
-            visitados[i]=false;
+    //Deforma una solucion
+    public Solution deformarSolucion(Solution sol) throws JMException {
 
-        visitados[0] = true;    //origen visitado para no tomarlo en cuenta.
+        int[] variables = ((Permutation)sol.getDecisionVariables()[0]).vector_;
+        int indice;
+        int indiceFinal;
 
-        int cantPorCamion = datos.datosBasicos.capacidadCamiones + datos.datosBasicos.capacidadCamiones/2;
-        int[] resultado = new int[datos.datosBasicos.cantidadCamiones*cantPorCamion];
-        for(int i = 0; i < resultado.length;i++){
-            resultado[i] = 0;
+        boolean eliminar = false;
+        if(PseudoRandom.randDouble(0,1) <= 0.3) {
+            eliminar = true;
         }
 
+        for (int i = 0; i < this.cantCamiones; i++) {
 
-        //Construyo resultado de permutacion para poder utilizar con AE
+            indice = i * this.capCamionesAprox;
+            indiceFinal = indice + this.capCamionesAprox;
 
-        int[] p = new int[resultado.length+datos.puntos.length-1];
-        for(int i = 0; i < resultado.length; i++){
-            p[i] = resultado[i];
-        }
-        for(int i = resultado.length; i < p.length; i++){
-            p[i] = 0;
-        }
-        for(int i = 1; i < visitados.length; i++){
-            if(!visitados[i]){
-                p[resultado.length + i-1] = i;
-            }
-        }
+            try {
 
-        int similCero = 0;
-        //Corrijo ceros para que sea igual que la sol AE
-        for(int i = 0; i < p.length; i++){
-            if(p[i] == 0){
-                p[i] = similCero;
-                if(similCero == 0){
-                    similCero = datos.puntos.length;
-                }
-                else {
-                    similCero++;
-                }
-            }
-        }
+                //Por cada camion, deformo la mitad de sus contenedores
 
-        Permutation res = new Permutation();
-        res.vector_ = p;
-        res.size_ = p.length;
-        return res;
-    }
+                for(int j = indice; j < indiceFinal; j++){
 
 
-/**
-    //Greedy que busca primero los que esten mas llenos
-    public static Permutation obtenerExtremoLlenos(Datos datos){
+                    if(PseudoRandom.randDouble(0,1)<= 0.5) {
 
-        double[] llenados = new double[datos.puntos.length]; //cada valor almacena la ponderacion, excluyo el origen
+                        int contenedor = variables[j];
 
-        for(int i = 0; i < datos.puntos.length; i++){
-            int llenado = datos.llenados[i].v;
-            llenados[i] = llenado;
-        }
+                        //Una opcion, elimina el contenedor
+                        if(eliminar) {
 
-        int[] puntosOrdenados = new int[datos.puntos.length-1];   //guarda de menor a mayor los puntos segun su ponderacion. El valor es le indice del punto a utilizar
+                            if (contenedor != 0 && contenedor <= this.cantContenedores) {
 
-        for(int i = 1; i < llenados.length; i++){
-            double max = -1;
-            int indiceMax = -1;
-            for(int j = 1; j < llenados.length; j++){
-                if(llenados[j] > max){
-                    max = llenados[j];
-                    indiceMax = j;
-                }
-            }
-            if(indiceMax != -1) {
-                llenados[indiceMax] = -1; //elimino ese valor como candidato posible de ponderacion
-                puntosOrdenados[i-1] = indiceMax;
-            }
-            else{
-                System.out.println("Warning: no se encontro indice");
-            }
-        }
+                                //Lo elimino, o sea, lo pongo en la seccion dummy
+                                for (int z = indiceLimite; z < variables.length; z++) {
+                                    int contenedor2 = variables[z];
+                                    if (contenedor2 == 0 || contenedor2 > this.cantContenedores) {
+                                        variables[j] = contenedor2;
+                                        variables[z] = contenedor;
+                                        break;
+                                    }
 
+                                }
 
-        boolean[] visitados = new boolean[datos.puntos.length];
-        for(int i = 0; i<visitados.length; i++)
-            visitados[i]=false;
+                            }
+                        }
 
-        visitados[0] = true;    //origen visitado para no tomarlo en cuenta.
+                        //La otra, mueve contenedores a otros camiones de derecha a izquierda
+                        else {
+                            if (contenedor != 0 && contenedor <= this.cantContenedores) {
+                                for (int z = this.indiceLimite - 1; z >= 0; z--) {
+                                    if(z < indice || z > indice) {
+                                        int contenedor2 = variables[z];
+                                        if (contenedor2 == 0 || contenedor2 > this.cantContenedores) {
+                                            variables[j] = contenedor2;
+                                            variables[z] = contenedor;
+                                            break;
+                                        }
+                                    }
+                                }
 
-        int cantPorCamion = datos.datosBasicos.capacidadCamiones + datos.datosBasicos.capacidadCamiones/2;
+                            }
 
-        int[]  resultado = new int[datos.datosBasicos.cantidadCamiones*cantPorCamion];
-
-        int libres = visitados.length - 1;
-        int index = 0;
-        for(int i=0; i< datos.datosBasicos.cantidadCamiones; i++){
-            int actual = 0; //indice del punto actual
-            double recogido = 0;
-            int cant = 0; //cantidad de contenedores que ha visitado un camion
-            int tiempo = 0;
-
-            while (cant < cantPorCamion && libres > 0) {
-
-
-                int elegido = -1;
-                double sumaBasura = -1;
-                int sumaTiempo = -1;
-                boolean encontrado = false;
-
-
-                //de los mas cercanos, voy al mas cercano que no supere la capacidad del camion.
-                for (int j = 0; j < puntosOrdenados.length; j++) {
-                    elegido = puntosOrdenados[j];
-
-                    if(!visitados[elegido]) {
-                        sumaTiempo = tiempo + datos.tiempos[actual][elegido];
-                        sumaBasura = (datos.llenados[elegido].v + datos.velocidades[elegido].v * sumaTiempo) / 100;
-
-                        //Solo lo agrego si tiene mas de 20% de basura, y entra en el camion
-                        if (recogido + sumaBasura <= datos.datosBasicos.capacidadCamiones) {
-                            encontrado = true;
-                            break;
                         }
                     }
 
+
+
                 }
 
 
-                if (encontrado) {
-
-                    visitados[elegido] = true;
-
-                    tiempo = sumaTiempo + datos.datosBasicos.tiempoRecoleccionContenedor;
-                    recogido += sumaBasura;
-
-                    libres--;
-                    resultado[index] = elegido;
-                    actual = elegido;
-
-                    cant++;
-                    index++;
-                } else {
-                    break; //si llegue aca quiere decir que se lleno el camion.
-                }
-
-            }
-
-            if(cant < cantPorCamion){
-                while (cant < cantPorCamion){
-                    resultado[index] = 0;
-                    index++;
-                    cant++;
-                }
+            } catch (Throwable t) {
+                throw new RuntimeException("ERROR: " + t.getMessage(), t);
             }
         }
 
+        this.evaluate(sol);
+        this.evaluateConstraints(sol);
+        return sol;
+    }
 
 
-        //Construyo resultado de permutacion para poder utilizar con AE
+    //Devuelve una lista de soluciones greedy, incluyendo la original y deformadas.
+    //cant1: cantidad de soluciones greedy, cant2: cant de soluciones greedy deformadas con otro algoritmo.
+    public Solution[] getSolucionesGreedy(int cant, int cant2) throws JMException {
+        Permutation permGreedy = MainGreedy.ejecutarGreedyv2(this.datos);
 
-        int[] p = new int[resultado.length+datos.puntos.length-1];
-        for(int i = 0; i < resultado.length; i++){
-            p[i] = resultado[i];
-        }
-        for(int i = resultado.length; i < p.length; i++){
-            p[i] = 0;
-        }
-        for(int i = 1; i < visitados.length; i++){
-            if(!visitados[i]){
-                p[resultado.length + i-1] = i;
+        Solution[] res = new Solution[cant+cant2];
+
+        HashMap parameters = new HashMap() ;
+        parameters.put("probability", 1.0) ;
+
+        for(int i = 0; i < cant; i++){
+            Solution solucionGreedy = new Solution(this, new Variable[]{new Permutation(permGreedy)});
+
+            if (i == 0) {
+                //lo dejo igual
             }
-        }
-
-        int similCero = 0;
-        //Corrijo ceros para que sea igual que la sol AE
-        for(int i = 0; i < p.length; i++){
-            if(p[i] == 0){
-                p[i] = similCero;
-                if(similCero == 0){
-                    similCero = datos.puntos.length;
-                }
-                else {
-                    similCero++;
+            else {
+                //la deformo
+                for(int j = 0; j <= i; j++){
+                    MutationFactory.getMutationOperator("SwapMutation", parameters).execute(solucionGreedy);
                 }
             }
+
+            this.evaluate(solucionGreedy);
+            this.evaluateConstraints(solucionGreedy);
+            System.out.print(solucionGreedy.getObjective(0));
+            System.out.print(" | ");
+            System.out.println(solucionGreedy.getObjective(1));
+            res[i] = solucionGreedy;
         }
 
-        Permutation res = new Permutation();
-        res.vector_ = p;
-        res.size_ = p.length;
+
+        for(int i = cant; i < cant + cant2; i++){
+            Solution solucionGreedy = new Solution(this, new Variable[]{new Permutation(permGreedy)});
+            this.deformarSolucion(solucionGreedy);
+            System.out.print(solucionGreedy.getObjective(0));
+            System.out.print(" | ");
+            System.out.println(solucionGreedy.getObjective(1));
+            res[i] = solucionGreedy;
+        }
+
         return res;
     }
-**/
+
+
 
 
 }

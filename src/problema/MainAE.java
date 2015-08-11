@@ -2,6 +2,7 @@ package problema;
 
 import jmetal.core.*;
 import jmetal.metaheuristics.nsgaII.NSGAII;
+import jmetal.metaheuristics.randomSearch.RandomSearch;
 import jmetal.metaheuristics.spea2.SPEA2;
 import jmetal.operators.crossover.CrossoverFactory;
 import jmetal.operators.mutation.MutationFactory;
@@ -94,6 +95,9 @@ public class MainAE {
         else if(algoritmo.equalsIgnoreCase("SPEA2")){
             algorithm = new SPEA2(problem);
             algorithm.setInputParameter("archiveSize",popSize/2);
+        }
+        else if (algoritmo.equalsIgnoreCase("RANDOM")){
+            algorithm = new RandomSearch(problem);
         }
         else {
             System.out.println("Agoritmo invalido, opciones: NSGA2 y SPEA2");

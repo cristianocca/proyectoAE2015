@@ -77,42 +77,22 @@ public class SPEA2 extends Algorithm{
     archive     = new SolutionSet(archiveSize);
     evaluations = 0;
 
-    int GREEDY_COUNT = 10;
+    int GREEDY_COUNT = Math.floorDiv(populationSize, 10);
+    int MEDIO_GREEDY_COUNT = Math.floorDiv(populationSize, 10);
         
     //-> Create the initial solutionSet
     Solution newSolution;
-    for (int i = 0; i < populationSize - GREEDY_COUNT; i++) {
+    for (int i = 0; i < populationSize - GREEDY_COUNT - MEDIO_GREEDY_COUNT; i++) {
       newSolution = new Solution(problem_);
       problem_.evaluate(newSolution);            
       problem_.evaluateConstraints(newSolution);
-      evaluations++;
       solutionSet.add(newSolution);
     }
 
-    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY
+    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY y deformadas
     Problema problema = (Problema)problem_;
-    Permutation permGreedy = MainGreedy.ejecutarGreedyv2(problema.datos);
-    for(int i = 0; i < GREEDY_COUNT; i++){
-      Solution solucionGreedy = new Solution(problem_, new Variable[]{new Permutation(permGreedy)});;
-
-      if (i == 0) {
-        //lo dejo igual
-      }
-      else {
-        //la deformo
-        HashMap defParams = new HashMap() ;
-        defParams.put("probability", 1.0) ;
-        for(int j = 0; j <= i; j++){
-          MutationFactory.getMutationOperator("SwapMutation", defParams).execute(solucionGreedy);
-        }
-      }
-
-      problem_.evaluate(solucionGreedy);
-      problem_.evaluateConstraints(solucionGreedy);
-
-      solutionSet.add(solucionGreedy);
-
-      evaluations++;
+    for(Solution s : problema.getSolucionesGreedy(GREEDY_COUNT,MEDIO_GREEDY_COUNT)){
+      solutionSet.add(s);
     }
 
 
