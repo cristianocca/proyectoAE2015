@@ -42,6 +42,8 @@ public class SelectionFactory {
       return new BinaryTournament(parameters);
     else if (name.equalsIgnoreCase("BinaryTournament2"))
       return new BinaryTournament2(parameters);
+    else if (name.equalsIgnoreCase("BinaryTournament3"))
+      return new BinaryTournament3(parameters);
     else if (name.equalsIgnoreCase("PESA2Selection"))
       return new PESA2Selection(parameters);
     else if (name.equalsIgnoreCase("RandomSelection"))

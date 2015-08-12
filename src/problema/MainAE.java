@@ -122,7 +122,7 @@ public class MainAE {
 
         // Selection Operator
         parameters = null ;
-        selection = SelectionFactory.getSelectionOperator("BinaryTournament2", parameters) ;
+        selection = SelectionFactory.getSelectionOperator("BinaryTournament3", parameters) ;
 
         // Add the operators to the algorithm
         algorithm.addOperator("crossover",crossover);
