@@ -194,16 +194,16 @@ public class NSGAII extends Algorithm {
         } // for
 
         remain = 0;
-      } // if                               
+      } // if
 
 
 
-  /**
+/**
       if(evaluations % 500 == 0 || evaluations == maxEvaluations){
         ranking = new Ranking(population);
         //ranking.getSubfront(0).printFeasibleFUN("FUN_NSGAII") ;
 
-        ranking.getSubfront(0).printFeasibleFUN("./evolucion/"+evaluations+"fun.txt");
+        population.printFeasibleFUN("./evolucion/"+evaluations+"fun.txt");
       }
 **/
 

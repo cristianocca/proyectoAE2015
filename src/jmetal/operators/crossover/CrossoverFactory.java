@@ -43,6 +43,8 @@ public class CrossoverFactory {
         return new SinglePointCrossover(parameters);
     else if (name.equalsIgnoreCase("PMXCrossover"))
       return new PMXCrossover(parameters);
+    else if (name.equalsIgnoreCase("ZeroPMXCrossover"))
+      return new ZeroPMXCrossover(parameters);
     else if (name.equalsIgnoreCase("TwoPointsCrossover"))
       return new TwoPointsCrossover(parameters);
     else if (name.equalsIgnoreCase("TwoPointsCrossover2"))

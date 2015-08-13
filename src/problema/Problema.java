@@ -6,7 +6,9 @@ import jmetal.core.SolutionSet;
 import jmetal.core.Variable;
 import jmetal.encodings.solutionType.IntSolutionType;
 import jmetal.encodings.solutionType.PermutationSolutionType;
+import jmetal.encodings.solutionType.ZeroPermutationSolutionType;
 import jmetal.encodings.variable.Permutation;
+import jmetal.encodings.variable.ZeroPermutation;
 import jmetal.operators.mutation.MutationFactory;
 import jmetal.util.JMException;
 import jmetal.util.NonDominatedSolutionList;
@@ -33,9 +35,6 @@ public class Problema extends Problem {
     public int capCamionesAprox; //capCamiones + capCamiones / 2
     public static TiempoComparator tiempoComparator = new TiempoComparator();
 
-
-    public int indiceLimite;
-
     //Para instanciarlo sin datos.
     public Problema(){
 
@@ -51,18 +50,19 @@ public class Problema extends Problem {
         this.capCamionesAprox = (this.capCamiones + this.capCamiones / 2);
 
 
-        this.cantContenedores = datos.puntos.length-1;    //no incluye el origen. Se usa para ver si estoy viendo un contenedor valido o un valor dummy.
+        this.cantContenedores = datos.puntos.length;
 
         numberOfObjectives_ = 2;        //0: Min trayectoria, 1: Maximizar QoS
 
-        solutionType_ = new PermutationSolutionType(this) ;
+        solutionType_ = new ZeroPermutationSolutionType(this) ;
 
-        numberOfVariables_  = 1; //this.capCamionesAprox  * this.cantCamiones;
+        numberOfVariables_  = 1;
 
-        length_ = new int[1];
-        length_[0] = this.capCamionesAprox  * this.cantCamiones + this.cantContenedores; //saco 1 por el origen, se crean lugares adicionales para el limite dummy
+        length_ = new int[2];
+        length_[0] = this.capCamionesAprox  * this.cantCamiones;
+        length_[1] = this.cantContenedores-1;
 
-        this.indiceLimite = this.cantCamiones * this.capCamionesAprox; //Indice a partir el cual no estoy viendo ningun camion. Inclusive
+
 
         problemName_        = "Recoleccion de basura";
 
@@ -148,13 +148,13 @@ public class Problema extends Problem {
                     //pongo todos los ceros lo mas a la derecha posible, y no dejo ceros entre medio.
                     for (int j = indice; j < indiceFinal; j++) {
 
-                        if (variables[j] == 0 || variables[j] > this.cantContenedores) {
+                        if (variables[j] == 0) {
                             //si tengo un cero, muevo de derecha a izquierda todo lo que no sea cero
                             int indice3 = j + 1;
 
                             //Hago una especie de selection sort, dejando todos los 0's a la derecha.
                             while (indice3 < indiceFinal) {
-                                if (variables[indice3] != 0 && variables[indice3] <= this.cantContenedores ) {
+                                if (variables[indice3] != 0 ) {
                                     int temp = variables[j];
                                     variables[j] = variables[indice3];
                                     variables[indice3] = temp;
@@ -177,7 +177,7 @@ public class Problema extends Problem {
                     for(int j = indice; j < indiceFinal; j++){
                         int contenedor = variables[j];
 
-                        if(contenedor != 0 && contenedor <= this.cantContenedores){
+                        if(contenedor != 0){
                             sumaTiempo = tiempo + datos.tiempos[actual][contenedor];
                             sumaBasura = (b[contenedor].v + velocidades[contenedor].v * sumaTiempo) / 100;      //divido entre 100 para utilizar fracciones de contenedores.
 
@@ -196,27 +196,11 @@ public class Problema extends Problem {
                                 //Caso borde: El contenedor que sobrepasa es el ultimo, esta controlado de todas formas, ya que el for siguiente itera una sola vez
                                 //Y la primer condicion da true, porque solo se entro aca con la misma condicion.
                                 for (int z = indiceFinal - 1; z >= j; z--) {
-                                    contenedor = variables[z];
-
-                                    if (contenedor != 0 && contenedor <= this.cantContenedores) {
-                                        boolean encontre = false;
-                                        //Lo elimino, o sea, lo pongo en la seccion dummy
-                                        for (int k = indiceLimite; k < variables.length; k++) {
-                                            int contenedor2 = variables[k];
-                                            if (contenedor2 == 0 || contenedor2 > this.cantContenedores) {
-                                                variables[z] = contenedor2;
-                                                variables[k] = contenedor;
-                                                encontre = true;
-                                                break;
-                                            }
-
-                                        }
-                                        if (encontre) {
-                                            break;
-                                        }
-
+                                    if (variables[z] != 0) {
+                                        //Lo elimino
+                                        variables[z] = 0;
+                                        break;
                                     }
-
                                 }
 
 
@@ -254,7 +238,7 @@ public class Problema extends Problem {
             int actual = 0;
             try {
                 for (int j = indice; j < indiceFinal; j++) {
-                    if (variables[j] != 0 && variables[j] <= this.cantContenedores) {
+                    if (variables[j] != 0) {
                         f1 += distancias[actual][variables[j]];
                         actual = variables[j];
                     } else {
@@ -262,7 +246,7 @@ public class Problema extends Problem {
                     }
                 }
 
-                if (actual != 0 && actual <= this.cantContenedores) {
+                if (actual != 0) {
                     f1 += distancias[actual][0];  //Distancias del ultimo contenedor al origen
                 }
             }
@@ -276,6 +260,10 @@ public class Problema extends Problem {
         // -- Segunda funcion objetivo ---
         double f2 = 0;
 
+        boolean[] recogidos = new boolean[this.cantContenedores];
+        for(int i = 0; i < this.cantContenedores; i++){
+            recogidos[i] = false;
+        }
 
         for (int i = 0; i < this.cantCamiones; i++) {
 
@@ -291,7 +279,7 @@ public class Problema extends Problem {
 
                 for(int j = indice; j < indiceFinal; j++){
                     int contenedor = variables[j];
-                    if(contenedor != 0 && contenedor <= this.cantContenedores){
+                    if(contenedor != 0){
                         sumaTiempo = tiempo + tiempos[actual][contenedor];
                         sumaBasura = (b[contenedor].v + velocidades[contenedor].v * sumaTiempo);
 
@@ -300,6 +288,7 @@ public class Problema extends Problem {
                         tiempo = sumaTiempo + tiempoRecol;
                         actual = contenedor;
 
+                        recogidos[contenedor] = true;
 
                     }
                     else {
@@ -315,10 +304,9 @@ public class Problema extends Problem {
         }
 
         //Por ultimo sumo todos los contenedores no recogidos
-        for (int i = this.indiceLimite; i < variables.length; i++) {
-            int contenedor = variables[i];
-            if(contenedor != 0 && contenedor <= this.cantContenedores) {
-                f2 += getPuntajeNoRecogido(b[contenedor].v);
+        for (int i = 1; i < this.cantContenedores; i++) {
+            if(!recogidos[i]) {
+                f2 += getPuntajeNoRecogido(b[i].v);
             }
 
         }
@@ -369,7 +357,7 @@ public class Problema extends Problem {
             if (s.getOverallConstraintViolation() == 0.0) {
 
                 int[] variables = ((Permutation)s.getDecisionVariables()[0]).vector_;
-                for (int j = 0; j < this.cantCamiones * this.capCamionesAprox; j++) {
+                for (int j = 0; j < variables.length; j++) {
 
                     if (j % this.capCamionesAprox == 0 && j != 0) {
                         bw.write("  |  ");
@@ -381,21 +369,9 @@ public class Problema extends Problem {
 
                     //String id = this.datos.puntos[(int)s.getDecisionVariables()[j].getValue()].id;
                     //bw.write(id);
-                    int val = 0;
-                    if(variables[j] <= this.cantContenedores){
-                        val = variables[j];
-                    }
-                    bw.write(String.valueOf(val));
+                    bw.write(String.valueOf(variables[j]));
                 }
-                bw.write("  |- limite -|  ");
-                for(int j = this.cantCamiones * this.capCamionesAprox; j < variables.length; j ++){
-                    int val = 0;
-                    if(variables[j] <= this.cantContenedores){
-                        val = variables[j];
-                    }
-                    bw.write(String.valueOf(val) + " ");
 
-                }
 
                 bw.newLine();
                 bw.write(String.valueOf(s.getObjective(0)));
@@ -421,7 +397,7 @@ public class Problema extends Problem {
 
                         for(int k = indice; k < indiceFinal; k++){
                             int contenedor = variables[k];
-                            if(contenedor != 0 && contenedor <= this.cantContenedores){
+                            if(contenedor != 0){
                                 sumaTiempo = tiempo + tiempos[actual][contenedor];
 
 
@@ -456,6 +432,12 @@ public class Problema extends Problem {
                 bw.newLine();
 
                 int contadorInvalidos = 0;
+
+                boolean[] recogidos = new boolean[this.cantContenedores];
+                for(int j = 0; j < this.cantContenedores; j++){
+                    recogidos[j] = false;
+                }
+
                 for (int j = 0; j < this.cantCamiones; j++) {
 
                     int indice = j * this.capCamionesAprox;
@@ -468,7 +450,7 @@ public class Problema extends Problem {
 
                         for(int k = indice; k < indiceFinal; k++){
                             int contenedor = variables[k];
-                            if(contenedor != 0 && contenedor <= this.cantContenedores){
+                            if(contenedor != 0){
                                 sumaTiempo = tiempo + tiempos[actual][contenedor];
 
                                 bw.write(String.format("Contenedor [%s] Recogido: al %s %%", contenedor, b[contenedor].v + velocidades[contenedor].v * sumaTiempo));
@@ -480,6 +462,7 @@ public class Problema extends Problem {
                                 actual = contenedor;
 
                                 bw.newLine();
+                                recogidos[contenedor] = true;
 
                             }
                             else {
@@ -494,6 +477,18 @@ public class Problema extends Problem {
                     }
                 }
 
+                for (int j = 1; j < this.cantContenedores; j++) {
+                    if(!recogidos[j]) {
+                        bw.write(String.format("Contenedor [%s] no recogido, dejado en %s %%", j,b[j].v));
+                        if(getPuntajeNoRecogido(b[j].v) < 0){
+                            bw.write("---- Ver ---");
+                            contadorInvalidos++;
+                        }
+                        bw.newLine();
+                    }
+
+                }
+                /*
                 //Por ultimo sumo todos los contenedores no recogidos
                 //Estos son, todos los valores luego del ultimo contenedor del ultimo camion. O sea los que estan luego del limite dummy
                 for (int j = this.indiceLimite; j < variables.length; j++) {
@@ -508,7 +503,7 @@ public class Problema extends Problem {
                     }
 
                 }
-
+                */
                 bw.write("Total contenedores invalidos: " + contadorInvalidos);
                 bw.newLine();
 
@@ -605,29 +600,18 @@ public class Problema extends Problem {
                         //Una opcion, elimina el contenedor
                         if(eliminar) {
 
-                            if (contenedor != 0 && contenedor <= this.cantContenedores) {
-
-                                //Lo elimino, o sea, lo pongo en la seccion dummy
-                                for (int z = indiceLimite; z < variables.length; z++) {
-                                    int contenedor2 = variables[z];
-                                    if (contenedor2 == 0 || contenedor2 > this.cantContenedores) {
-                                        variables[j] = contenedor2;
-                                        variables[z] = contenedor;
-                                        break;
-                                    }
-
-                                }
-
+                            if (contenedor != 0) {
+                                variables[j] = 0;
                             }
                         }
 
                         //La otra, mueve contenedores a otros camiones de derecha a izquierda
                         else {
-                            if (contenedor != 0 && contenedor <= this.cantContenedores) {
-                                for (int z = this.indiceLimite - 1; z >= 0; z--) {
+                            if (contenedor != 0) {
+                                for (int z = variables.length - 1; z >= 0; z--) {
                                     if(z < indice || z > indice) {
                                         int contenedor2 = variables[z];
-                                        if (contenedor2 == 0 || contenedor2 > this.cantContenedores) {
+                                        if (contenedor2 == 0) {
                                             variables[j] = contenedor2;
                                             variables[z] = contenedor;
                                             break;
@@ -659,7 +643,7 @@ public class Problema extends Problem {
     //Devuelve una lista de soluciones greedy, incluyendo la original y deformadas.
     //cant1: cantidad de soluciones greedy, cant2: cant de soluciones greedy deformadas con otro algoritmo.
     public Solution[] getSolucionesGreedy(int cant, int cant2) throws JMException {
-        Permutation permGreedy = MainGreedy.ejecutarGreedyv2(this.datos);
+        ZeroPermutation permGreedy = MainGreedy.ejecutarGreedyv2(this.datos);
 
         Solution[] res = new Solution[cant+cant2];
 
@@ -667,23 +651,20 @@ public class Problema extends Problem {
         parameters.put("probability", 1.0) ;
 
         for(int i = 0; i < cant; i++){
-            Solution solucionGreedy = new Solution(this, new Variable[]{new Permutation(permGreedy)});
+            Solution solucionGreedy = new Solution(this, new Variable[]{new ZeroPermutation(permGreedy)});
 
             if (i == 0) {
                 //lo dejo igual
             }
             else {
                 //la deformo
-                for(int j = 0; j <= i; j++){
-                    MutationFactory.getMutationOperator("SwapMutation", parameters).execute(solucionGreedy);
-                }
+                //for(int j = 0; j <= i; j++){
+                    MutationFactory.getMutationOperator("ZeroPermBitFlipMutation", parameters).execute(solucionGreedy);
+                //}
             }
 
             this.evaluate(solucionGreedy);
             this.evaluateConstraints(solucionGreedy);
-            System.out.print(solucionGreedy.getObjective(0));
-            System.out.print(" | ");
-            System.out.println(solucionGreedy.getObjective(1));
             res[i] = solucionGreedy;
         }
 
@@ -691,9 +672,6 @@ public class Problema extends Problem {
         for(int i = cant; i < cant + cant2; i++){
             Solution solucionGreedy = new Solution(this, new Variable[]{new Permutation(permGreedy)});
             this.deformarSolucion(solucionGreedy);
-            System.out.print(solucionGreedy.getObjective(0));
-            System.out.print(" | ");
-            System.out.println(solucionGreedy.getObjective(1));
             res[i] = solucionGreedy;
         }
 

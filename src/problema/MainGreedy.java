@@ -7,6 +7,7 @@ import jmetal.core.Variable;
 import jmetal.encodings.solutionType.IntSolutionType;
 import jmetal.encodings.variable.Int;
 import jmetal.encodings.variable.Permutation;
+import jmetal.encodings.variable.ZeroPermutation;
 import org.omg.CORBA.PUBLIC_MEMBER;
 import problema.datos.Datos;
 import problema.datos.Punto;
@@ -96,7 +97,7 @@ public class MainGreedy {
         return resultado;
     }
 
-    public static Permutation ejecutarGreedyv2(Datos datos){
+    public static ZeroPermutation ejecutarGreedyv2(Datos datos){
 
         datos.puntosOrdenados = datos.cargarPuntosOrdenados(datos.distancias);
 
@@ -176,36 +177,10 @@ public class MainGreedy {
 
         //Construyo resultado de permutacion para poder utilizar con AE
 
-        int[] p = new int[resultado.length+datos.puntos.length-1];
-        for(int i = 0; i < resultado.length; i++){
-            p[i] = resultado[i];
-        }
-        for(int i = resultado.length; i < p.length; i++){
-            p[i] = 0;
-        }
-        for(int i = 1; i < visitados.length; i++){
-            if(!visitados[i]){
-                p[resultado.length + i-1] = i;
-            }
-        }
 
-        int similCero = 0;
-        //Corrijo ceros para que sea igual que la sol AE
-        for(int i = 0; i < p.length; i++){
-            if(p[i] == 0){
-                p[i] = similCero;
-                if(similCero == 0){
-                    similCero = datos.puntos.length;
-                }
-                else {
-                    similCero++;
-                }
-            }
-        }
-
-        Permutation res = new Permutation();
-        res.vector_ = p;
-        res.size_ = p.length;
+        ZeroPermutation res = new ZeroPermutation();
+        res.vector_ = resultado;
+        res.size_ = resultado.length;
         return res;
     }
 

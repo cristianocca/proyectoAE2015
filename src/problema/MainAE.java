@@ -113,16 +113,22 @@ public class MainAE {
         // Mutation and Crossover for Real codification
         parameters = new HashMap() ;
         parameters.put("probability", crossProb) ;
-        crossover = CrossoverFactory.getCrossoverOperator("PMXCrossover", parameters);
+        crossover = CrossoverFactory.getCrossoverOperator("ZeroPMXCrossover", parameters);
         //crossover = CrossoverFactory.getCrossoverOperator("SinglePointCrossover", parameters);
 
         parameters = new HashMap() ;
         parameters.put("probability", mutProb) ;
-        mutation = MutationFactory.getMutationOperator("SwapMutation", parameters);
+        mutation = MutationFactory.getMutationOperator("ZeroPermBitFlipMutation", parameters);
 
         // Selection Operator
         parameters = null ;
-        selection = SelectionFactory.getSelectionOperator("BinaryTournament3", parameters) ;
+        if (algoritmo.equalsIgnoreCase("NSGA2")) {
+            selection = SelectionFactory.getSelectionOperator("BinaryTournament3", parameters) ;
+        }
+        else {
+            selection = SelectionFactory.getSelectionOperator("BinaryTournament", parameters) ;
+        }
+
 
         // Add the operators to the algorithm
         algorithm.addOperator("crossover",crossover);

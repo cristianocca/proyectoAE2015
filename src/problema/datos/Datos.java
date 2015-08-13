@@ -114,9 +114,9 @@ public class Datos {
 /**
         Datos datos2 = new Datos();
         datos2.datosBasicos = new DatoBasico();
-        int puntosPrueba =50;
-        datos2.datosBasicos.cantidadCamiones = 5;
-        datos2.datosBasicos.capacidadCamiones = 10;
+        int puntosPrueba =4;
+        datos2.datosBasicos.cantidadCamiones = 2;
+        datos2.datosBasicos.capacidadCamiones = 2;
         datos2.datosBasicos.tiempoRecoleccionContenedor = datos.datosBasicos.tiempoRecoleccionContenedor;
 
 
@@ -139,8 +139,8 @@ public class Datos {
         datos = datos2;
 
         System.out.println("Total puntos prueba: " + datos.puntos.length);
-
 **/
+
         //*************************
 
 

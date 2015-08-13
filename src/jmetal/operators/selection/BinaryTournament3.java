@@ -77,12 +77,12 @@ public class BinaryTournament3 extends Selection {
       a_= (new jmetal.util.PermutationUtility()).intPermutation(population.size());
     }
 
-    boolean encontreGanador = false;
 
     Solution ganador = null;
-    Solution solution1, solution2;
+    Solution solution1 = null, solution2 = null;
 
-    while(!encontreGanador) {
+    int iter = 0;
+    while(iter <= 10) {
 
       solution1 = population.get(a_[index_]);
       solution2 = population.get(a_[index_ + 1]);
@@ -91,23 +91,30 @@ public class BinaryTournament3 extends Selection {
 
       int flag = dominance_.compare(solution1, solution2);
       if (flag == -1) {
-        ganador = solution1;
-        encontreGanador=true;
+        return solution1;
+
       }
       else if (flag == 1) {
-        ganador = solution2;
-        encontreGanador = true;
+        return solution2;
+
       }
       else if (solution1.getCrowdingDistance() > solution2.getCrowdingDistance()) {
-        ganador = solution1;
-        encontreGanador = true;
+        return solution1;
+
       }
       else if (solution2.getCrowdingDistance() > solution1.getCrowdingDistance()) {
-        ganador = solution2;
-        encontreGanador = true;
+        return solution2;
+      }
+      else {
+        iter++;
       }
     }
 
-    return ganador;
+    //Si llegue aca no encontre ganador
+    if (PseudoRandom.randDouble()<0.5)
+      return solution1;
+    else
+      return solution2;
+
   } // execute
 } // BinaryTournament2
