@@ -33,8 +33,8 @@ public class MainAE {
         }
 
 
-        int popSize = 2000;
-        int maxEval = 545000;
+        int popSize = 200;
+        int maxEval = 45000;
         double crossProb = 0.75;
         double mutProb = 0.01;
         String algoritmo = "NSGA2";
