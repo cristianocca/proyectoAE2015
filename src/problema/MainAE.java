@@ -33,8 +33,8 @@ public class MainAE {
         }
 
 
-        int popSize = 200;
-        int maxEval = 45000;
+        int popSize = 2000;
+        int maxEval = 545000;
         double crossProb = 0.75;
         double mutProb = 0.01;
         String algoritmo = "NSGA2";
@@ -122,7 +122,12 @@ public class MainAE {
 
         // Selection Operator
         parameters = null ;
-        selection = SelectionFactory.getSelectionOperator("BinaryTournament3", parameters) ;
+        if (algoritmo.equalsIgnoreCase("NSGA2")) {
+            selection = SelectionFactory.getSelectionOperator("BinaryTournament3", parameters) ;
+        }
+        else {
+            selection = SelectionFactory.getSelectionOperator("BinaryTournament", parameters) ;
+        }
 
         // Add the operators to the algorithm
         algorithm.addOperator("crossover",crossover);

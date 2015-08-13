@@ -674,16 +674,13 @@ public class Problema extends Problem {
             }
             else {
                 //la deformo
-                for(int j = 0; j <= i; j++){
+                //for(int j = 0; j <= i; j++){
                     MutationFactory.getMutationOperator("SwapMutation", parameters).execute(solucionGreedy);
-                }
+                //}
             }
 
             this.evaluate(solucionGreedy);
             this.evaluateConstraints(solucionGreedy);
-            System.out.print(solucionGreedy.getObjective(0));
-            System.out.print(" | ");
-            System.out.println(solucionGreedy.getObjective(1));
             res[i] = solucionGreedy;
         }
 
@@ -691,9 +688,6 @@ public class Problema extends Problem {
         for(int i = cant; i < cant + cant2; i++){
             Solution solucionGreedy = new Solution(this, new Variable[]{new Permutation(permGreedy)});
             this.deformarSolucion(solucionGreedy);
-            System.out.print(solucionGreedy.getObjective(0));
-            System.out.print(" | ");
-            System.out.println(solucionGreedy.getObjective(1));
             res[i] = solucionGreedy;
         }
 
