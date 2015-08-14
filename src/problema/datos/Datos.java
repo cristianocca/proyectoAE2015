@@ -18,7 +18,7 @@ public class Datos {
 
     public float[][] distancias;
     public int[][] tiempos;
-    public int[][] puntosOrdenados; //tiene para cada punto, el indice de los puntos, ordenados por distancia
+    public int[][] puntosOrdenados = null; //tiene para cada punto, el indice de los puntos, ordenados por distancia
 
     /**
      * Carga datos estaticos, los datos de llenado se cargan a parte ya que deben ser cargados por cada instancia.

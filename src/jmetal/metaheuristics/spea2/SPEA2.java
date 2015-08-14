@@ -80,11 +80,11 @@ public class SPEA2 extends Algorithm{
     evaluations = 0;
 
     int GREEDY_COUNT = Math.floorDiv(populationSize, 10);
-    int MEDIO_GREEDY_COUNT = Math.floorDiv(populationSize, 10);
+    int GREEDY_DEFORMADO_COUNT = Math.floorDiv(populationSize, 10);
         
     //-> Create the initial solutionSet
     Solution newSolution;
-    for (int i = 0; i < populationSize - GREEDY_COUNT - MEDIO_GREEDY_COUNT; i++) {
+    for (int i = 0; i < populationSize - GREEDY_COUNT - GREEDY_DEFORMADO_COUNT; i++) {
       newSolution = new Solution(problem_);
       problem_.evaluate(newSolution);            
       problem_.evaluateConstraints(newSolution);
@@ -93,7 +93,7 @@ public class SPEA2 extends Algorithm{
 
     // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY y deformadas
     Problema problema = (Problema)problem_;
-    for(Solution s : problema.getSolucionesGreedy(GREEDY_COUNT,MEDIO_GREEDY_COUNT)){
+    for(Solution s : problema.getSolucionesGreedy(GREEDY_COUNT,GREEDY_DEFORMADO_COUNT)){
       solutionSet.add(s);
     }
 

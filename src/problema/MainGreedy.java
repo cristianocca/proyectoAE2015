@@ -20,19 +20,21 @@ import java.util.Random;
 public class MainGreedy {
 
 
-    public static Int[] ejecutarGreedy(Datos datos){
+    public static ZeroPermutation ejecutarGreedy(Datos datos){
 
-        datos.puntosOrdenados = datos.cargarPuntosOrdenados(datos.distancias);
+        if(datos.puntosOrdenados == null) {
+            datos.puntosOrdenados = datos.cargarPuntosOrdenados(datos.distancias);
+        }
 
         boolean[] visitados = new boolean[datos.puntos.length];
         for(int i = 0; i<visitados.length; i++)
             visitados[i]=false;
 
         int cantPorCamion = datos.datosBasicos.capacidadCamiones + datos.datosBasicos.capacidadCamiones/2;
-        int lowerBound = 0;
-        int upperBound = datos.puntos.length - 1;
 
-        Int[]  resultado = new Int[datos.datosBasicos.cantidadCamiones*cantPorCamion];
+        int[]  resultado = new int[datos.datosBasicos.cantidadCamiones*cantPorCamion];
+
+
             /*
             para cada camion:
                 busco los 10 contenedores mas cercanos que aun no fueron visitados
@@ -73,8 +75,7 @@ public class MainGreedy {
 
 
                             libres--;
-                            Int aux = new Int(elegido, lowerBound, upperBound);
-                            resultado[index] = aux;
+                            resultado[index] = elegido;
                             actual = elegido;
 
                             cant++;
@@ -86,20 +87,25 @@ public class MainGreedy {
             }
             if(cant < cantPorCamion){
                 while (cant < cantPorCamion){
-                    Int aux = new Int(0,lowerBound, upperBound);
-                    resultado[index] = aux;
+                    resultado[index] = 0;
                     index++;
                     cant++;
                 }
             }
         }
 
-        return resultado;
+
+        ZeroPermutation res = new ZeroPermutation();
+        res.vector_ = resultado;
+        res.size_ = resultado.length;
+        return res;
     }
 
     public static ZeroPermutation ejecutarGreedyv2(Datos datos){
 
-        datos.puntosOrdenados = datos.cargarPuntosOrdenados(datos.distancias);
+        if(datos.puntosOrdenados == null) {
+            datos.puntosOrdenados = datos.cargarPuntosOrdenados(datos.distancias);
+        }
 
         boolean[] visitados = new boolean[datos.puntos.length];
         for(int i = 0; i<visitados.length; i++)

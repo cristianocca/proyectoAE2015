@@ -76,10 +76,10 @@ public class PESA2 extends Algorithm{
     selection    = new PESA2Selection(parameters);
 
     int GREEDY_COUNT = Math.floorDiv(populationSize, 10);
-    int MEDIO_GREEDY_COUNT = Math.floorDiv(populationSize, 10);
+    int GREEDY_DEFORMADO_COUNT = Math.floorDiv(populationSize, 10);
 
     //-> Create the initial individual and evaluate it and his constraints
-    for (int i = 0; i < populationSize - GREEDY_COUNT - MEDIO_GREEDY_COUNT; i++){
+    for (int i = 0; i < populationSize - GREEDY_COUNT - GREEDY_DEFORMADO_COUNT; i++){
       Solution solution = new Solution(problem_);
       problem_.evaluate(solution);        
       problem_.evaluateConstraints(solution);
@@ -88,7 +88,7 @@ public class PESA2 extends Algorithm{
 
     // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY y deformadas
     Problema problema = (Problema)problem_;
-    for(Solution s : problema.getSolucionesGreedy(GREEDY_COUNT, MEDIO_GREEDY_COUNT)){
+    for(Solution s : problema.getSolucionesGreedy(GREEDY_COUNT, GREEDY_DEFORMADO_COUNT)){
       solutionSet.add(s);
     }
 
