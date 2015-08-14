@@ -23,6 +23,8 @@ package jmetal.metaheuristics.nsgaII;
 
 import jmetal.core.*;
 import jmetal.encodings.variable.Permutation;
+import jmetal.operators.localSearch.LocalSearch;
+import jmetal.operators.localSearch.MutationLocalSearch;
 import jmetal.operators.mutation.MutationFactory;
 import jmetal.qualityIndicator.QualityIndicator;
 import jmetal.util.*;
@@ -120,6 +122,12 @@ public class NSGAII extends Algorithm {
       population.add(s);
     }
 
+    HashMap parameters = new HashMap() ;
+    parameters.put("improvementRounds", 10) ;
+    parameters.put("problem",problema) ;
+    parameters.put("mutation",mutationOperator) ;
+    LocalSearch localSearch = new MutationLocalSearch(parameters);
+
 
 
     // Generations 
@@ -142,6 +150,8 @@ public class NSGAII extends Algorithm {
           problem_.evaluateConstraints(offSpring[0]);
           problem_.evaluate(offSpring[1]);
           problem_.evaluateConstraints(offSpring[1]);
+
+
           offspringPopulation.add(offSpring[0]);
           offspringPopulation.add(offSpring[1]);
           evaluations += 2;
@@ -166,6 +176,14 @@ public class NSGAII extends Algorithm {
 
       // Obtain the next front
       front = ranking.getSubfront(index);
+
+      //Replace front with local search
+      for(int i = 0; i < front.size(); i++){
+        front.replace(i, (Solution)localSearch.execute(front.get(i)));
+      }
+
+      //int selected = PseudoRandom.randInt(0,front.size()-1);
+      //front.replace(selected, (Solution)localSearch.execute(front.get(selected)));
 
       while ((remain > 0) && (remain >= front.size())) {
         //Assign crowding distance to individuals
@@ -207,18 +225,6 @@ public class NSGAII extends Algorithm {
       }
 **/
 
-
-      // This piece of code shows how to use the indicator object into the code
-      // of NSGA-II. In particular, it finds the number of evaluations required
-      // by the algorithm to obtain a Pareto front with a hypervolume higher
-      // than the hypervolume of the true Pareto front.
-      //if ((indicators != null) &&
-      //    (requiredEvaluations == 0)) {
-      //  double HV = indicators.getHypervolume(population);
-      //  if (HV >= (0.98 * indicators.getTrueParetoFrontHypervolume())) {
-      //    requiredEvaluations = evaluations;
-      //  } // if
-      //} // if
     } // while
 
     // Return as output parameter the required evaluations

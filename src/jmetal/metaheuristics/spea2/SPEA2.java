@@ -23,6 +23,8 @@ package jmetal.metaheuristics.spea2;
 
 import jmetal.core.*;
 import jmetal.encodings.variable.Permutation;
+import jmetal.operators.localSearch.LocalSearch;
+import jmetal.operators.localSearch.MutationLocalSearch;
 import jmetal.operators.mutation.MutationFactory;
 import jmetal.util.JMException;
 import jmetal.util.Ranking;
@@ -95,13 +97,24 @@ public class SPEA2 extends Algorithm{
       solutionSet.add(s);
     }
 
+    HashMap parameters = new HashMap() ;
+    parameters.put("improvementRounds", 10) ;
+    parameters.put("problem",problema) ;
+    parameters.put("mutation",mutationOperator) ;
+    LocalSearch localSearch = new MutationLocalSearch(parameters);
+
 
 
     while (evaluations < maxEvaluations){               
       SolutionSet union = ((SolutionSet)solutionSet).union(archive);
       Spea2Fitness spea = new Spea2Fitness(union);
       spea.fitnessAssign();
-      archive = spea.environmentalSelection(archiveSize);                       
+      archive = spea.environmentalSelection(archiveSize);
+
+      for(int i = 0; i < archive.size(); i++){
+        archive.replace(i, (Solution)localSearch.execute(archive.get(i)));
+      }
+
       // Create a new offspringPopulation
       offSpringSolutionSet= new SolutionSet(populationSize);    
       Solution  [] parents = new Solution[2];
