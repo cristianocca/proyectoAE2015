@@ -112,6 +112,10 @@ public class ZeroPermBitFlipMutation extends Mutation{
               pos2 = tmp;
           } else if (pos1 == pos2) {
               pos2++;
+              if(pos2 >= permutationLength){
+                  pos1--;
+                  pos2--;
+              }
           }
 
           int tmp = permutation[pos1];

@@ -76,30 +76,26 @@ public class Problema extends Problem {
         if(porcentaje < 20){
             return 0;
         }
-        if(porcentaje < 80){
+        if (porcentaje < 100 ){
             return 1;
         }
-        if (porcentaje < 100 ){
-            return 2;
-            //return porcentaje;
-        }
-        //Si es >= 100, negativo
-        return -6;
-        //return -2 * porcentaje;
+        return -1;
 
     }
 
     //Devuelve el puntaje asociado segun el porcentaje de llenado, si no es recogido.
     public static double getPuntajeNoRecogido(double porcentaje){
         if(porcentaje < 20){
-            return 0;
+            return 1;
         }
-        if(porcentaje < 100){
-            //return -1 * porcentaje;
+        if(porcentaje < 50){
             return -1;
         }
-        return -10;
-        //return -2*porcentaje;
+        if(porcentaje < 100){
+            return -2;
+        }
+        return -3;
+
 
     }
 
