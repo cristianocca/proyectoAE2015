@@ -122,11 +122,7 @@ public class NSGAII extends Algorithm {
       population.add(s);
     }
 
-    HashMap parameters = new HashMap() ;
-    parameters.put("improvementRounds", 10) ;
-    parameters.put("problem",problema) ;
-    parameters.put("mutation",mutationOperator) ;
-    LocalSearch localSearch = new MutationLocalSearch(parameters);
+    Operator localSearch = operators_.get("localSearch");
 
 
 

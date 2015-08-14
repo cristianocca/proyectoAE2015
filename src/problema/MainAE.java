@@ -5,6 +5,8 @@ import jmetal.metaheuristics.nsgaII.NSGAII;
 import jmetal.metaheuristics.randomSearch.RandomSearch;
 import jmetal.metaheuristics.spea2.SPEA2;
 import jmetal.operators.crossover.CrossoverFactory;
+import jmetal.operators.localSearch.LocalSearch;
+import jmetal.operators.localSearch.MutationLocalSearch;
 import jmetal.operators.mutation.MutationFactory;
 import jmetal.operators.selection.SelectionFactory;
 import jmetal.qualityIndicator.QualityIndicator;
@@ -135,8 +137,15 @@ public class MainAE {
         algorithm.addOperator("mutation",mutation);
         algorithm.addOperator("selection",selection);
 
-        // Add the indicator object to the algorithm
-        algorithm.setInputParameter("indicators", indicators) ;
+
+        //Agrego local search
+        parameters = new HashMap() ;
+        parameters.put("improvementRounds", 10) ;
+        parameters.put("problem",problem) ;
+        parameters.put("mutation",mutation) ;
+        algorithm.addOperator("localSearch",new MutationLocalSearch(parameters));
+
+
 
         long initTime = System.currentTimeMillis();
         SolutionSet population = algorithm.execute();
