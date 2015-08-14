@@ -577,7 +577,7 @@ public class Problema extends Problem {
         int indiceFinal;
 
         boolean eliminar = false;
-        if(PseudoRandom.randDouble(0,1) <= 0.3) {
+        if(PseudoRandom.randDouble() <= 0.2) {
             eliminar = true;
         }
 
@@ -593,7 +593,7 @@ public class Problema extends Problem {
                 for(int j = indice; j < indiceFinal; j++){
 
 
-                    if(PseudoRandom.randDouble(0,1)<= 0.5) {
+                    if(PseudoRandom.randDouble()<= 0.5) {
 
                         int contenedor = variables[j];
 

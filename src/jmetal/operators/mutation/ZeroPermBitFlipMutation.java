@@ -70,48 +70,88 @@ public class ZeroPermBitFlipMutation extends Mutation{
    * @throws JMException
    */
   public void doMutation(double probability, Solution solution) throws JMException {
-    int permutation[] ;
-    int permutationLength ;
-	    if (solution.getType().getClass() == ZeroPermutationSolutionType.class) {
+      int permutation[];
+      int permutationLength;
 
 
-            if (PseudoRandom.randDouble() < probability) {
+      if (PseudoRandom.randDouble() < probability) {
 
-                permutationLength = ((Permutation) solution.getDecisionVariables()[0]).getLength();
-                permutation = ((Permutation) solution.getDecisionVariables()[0]).vector_;
+          int maxVal = solution.getProblem().getLength(1);
+
+          permutationLength = ((Permutation) solution.getDecisionVariables()[0]).getLength();
+          permutation = ((Permutation) solution.getDecisionVariables()[0]).vector_;
+
+          /**
+           int pos1 = PseudoRandom.randInt(0, permutationLength - 3);
+           int len = PseudoRandom.randInt(1, permutationLength / 2);
+           int pos2 = PseudoRandom.randInt(0, permutationLength - 2);
+
+           if (pos1 > pos2) {
+           int tmp = pos1;
+           pos1 = pos2;
+           pos2 = tmp;
+           } else if (pos1 == pos2) {
+           pos2++;
+           }
+
+           len = Math.min(len, Math.min(pos2 - pos1, permutationLength - 1 - pos2));
+
+           for (int i = 0; i < len; i++) {
+           int tmp = permutation[pos1 + i];
+           permutation[pos1 + i] = permutation[pos2 + i];
+           permutation[pos2 + i] = tmp;
+           }
+           **/
+
+          int pos1 = PseudoRandom.randInt(0, permutationLength - 1);
+          int pos2 = PseudoRandom.randInt(0, permutationLength - 1);
+
+          if (pos1 > pos2) {
+              int tmp = pos1;
+              pos1 = pos2;
+              pos2 = tmp;
+          } else if (pos1 == pos2) {
+              pos2++;
+          }
+
+          int tmp = permutation[pos1];
+          permutation[pos1] = permutation[pos2];
+          permutation[pos2] = tmp;
 
 
-                int maxVal = solution.getProblem().getLength(1);
-                int pos1 = PseudoRandom.randInt(0, permutationLength - 1);
-                int newVal = PseudoRandom.randInt(0, maxVal);
+      }
+
+      if (PseudoRandom.randDouble() < probability) {
+
+          int maxVal = solution.getProblem().getLength(1);
+
+          permutationLength = ((Permutation) solution.getDecisionVariables()[0]).getLength();
+          permutation = ((Permutation) solution.getDecisionVariables()[0]).vector_;
+
+          int pos1 = PseudoRandom.randInt(0, permutationLength - 1);
+          int newVal = PseudoRandom.randInt(0, maxVal);
+
+          if (newVal == 0) {
+              permutation[pos1] = newVal;
+              return;
+          }
+
+          boolean existe = false;
+          for (int i = 0; i < permutationLength; i++) {
+              if (permutation[i] == newVal) {
+
+                  permutation[i] = 0;
+                  existe = true;
+                  break;
+              }
+          }
+
+          if (!existe) {
+              permutation[pos1] = newVal;
+          }
+      }
 
 
-                boolean existe = false;
-                for(int i = 0; i < permutationLength; i++){
-                    if(permutation[i] == newVal){
-
-                        permutation[i] = 0;
-                        existe = true;
-                        break;
-                    }
-                }
-
-                if(!existe) {
-                    permutation[pos1] = newVal;
-                }
-
-
-
-            } // if
-        } // if
-	    else {
-            Configuration.logger_.severe("SwapMutation.doMutation: invalid type. " +
-                    "" + solution.getDecisionVariables()[0].getVariableType());
-
-            Class cls = String.class;
-            String name = cls.getName();
-            throw new JMException("Exception in " + name + ".doMutation()");
-        }
   } // doMutation
 
   /**
