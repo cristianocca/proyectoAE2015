@@ -621,7 +621,7 @@ public class Problema extends Problem {
                         else {
                             if (contenedor != 0 && contenedor <= this.cantContenedores) {
                                 for (int z = this.indiceLimite - 1; z >= 0; z--) {
-                                    if(z < indice || z > indice) {
+                                    if(z < indice || z > indiceFinal) {
                                         int contenedor2 = variables[z];
                                         if (contenedor2 == 0 || contenedor2 > this.cantContenedores) {
                                             variables[j] = contenedor2;
