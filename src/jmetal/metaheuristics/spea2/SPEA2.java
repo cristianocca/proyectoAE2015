@@ -77,11 +77,11 @@ public class SPEA2 extends Algorithm{
     archive     = new SolutionSet(archiveSize);
     evaluations = 0;
 
-    int GREEDY_COUNT = Math.floorDiv(populationSize, 10);
-    int GREEDY_DEFORMADO_COUNT = Math.floorDiv(populationSize, 10);
+    int GREEDY_COUNT = Math.floorDiv(populationSize, 5);
+    int GREEDY_DEFORMADO_COUNT = Math.floorDiv(populationSize, 5);
 
-    int GREEDYV2_COUNT = Math.floorDiv(populationSize, 10);
-    int GREEDYV2_DEFORMADO_COUNT = Math.floorDiv(populationSize, 10);
+    int GREEDYV2_COUNT = Math.floorDiv(populationSize, 5);
+    int GREEDYV2_DEFORMADO_COUNT = Math.floorDiv(populationSize, 5);
         
     //-> Create the initial solutionSet
     Solution newSolution;
