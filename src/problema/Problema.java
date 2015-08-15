@@ -76,16 +76,10 @@ public class Problema extends Problem {
         if(porcentaje < 20){
             return 0;
         }
-        if(porcentaje < 80){
+        if (porcentaje < 100 ){
             return 1;
         }
-        if (porcentaje < 100 ){
-            return 2;
-            //return porcentaje;
-        }
-        //Si es >= 100, negativo
-        return -6;
-        //return -2 * porcentaje;
+        return -1;
 
     }
 
@@ -94,12 +88,14 @@ public class Problema extends Problem {
         if(porcentaje < 20){
             return 0;
         }
-        if(porcentaje < 100){
-            //return -1 * porcentaje;
+        if(porcentaje < 50){
             return -1;
         }
-        return -10;
-        //return -2*porcentaje;
+        if(porcentaje < 100){
+            return -2;
+        }
+        return -3;
+
 
     }
 
@@ -659,7 +655,7 @@ public class Problema extends Problem {
     //Devuelve una lista de soluciones greedy, incluyendo la original y deformadas.
     //cant1: cantidad de soluciones greedy, cant2: cant de soluciones greedy deformadas con otro algoritmo.
     public Solution[] getSolucionesGreedy(int cant, int cant2) throws JMException {
-        Permutation permGreedy = MainGreedy.ejecutarGreedyv2(this.datos);
+        Permutation permGreedy = MainGreedy.ejecutarGreedy(this.datos);
 
         Solution[] res = new Solution[cant+cant2];
 
@@ -676,6 +672,42 @@ public class Problema extends Problem {
                 //la deformo
                 //for(int j = 0; j <= i; j++){
                     MutationFactory.getMutationOperator("SwapMutation", parameters).execute(solucionGreedy);
+                //}
+            }
+
+            this.evaluate(solucionGreedy);
+            this.evaluateConstraints(solucionGreedy);
+            res[i] = solucionGreedy;
+        }
+
+
+        for(int i = cant; i < cant + cant2; i++){
+            Solution solucionGreedy = new Solution(this, new Variable[]{new Permutation(permGreedy)});
+            this.deformarSolucion(solucionGreedy);
+            res[i] = solucionGreedy;
+        }
+
+        return res;
+    }
+
+    public Solution[] getSolucionesGreedyv2(int cant, int cant2) throws JMException {
+        Permutation permGreedy = MainGreedy.ejecutarGreedyv2(this.datos);
+
+        Solution[] res = new Solution[cant+cant2];
+
+        HashMap parameters = new HashMap() ;
+        parameters.put("probability", 1.0) ;
+
+        for(int i = 0; i < cant; i++){
+            Solution solucionGreedy = new Solution(this, new Variable[]{new Permutation(permGreedy)});
+
+            if (i == 0) {
+                //lo dejo igual
+            }
+            else {
+                //la deformo
+                //for(int j = 0; j <= i; j++){
+                MutationFactory.getMutationOperator("SwapMutation", parameters).execute(solucionGreedy);
                 //}
             }
 
