@@ -111,8 +111,10 @@ public class SPEA2 extends Algorithm{
       spea.fitnessAssign();
       archive = spea.environmentalSelection(archiveSize);
 
-      for(int i = 0; i < archive.size(); i++){
-        archive.replace(i, (Solution)localSearch.execute(archive.get(i)));
+      if(localSearch != null) {
+        for (int i = 0; i < archive.size(); i++) {
+          archive.replace(i, (Solution) localSearch.execute(archive.get(i)));
+        }
       }
 
       // Create a new offspringPopulation

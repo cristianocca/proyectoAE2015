@@ -176,8 +176,10 @@ public class NSGAII extends Algorithm {
       front = ranking.getSubfront(index);
 
       //Replace front with local search
-      for(int i = 0; i < front.size(); i++){
-        front.replace(i, (Solution)localSearch.execute(front.get(i)));
+      if(localSearch != null) {
+        for (int i = 0; i < front.size(); i++) {
+          front.replace(i, (Solution) localSearch.execute(front.get(i)));
+        }
       }
 
       while ((remain > 0) && (remain >= front.size())) {
@@ -211,12 +213,9 @@ public class NSGAII extends Algorithm {
 
 
 
-  /**
+/**
       if(evaluations % 500 == 0 || evaluations == maxEvaluations){
-        ranking = new Ranking(population);
-        //ranking.getSubfront(0).printFeasibleFUN("FUN_NSGAII") ;
-
-        ranking.getSubfront(0).printFeasibleFUN("./evolucion/"+evaluations+"fun.txt");
+        population.printFeasibleFUN("./evolucion/"+evaluations+"fun.txt");
       }
 **/
 
