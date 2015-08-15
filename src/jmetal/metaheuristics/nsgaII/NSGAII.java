@@ -102,12 +102,15 @@ public class NSGAII extends Algorithm {
     int GREEDY_COUNT = Math.floorDiv(populationSize, 10);
     int GREEDY_DEFORMADO_COUNT = Math.floorDiv(populationSize, 10);
 
+    int GREEDYV2_COUNT = Math.floorDiv(populationSize, 10);
+    int GREEDYV2_DEFORMADO_COUNT = Math.floorDiv(populationSize, 10);
+
 
 
     // Create the initial solutionSet
 
     Solution newSolution;
-    for (int i = 0; i < populationSize - GREEDY_COUNT - GREEDY_DEFORMADO_COUNT; i++) {
+    for (int i = 0; i < populationSize - GREEDY_COUNT - GREEDY_DEFORMADO_COUNT - GREEDYV2_COUNT - GREEDYV2_DEFORMADO_COUNT; i++) {
       newSolution = new Solution(problem_);
       problem_.evaluate(newSolution);
       problem_.evaluateConstraints(newSolution);
@@ -120,6 +123,10 @@ public class NSGAII extends Algorithm {
     // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY y deformadas
     Problema problema = (Problema)problem_;
     for(Solution s : problema.getSolucionesGreedy(GREEDY_COUNT, GREEDY_DEFORMADO_COUNT)){
+      population.add(s);
+    }
+
+    for(Solution s : problema.getSolucionesGreedyv2(GREEDYV2_COUNT, GREEDYV2_DEFORMADO_COUNT)){
       population.add(s);
     }
 

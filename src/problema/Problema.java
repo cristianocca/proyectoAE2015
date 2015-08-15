@@ -86,7 +86,7 @@ public class Problema extends Problem {
     //Devuelve el puntaje asociado segun el porcentaje de llenado, si no es recogido.
     public static double getPuntajeNoRecogido(double porcentaje){
         if(porcentaje < 20){
-            return 1;
+            return 0;
         }
         if(porcentaje < 50){
             return -1;
@@ -639,7 +639,7 @@ public class Problema extends Problem {
     //Devuelve una lista de soluciones greedy, incluyendo la original y deformadas.
     //cant1: cantidad de soluciones greedy, cant2: cant de soluciones greedy deformadas con otro algoritmo.
     public Solution[] getSolucionesGreedy(int cant, int cant2) throws JMException {
-        ZeroPermutation permGreedy = MainGreedy.ejecutarGreedyv2(this.datos);
+        ZeroPermutation permGreedy = MainGreedy.ejecutarGreedy(this.datos);
 
         Solution[] res = new Solution[cant+cant2];
 
@@ -656,6 +656,45 @@ public class Problema extends Problem {
                 //la deformo
                 //for(int j = 0; j <= i; j++){
                     MutationFactory.getMutationOperator("ZeroPermBitFlipMutation", parameters).execute(solucionGreedy);
+                //}
+            }
+
+            this.evaluate(solucionGreedy);
+            this.evaluateConstraints(solucionGreedy);
+            res[i] = solucionGreedy;
+        }
+
+
+        for(int i = cant; i < cant + cant2; i++){
+            Solution solucionGreedy = new Solution(this, new Variable[]{new Permutation(permGreedy)});
+            this.deformarSolucion(solucionGreedy);
+            res[i] = solucionGreedy;
+        }
+
+
+        return res;
+    }
+
+    //Devuelve una lista de soluciones greedy, incluyendo la original y deformadas.
+    //cant1: cantidad de soluciones greedy, cant2: cant de soluciones greedy deformadas con otro algoritmo.
+    public Solution[] getSolucionesGreedyv2(int cant, int cant2) throws JMException {
+        ZeroPermutation permGreedy = MainGreedy.ejecutarGreedyv2(this.datos);
+
+        Solution[] res = new Solution[cant+cant2];
+
+        HashMap parameters = new HashMap() ;
+        parameters.put("probability", 1.0) ;
+
+        for(int i = 0; i < cant; i++){
+            Solution solucionGreedy = new Solution(this, new Variable[]{new ZeroPermutation(permGreedy)});
+
+            if (i == 0) {
+                //lo dejo igual
+            }
+            else {
+                //la deformo
+                //for(int j = 0; j <= i; j++){
+                MutationFactory.getMutationOperator("ZeroPermBitFlipMutation", parameters).execute(solucionGreedy);
                 //}
             }
 

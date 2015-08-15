@@ -70,6 +70,10 @@ public class RandomSearch extends Algorithm {
       ndl.add(s);
     }
 
+    for(Solution s : problema.getSolucionesGreedyv2(GREEDY_COUNT, GREEDY_DEFORMADO_COUNT)){
+      ndl.add(s);
+    }
+
 
     // Create the initial solutionSet
     Solution newSolution;
