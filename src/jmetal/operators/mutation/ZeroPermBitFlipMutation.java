@@ -76,56 +76,31 @@ public class ZeroPermBitFlipMutation extends Mutation{
 
       if (PseudoRandom.randDouble() < probability) {
 
-          int maxVal = solution.getProblem().getLength(1);
-
           permutationLength = ((Permutation) solution.getDecisionVariables()[0]).getLength();
           permutation = ((Permutation) solution.getDecisionVariables()[0]).vector_;
 
-          /**
-           int pos1 = PseudoRandom.randInt(0, permutationLength - 3);
-           int len = PseudoRandom.randInt(1, permutationLength / 2);
-           int pos2 = PseudoRandom.randInt(0, permutationLength - 2);
 
-           if (pos1 > pos2) {
-           int tmp = pos1;
-           pos1 = pos2;
-           pos2 = tmp;
-           } else if (pos1 == pos2) {
-           pos2++;
-           }
+          int pos1 ;
+          int pos2 ;
 
-           len = Math.min(len, Math.min(pos2 - pos1, permutationLength - 1 - pos2));
+          pos1 = PseudoRandom.randInt(0,permutationLength-1) ;
+          pos2 = PseudoRandom.randInt(0,permutationLength-1) ;
 
-           for (int i = 0; i < len; i++) {
-           int tmp = permutation[pos1 + i];
-           permutation[pos1 + i] = permutation[pos2 + i];
-           permutation[pos2 + i] = tmp;
-           }
-           **/
-
-          int pos1 = PseudoRandom.randInt(0, permutationLength - 1);
-          int pos2 = PseudoRandom.randInt(0, permutationLength - 1);
-
-          if (pos1 > pos2) {
-              int tmp = pos1;
-              pos1 = pos2;
-              pos2 = tmp;
-          } else if (pos1 == pos2) {
-              pos2++;
-              if(pos2 >= permutationLength){
-                  pos1--;
-                  pos2--;
-              }
-          }
-
-          int tmp = permutation[pos1];
+          while (pos1 == pos2) {
+              if (pos1 == (permutationLength - 1))
+                  pos2 = PseudoRandom.randInt(0, permutationLength- 2);
+              else
+                  pos2 = PseudoRandom.randInt(pos1, permutationLength- 1);
+          } // while
+          // swap
+          int temp = permutation[pos1];
           permutation[pos1] = permutation[pos2];
-          permutation[pos2] = tmp;
+          permutation[pos2] = temp;
 
 
       }
 
-      if (PseudoRandom.randDouble() < probability) {
+      else if (PseudoRandom.randDouble() < probability) {
 
           int maxVal = solution.getProblem().getLength(1);
 

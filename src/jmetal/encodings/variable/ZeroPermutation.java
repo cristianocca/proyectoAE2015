@@ -54,13 +54,11 @@ public class ZeroPermutation extends Permutation {
     for (int i = 0; i <= limit; i++)
       randomSequence.add(i);
 
-    java.util.Collections.shuffle(randomSequence);
-
     for (int i = limit + 1; i < size_; i++) {
       randomSequence.add(0);
     }
 
-
+    java.util.Collections.shuffle(randomSequence);
 
     for(int j = 0; j < randomSequence.size(); j++)
       vector_[j] = randomSequence.get(j);
