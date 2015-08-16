@@ -182,8 +182,10 @@ public class NSGAII extends Algorithm {
       front = ranking.getSubfront(index);
 
       //Replace front with local search
-      for(int i = 0; i < front.size(); i++){
-        front.replace(i, (Solution)localSearch.execute(front.get(i)));
+      if(localSearch != null) {
+        for (int i = 0; i < front.size(); i++) {
+          front.replace(i, (Solution) localSearch.execute(front.get(i)));
+        }
       }
 
       //int selected = PseudoRandom.randInt(0,front.size()-1);

@@ -137,14 +137,14 @@ public class MainAE {
         algorithm.addOperator("mutation",mutation);
         algorithm.addOperator("selection",selection);
 
-
+/**
         //Agrego local search
         parameters = new HashMap() ;
         parameters.put("improvementRounds", 10) ;
         parameters.put("problem",problem) ;
         parameters.put("mutation",mutation) ;
         algorithm.addOperator("localSearch",new MutationLocalSearch(parameters));
-
+**/
 
 
         long initTime = System.currentTimeMillis();
