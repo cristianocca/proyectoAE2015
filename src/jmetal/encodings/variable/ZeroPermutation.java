@@ -42,25 +42,26 @@ public class ZeroPermutation extends Permutation {
 
 
   /**
-   * Se rellenan con valores hasta limit (inclusive), y luego todo 0's
+   * Los valores posibles seran entre 0 y limit inclusive.
+   * Basicamente devuelve una solucion con valores entre 0 y limite, de largo size. Si size es mayor a limite, el resto se rellena con ceros.
    */
   public ZeroPermutation(int size, int limit) {
     size_   = size;
     vector_ = new int[size_];
 
-    java.util.ArrayList<Integer> randomSequence = new
-            java.util.ArrayList<Integer>(size_);
+    java.util.ArrayList<Integer> randomSequence = new java.util.ArrayList<Integer>(Math.max(size_, limit));
 
     for (int i = 0; i <= limit; i++)
       randomSequence.add(i);
 
-    for (int i = limit + 1; i < size_; i++) {
+
+    for (int i = 0; i < size_ - limit; i++) {
       randomSequence.add(0);
     }
 
     java.util.Collections.shuffle(randomSequence);
 
-    for(int j = 0; j < randomSequence.size(); j++)
+    for(int j = 0; j < size_; j++)
       vector_[j] = randomSequence.get(j);
   } // Constructor
 

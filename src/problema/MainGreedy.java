@@ -20,9 +20,9 @@ import java.util.Random;
 public class MainGreedy {
 
 
-
-    //Esta version si el contenedor esta < 20% al momento de visitarlo, no lo recoge (y nunca se recoge)
-    public static ZeroPermutation ejecutarGreedy(Datos datos){
+    //No recoge contenedores que esten en < de minBasura al momento de visitarlos, usar 0 para recoger siempre.
+    //min basura esta entre 0 y 1
+    public static ZeroPermutation ejecutarGreedy(Datos datos, double minBasura){
 
         if(datos.puntosOrdenados == null) {
             datos.puntosOrdenados = datos.cargarPuntosOrdenados(datos.distancias);
@@ -30,7 +30,7 @@ public class MainGreedy {
 
         boolean[] visitados = new boolean[datos.puntos.length];
         for(int i = 0; i<visitados.length; i++)
-            visitados[i] = datos.llenados[i].v < 20;
+            visitados[i] = false;
 
         visitados[0] = true;    //origen visitado para no tomarlo en cuenta.
 
@@ -64,8 +64,8 @@ public class MainGreedy {
                         sumaTiempo = tiempo + datos.tiempos[actual][elegido];
                         sumaBasura = (datos.llenados[elegido].v + datos.velocidades[elegido].v * sumaTiempo) / 100;
 
-                        //Solo lo agrego si tiene mas de 20% de basura, y entra en el camion
-                        if (sumaBasura > 0.2 && recogido + sumaBasura <= datos.datosBasicos.capacidadCamiones) {
+
+                        if (sumaBasura > minBasura && recogido + sumaBasura <= datos.datosBasicos.capacidadCamiones) {
                             encontrado = true;
                             break;
                         }
@@ -111,8 +111,6 @@ public class MainGreedy {
         return res;
     }
 
-
-    //Esta version si el contenedor esta < 20% al momento de visitarlo, no lo recoge (se recoge despues)
     public static ZeroPermutation ejecutarGreedyv2(Datos datos){
 
         if(datos.puntosOrdenados == null) {
@@ -121,7 +119,7 @@ public class MainGreedy {
 
         boolean[] visitados = new boolean[datos.puntos.length];
         for(int i = 0; i<visitados.length; i++)
-            visitados[i]=false;
+            visitados[i] = false;
 
         visitados[0] = true;    //origen visitado para no tomarlo en cuenta.
 
@@ -140,29 +138,29 @@ public class MainGreedy {
 
             while (cant < cantPorCamion && libres > 0) {
 
-
                 int elegido = -1;
                 double sumaBasura = -1;
                 int sumaTiempo = -1;
                 boolean encontrado = false;
 
+                int[] masCercanos = getDiezMasCercanos(actual, libres, visitados, datos);
+                if(masCercanos != null && masCercanos.length > 0) {
+                    int[] masllenos = getMasLlenos(masCercanos, datos);
+                    if (masllenos != null && masllenos.length > 0) {
+                        elegido = elegirRandom(masllenos);
+                        if (elegido >= 0) {
+                            if(!visitados[elegido]) {
+                                sumaTiempo = tiempo + datos.tiempos[actual][elegido];
+                                sumaBasura = (datos.llenados[elegido].v + datos.velocidades[elegido].v * sumaTiempo) / 100;
 
-                //de los mas cercanos, voy al mas cercano que no supere la capacidad del camion.
-                for (int j = 1; j < datos.puntosOrdenados.length; j++) {
-                    elegido = datos.puntosOrdenados[actual][j];
-
-                    if(!visitados[elegido]) {
-                        sumaTiempo = tiempo + datos.tiempos[actual][elegido];
-                        sumaBasura = (datos.llenados[elegido].v + datos.velocidades[elegido].v * sumaTiempo) / 100;
-
-                        //Solo lo agrego si tiene mas de 20% de basura, y entra en el camion
-                        if (sumaBasura > 0.2 && recogido + sumaBasura <= datos.datosBasicos.capacidadCamiones) {
-                            encontrado = true;
-                            break;
+                                if (recogido + sumaBasura <= datos.datosBasicos.capacidadCamiones) {
+                                    encontrado = true;
+                                }
+                            }
                         }
                     }
-
                 }
+
 
 
                 if (encontrado) {
@@ -224,30 +222,27 @@ public class MainGreedy {
             System.out.println("---- Parametros a utilizar ----");
             System.out.println("Salidas: " + salidaFun + ", " + salidaVar);
 
-            long initTime = System.currentTimeMillis();
-
-            Permutation resultado = ejecutarGreedy(datos);
-
-            //Con la solucion, instancio el problema para poder usar mismas funciones que el AE
-            //y simplificar el codigo
-
+            double[] params = {0.0, 0.05, 0.1, 0.15, 0.20, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5};
+            SolutionSet solSetGreedy = new SolutionSet(params.length);
             Problem problem = new Problema(datos);
-            Solution solucionGreedy = new Solution(problem, new Variable[]{resultado});
-            problem.evaluate(solucionGreedy);
-            long elapsedTime = System.currentTimeMillis() - initTime;
+            for(double p : params){
+                Permutation resultado = ejecutarGreedy(datos, p);
+                Solution solucionGreedy = new Solution(problem, new Variable[]{resultado});
+
+                problem.evaluateConstraints(solucionGreedy);
+                problem.evaluate(solucionGreedy);
+
+                solSetGreedy.add(solucionGreedy);
+
+                //Imprimo y genero datos de la misma forma que el AE
+
+                System.out.println("F1: " + solucionGreedy.getObjective(0));
+                System.out.println("F2: " + solucionGreedy.getObjective(1));
+                System.out.println("----");
+            }
 
 
-            SolutionSet solSetGreedy = new SolutionSet(1);
-            solSetGreedy.add(solucionGreedy);
             ((Problema) problem).imprimirSolucion("SALIDA_GREEDY.txt", solSetGreedy);
-
-
-            //Imprimo y genero datos de la misma forma que el AE
-
-            System.out.println("Compromiso F1: " + solucionGreedy.getObjective(0));
-            System.out.println("Compromiso F2: " + solucionGreedy.getObjective(1));
-            System.out.println("Tiempo Algoritmo: " + elapsedTime/1000 + "s");
-
             solSetGreedy.printFeasibleFUN(salidaFun);
             solSetGreedy.printFeasibleVAR(salidaVar);
 
@@ -258,6 +253,8 @@ public class MainGreedy {
             return;
         }
     }
+
+
 
     private static int[] getDiezMasCercanos(int actual, int cantLibres, boolean[] visitados, Datos datos){
         try {
@@ -281,7 +278,6 @@ public class MainGreedy {
             return null;
         }
     }
-
 
 
     private static int[] getMasLlenos(int[] masCercanos, Datos datos){

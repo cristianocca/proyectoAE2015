@@ -70,32 +70,25 @@ public class Problema extends Problem {
 
 
 
-    //Devuelve le puntaje asociado segun el porcentaje de llenado, al momento de ser recogido
-    public static double getPuntajeRecogido(double porcentaje){
-
-        if(porcentaje < 20){
-            return 0;
-        }
-        if (porcentaje < 100 ){
-            return 1;
-        }
-        return -1;
-
-    }
-
-    //Devuelve el puntaje asociado segun el porcentaje de llenado, si no es recogido.
+    //Devuelve un puntaje segun la cantidad de basura dejada en el contenedor
     public static double getPuntajeNoRecogido(double porcentaje){
-        if(porcentaje < 20){
-            return 0;
-        }
-        if(porcentaje < 50){
-            return -1;
-        }
-        if(porcentaje < 100){
-            return -2;
-        }
-        return -3;
 
+        int mult;
+        if(porcentaje < 30){
+            mult = 1;
+        }
+        else if(porcentaje < 60){
+            mult = 2;
+        }
+        else if(porcentaje < 90){
+            mult = 4;
+        }
+        else {
+            mult = 8;
+        }
+
+
+        return porcentaje * mult;
 
     }
 
@@ -174,7 +167,7 @@ public class Problema extends Problem {
                         int contenedor = variables[j];
 
                         if(contenedor != 0){
-                            sumaTiempo = tiempo + datos.tiempos[actual][contenedor];
+                            sumaTiempo = tiempo + tiempos[actual][contenedor];
                             sumaBasura = (b[contenedor].v + velocidades[contenedor].v * sumaTiempo) / 100;      //divido entre 100 para utilizar fracciones de contenedores.
 
                             if (recogido + sumaBasura <= this.capCamiones) {
@@ -254,6 +247,8 @@ public class Problema extends Problem {
 
 
         // -- Segunda funcion objetivo ---
+
+        //Veo que contenedores son recogidos
         double f2 = 0;
 
         boolean[] recogidos = new boolean[this.cantContenedores];
@@ -261,41 +256,10 @@ public class Problema extends Problem {
             recogidos[i] = false;
         }
 
-        for (int i = 0; i < this.cantCamiones; i++) {
-
-            indice = i * this.capCamionesAprox;
-            indiceFinal = indice + this.capCamionesAprox;
-
-            try {
-
-                double sumaBasura;
-                int tiempo = 0;
-                int sumaTiempo = 0;
-                int actual = 0;
-
-                for(int j = indice; j < indiceFinal; j++){
-                    int contenedor = variables[j];
-                    if(contenedor != 0){
-                        sumaTiempo = tiempo + tiempos[actual][contenedor];
-                        sumaBasura = (b[contenedor].v + velocidades[contenedor].v * sumaTiempo);
-
-                        f2 += getPuntajeRecogido(sumaBasura);
-
-                        tiempo = sumaTiempo + tiempoRecol;
-                        actual = contenedor;
-
-                        recogidos[contenedor] = true;
-
-                    }
-                    else {
-                        break;  //si es cero, como estan ordenados con todos los ceros a la derecha, termino este camion.
-                    }
-
-                }
-
-
-            } catch (Throwable t) {
-                throw new RuntimeException("ERROR: " + t.getMessage(), t);
+        for(int i = 0; i < variables.length; i++) {
+            int contenedor = variables[i];
+            if (contenedor != 0) {
+                recogidos[contenedor] = true;
             }
         }
 
@@ -308,7 +272,7 @@ public class Problema extends Problem {
         }
 
         solution.setObjective(0, f1);
-        solution.setObjective(1, -1*f2);
+        solution.setObjective(1, f2);
 
 
     } // evaluate
@@ -427,8 +391,6 @@ public class Problema extends Problem {
                 bw.newLine();
                 bw.newLine();
 
-                int contadorInvalidos = 0;
-
                 boolean[] recogidos = new boolean[this.cantContenedores];
                 for(int j = 0; j < this.cantContenedores; j++){
                     recogidos[j] = false;
@@ -450,10 +412,7 @@ public class Problema extends Problem {
                                 sumaTiempo = tiempo + tiempos[actual][contenedor];
 
                                 bw.write(String.format("Contenedor [%s] Recogido: al %s %%", contenedor, b[contenedor].v + velocidades[contenedor].v * sumaTiempo));
-                                if(getPuntajeRecogido(b[contenedor].v + velocidades[contenedor].v * sumaTiempo) < 0){
-                                    bw.write("---- Ver ---");
-                                    contadorInvalidos++;
-                                }
+
                                 tiempo = sumaTiempo + tiempoRecol;
                                 actual = contenedor;
 
@@ -476,32 +435,10 @@ public class Problema extends Problem {
                 for (int j = 1; j < this.cantContenedores; j++) {
                     if(!recogidos[j]) {
                         bw.write(String.format("Contenedor [%s] no recogido, dejado en %s %%", j,b[j].v));
-                        if(getPuntajeNoRecogido(b[j].v) < 0){
-                            bw.write("---- Ver ---");
-                            contadorInvalidos++;
-                        }
                         bw.newLine();
                     }
 
                 }
-                /*
-                //Por ultimo sumo todos los contenedores no recogidos
-                //Estos son, todos los valores luego del ultimo contenedor del ultimo camion. O sea los que estan luego del limite dummy
-                for (int j = this.indiceLimite; j < variables.length; j++) {
-                    int contenedor = variables[j];
-                    if(contenedor != 0 && contenedor <= this.cantContenedores) {
-                        bw.write(String.format("Contenedor [%s] no recogido, dejado en %s %%", contenedor,b[contenedor].v));
-                        if(getPuntajeNoRecogido(b[contenedor].v) < 0){
-                            bw.write("---- Ver ---");
-                            contadorInvalidos++;
-                        }
-                        bw.newLine();
-                    }
-
-                }
-                */
-                bw.write("Total contenedores invalidos: " + contadorInvalidos);
-                bw.newLine();
 
                 bw.write("--------------------");
                 bw.newLine();
@@ -637,76 +574,37 @@ public class Problema extends Problem {
 
 
     //Devuelve una lista de soluciones greedy, incluyendo la original y deformadas.
-    //cant1: cantidad de soluciones greedy, cant2: cant de soluciones greedy deformadas con otro algoritmo.
-    public Solution[] getSolucionesGreedy(int cant, int cant2) throws JMException {
-        ZeroPermutation permGreedy = MainGreedy.ejecutarGreedy(this.datos);
+    //cant1: cantidad de soluciones greedy
+    public Solution[] getSolucionesGreedy(int cant) throws JMException {
 
-        Solution[] res = new Solution[cant+cant2];
+        double[] params = {0.0, 0.05, 0.1, 0.15, 0.20, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5};
+
+        ZeroPermutation[] permGreedys = new ZeroPermutation[params.length];
+        for(int i = 0; i < params.length; i++){
+            permGreedys[i] = MainGreedy.ejecutarGreedy(this.datos, params[i]);
+        }
+
+        Solution[] res = new Solution[cant];
 
         HashMap parameters = new HashMap() ;
         parameters.put("probability", 1.0) ;
 
         for(int i = 0; i < cant; i++){
-            Solution solucionGreedy = new Solution(this, new Variable[]{new ZeroPermutation(permGreedy)});
+            Solution solucionGreedy = null ;
 
-            if (i == 0) {
-                //lo dejo igual
+            if (i < params.length) {
+                solucionGreedy = new Solution(this, new Variable[]{new ZeroPermutation(permGreedys[i])});
             }
             else {
-                //la deformo
-                //for(int j = 0; j <= i; j++){
+                solucionGreedy = new Solution(this, new Variable[]{new ZeroPermutation(permGreedys[i % params.length])});
+                for(int j = 0; j < i; j++) {
                     MutationFactory.getMutationOperator("ZeroPermBitFlipMutation", parameters).execute(solucionGreedy);
-                //}
+                }
+
             }
 
             this.evaluate(solucionGreedy);
             this.evaluateConstraints(solucionGreedy);
-            res[i] = solucionGreedy;
-        }
-
-
-        for(int i = cant; i < cant + cant2; i++){
-            Solution solucionGreedy = new Solution(this, new Variable[]{new Permutation(permGreedy)});
-            this.deformarSolucion(solucionGreedy);
-            res[i] = solucionGreedy;
-        }
-
-
-        return res;
-    }
-
-    //Devuelve una lista de soluciones greedy, incluyendo la original y deformadas.
-    //cant1: cantidad de soluciones greedy, cant2: cant de soluciones greedy deformadas con otro algoritmo.
-    public Solution[] getSolucionesGreedyv2(int cant, int cant2) throws JMException {
-        ZeroPermutation permGreedy = MainGreedy.ejecutarGreedyv2(this.datos);
-
-        Solution[] res = new Solution[cant+cant2];
-
-        HashMap parameters = new HashMap() ;
-        parameters.put("probability", 1.0) ;
-
-        for(int i = 0; i < cant; i++){
-            Solution solucionGreedy = new Solution(this, new Variable[]{new ZeroPermutation(permGreedy)});
-
-            if (i == 0) {
-                //lo dejo igual
-            }
-            else {
-                //la deformo
-                //for(int j = 0; j <= i; j++){
-                MutationFactory.getMutationOperator("ZeroPermBitFlipMutation", parameters).execute(solucionGreedy);
-                //}
-            }
-
-            this.evaluate(solucionGreedy);
-            this.evaluateConstraints(solucionGreedy);
-            res[i] = solucionGreedy;
-        }
-
-
-        for(int i = cant; i < cant + cant2; i++){
-            Solution solucionGreedy = new Solution(this, new Variable[]{new Permutation(permGreedy)});
-            this.deformarSolucion(solucionGreedy);
             res[i] = solucionGreedy;
         }
 

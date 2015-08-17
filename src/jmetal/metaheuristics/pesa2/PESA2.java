@@ -75,28 +75,17 @@ public class PESA2 extends Algorithm{
     HashMap  parameters = null ;
     selection    = new PESA2Selection(parameters);
 
-    int GREEDY_COUNT = Math.floorDiv(populationSize, 10);
-    int GREEDY_DEFORMADO_COUNT = Math.floorDiv(populationSize, 10);
 
-    int GREEDYV2_COUNT = Math.floorDiv(populationSize, 10);
-    int GREEDYV2_DEFORMADO_COUNT = Math.floorDiv(populationSize, 10);
 
     //-> Create the initial individual and evaluate it and his constraints
-    for (int i = 0; i < populationSize - GREEDY_COUNT - GREEDY_DEFORMADO_COUNT - GREEDYV2_COUNT - GREEDYV2_DEFORMADO_COUNT; i++){
+    for (int i = 0; i < populationSize; i++){
       Solution solution = new Solution(problem_);
       problem_.evaluate(solution);        
       problem_.evaluateConstraints(solution);
       solutionSet.add(solution);      
     }
 
-    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY y deformadas
-    Problema problema = (Problema)problem_;
-    for(Solution s : problema.getSolucionesGreedy(GREEDY_COUNT, GREEDY_DEFORMADO_COUNT)){
-      solutionSet.add(s);
-    }
-    for(Solution s : problema.getSolucionesGreedyv2(GREEDYV2_COUNT, GREEDYV2_DEFORMADO_COUNT)){
-      solutionSet.add(s);
-    }
+
 
         
     // Incorporate non-dominated solution to the archive

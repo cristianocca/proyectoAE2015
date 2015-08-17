@@ -89,6 +89,7 @@ public class ZeroPMXCrossover extends Crossover {
     if (PseudoRandom.randDouble() < probability) {
       int cuttingPoint1;
       int cuttingPoint2;
+      int maxVal = Math.max(parent1.getProblem().getLength(1)+1, permutationLength);
 
         //      STEP 1: Get two cutting points
         cuttingPoint1 = PseudoRandom.randInt(0, permutationLength - 1);
@@ -103,9 +104,9 @@ public class ZeroPMXCrossover extends Crossover {
             cuttingPoint2 = swap;
         } // if
         //      STEP 2: Get the subchains to interchange
-        int replacement1[] = new int[permutationLength];
-        int replacement2[] = new int[permutationLength];
-        for (int i = 0; i < permutationLength; i++)
+        int replacement1[] = new int[maxVal];
+        int replacement2[] = new int[maxVal];
+        for (int i = 0; i < maxVal; i++)
             replacement1[i] = replacement2[i] = -1;
 
         //      STEP 3: Interchange
