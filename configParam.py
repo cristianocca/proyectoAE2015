@@ -89,9 +89,9 @@ if PASOS.EJECUTAR:
 
 
 	posiblesPob = ["100","200"]
-	posiblesEval = ["45000"]
+	posiblesEval = ["100000"]
 	posiblesCross = ["0.6","0.75","0.9"]
-	posiblesMut = ["0.01","0.05","0.1"]
+	posiblesMut = ["0.05","0.1","0.15"]
 
 	combinacionesParametros = []
 	for alg in algoritmos:

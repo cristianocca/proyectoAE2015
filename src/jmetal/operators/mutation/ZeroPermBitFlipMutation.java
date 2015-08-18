@@ -74,61 +74,92 @@ public class ZeroPermBitFlipMutation extends Mutation{
       int permutationLength;
 
 
+
       if (PseudoRandom.randDouble() < probability) {
 
-          permutationLength = ((Permutation) solution.getDecisionVariables()[0]).getLength();
-          permutation = ((Permutation) solution.getDecisionVariables()[0]).vector_;
+          double prob = PseudoRandom.randDouble();
+
+          if(prob < 0.5) {
+
+              permutationLength = ((Permutation) solution.getDecisionVariables()[0]).getLength();
+              permutation = ((Permutation) solution.getDecisionVariables()[0]).vector_;
 
 
-          int pos1 ;
-          int pos2 ;
+              int pos1;
+              int pos2;
 
-          pos1 = PseudoRandom.randInt(0,permutationLength-1) ;
-          pos2 = PseudoRandom.randInt(0,permutationLength-1) ;
+              pos1 = PseudoRandom.randInt(0, permutationLength - 1);
+              pos2 = PseudoRandom.randInt(0, permutationLength - 1);
 
-          while (pos1 == pos2) {
-              if (pos1 == (permutationLength - 1))
-                  pos2 = PseudoRandom.randInt(0, permutationLength- 2);
-              else
-                  pos2 = PseudoRandom.randInt(pos1, permutationLength- 1);
-          } // while
-          // swap
-          int temp = permutation[pos1];
-          permutation[pos1] = permutation[pos2];
-          permutation[pos2] = temp;
-
-
-      }
-
-      else if (PseudoRandom.randDouble() < probability) {
-
-          int maxVal = solution.getProblem().getLength(1);
-
-          permutationLength = ((Permutation) solution.getDecisionVariables()[0]).getLength();
-          permutation = ((Permutation) solution.getDecisionVariables()[0]).vector_;
-
-          int pos1 = PseudoRandom.randInt(0, permutationLength - 1);
-          int newVal = PseudoRandom.randInt(0, maxVal);
-
-          if (newVal == 0) {
-              permutation[pos1] = newVal;
-              return;
+              while (pos1 == pos2) {
+                  if (pos1 == (permutationLength - 1))
+                      pos2 = PseudoRandom.randInt(0, permutationLength - 2);
+                  else
+                      pos2 = PseudoRandom.randInt(pos1, permutationLength - 1);
+              } // while
+              // swap
+              int temp = permutation[pos1];
+              permutation[pos1] = permutation[pos2];
+              permutation[pos2] = temp;
           }
 
-          boolean existe = false;
-          for (int i = 0; i < permutationLength; i++) {
-              if (permutation[i] == newVal) {
 
-                  permutation[i] = 0;
-                  existe = true;
-                  break;
+/**
+          if(prob < 0.5) {
+              permutationLength = ((Permutation) solution.getDecisionVariables()[0]).getLength();
+              permutation = ((Permutation) solution.getDecisionVariables()[0]).vector_;
+
+
+              int pos2;
+
+              for(int i = 0; i < permutationLength; i++) {
+                  if (PseudoRandom.randDouble() < probability) {
+
+                      pos2 = PseudoRandom.randInt(0, permutationLength - 1);
+                      int temp = permutation[i];
+                      permutation[i] = permutation[pos2];
+                      permutation[pos2] = temp;
+                  }
+              }
+
+
+
+
+          }
+**/
+          else {
+
+              int maxVal = solution.getProblem().getLength(1);
+
+              permutationLength = ((Permutation) solution.getDecisionVariables()[0]).getLength();
+              permutation = ((Permutation) solution.getDecisionVariables()[0]).vector_;
+
+              int pos1 = PseudoRandom.randInt(0, permutationLength - 1);
+              int newVal = PseudoRandom.randInt(0, maxVal);
+
+              if (newVal == 0) {
+                  permutation[pos1] = newVal;
+                  return;
+              }
+
+              boolean existe = false;
+              for (int i = 0; i < permutationLength; i++) {
+                  if (permutation[i] == newVal) {
+
+                      permutation[i] = 0;
+                      existe = true;
+                      break;
+                  }
+              }
+
+              if (!existe) {
+                  permutation[pos1] = newVal;
               }
           }
 
-          if (!existe) {
-              permutation[pos1] = newVal;
-          }
+
       }
+
 
 
   } // doMutation

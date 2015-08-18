@@ -36,9 +36,9 @@ public class MainAE {
 
 
         int popSize = 200;
-        int maxEval = 45000;
+        int maxEval = 100000;
         double crossProb = 0.75;
-        double mutProb = 0.01;
+        double mutProb = 0.05;
         String algoritmo = "NSGA2";
         String salidaFun = "SALIDA_FUN.txt";
         String salidaVar = "SALIDA_VAR.txt";
@@ -116,7 +116,7 @@ public class MainAE {
         parameters = new HashMap() ;
         parameters.put("probability", crossProb) ;
         crossover = CrossoverFactory.getCrossoverOperator("ZeroPMXCrossover", parameters);
-        //crossover = CrossoverFactory.getCrossoverOperator("SinglePointCrossover", parameters);
+        //crossover = CrossoverFactory.getCrossoverOperator("TwoPointsCrossover", parameters);
 
         parameters = new HashMap() ;
         parameters.put("probability", mutProb) ;
@@ -143,7 +143,7 @@ public class MainAE {
         parameters.put("improvementRounds", 10) ;
         parameters.put("problem",problem) ;
         parameters.put("mutation",mutation) ;
-        algorithm.addOperator("localSearch",new MutationLocalSearch(parameters));
+        algorithm.addOperator("localSearch",new ContenedorLocalSearch(parameters));
 **/
 
 

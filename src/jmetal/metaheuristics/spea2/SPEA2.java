@@ -86,7 +86,7 @@ public class SPEA2 extends Algorithm{
     }
 
 
-    Operator localSearch = operators_.get("localSearch");
+    //Operator localSearch = operators_.get("localSearch");
 
 
 
@@ -95,12 +95,6 @@ public class SPEA2 extends Algorithm{
       Spea2Fitness spea = new Spea2Fitness(union);
       spea.fitnessAssign();
       archive = spea.environmentalSelection(archiveSize);
-
-      if(localSearch != null) {
-        for (int i = 0; i < archive.size(); i++) {
-          archive.replace(i, (Solution) localSearch.execute(archive.get(i)));
-        }
-      }
 
       // Create a new offspringPopulation
       offSpringSolutionSet= new SolutionSet(populationSize);    
@@ -121,8 +115,11 @@ public class SPEA2 extends Algorithm{
         Solution [] offSpring = (Solution [])crossoverOperator.execute(parents);            
         mutationOperator.execute(offSpring[0]);            
         problem_.evaluate(offSpring[0]);
-        problem_.evaluateConstraints(offSpring[0]);            
+        problem_.evaluateConstraints(offSpring[0]);
+
         offSpringSolutionSet.add(offSpring[0]);
+        //offSpringSolutionSet.add((Solution)localSearch.execute(offSpring[0]));
+
         evaluations++;
       } // while
       // End Create a offSpring solutionSet

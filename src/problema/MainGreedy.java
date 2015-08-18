@@ -222,7 +222,10 @@ public class MainGreedy {
             System.out.println("---- Parametros a utilizar ----");
             System.out.println("Salidas: " + salidaFun + ", " + salidaVar);
 
+
             double[] params = {0.0, 0.05, 0.1, 0.15, 0.20, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5};
+
+
             SolutionSet solSetGreedy = new SolutionSet(params.length);
             Problem problem = new Problema(datos);
             for(double p : params){

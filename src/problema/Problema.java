@@ -73,22 +73,22 @@ public class Problema extends Problem {
     //Devuelve un puntaje segun la cantidad de basura dejada en el contenedor
     public static double getPuntajeNoRecogido(double porcentaje){
 
-        int mult;
-        if(porcentaje < 30){
+
+        double mult;
+        if(porcentaje < 40){
             mult = 1;
         }
-        else if(porcentaje < 60){
+        else if(porcentaje < 80){
             mult = 2;
         }
-        else if(porcentaje < 90){
-            mult = 4;
-        }
         else {
-            mult = 8;
+            mult = 4;
         }
 
 
         return porcentaje * mult;
+
+
 
     }
 
@@ -118,6 +118,8 @@ public class Problema extends Problem {
         //******************************************************************************************************************
 
         boolean violoCond;
+        int tiempoMax = 0;
+        int ultimoContenedor = -1;
 
         //Itero hasta que la solucion sea factible
         do {
@@ -174,6 +176,10 @@ public class Problema extends Problem {
                                 tiempo = sumaTiempo + tiempoRecol;
                                 recogido += sumaBasura;
                                 actual = contenedor;
+                                if(tiempo > tiempoMax){
+                                    tiempoMax = tiempo;
+                                    ultimoContenedor = contenedor;
+                                }
                             }
                             else {
                                 violoCond = true;
@@ -210,6 +216,11 @@ public class Problema extends Problem {
             }
 
         }while(violoCond);
+
+        if(ultimoContenedor != -1){
+            tiempoMax+=tiempos[ultimoContenedor][0];    //Sumo tiempo desde el ultimo contenedor a la vuelta de ese camion.
+        }
+
 
         //******************************************************************************************************************
         //******** Calculo de funciones objetivo ************
@@ -266,7 +277,7 @@ public class Problema extends Problem {
         //Por ultimo sumo todos los contenedores no recogidos
         for (int i = 1; i < this.cantContenedores; i++) {
             if(!recogidos[i]) {
-                f2 += getPuntajeNoRecogido(b[i].v);
+                f2 += getPuntajeNoRecogido(b[i].v + tiempoMax*velocidades[i].v);
             }
 
         }
@@ -434,7 +445,7 @@ public class Problema extends Problem {
 
                 for (int j = 1; j < this.cantContenedores; j++) {
                     if(!recogidos[j]) {
-                        bw.write(String.format("Contenedor [%s] no recogido, dejado en %s %%", j,b[j].v));
+                        bw.write(String.format("Contenedor [%s] no recogido, dejado en %s %%", j,b[j].v + velocidades[j].v * tiempoFinReal));
                         bw.newLine();
                     }
 
@@ -577,14 +588,28 @@ public class Problema extends Problem {
     //cant1: cantidad de soluciones greedy
     public Solution[] getSolucionesGreedy(int cant) throws JMException {
 
+        Solution[] res = new Solution[cant];
+
+        /**
+        for(int i = 0; i < cant; i++){
+
+            Solution solucionGreedy = new Solution(this, new Variable[]{new ZeroPermutation(length_[0], length_[1])});
+            this.evaluate(solucionGreedy);
+            this.evaluateConstraints(solucionGreedy);
+            res[i] = solucionGreedy;
+        }
+
+        **/
+
         double[] params = {0.0, 0.05, 0.1, 0.15, 0.20, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5};
+
 
         ZeroPermutation[] permGreedys = new ZeroPermutation[params.length];
         for(int i = 0; i < params.length; i++){
             permGreedys[i] = MainGreedy.ejecutarGreedy(this.datos, params[i]);
         }
 
-        Solution[] res = new Solution[cant];
+
 
         HashMap parameters = new HashMap() ;
         parameters.put("probability", 1.0) ;
@@ -597,6 +622,7 @@ public class Problema extends Problem {
             }
             else {
                 solucionGreedy = new Solution(this, new Variable[]{new ZeroPermutation(permGreedys[i % params.length])});
+
                 for(int j = 0; j < i; j++) {
                     MutationFactory.getMutationOperator("ZeroPermBitFlipMutation", parameters).execute(solucionGreedy);
                 }

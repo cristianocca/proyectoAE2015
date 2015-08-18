@@ -104,7 +104,7 @@ public class NSGAII extends Algorithm {
     }
 
 
-    Operator localSearch = operators_.get("localSearch");
+    //Operator localSearch = operators_.get("localSearch");
 
     population.printFeasibleFUN("./evolucion/"+evaluations+"fun.txt");
 
@@ -132,12 +132,13 @@ public class NSGAII extends Algorithm {
 
           offspringPopulation.add(offSpring[0]);
           offspringPopulation.add(offSpring[1]);
+          //offspringPopulation.add((Solution)localSearch.execute(offSpring[0]));
+          //offspringPopulation.add((Solution)localSearch.execute(offSpring[1]));
+
+
           evaluations += 2;
 
 
-          
-          //hof.add(offSpring[0]);
-          //hof.add(offSpring[1]);
         } // if                            
       } // for
 
@@ -155,15 +156,6 @@ public class NSGAII extends Algorithm {
       // Obtain the next front
       front = ranking.getSubfront(index);
 
-      //Replace front with local search
-      if(localSearch != null) {
-        for (int i = 0; i < front.size(); i++) {
-          front.replace(i, (Solution) localSearch.execute(front.get(i)));
-        }
-      }
-
-      //int selected = PseudoRandom.randInt(0,front.size()-1);
-      //front.replace(selected, (Solution)localSearch.execute(front.get(selected)));
 
       while ((remain > 0) && (remain >= front.size())) {
         //Assign crowding distance to individuals
@@ -198,7 +190,7 @@ public class NSGAII extends Algorithm {
 
 
       if(evaluations % 500 == 0 || evaluations == maxEvaluations){
-        ranking = new Ranking(population);
+        //ranking = new Ranking(population);
         //ranking.getSubfront(0).printFeasibleFUN("FUN_NSGAII") ;
 
         population.printFeasibleFUN("./evolucion/"+evaluations+"fun.txt");
