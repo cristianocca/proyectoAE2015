@@ -62,8 +62,8 @@ public class NSGAII extends Algorithm {
    */
   public SolutionSet execute() throws JMException, ClassNotFoundException {
     int populationSize;
-    int maxEvaluations;
-    int evaluations;
+    int maxGenerations;
+    int generations;
 
     QualityIndicator indicators; // QualityIndicator object
     int requiredEvaluations; // Use in the example of use of the
@@ -81,14 +81,13 @@ public class NSGAII extends Algorithm {
 
     //Read the parameters
     populationSize = ((Integer) getInputParameter("populationSize")).intValue();
-    maxEvaluations = ((Integer) getInputParameter("maxEvaluations")).intValue();
+    maxGenerations = ((Integer) getInputParameter("maxGenerations")).intValue();
     indicators = (QualityIndicator) getInputParameter("indicators");
 
     //Initialize the variables
     population = new SolutionSet(populationSize);
-    evaluations = 0;
+    generations = 0;
 
-    requiredEvaluations = 0;
 
     //Read the operators
     mutationOperator = operators_.get("mutation");
@@ -106,16 +105,16 @@ public class NSGAII extends Algorithm {
 
     //Operator localSearch = operators_.get("localSearch");
 
-    population.printFeasibleFUN("./evolucion/"+evaluations+"fun.txt");
+    population.printFeasibleFUN("./evolucion/"+generations+"fun.txt");
 
     // Generations 
-    while (evaluations < maxEvaluations) {
+    while (generations < maxGenerations) {
 
       // Create the offSpring solutionSet      
       offspringPopulation = new SolutionSet(populationSize);
       Solution[] parents = new Solution[2];
       for (int i = 0; i < (populationSize / 2); i++) {
-        if (evaluations < maxEvaluations) {
+
           //obtain parents
           
           parents[0] = (Solution) selectionOperator.execute(population);
@@ -132,14 +131,8 @@ public class NSGAII extends Algorithm {
 
           offspringPopulation.add(offSpring[0]);
           offspringPopulation.add(offSpring[1]);
-          //offspringPopulation.add((Solution)localSearch.execute(offSpring[0]));
-          //offspringPopulation.add((Solution)localSearch.execute(offSpring[1]));
 
 
-          evaluations += 2;
-
-
-        } // if                            
       } // for
 
       // Create the solutionSet union of solutionSet and offSpring
@@ -188,19 +181,21 @@ public class NSGAII extends Algorithm {
 
 
 
-
+/**
       if(evaluations % 500 == 0 || evaluations == maxEvaluations){
         //ranking = new Ranking(population);
         //ranking.getSubfront(0).printFeasibleFUN("FUN_NSGAII") ;
 
         population.printFeasibleFUN("./evolucion/"+evaluations+"fun.txt");
       }
+**/
+      generations++;
 
 
     } // while
 
-    // Return as output parameter the required evaluations
-    setOutputParameter("evaluations", requiredEvaluations);
+    System.out.println("Total generaciones: " + generations);
+
 
     // Return the first non-dominated front
     Ranking ranking = new Ranking(population);

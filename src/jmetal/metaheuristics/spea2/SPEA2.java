@@ -60,14 +60,14 @@ public class SPEA2 extends Algorithm{
    * @throws JMException 
   */  
   public SolutionSet execute() throws JMException, ClassNotFoundException {   
-    int populationSize, archiveSize, maxEvaluations, evaluations;
+    int populationSize, archiveSize, maxGenerations, generations;
     Operator crossoverOperator, mutationOperator, selectionOperator;
     SolutionSet solutionSet, archive, offSpringSolutionSet;    
     
     //Read the params
     populationSize = ((Integer)getInputParameter("populationSize")).intValue();
     archiveSize    = ((Integer)getInputParameter("archiveSize")).intValue();
-    maxEvaluations = ((Integer)getInputParameter("maxEvaluations")).intValue();
+    maxGenerations = ((Integer)getInputParameter("maxGenerations")).intValue();
         
     //Read the operators
     crossoverOperator = operators_.get("crossover");
@@ -77,7 +77,7 @@ public class SPEA2 extends Algorithm{
     //Initialize the variables
     solutionSet  = new SolutionSet(populationSize);
     archive     = new SolutionSet(archiveSize);
-    evaluations = 0;
+    generations = 0;
 
     // Se inicializa con greedy con varios parametros y mutaciones
     Problema problema = (Problema)problem_;
@@ -90,7 +90,7 @@ public class SPEA2 extends Algorithm{
 
 
 
-    while (evaluations < maxEvaluations){               
+    while (generations < maxGenerations){
       SolutionSet union = ((SolutionSet)solutionSet).union(archive);
       Spea2Fitness spea = new Spea2Fitness(union);
       spea.fitnessAssign();
@@ -120,10 +120,11 @@ public class SPEA2 extends Algorithm{
         offSpringSolutionSet.add(offSpring[0]);
         //offSpringSolutionSet.add((Solution)localSearch.execute(offSpring[0]));
 
-        evaluations++;
+
       } // while
       // End Create a offSpring solutionSet
-      solutionSet = offSpringSolutionSet;                   
+      solutionSet = offSpringSolutionSet;
+      generations++;
     } // while
         
     Ranking ranking = new Ranking(archive);

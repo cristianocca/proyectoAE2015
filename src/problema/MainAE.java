@@ -36,7 +36,7 @@ public class MainAE {
 
 
         int popSize = 200;
-        int maxEval = 100000;
+        int maxGen = 1000;
         double crossProb = 0.75;
         double mutProb = 0.05;
         String algoritmo = "NSGA2";
@@ -53,7 +53,7 @@ public class MainAE {
         }
 
         if(args.length >= 9){
-            maxEval = Integer.parseInt(args[8]);
+            maxGen = Integer.parseInt(args[8]);
         }
 
         if(args.length >= 10){
@@ -75,7 +75,7 @@ public class MainAE {
         System.out.println("---- Parametros a utilizar ----");
         System.out.println("Algoritmo: " + algoritmo);
         System.out.println("Tam Pob: " + popSize);
-        System.out.println("Max Eval: " + maxEval);
+        System.out.println("Max Gen: " + maxGen);
         System.out.println("Cross Prob: " + crossProb);
         System.out.println("Mut Prob: " + mutProb);
         System.out.println("Salidas: " + salidaFun + ", " + salidaVar);
@@ -110,7 +110,7 @@ public class MainAE {
 
         // Algorithm parameters
         algorithm.setInputParameter("populationSize",popSize);
-        algorithm.setInputParameter("maxEvaluations",maxEval);
+        algorithm.setInputParameter("maxGenerations",maxGen);
 
         // Mutation and Crossover for Real codification
         parameters = new HashMap() ;
@@ -136,15 +136,6 @@ public class MainAE {
         algorithm.addOperator("crossover",crossover);
         algorithm.addOperator("mutation",mutation);
         algorithm.addOperator("selection",selection);
-
-/**
-        //Agrego local search
-        parameters = new HashMap() ;
-        parameters.put("improvementRounds", 10) ;
-        parameters.put("problem",problem) ;
-        parameters.put("mutation",mutation) ;
-        algorithm.addOperator("localSearch",new ContenedorLocalSearch(parameters));
-**/
 
 
         long initTime = System.currentTimeMillis();

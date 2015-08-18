@@ -89,17 +89,17 @@ if PASOS.EJECUTAR:
 
 
 	posiblesPob = ["100","200"]
-	posiblesEval = ["100000"]
+	posiblesGen = ["2000"]
 	posiblesCross = ["0.6","0.75","0.9"]
 	posiblesMut = ["0.05","0.1","0.15"]
 
 	combinacionesParametros = []
 	for alg in algoritmos:
 		for pob in posiblesPob:
-			for eval in posiblesEval:
+			for gen in posiblesGen:
 				for cross in posiblesCross:
 					for mut in posiblesMut:
-						combinacionesParametros.append([alg, pob,eval,cross,mut])
+						combinacionesParametros.append([alg, pob,gen,cross,mut])
 					
 	print len(combinacionesParametros), "combinaciones parametricas"
 	
@@ -139,7 +139,7 @@ if PASOS.EJECUTAR:
 				ejecucion = {
 					'algoritmo':p[0],
 					'poblacion':p[1],
-					'evals':p[2],
+					'gens':p[2],
 					'cross':p[3],
 					'mut':p[4],
 					'iteraciones':iteraciones,		
@@ -350,7 +350,7 @@ if PASOS.OBTENER_RHV:
 	
 if PASOS.GENERAR_XL:
 
-	headers = ["algoritmo","poblacion","evals","cross","mut",
+	headers = ["algoritmo","poblacion","gens","cross","mut",
 				'peorF1','mejorF1','medF1',
 				'peorF2','mejorF2','medF2',
 				"medCompromisoF1",
