@@ -11,16 +11,9 @@ with open(RUTA_PUNTOS,'r') as f:
 	puntos = json.loads(f.read())
 	
 
-#Si el id del punto esta entre 300 y 1200, aumento un poco mas su velocidad de llenado
-#Ya que sabemos que el centro, cordon, y cercanias, es una parte muy poblada de montevideo
-#Y ademas sabemos que los puntos en esa region son los con id 300-1200, mas o menos.
-
 velocidades = []
 for v in puntos:
-	if v['id'] >= 300 and v['id'] <= 1200:
-		vel = random.randint(5, 8)
-	else:
-		vel = random.randint(3, 6)
+	vel = random.randint(1, 2)
 	
 	velocidades.append({'id':v['id'],'v':vel})
 	

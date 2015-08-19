@@ -75,7 +75,8 @@ public class Problema extends Problem {
 
 
         double mult;
-        if(porcentaje < 40){
+
+         if(porcentaje < 40){
             mult = 1;
         }
         else if(porcentaje < 80){
@@ -84,7 +85,6 @@ public class Problema extends Problem {
         else {
             mult = 4;
         }
-
 
         return porcentaje * mult;
 
@@ -118,13 +118,15 @@ public class Problema extends Problem {
         //******************************************************************************************************************
 
         boolean violoCond;
-        int tiempoMax = 0;
-        int ultimoContenedor = -1;
+        int tiempoMax;
+        int ultimoContenedor;
 
         //Itero hasta que la solucion sea factible
         do {
 
             violoCond = false;
+            tiempoMax = 0;
+            ultimoContenedor = -1;
 
 
             //La cantidad de basura recogida por cada camión no puede exceder su capacidad real
@@ -184,27 +186,12 @@ public class Problema extends Problem {
                             else {
                                 violoCond = true;
 
-                                //Si un contenedor llena la capacidad del camion, elimino de derecha a izquierda hasta que no se supere la capacidad.
-                                //Esto es, elimino el ultimo distinto de cero/dummy, y sigo la iteracion.
-                                //Como seteo violoCond = true, se re calcula y si se sigue violando, se vuelve a corregir.
-                                //En el 99% de los casos se corrige al eliminar un contenedor.
-                                //Caso borde: El contenedor que sobrepasa es el ultimo, esta controlado de todas formas, ya que el for siguiente itera una sola vez
-                                //Y la primer condicion da true, porque solo se entro aca con la misma condicion.
-                                for (int z = indiceFinal - 1; z >= j; z--) {
-                                    if (variables[z] != 0) {
-                                        //Lo elimino
-                                        variables[z] = 0;
-                                        break;
-                                    }
-                                }
+                                //Elimino el contenedor
+                                variables[j] = 0;
 
 
-                                break; // y termino el loop de este camion
 
                             }
-                        }
-                        else {
-                            break;  //si es cero, como estan ordenados con todos los ceros a la derecha, termino este camion.
                         }
 
                     }
@@ -241,8 +228,6 @@ public class Problema extends Problem {
                     if (variables[j] != 0) {
                         f1 += distancias[actual][variables[j]];
                         actual = variables[j];
-                    } else {
-                        break;
                     }
                 }
 
@@ -380,9 +365,6 @@ public class Problema extends Problem {
                                 tiempo = sumaTiempo + tiempoRecol;
                                 actual = contenedor;
                             }
-                            else {
-                                break;  //si es cero, como estan ordenados con todos los ceros a la derecha, termino este camion.
-                            }
 
                         }
 
@@ -430,9 +412,6 @@ public class Problema extends Problem {
                                 bw.newLine();
                                 recogidos[contenedor] = true;
 
-                            }
-                            else {
-                                break;  //si es cero, como estan ordenados con todos los ceros a la derecha, termino este camion.
                             }
 
                         }

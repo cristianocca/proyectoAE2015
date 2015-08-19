@@ -36,7 +36,7 @@ public class MainAE {
 
 
         int popSize = 200;
-        int maxGen = 1000;
+        int maxGen = 10000;
         double crossProb = 0.75;
         double mutProb = 0.05;
         String algoritmo = "NSGA2";
@@ -125,7 +125,7 @@ public class MainAE {
         // Selection Operator
         parameters = null ;
         if (algoritmo.equalsIgnoreCase("NSGA2")) {
-            selection = SelectionFactory.getSelectionOperator("BinaryTournament3", parameters) ;
+            selection = SelectionFactory.getSelectionOperator("BinaryTournament2", parameters) ;
         }
         else {
             selection = SelectionFactory.getSelectionOperator("BinaryTournament", parameters) ;

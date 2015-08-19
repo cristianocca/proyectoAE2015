@@ -105,7 +105,7 @@ public class NSGAII extends Algorithm {
 
     //Operator localSearch = operators_.get("localSearch");
 
-    population.printFeasibleFUN("./evolucion/"+generations+"fun.txt");
+    //population.printFeasibleFUN("./evolucion/"+generations+"fun.txt");
 
     // Generations 
     while (generations < maxGenerations) {
@@ -182,11 +182,11 @@ public class NSGAII extends Algorithm {
 
 
 /**
-      if(evaluations % 500 == 0 || evaluations == maxEvaluations){
+      if(generations % 200 == 0 || generations == maxGenerations){
         //ranking = new Ranking(population);
         //ranking.getSubfront(0).printFeasibleFUN("FUN_NSGAII") ;
 
-        population.printFeasibleFUN("./evolucion/"+evaluations+"fun.txt");
+        population.printFeasibleFUN("./evolucion/"+generations+"fun.txt");
       }
 **/
       generations++;
@@ -194,7 +194,7 @@ public class NSGAII extends Algorithm {
 
     } // while
 
-    System.out.println("Total generaciones: " + generations);
+    //System.out.println("Total generaciones: " + generations);
 
 
     // Return the first non-dominated front
