@@ -43,13 +43,13 @@ PATH_OBTENER_FRENTE = r"./out/artifacts/obtenerFrente_jar/obtenerFrente.jar"
 PATH_OBTENER_RHV = r"./out/artifacts/obtenerRHV_jar/obtenerRHV.jar"
 
 #Path para guardar json con datos de ejecucion
-PATH_JSON_EJECUCION = r"./salidaParam/ejecucion.json"
+PATH_JSON_EJECUCION = r"./salidaCompetencia/ejecucion.json"
 
 #Path/format a carpeta de salidas, donde {0} sera el nombre de instancia
-CARPETA_SALIDAS = r"./salidaParam/{0}"
+CARPETA_SALIDAS = r"./salidaCompetencia/{0}"
 
 #Path salida excel
-PATH_SALIDA_XL = r"./salidaParam/resultados.xls"
+PATH_SALIDA_XL = r"./salidaCompetencia/resultados.xls"
 
 ITERACIONES = 30
 POOL_SIZE = 4
@@ -79,19 +79,17 @@ if PASOS.EJECUTAR:
 	]
 
 	instancias = [
-			"./datos/instancias/llenado_1.json",
-			"./datos/instancias/llenado_2.json",
-			"./datos/instancias/llenado_3.json",
+			"./datos/instancias/llenado_7.json",
+			"./datos/instancias/llenado_8.json",
+			"./datos/instancias/llenado_9.json",
 		]
 		
 	algoritmos = ["NSGA2","SPEA2"]
-	#algoritmos = ["NSGA2"]
 
-
-	posiblesPob = ["100","200"]
-	posiblesGen = ["1000"]
-	posiblesCross = ["0.75","0.8","0.9"]
-	posiblesMut = ["0.05","0.1","0.15"]
+	posiblesPob = ["200"]
+	posiblesGen = ["20000"]
+	posiblesCross = ["0.8"]
+	posiblesMut = ["0.15"]
 
 	combinacionesParametros = []
 	for alg in algoritmos:
@@ -279,6 +277,9 @@ if PASOS.OBTENER_RHV:
 		
 	for k,v in resultadosEjecucion.iteritems():
 	
+		RHVsAnteriores = None
+		gdsAnteriores = None
+	
 		for ejecucion in v['ejecuciones']:
 									
 			f1s = []
@@ -341,7 +342,25 @@ if PASOS.OBTENER_RHV:
 			ejecucion['varGD'] = numpy.std(gds)
 			ejecucion['ksGDpval'] = stats.kstest(gds,'norm', args=(ejecucion['medGD'],ejecucion['varGD'])).pvalue if ejecucion['varGD'] else 0
 			ejecucion['shapiroGDpval'] = stats.shapiro(gds)[1] if ejecucion['varGD'] else 0
-							
+			
+			
+			
+			if RHVsAnteriores:
+				ejecucion["tstudentRHV"] = stats.ttest_ind(RHVsAnteriores, RHVs, equal_var=False).pvalue
+				ejecucion["leveneRHV"] = stats.levene(RHVsAnteriores, RHVs).pvalue
+			else:
+				ejecucion["tstudentRHV"] = "-"
+				ejecucion["leveneRHV"] = "-"
+				
+			if gdsAnteriores:
+				ejecucion["tstudentGD"] = stats.ttest_ind(gdsAnteriores, gds, equal_var=False).pvalue
+				ejecucion["leveneGD"] = stats.levene(gdsAnteriores, gds).pvalue
+			else:
+				ejecucion["tstudentGD"] = "-"
+				ejecucion["leveneGD"] = "-"
+				
+			RHVsAnteriores = RHVs
+			gdsAnteriores = gds
 		
 	with open(PATH_JSON_EJECUCION,'w') as f:
 		print "Guardando json..."
@@ -357,7 +376,10 @@ if PASOS.GENERAR_XL:
 				"medCompromisoF2",				
 				"medTiempo",
 				"medRHV","varRHV",'ksRHVpval', 'shapiroRHVpval',
-				"medGD","varGD", 'ksGDpval', 'shapiroGDpval']
+				"medGD","varGD", 'ksGDpval', 'shapiroGDpval',
+				"tstudentRHV","leveneRHV",
+				"tstudentGD","leveneGD"
+				]
 	
 	book = xlwt.Workbook()
 	
@@ -386,21 +408,4 @@ if PASOS.GENERAR_XL:
 		
 print "Fin"
 	
-	
-"""
-
-import numpy
-from scipy import stats
-
-n1 = numpy.random.normal(0,1,100)
-n2 = stats.norm.rvs(loc=0, scale=1, size=100)
-
-stats.kstest(n1,'norm', args=(0,1))	--kolmogorov smirnov
-stats.shapiro(numpy.random.normal(0,5,30))	--Shapiro-Wilk
-stats.normaltest(numpy.random.normal(0,5,30))	--Test DAgostino-Pearson
---- Si el p-value es < 0.5, o 0.1 (segun significancia) se puede rechazar la hipotesis nula
-	En este caso la hipotesis nula es que las dos distribuciones son distintas.
-	Basicamente el p-value me da la probabilidad de que me equivoque al rechazar la hipotesis nula
-	O sea, que la rechace, cuando en realidad era verdadera.
-"""
-	
+#stats.ttest_ind(numpy.random.normal(0,5,30), numpy.random.normal(3,5,30), equal_var=False)

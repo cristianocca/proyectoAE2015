@@ -36,9 +36,9 @@ public class MainAE {
 
 
         int popSize = 200;
-        int maxGen = 10000;
-        double crossProb = 0.75;
-        double mutProb = 0.05;
+        int maxGen = 1000;
+        double crossProb = 0.8;
+        double mutProb = 0.15;
         String algoritmo = "NSGA2";
         String salidaFun = "SALIDA_FUN.txt";
         String salidaVar = "SALIDA_VAR.txt";
