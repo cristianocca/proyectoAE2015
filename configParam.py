@@ -32,7 +32,7 @@ def ejecutarProceso(command):
 class PASOS:
 	EJECUTAR = True			#Ejecuta instancias y guarda resultados para post procesamiento
 	OBTENER_FRENTE = True		#Por cada instancia, obtiene el mejor frente de todas las ejecuciones de esa instancia
-	OBTENER_RHV = True			#Por cada instancia, el mejor frente, y todas las ejecuciones, obtiene RHV y otros valores, promedios y varianzas para cada combinacion parametrica
+	OBTENER_RHV = True			#Por cada instancia, el mejor frente, y todas las ejecuciones, obtiene RHV y otros valores, promedios y desviaciones para cada combinacion parametrica
 	GENERAR_XL = True			#Guarda todos los datos obtenidos en un archivo excel
 
 
@@ -333,14 +333,14 @@ if PASOS.OBTENER_RHV:
 			ejecucion['medTiempo'] = numpy.mean(tiempos)
 			
 			ejecucion['medRHV'] = numpy.mean(RHVs)
-			ejecucion['varRHV'] = numpy.std(RHVs)			
-			ejecucion['ksRHVpval'] = stats.kstest(RHVs,'norm', args=(ejecucion['medRHV'],ejecucion['varRHV'])).pvalue if ejecucion['varRHV'] else 0
-			ejecucion['shapiroRHVpval'] = stats.shapiro(RHVs)[1] if ejecucion['varRHV'] else 0
+			ejecucion['stdRHV'] = numpy.std(RHVs)			
+			ejecucion['ksRHVpval'] = stats.kstest(RHVs,'norm', args=(ejecucion['medRHV'],ejecucion['stdRHV'])).pvalue if ejecucion['stdRHV'] else 0
+			ejecucion['shapiroRHVpval'] = stats.shapiro(RHVs)[1] if ejecucion['stdRHV'] else 0
 			
 			ejecucion['medGD'] = numpy.mean(gds)
-			ejecucion['varGD'] = numpy.std(gds)
-			ejecucion['ksGDpval'] = stats.kstest(gds,'norm', args=(ejecucion['medGD'],ejecucion['varGD'])).pvalue if ejecucion['varGD'] else 0
-			ejecucion['shapiroGDpval'] = stats.shapiro(gds)[1] if ejecucion['varGD'] else 0
+			ejecucion['stdGD'] = numpy.std(gds)
+			ejecucion['ksGDpval'] = stats.kstest(gds,'norm', args=(ejecucion['medGD'],ejecucion['stdGD'])).pvalue if ejecucion['stdGD'] else 0
+			ejecucion['shapiroGDpval'] = stats.shapiro(gds)[1] if ejecucion['stdGD'] else 0
 							
 		
 	with open(PATH_JSON_EJECUCION,'w') as f:
@@ -356,8 +356,8 @@ if PASOS.GENERAR_XL:
 				"medCompromisoF1",
 				"medCompromisoF2",				
 				"medTiempo",
-				"medRHV","varRHV",'ksRHVpval', 'shapiroRHVpval',
-				"medGD","varGD", 'ksGDpval', 'shapiroGDpval']
+				"medRHV","stdRHV",'ksRHVpval', 'shapiroRHVpval',
+				"medGD","stdGD", 'ksGDpval', 'shapiroGDpval']
 	
 	book = xlwt.Workbook()
 	
