@@ -86,8 +86,6 @@ public class SPEA2 extends Algorithm{
     }
 
 
-    //Operator localSearch = operators_.get("localSearch");
-
 
 
     while (generations < maxGenerations){
