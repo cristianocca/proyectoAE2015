@@ -85,10 +85,6 @@ public class SPEA2 extends Algorithm{
       solutionSet.add(s);
     }
 
-    Operator localSearch = operators_.get("localSearch");
-
-
-    //Operator localSearch = operators_.get("localSearch");
 
 
 
