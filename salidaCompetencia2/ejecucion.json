@@ -1,0 +1,279 @@
+{
+    "llenado_9": {
+        "ejecuciones": [
+            {
+                "medGD": 0.0031946689300169375, 
+                "medRHV": 0.91833845906479494, 
+                "leveneRHV": "-", 
+                "peorF2": 111695.47555555601, 
+                "peorF1": 380482.0, 
+                "shapiroGDpval": 0.25187042355537415, 
+                "mut": "0.15", 
+                "iteraciones": [
+                    {
+                        "tiempo": 406.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_0_var.txt", 
+                        "iteracion": 0, 
+                        "f2compromiso": 66466.02222222256, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_0_fun.txt", 
+                        "f1compromiso": 157263.0
+                    }, 
+                    {
+                        "tiempo": 387.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_1_var.txt", 
+                        "iteracion": 1, 
+                        "f2compromiso": 66044.93722222226, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_1_fun.txt", 
+                        "f1compromiso": 158261.0
+                    }, 
+                    {
+                        "tiempo": 334.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_2_var.txt", 
+                        "iteracion": 2, 
+                        "f2compromiso": 60328.43166666642, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_2_fun.txt", 
+                        "f1compromiso": 168640.0
+                    }, 
+                    {
+                        "tiempo": 331.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_3_var.txt", 
+                        "iteracion": 3, 
+                        "f2compromiso": 54837.87222222197, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_3_fun.txt", 
+                        "f1compromiso": 190329.0
+                    }, 
+                    {
+                        "tiempo": 345.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_4_var.txt", 
+                        "iteracion": 4, 
+                        "f2compromiso": 52272.75888888916, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_4_fun.txt", 
+                        "f1compromiso": 187950.0
+                    }, 
+                    {
+                        "tiempo": 380.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_5_var.txt", 
+                        "iteracion": 5, 
+                        "f2compromiso": 64170.09333333366, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_5_fun.txt", 
+                        "f1compromiso": 164675.0
+                    }, 
+                    {
+                        "tiempo": 362.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_6_var.txt", 
+                        "iteracion": 6, 
+                        "f2compromiso": 72545.59888888967, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_6_fun.txt", 
+                        "f1compromiso": 143846.0
+                    }, 
+                    {
+                        "tiempo": 353.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_7_var.txt", 
+                        "iteracion": 7, 
+                        "f2compromiso": 52795.507500000254, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_7_fun.txt", 
+                        "f1compromiso": 191786.0
+                    }, 
+                    {
+                        "tiempo": 300.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_8_var.txt", 
+                        "iteracion": 8, 
+                        "f2compromiso": 65096.13333333266, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_8_fun.txt", 
+                        "f1compromiso": 162323.0
+                    }, 
+                    {
+                        "tiempo": 307.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_9_var.txt", 
+                        "iteracion": 9, 
+                        "f2compromiso": 57004.667499999574, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_9_fun.txt", 
+                        "f1compromiso": 183930.0
+                    }, 
+                    {
+                        "tiempo": 330.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_10_var.txt", 
+                        "iteracion": 10, 
+                        "f2compromiso": 66525.08833333325, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_10_fun.txt", 
+                        "f1compromiso": 157992.0
+                    }, 
+                    {
+                        "tiempo": 341.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_11_var.txt", 
+                        "iteracion": 11, 
+                        "f2compromiso": 62340.66444444435, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_11_fun.txt", 
+                        "f1compromiso": 164420.0
+                    }, 
+                    {
+                        "tiempo": 347.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_12_var.txt", 
+                        "iteracion": 12, 
+                        "f2compromiso": 55880.14555555547, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_12_fun.txt", 
+                        "f1compromiso": 188056.0
+                    }, 
+                    {
+                        "tiempo": 330.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_13_var.txt", 
+                        "iteracion": 13, 
+                        "f2compromiso": 59318.55055555585, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_13_fun.txt", 
+                        "f1compromiso": 173260.0
+                    }, 
+                    {
+                        "tiempo": 334.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_14_var.txt", 
+                        "iteracion": 14, 
+                        "f2compromiso": 64249.07222222201, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_14_fun.txt", 
+                        "f1compromiso": 164878.0
+                    }, 
+                    {
+                        "tiempo": 308.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_15_var.txt", 
+                        "iteracion": 15, 
+                        "f2compromiso": 58830.02888888852, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_15_fun.txt", 
+                        "f1compromiso": 181883.0
+                    }, 
+                    {
+                        "tiempo": 350.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_16_var.txt", 
+                        "iteracion": 16, 
+                        "f2compromiso": 61656.69388888877, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_16_fun.txt", 
+                        "f1compromiso": 175354.0
+                    }, 
+                    {
+                        "tiempo": 330.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_17_var.txt", 
+                        "iteracion": 17, 
+                        "f2compromiso": 57848.604166666926, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_17_fun.txt", 
+                        "f1compromiso": 183033.0
+                    }, 
+                    {
+                        "tiempo": 352.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_18_var.txt", 
+                        "iteracion": 18, 
+                        "f2compromiso": 56700.66250000008, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_18_fun.txt", 
+                        "f1compromiso": 189141.0
+                    }, 
+                    {
+                        "tiempo": 350.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_19_var.txt", 
+                        "iteracion": 19, 
+                        "f2compromiso": 63640.699999999975, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_19_fun.txt", 
+                        "f1compromiso": 166647.0
+                    }, 
+                    {
+                        "tiempo": 346.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_20_var.txt", 
+                        "iteracion": 20, 
+                        "f2compromiso": 67461.04999999946, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_20_fun.txt", 
+                        "f1compromiso": 158769.0
+                    }, 
+                    {
+                        "tiempo": 390.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_21_var.txt", 
+                        "iteracion": 21, 
+                        "f2compromiso": 64017.46444444429, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_21_fun.txt", 
+                        "f1compromiso": 164226.0
+                    }, 
+                    {
+                        "tiempo": 341.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_22_var.txt", 
+                        "iteracion": 22, 
+                        "f2compromiso": 60748.99888888885, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_22_fun.txt", 
+                        "f1compromiso": 181881.0
+                    }, 
+                    {
+                        "tiempo": 326.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_23_var.txt", 
+                        "iteracion": 23, 
+                        "f2compromiso": 57320.234166666574, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_23_fun.txt", 
+                        "f1compromiso": 184393.0
+                    }, 
+                    {
+                        "tiempo": 349.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_24_var.txt", 
+                        "iteracion": 24, 
+                        "f2compromiso": 55235.75, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_24_fun.txt", 
+                        "f1compromiso": 190532.0
+                    }, 
+                    {
+                        "tiempo": 347.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_25_var.txt", 
+                        "iteracion": 25, 
+                        "f2compromiso": 63897.95555555568, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_25_fun.txt", 
+                        "f1compromiso": 163567.0
+                    }, 
+                    {
+                        "tiempo": 328.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_26_var.txt", 
+                        "iteracion": 26, 
+                        "f2compromiso": 61705.67277777763, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_26_fun.txt", 
+                        "f1compromiso": 163566.0
+                    }, 
+                    {
+                        "tiempo": 344.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_27_var.txt", 
+                        "iteracion": 27, 
+                        "f2compromiso": 54746.65722222212, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_27_fun.txt", 
+                        "f1compromiso": 189941.0
+                    }, 
+                    {
+                        "tiempo": 326.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_28_var.txt", 
+                        "iteracion": 28, 
+                        "f2compromiso": 57535.054999999345, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_28_fun.txt", 
+                        "f1compromiso": 181058.0
+                    }, 
+                    {
+                        "tiempo": 344.0, 
+                        "archivoSalidaVar": "./salidaCompetencia2/llenado_9/param_0_iter_29_var.txt", 
+                        "iteracion": 29, 
+                        "f2compromiso": 72980.45555555575, 
+                        "archivoSalidaFun": "./salidaCompetencia2/llenado_9/param_0_iter_29_fun.txt", 
+                        "f1compromiso": 140093.0
+                    }
+                ], 
+                "ksRHVpval": 0.54401043787230341, 
+                "cross": "0.8", 
+                "medF1": 180361.40433333334, 
+                "medF2": 64711.463211527764, 
+                "tstudentRHV": "-", 
+                "stdRHV": 0.026792890806338128, 
+                "poblacion": "200", 
+                "medCompromisoF2": 61140.050898148089, 
+                "medCompromisoF1": 172389.76666666666, 
+                "stdGD": 0.00095454718930351908, 
+                "mejorF2": 36658.780555555524, 
+                "ksGDpval": 0.74395429265218072, 
+                "mejorF1": 73161.0, 
+                "tstudentGD": "-", 
+                "leveneGD": "-", 
+                "medTiempo": 343.93333333333334, 
+                "algoritmo": "NSGA2", 
+                "gens": "75000", 
+                "shapiroRHVpval": 0.4285225570201874
+            }
+        ], 
+        "carpetaSalida": "./salidaCompetencia2/llenado_9", 
+        "mejorFrente": "./salidaCompetencia2/llenado_9/MEJOR_FRENTE.txt", 
+        "instancia": "./datos/instancias/llenado_9.json"
+    }
+}
