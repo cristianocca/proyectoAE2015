@@ -18,7 +18,7 @@ public class Datos {
 
     public float[][] distancias;
     public int[][] tiempos;
-    public int[][] puntosOrdenados; //tiene para cada punto, el indice de los puntos, ordenados por distancia
+    public int[][] puntosOrdenados = null; //tiene para cada punto, el indice de los puntos, ordenados por distancia
 
     /**
      * Carga datos estaticos, los datos de llenado se cargan a parte ya que deben ser cargados por cada instancia.
@@ -114,8 +114,8 @@ public class Datos {
 /**
         Datos datos2 = new Datos();
         datos2.datosBasicos = new DatoBasico();
-        int puntosPrueba =50;
-        datos2.datosBasicos.cantidadCamiones = 5;
+        int puntosPrueba =100;
+        datos2.datosBasicos.cantidadCamiones = 8;
         datos2.datosBasicos.capacidadCamiones = 10;
         datos2.datosBasicos.tiempoRecoleccionContenedor = datos.datosBasicos.tiempoRecoleccionContenedor;
 
@@ -139,8 +139,8 @@ public class Datos {
         datos = datos2;
 
         System.out.println("Total puntos prueba: " + datos.puntos.length);
-
 **/
+
         //*************************
 
 

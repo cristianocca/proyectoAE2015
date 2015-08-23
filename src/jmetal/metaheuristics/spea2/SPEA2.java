@@ -23,6 +23,8 @@ package jmetal.metaheuristics.spea2;
 
 import jmetal.core.*;
 import jmetal.encodings.variable.Permutation;
+import jmetal.operators.localSearch.LocalSearch;
+import jmetal.operators.localSearch.MutationLocalSearch;
 import jmetal.operators.mutation.MutationFactory;
 import jmetal.util.JMException;
 import jmetal.util.Ranking;
@@ -58,14 +60,14 @@ public class SPEA2 extends Algorithm{
    * @throws JMException 
   */  
   public SolutionSet execute() throws JMException, ClassNotFoundException {   
-    int populationSize, archiveSize, maxEvaluations, evaluations;
+    int populationSize, archiveSize, maxGenerations, generations;
     Operator crossoverOperator, mutationOperator, selectionOperator;
     SolutionSet solutionSet, archive, offSpringSolutionSet;    
     
     //Read the params
     populationSize = ((Integer)getInputParameter("populationSize")).intValue();
     archiveSize    = ((Integer)getInputParameter("archiveSize")).intValue();
-    maxEvaluations = ((Integer)getInputParameter("maxEvaluations")).intValue();
+    maxGenerations = ((Integer)getInputParameter("maxGenerations")).intValue();
         
     //Read the operators
     crossoverOperator = operators_.get("crossover");
@@ -75,47 +77,26 @@ public class SPEA2 extends Algorithm{
     //Initialize the variables
     solutionSet  = new SolutionSet(populationSize);
     archive     = new SolutionSet(archiveSize);
-    evaluations = 0;
+    generations = 0;
 
-    int GREEDY_COUNT = Math.floorDiv(populationSize, 5);
-    int GREEDY_DEFORMADO_COUNT = Math.floorDiv(populationSize, 5);
-
-    int GREEDYV2_COUNT = Math.floorDiv(populationSize, 5);
-    int GREEDYV2_DEFORMADO_COUNT = Math.floorDiv(populationSize, 5);
-        
-    //-> Create the initial solutionSet
-    Solution newSolution;
-    for (int i = 0; i < populationSize - GREEDY_COUNT - GREEDY_DEFORMADO_COUNT - GREEDYV2_COUNT - GREEDYV2_DEFORMADO_COUNT; i++) {
-      newSolution = new Solution(problem_);
-      problem_.evaluate(newSolution);            
-      problem_.evaluateConstraints(newSolution);
-      solutionSet.add(newSolution);
-    }
-
-    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY y deformadas
+    // Se inicializa con greedy con varios parametros y mutaciones
     Problema problema = (Problema)problem_;
-    for(Solution s : problema.getSolucionesGreedy(GREEDY_COUNT,GREEDY_DEFORMADO_COUNT)){
-      solutionSet.add(s);
-    }
-    for(Solution s : problema.getSolucionesGreedyv2(GREEDYV2_COUNT, GREEDYV2_DEFORMADO_COUNT)){
+    for(Solution s : problema.getSolucionesGreedy(populationSize)){
       solutionSet.add(s);
     }
 
     Operator localSearch = operators_.get("localSearch");
 
 
+    //Operator localSearch = operators_.get("localSearch");
 
-    while (evaluations < maxEvaluations){               
+
+
+    while (generations < maxGenerations){
       SolutionSet union = ((SolutionSet)solutionSet).union(archive);
       Spea2Fitness spea = new Spea2Fitness(union);
       spea.fitnessAssign();
       archive = spea.environmentalSelection(archiveSize);
-
-      if(localSearch != null) {
-        for (int i = 0; i < archive.size(); i++) {
-          archive.replace(i, (Solution) localSearch.execute(archive.get(i)));
-        }
-      }
 
       // Create a new offspringPopulation
       offSpringSolutionSet= new SolutionSet(populationSize);    
@@ -136,12 +117,16 @@ public class SPEA2 extends Algorithm{
         Solution [] offSpring = (Solution [])crossoverOperator.execute(parents);            
         mutationOperator.execute(offSpring[0]);            
         problem_.evaluate(offSpring[0]);
-        problem_.evaluateConstraints(offSpring[0]);            
+        problem_.evaluateConstraints(offSpring[0]);
+
         offSpringSolutionSet.add(offSpring[0]);
-        evaluations++;
+        //offSpringSolutionSet.add((Solution)localSearch.execute(offSpring[0]));
+
+
       } // while
       // End Create a offSpring solutionSet
-      solutionSet = offSpringSolutionSet;                   
+      solutionSet = offSpringSolutionSet;
+      generations++;
     } // while
         
     Ranking ranking = new Ranking(archive);

@@ -7,6 +7,7 @@ import jmetal.core.Variable;
 import jmetal.encodings.solutionType.IntSolutionType;
 import jmetal.encodings.variable.Int;
 import jmetal.encodings.variable.Permutation;
+import jmetal.encodings.variable.ZeroPermutation;
 import org.omg.CORBA.PUBLIC_MEMBER;
 import problema.datos.Datos;
 import problema.datos.Punto;
@@ -19,127 +20,9 @@ import java.util.Random;
 public class MainGreedy {
 
 
-    public static Permutation ejecutarGreedy(Datos datos){
-
-        if(datos.puntosOrdenados == null) {
-            datos.puntosOrdenados = datos.cargarPuntosOrdenados(datos.distancias);
-        }
-
-        boolean[] visitados = new boolean[datos.puntos.length];
-        for(int i = 0; i<visitados.length; i++)
-            visitados[i] = datos.llenados[i].v < 20;
-
-        boolean[] recogidos = new boolean[datos.puntos.length];
-        for(int i = 0; i<recogidos.length; i++)
-            recogidos[i] = false;
-
-        visitados[0] = true;    //origen visitado para no tomarlo en cuenta.
-
-        int cantPorCamion = datos.datosBasicos.capacidadCamiones + datos.datosBasicos.capacidadCamiones/2;
-
-
-        int[]  resultado = new int[datos.datosBasicos.cantidadCamiones*cantPorCamion];
-
-        int libres = visitados.length - 1;
-        int index = 0;
-        for(int i=0; i< datos.datosBasicos.cantidadCamiones; i++){
-            int actual = 0; //indice del punto actual
-            double recogido = 0;
-            int cant = 0; //cantidad de contenedores que ha visitado un camion
-            int tiempo = 0;
-
-            while (cant < cantPorCamion && libres > 0) {
-
-
-                int elegido = -1;
-                double sumaBasura = -1;
-                int sumaTiempo = -1;
-                boolean encontrado = false;
-
-
-                //de los mas cercanos, voy al mas cercano que no supere la capacidad del camion.
-                for (int j = 1; j < datos.puntosOrdenados.length; j++) {
-                    elegido = datos.puntosOrdenados[actual][j];
-
-                    if(!visitados[elegido]) {
-                        sumaTiempo = tiempo + datos.tiempos[actual][elegido];
-                        sumaBasura = (datos.llenados[elegido].v + datos.velocidades[elegido].v * sumaTiempo) / 100;
-
-                        //Solo lo agrego si tiene mas de 20% de basura, y entra en el camion
-                        if (sumaBasura > 0.2 && recogido + sumaBasura <= datos.datosBasicos.capacidadCamiones) {
-                            encontrado = true;
-                            break;
-                        }
-                    }
-
-                }
-
-
-                if (encontrado) {
-
-                    visitados[elegido] = true;
-                    recogidos[elegido] = true;
-
-                    tiempo = sumaTiempo + datos.datosBasicos.tiempoRecoleccionContenedor;
-                    recogido += sumaBasura;
-
-                    libres--;
-                    resultado[index] = elegido;
-                    actual = elegido;
-
-                    cant++;
-                    index++;
-                } else {
-                    break; //si llegue aca quiere decir que se lleno el camion.
-                }
-
-            }
-
-            if(cant < cantPorCamion){
-                while (cant < cantPorCamion){
-                    resultado[index] = 0;
-                    index++;
-                    cant++;
-                }
-            }
-        }
-
-        //Construyo resultado de permutacion para poder utilizar con AE
-
-        int[] p = new int[resultado.length+datos.puntos.length-1];
-        for(int i = 0; i < resultado.length; i++){
-            p[i] = resultado[i];
-        }
-        for(int i = resultado.length; i < p.length; i++){
-            p[i] = 0;
-        }
-        for(int i = 1; i < visitados.length; i++){
-            if(!recogidos[i]){
-                p[resultado.length + i-1] = i;
-            }
-        }
-
-        int similCero = 0;
-        //Corrijo ceros para que sea igual que la sol AE
-        for(int i = 0; i < p.length; i++){
-            if(p[i] == 0){
-                p[i] = similCero;
-                if(similCero == 0){
-                    similCero = datos.puntos.length;
-                }
-                else {
-                    similCero++;
-                }
-            }
-        }
-
-        Permutation res = new Permutation();
-        res.vector_ = p;
-        res.size_ = p.length;
-        return res;
-    }
-
-    public static Permutation ejecutarGreedyv2(Datos datos){
+    //No recoge contenedores que esten en < de minBasura al momento de visitarlos, usar 0 para recoger siempre.
+    //min basura esta entre 0 y 1
+    public static ZeroPermutation ejecutarGreedy(Datos datos, double minBasura){
 
         if(datos.puntosOrdenados == null) {
             datos.puntosOrdenados = datos.cargarPuntosOrdenados(datos.distancias);
@@ -181,8 +64,8 @@ public class MainGreedy {
                         sumaTiempo = tiempo + datos.tiempos[actual][elegido];
                         sumaBasura = (datos.llenados[elegido].v + datos.velocidades[elegido].v * sumaTiempo) / 100;
 
-                        //Solo lo agrego si tiene mas de 20% de basura, y entra en el camion
-                        if (sumaBasura > 0.2 && recogido + sumaBasura <= datos.datosBasicos.capacidadCamiones) {
+
+                        if (sumaBasura > minBasura && recogido + sumaBasura <= datos.datosBasicos.capacidadCamiones) {
                             encontrado = true;
                             break;
                         }
@@ -221,38 +104,104 @@ public class MainGreedy {
 
         //Construyo resultado de permutacion para poder utilizar con AE
 
-        int[] p = new int[resultado.length+datos.puntos.length-1];
-        for(int i = 0; i < resultado.length; i++){
-            p[i] = resultado[i];
-        }
-        for(int i = resultado.length; i < p.length; i++){
-            p[i] = 0;
-        }
-        for(int i = 1; i < visitados.length; i++){
-            if(!visitados[i]){
-                p[resultado.length + i-1] = i;
-            }
-        }
 
-        int similCero = 0;
-        //Corrijo ceros para que sea igual que la sol AE
-        for(int i = 0; i < p.length; i++){
-            if(p[i] == 0){
-                p[i] = similCero;
-                if(similCero == 0){
-                    similCero = datos.puntos.length;
-                }
-                else {
-                    similCero++;
-                }
-            }
-        }
-
-        Permutation res = new Permutation();
-        res.vector_ = p;
-        res.size_ = p.length;
+        ZeroPermutation res = new ZeroPermutation();
+        res.vector_ = resultado;
+        res.size_ = resultado.length;
         return res;
     }
+
+    public static ZeroPermutation ejecutarGreedyv2(Datos datos){
+
+        if(datos.puntosOrdenados == null) {
+            datos.puntosOrdenados = datos.cargarPuntosOrdenados(datos.distancias);
+        }
+
+        boolean[] visitados = new boolean[datos.puntos.length];
+        for(int i = 0; i<visitados.length; i++)
+            visitados[i] = false;
+
+        visitados[0] = true;    //origen visitado para no tomarlo en cuenta.
+
+        int cantPorCamion = datos.datosBasicos.capacidadCamiones + datos.datosBasicos.capacidadCamiones/2;
+
+
+        int[]  resultado = new int[datos.datosBasicos.cantidadCamiones*cantPorCamion];
+
+        int libres = visitados.length - 1;
+        int index = 0;
+        for(int i=0; i< datos.datosBasicos.cantidadCamiones; i++){
+            int actual = 0; //indice del punto actual
+            double recogido = 0;
+            int cant = 0; //cantidad de contenedores que ha visitado un camion
+            int tiempo = 0;
+
+            while (cant < cantPorCamion && libres > 0) {
+
+                int elegido = -1;
+                double sumaBasura = -1;
+                int sumaTiempo = -1;
+                boolean encontrado = false;
+
+                int[] masCercanos = getDiezMasCercanos(actual, libres, visitados, datos);
+                if(masCercanos != null && masCercanos.length > 0) {
+                    int[] masllenos = getMasLlenos(masCercanos, datos);
+                    if (masllenos != null && masllenos.length > 0) {
+                        elegido = elegirRandom(masllenos);
+                        if (elegido >= 0) {
+                            if(!visitados[elegido]) {
+                                sumaTiempo = tiempo + datos.tiempos[actual][elegido];
+                                sumaBasura = (datos.llenados[elegido].v + datos.velocidades[elegido].v * sumaTiempo) / 100;
+
+                                if (recogido + sumaBasura <= datos.datosBasicos.capacidadCamiones) {
+                                    encontrado = true;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+
+                if (encontrado) {
+
+                    visitados[elegido] = true;
+
+                    tiempo = sumaTiempo + datos.datosBasicos.tiempoRecoleccionContenedor;
+                    recogido += sumaBasura;
+
+                    libres--;
+                    resultado[index] = elegido;
+                    actual = elegido;
+
+                    cant++;
+                    index++;
+                } else {
+                    break; //si llegue aca quiere decir que se lleno el camion.
+                }
+
+            }
+
+            if(cant < cantPorCamion){
+                while (cant < cantPorCamion){
+                    resultado[index] = 0;
+                    index++;
+                    cant++;
+                }
+            }
+        }
+
+        //Construyo resultado de permutacion para poder utilizar con AE
+
+
+        ZeroPermutation res = new ZeroPermutation();
+        res.vector_ = resultado;
+        res.size_ = resultado.length;
+        return res;
+    }
+
+
+
 
 
     public static void main(String[] args){
@@ -273,30 +222,30 @@ public class MainGreedy {
             System.out.println("---- Parametros a utilizar ----");
             System.out.println("Salidas: " + salidaFun + ", " + salidaVar);
 
-            long initTime = System.currentTimeMillis();
 
-            Permutation resultado = ejecutarGreedy(datos);
+            double[] params = {0.0, 0.05, 0.1, 0.15, 0.20, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5};
 
-            //Con la solucion, instancio el problema para poder usar mismas funciones que el AE
-            //y simplificar el codigo
 
+            SolutionSet solSetGreedy = new SolutionSet(params.length);
             Problem problem = new Problema(datos);
-            Solution solucionGreedy = new Solution(problem, new Variable[]{resultado});
-            problem.evaluate(solucionGreedy);
-            long elapsedTime = System.currentTimeMillis() - initTime;
+            for(double p : params){
+                Permutation resultado = ejecutarGreedy(datos, p);
+                Solution solucionGreedy = new Solution(problem, new Variable[]{resultado});
+
+                problem.evaluateConstraints(solucionGreedy);
+                problem.evaluate(solucionGreedy);
+
+                solSetGreedy.add(solucionGreedy);
+
+                //Imprimo y genero datos de la misma forma que el AE
+
+                System.out.println("F1: " + solucionGreedy.getObjective(0));
+                System.out.println("F2: " + solucionGreedy.getObjective(1));
+                System.out.println("----");
+            }
 
 
-            SolutionSet solSetGreedy = new SolutionSet(1);
-            solSetGreedy.add(solucionGreedy);
             ((Problema) problem).imprimirSolucion("SALIDA_GREEDY.txt", solSetGreedy);
-
-
-            //Imprimo y genero datos de la misma forma que el AE
-
-            System.out.println("Compromiso F1: " + solucionGreedy.getObjective(0));
-            System.out.println("Compromiso F2: " + solucionGreedy.getObjective(1));
-            System.out.println("Tiempo Algoritmo: " + elapsedTime/1000 + "s");
-
             solSetGreedy.printFeasibleFUN(salidaFun);
             solSetGreedy.printFeasibleVAR(salidaVar);
 
@@ -307,6 +256,8 @@ public class MainGreedy {
             return;
         }
     }
+
+
 
     private static int[] getDiezMasCercanos(int actual, int cantLibres, boolean[] visitados, Datos datos){
         try {
@@ -330,7 +281,6 @@ public class MainGreedy {
             return null;
         }
     }
-
 
 
     private static int[] getMasLlenos(int[] masCercanos, Datos datos){

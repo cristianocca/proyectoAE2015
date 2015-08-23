@@ -78,6 +78,7 @@ public class BinaryTournament3 extends Selection {
     }
 
 
+    Solution ganador = null;
     Solution solution1 = null, solution2 = null;
 
     int iter = 0;

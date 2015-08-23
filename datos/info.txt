@@ -1,0 +1,38 @@
+http://www.teyma.com/web/es/teymamedioambiente/servicios/higiene/index.html
+http://www.bvsde.paho.org/eswww/proyecto/repidisc/publica/hdt/hdt017.html
+http://gestionintegralresiduos.blogspot.com/2010_02_01_archive.html
+http://www.scania.es/Images/DB6x2b4M_091_tcm64-161645.pdf   Ficha tecnica
+
+Dice que se dispone de: 
+	3 camiones recolectores compactadores de carga lateral
+	2 camiones recolectores compactadores de carga trasera
+	1 camión lava contenedores de carga lateral --> Este junta??? Parece que si.
+	
+	850 contenedores de capacidades 2,4 m3 y 3,2 m3 --> Nosotros manejamos 804
+		2,4m3
+		3,2m3
+		
+		Segun estudio, la densidad de residuos solidos sin compactar es de:
+			200kg/m3 o 500kg/m3 compactados.
+				
+			O sea:
+				1 contenedor de 2.4m3 --> 480kg  
+				1 contenedor de 3.2m3 --> 640kg 
+				Promedio: 560kgs por contenedor.
+				
+			Segun la ficha tecnica de los camiones Scania, que son los mismos utilizados en mvdeo (comparar imagenes)
+			La carga máxima del camión es de 26000kg
+				
+			Con esto, podríamos estimar que cada camión puede recolectar unos 26000/560 contenedores completos.
+			Esto es, 47 contenedores (Redondeo para arriba).
+			
+			
+			
+			
+		
+			
+			
+		
+		
+	
+	

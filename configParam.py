@@ -32,10 +32,10 @@ def ejecutarProceso(command):
 class PASOS:
 	EJECUTAR = True			#Ejecuta instancias y guarda resultados para post procesamiento
 	OBTENER_FRENTE = True		#Por cada instancia, obtiene el mejor frente de todas las ejecuciones de esa instancia
-	OBTENER_RHV = True			#Por cada instancia, el mejor frente, y todas las ejecuciones, obtiene RHV y otros valores, promedios y varianzas para cada combinacion parametrica
+	OBTENER_RHV = True			#Por cada instancia, el mejor frente, y todas las ejecuciones, obtiene RHV y otros valores, promedios y desviaciones para cada combinacion parametrica
 	GENERAR_XL = True			#Guarda todos los datos obtenidos en un archivo excel
 
-MIN_PVAL = 0.05
+
 	
 #Paths a jars
 PATH_MAIN_AE = r"./out/artifacts/mainAE_jar/mainAE.jar"
@@ -89,17 +89,17 @@ if PASOS.EJECUTAR:
 
 
 	posiblesPob = ["100","200"]
-	posiblesEval = ["45000"]
-	posiblesCross = ["0.6","0.75","0.9"]
-	posiblesMut = ["0.01","0.05","0.1"]
+	posiblesGen = ["1000"]
+	posiblesCross = ["0.75","0.8","0.9"]
+	posiblesMut = ["0.05","0.1","0.15"]
 
 	combinacionesParametros = []
 	for alg in algoritmos:
 		for pob in posiblesPob:
-			for eval in posiblesEval:
+			for gen in posiblesGen:
 				for cross in posiblesCross:
 					for mut in posiblesMut:
-						combinacionesParametros.append([alg, pob,eval,cross,mut])
+						combinacionesParametros.append([alg, pob,gen,cross,mut])
 					
 	print len(combinacionesParametros), "combinaciones parametricas"
 	
@@ -139,7 +139,7 @@ if PASOS.EJECUTAR:
 				ejecucion = {
 					'algoritmo':p[0],
 					'poblacion':p[1],
-					'evals':p[2],
+					'gens':p[2],
 					'cross':p[3],
 					'mut':p[4],
 					'iteraciones':iteraciones,		
@@ -333,14 +333,14 @@ if PASOS.OBTENER_RHV:
 			ejecucion['medTiempo'] = numpy.mean(tiempos)
 			
 			ejecucion['medRHV'] = numpy.mean(RHVs)
-			ejecucion['varRHV'] = numpy.std(RHVs)			
-			ejecucion['ksRHVpval'] = stats.kstest(RHVs,'norm', args=(ejecucion['medRHV'],ejecucion['varRHV'])).pvalue if ejecucion['varRHV'] else 0
-			ejecucion['shapiroRHVpval'] = stats.shapiro(RHVs)[1] if ejecucion['varRHV'] else 0
+			ejecucion['stdRHV'] = numpy.std(RHVs)			
+			ejecucion['ksRHVpval'] = stats.kstest(RHVs,'norm', args=(ejecucion['medRHV'],ejecucion['stdRHV'])).pvalue if ejecucion['stdRHV'] else 0
+			ejecucion['shapiroRHVpval'] = stats.shapiro(RHVs)[1] if ejecucion['stdRHV'] else 0
 			
 			ejecucion['medGD'] = numpy.mean(gds)
-			ejecucion['varGD'] = numpy.std(gds)
-			ejecucion['ksGDpval'] = stats.kstest(gds,'norm', args=(ejecucion['medGD'],ejecucion['varGD'])).pvalue if ejecucion['varGD'] else 0
-			ejecucion['shapiroGDpval'] = stats.shapiro(gds)[1] if ejecucion['varGD'] else 0
+			ejecucion['stdGD'] = numpy.std(gds)
+			ejecucion['ksGDpval'] = stats.kstest(gds,'norm', args=(ejecucion['medGD'],ejecucion['stdGD'])).pvalue if ejecucion['stdGD'] else 0
+			ejecucion['shapiroGDpval'] = stats.shapiro(gds)[1] if ejecucion['stdGD'] else 0
 							
 		
 	with open(PATH_JSON_EJECUCION,'w') as f:
@@ -350,14 +350,14 @@ if PASOS.OBTENER_RHV:
 	
 if PASOS.GENERAR_XL:
 
-	headers = ["algoritmo","poblacion","evals","cross","mut",
+	headers = ["algoritmo","poblacion","gens","cross","mut",
 				'peorF1','mejorF1','medF1',
 				'peorF2','mejorF2','medF2',
 				"medCompromisoF1",
 				"medCompromisoF2",				
 				"medTiempo",
-				"medRHV","varRHV",'ksRHVpval', 'shapiroRHVpval',
-				"medGD","varGD", 'ksGDpval', 'shapiroGDpval']
+				"medRHV","stdRHV",'ksRHVpval', 'shapiroRHVpval',
+				"medGD","stdGD", 'ksGDpval', 'shapiroGDpval']
 	
 	book = xlwt.Workbook()
 	
@@ -376,7 +376,7 @@ if PASOS.GENERAR_XL:
 		for i, ejecucion in enumerate(v['ejecuciones']):
 			for colnum, col in enumerate(headers):
 				if "pval" in col:
-					sheet.write(i+1, colnum, ejecucion[col], colorVerde if ejecucion[col] >= MIN_PVAL else colorRojo)
+					sheet.write(i+1, colnum, ejecucion[col], colorVerde if ejecucion[col] > 0.05 else colorRojo)
 				else:
 					sheet.write(i+1, colnum, ejecucion[col])
 	
@@ -398,5 +398,9 @@ n2 = stats.norm.rvs(loc=0, scale=1, size=100)
 stats.kstest(n1,'norm', args=(0,1))	--kolmogorov smirnov
 stats.shapiro(numpy.random.normal(0,5,30))	--Shapiro-Wilk
 stats.normaltest(numpy.random.normal(0,5,30))	--Test DAgostino-Pearson
+--- Si el p-value es < 0.5, o 0.1 (segun significancia) se puede rechazar la hipotesis nula
+	En este caso la hipotesis nula es que las dos distribuciones son distintas.
+	Basicamente el p-value me da la probabilidad de que me equivoque al rechazar la hipotesis nula
+	O sea, que la rechace, cuando en realidad era verdadera.
 """
 	

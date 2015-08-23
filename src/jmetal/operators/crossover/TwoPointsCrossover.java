@@ -97,7 +97,7 @@ public class TwoPointsCrossover extends Crossover {
 
 					permutationLength = ((Permutation)parent1.getDecisionVariables()[0]).getLength() ;
 					parent1Vector     = ((Permutation)parent1.getDecisionVariables()[0]).vector_ ;
-					parent2Vector    = ((Permutation)parent2.getDecisionVariables()[0]).vector_ ;    
+					parent2Vector    = ((Permutation)parent2.getDecisionVariables()[0]).vector_ ;
 					offspring1Vector = ((Permutation)offspring[0].getDecisionVariables()[0]).vector_ ;
 					offspring2Vector = ((Permutation)offspring[1].getDecisionVariables()[0]).vector_ ;
 
@@ -105,7 +105,7 @@ public class TwoPointsCrossover extends Crossover {
 					crosspoint1 = PseudoRandom.randInt(0,permutationLength-1) ;
 					crosspoint2 = PseudoRandom.randInt(0,permutationLength-1) ;
 
-					while (crosspoint2 == crosspoint1)  
+					while (crosspoint2 == crosspoint1)
 						crosspoint2 = PseudoRandom.randInt(0,permutationLength-1) ;
 
 					if (crosspoint1 > crosspoint2) {
@@ -150,16 +150,16 @@ public class TwoPointsCrossover extends Crossover {
 							offspring2Vector[m++] = temp;
 						} // if
 					} // for
-				} // if 
+				} // if
 			} // if
 			else
 			{
 				Configuration.logger_.severe("TwoPointsCrossover.doCrossover: invalid " +
-						"type" + 
+						"type" +
 						parent1.getDecisionVariables()[0].getVariableType());
 				Class cls = java.lang.String.class;
-				String name = cls.getName(); 
-				throw new JMException("Exception in " + name + ".doCrossover()") ; 
+				String name = cls.getName();
+				throw new JMException("Exception in " + name + ".doCrossover()") ;
 			}
 
 		return offspring;                                                                                      

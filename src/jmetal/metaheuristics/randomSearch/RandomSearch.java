@@ -61,15 +61,6 @@ public class RandomSearch extends Algorithm {
 
     NonDominatedSolutionList ndl = new NonDominatedSolutionList();
 
-    int GREEDY_COUNT = 10;
-    int MEDIO_GREEDY_COUNT = 10;
-
-    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY y deformadas
-    Problema problema = (Problema)problem_;
-    for(Solution s : problema.getSolucionesGreedy(GREEDY_COUNT, MEDIO_GREEDY_COUNT)){
-      ndl.add(s);
-    }
-
 
     // Create the initial solutionSet
     Solution newSolution;

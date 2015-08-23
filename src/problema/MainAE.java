@@ -5,8 +5,8 @@ import jmetal.metaheuristics.nsgaII.NSGAII;
 import jmetal.metaheuristics.randomSearch.RandomSearch;
 import jmetal.metaheuristics.spea2.SPEA2;
 import jmetal.operators.crossover.CrossoverFactory;
+import jmetal.operators.localSearch.LocalSearch;
 import jmetal.operators.localSearch.MutationLocalSearch;
-import jmetal.operators.localSearch.PermutationLocalSearch;
 import jmetal.operators.mutation.MutationFactory;
 import jmetal.operators.selection.SelectionFactory;
 import jmetal.qualityIndicator.QualityIndicator;
@@ -36,9 +36,9 @@ public class MainAE {
 
 
         int popSize = 200;
-        int maxEval = 45000;
-        double crossProb = 0.75;
-        double mutProb = 0.01;
+        int maxGen = 1000;
+        double crossProb = 0.8;
+        double mutProb = 0.15;
         String algoritmo = "NSGA2";
         String salidaFun = "SALIDA_FUN.txt";
         String salidaVar = "SALIDA_VAR.txt";
@@ -53,7 +53,7 @@ public class MainAE {
         }
 
         if(args.length >= 9){
-            maxEval = Integer.parseInt(args[8]);
+            maxGen = Integer.parseInt(args[8]);
         }
 
         if(args.length >= 10){
@@ -75,7 +75,7 @@ public class MainAE {
         System.out.println("---- Parametros a utilizar ----");
         System.out.println("Algoritmo: " + algoritmo);
         System.out.println("Tam Pob: " + popSize);
-        System.out.println("Max Eval: " + maxEval);
+        System.out.println("Max Gen: " + maxGen);
         System.out.println("Cross Prob: " + crossProb);
         System.out.println("Mut Prob: " + mutProb);
         System.out.println("Salidas: " + salidaFun + ", " + salidaVar);
@@ -110,40 +110,33 @@ public class MainAE {
 
         // Algorithm parameters
         algorithm.setInputParameter("populationSize",popSize);
-        algorithm.setInputParameter("maxEvaluations",maxEval);
+        algorithm.setInputParameter("maxGenerations",maxGen);
 
         // Mutation and Crossover for Real codification
         parameters = new HashMap() ;
         parameters.put("probability", crossProb) ;
-        crossover = CrossoverFactory.getCrossoverOperator("PMXCrossover", parameters);
-        //crossover = CrossoverFactory.getCrossoverOperator("SinglePointCrossover", parameters);
+        crossover = CrossoverFactory.getCrossoverOperator("ZeroPMXCrossover", parameters);
+        //crossover = CrossoverFactory.getCrossoverOperator("TwoPointsCrossover", parameters);
 
         parameters = new HashMap() ;
         parameters.put("probability", mutProb) ;
-        mutation = MutationFactory.getMutationOperator("SwapMutation", parameters);
+        mutation = MutationFactory.getMutationOperator("ZeroPermBitFlipMutation", parameters);
 
         // Selection Operator
         parameters = null ;
         if (algoritmo.equalsIgnoreCase("NSGA2")) {
-            selection = SelectionFactory.getSelectionOperator("BinaryTournament3", parameters) ;
+            selection = SelectionFactory.getSelectionOperator("BinaryTournament2", parameters) ;
         }
         else {
             selection = SelectionFactory.getSelectionOperator("BinaryTournament", parameters) ;
         }
+
 
         // Add the operators to the algorithm
         algorithm.addOperator("crossover",crossover);
         algorithm.addOperator("mutation",mutation);
         algorithm.addOperator("selection",selection);
 
-        //Agrego local search
-        /**
-        parameters = new HashMap() ;
-        parameters.put("improvementRounds", 10) ;
-        parameters.put("problem",problem) ;
-        parameters.put("mutation",mutation) ;
-        algorithm.addOperator("localSearch", new MutationLocalSearch(parameters));
-         **/
 
         long initTime = System.currentTimeMillis();
         SolutionSet population = algorithm.execute();

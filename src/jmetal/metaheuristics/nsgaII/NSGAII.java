@@ -23,6 +23,8 @@ package jmetal.metaheuristics.nsgaII;
 
 import jmetal.core.*;
 import jmetal.encodings.variable.Permutation;
+import jmetal.operators.localSearch.LocalSearch;
+import jmetal.operators.localSearch.MutationLocalSearch;
 import jmetal.operators.mutation.MutationFactory;
 import jmetal.qualityIndicator.QualityIndicator;
 import jmetal.util.*;
@@ -60,8 +62,8 @@ public class NSGAII extends Algorithm {
    */
   public SolutionSet execute() throws JMException, ClassNotFoundException {
     int populationSize;
-    int maxEvaluations;
-    int evaluations;
+    int maxGenerations;
+    int generations;
 
     QualityIndicator indicators; // QualityIndicator object
     int requiredEvaluations; // Use in the example of use of the
@@ -79,65 +81,40 @@ public class NSGAII extends Algorithm {
 
     //Read the parameters
     populationSize = ((Integer) getInputParameter("populationSize")).intValue();
-    maxEvaluations = ((Integer) getInputParameter("maxEvaluations")).intValue();
+    maxGenerations = ((Integer) getInputParameter("maxGenerations")).intValue();
     indicators = (QualityIndicator) getInputParameter("indicators");
 
     //Initialize the variables
     population = new SolutionSet(populationSize);
-    evaluations = 0;
+    generations = 0;
 
-    requiredEvaluations = 0;
 
     //Read the operators
     mutationOperator = operators_.get("mutation");
     crossoverOperator = operators_.get("crossover");
     selectionOperator = operators_.get("selection");
-    
-    //Crear hall of fame, para almacenar las mejores soluciones que vivieron. Mejora resultados.
-    //SolutionSet hof = new NonDominatedSolutionList();
 
 
-    int GREEDY_COUNT = Math.floorDiv(populationSize, 5);
-    int GREEDY_DEFORMADO_COUNT = Math.floorDiv(populationSize, 5);
 
-    int GREEDYV2_COUNT = Math.floorDiv(populationSize, 5);
-    int GREEDYV2_DEFORMADO_COUNT = Math.floorDiv(populationSize, 5);
-
-
-    // Create the initial solutionSet
-
-    Solution newSolution;
-    for (int i = 0; i < populationSize - GREEDY_COUNT - GREEDY_DEFORMADO_COUNT - GREEDYV2_COUNT - GREEDYV2_DEFORMADO_COUNT; i++) {
-      newSolution = new Solution(problem_);
-      problem_.evaluate(newSolution);
-      problem_.evaluateConstraints(newSolution);
-
-      population.add(newSolution);
-      //hof.add(newSolution);
-    } //for       
-
-
-    // CODIGO NUEVO ------- AGREGO SOLUCION GREEDY y deformadas
+    // Se inicializa con greedy con varios parametros y mutaciones
     Problema problema = (Problema)problem_;
-    for(Solution s : problema.getSolucionesGreedy(GREEDY_COUNT, GREEDY_DEFORMADO_COUNT)){
-      population.add(s);
-    }
-
-    for(Solution s : problema.getSolucionesGreedyv2(GREEDYV2_COUNT, GREEDYV2_DEFORMADO_COUNT)){
+    for(Solution s : problema.getSolucionesGreedy(populationSize)){
       population.add(s);
     }
 
 
-    Operator localSearch = operators_.get("localSearch");
+    //Operator localSearch = operators_.get("localSearch");
+
+    //population.printFeasibleFUN("./evolucion/"+generations+"fun.txt");
 
     // Generations 
-    while (evaluations < maxEvaluations) {
+    while (generations < maxGenerations) {
 
       // Create the offSpring solutionSet      
       offspringPopulation = new SolutionSet(populationSize);
       Solution[] parents = new Solution[2];
       for (int i = 0; i < (populationSize / 2); i++) {
-        if (evaluations < maxEvaluations) {
+
           //obtain parents
           
           parents[0] = (Solution) selectionOperator.execute(population);
@@ -150,15 +127,12 @@ public class NSGAII extends Algorithm {
           problem_.evaluateConstraints(offSpring[0]);
           problem_.evaluate(offSpring[1]);
           problem_.evaluateConstraints(offSpring[1]);
+
+
           offspringPopulation.add(offSpring[0]);
           offspringPopulation.add(offSpring[1]);
-          evaluations += 2;
 
 
-          
-          //hof.add(offSpring[0]);
-          //hof.add(offSpring[1]);
-        } // if                            
       } // for
 
       // Create the solutionSet union of solutionSet and offSpring
@@ -175,12 +149,6 @@ public class NSGAII extends Algorithm {
       // Obtain the next front
       front = ranking.getSubfront(index);
 
-      //Replace front with local search
-      if(localSearch != null) {
-        for (int i = 0; i < front.size(); i++) {
-          front.replace(i, (Solution) localSearch.execute(front.get(i)));
-        }
-      }
 
       while ((remain > 0) && (remain >= front.size())) {
         //Assign crowding distance to individuals
@@ -209,32 +177,25 @@ public class NSGAII extends Algorithm {
         } // for
 
         remain = 0;
-      } // if                               
+      } // if
 
 
 
 /**
-      if(evaluations % 500 == 0 || evaluations == maxEvaluations){
-        population.printFeasibleFUN("./evolucion/"+evaluations+"fun.txt");
+      if(generations % 200 == 0 || generations == maxGenerations){
+        //ranking = new Ranking(population);
+        //ranking.getSubfront(0).printFeasibleFUN("FUN_NSGAII") ;
+
+        population.printFeasibleFUN("./evolucion/"+generations+"fun.txt");
       }
 **/
+      generations++;
 
 
-      // This piece of code shows how to use the indicator object into the code
-      // of NSGA-II. In particular, it finds the number of evaluations required
-      // by the algorithm to obtain a Pareto front with a hypervolume higher
-      // than the hypervolume of the true Pareto front.
-      //if ((indicators != null) &&
-      //    (requiredEvaluations == 0)) {
-      //  double HV = indicators.getHypervolume(population);
-      //  if (HV >= (0.98 * indicators.getTrueParetoFrontHypervolume())) {
-      //    requiredEvaluations = evaluations;
-      //  } // if
-      //} // if
     } // while
 
-    // Return as output parameter the required evaluations
-    setOutputParameter("evaluations", requiredEvaluations);
+    //System.out.println("Total generaciones: " + generations);
+
 
     // Return the first non-dominated front
     Ranking ranking = new Ranking(population);

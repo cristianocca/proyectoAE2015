@@ -42,23 +42,21 @@ with open(ARCHIVO_SALIDA, 'r') as f:
 	salida = f.readlines()
 	
 colores = getNextColor()
-for i, camion in enumerate(salida[0].split("|")[0:2]):
+for i, camion in enumerate(salida[0].split("|")[0:10]):
 	puntoActual = puntos[0]
 	recorridoX = [float(puntoActual["lat"])]
-	recorridoY = [float(puntoActual["lon"])]	
+	recorridoY = [float(puntoActual["lon"])]
+	print recorridoX, recorridoY
 	color = colores.next()
 	axes.plot(recorridoX,recorridoY, color[0]+".", ms=10)	#Punto inicial
 	for j, punto in enumerate(camion.split(" ")):
-		punto = punto.strip()
-		if punto == "-":
-			break
-		if punto:
-			puntoInt = int(punto)
-			if puntoInt != 0 and puntoInt < len(puntos):
-				puntoActual = puntos[int(punto)]
-				
-				recorridoX.append(float(puntoActual["lat"]))
-				recorridoY.append(float(puntoActual["lon"]))
+		punto = punto.strip()	
+		print punto		
+		if punto and int(punto) != 0:
+			puntoActual = puntos[int(punto)]
+			
+			recorridoX.append(float(puntoActual["lat"]))
+			recorridoY.append(float(puntoActual["lon"]))
 			
 			
 	axes.plot([recorridoX[-1]],[recorridoY[-1]], color[0]+"x", ms=10)		#Punto final
